@@ -1,0 +1,8 @@
+{
+  "name": "La Granada del 27",
+  "short_name": "Granada 27",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#171512",
+  "theme_color": "#171512"
+}
