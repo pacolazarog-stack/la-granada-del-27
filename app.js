@@ -35,6 +35,20 @@
     render($('#rr'),'II · HACIA LO ABIERTO',[v[13],...v.slice(14)]);
   }
 
+  function cleanDiagonal(){
+    const down=GRANADA_ROWS.map((r,i)=>r.verses[i]);
+    const up=GRANADA_ROWS.map((r,i)=>r.verses[26-i]);
+    const render=(el,title,verses)=>{
+      el.innerHTML='';
+      const h=document.createElement('div');h.className='btitle';h.textContent=title;el.appendChild(h);
+      const poem=document.createElement('div');poem.className='radial-clean-poem';
+      verses.forEach((z,i)=>{const d=document.createElement('div');d.className='radial-clean-line'+(i===13?' diag-center':'');d.innerHTML=i===13?`<span class="loa-center-origin" title="Centro">${esc(z)}</span>`:esc(z);poem.appendChild(d)});
+      el.appendChild(poem);
+    };
+    render($('#dl'),'I · DIAGONAL CENTRAL ↘',down);
+    render($('#dr'),'II · DIAGONAL CENTRAL ↗',up);
+  }
+
   window.vert=function(){
     pi=(pi+27)%27;
     const pNo=pi+1;
@@ -61,6 +75,7 @@
   };
 
   window.radial=cleanRadial;
+  window.diagonal=cleanDiagonal;
 
   const baseBook=window.book;
   window.book=function(){
@@ -77,6 +92,10 @@
     if(m){
       const hNo=Number(m[1]),meta=hMeta(hNo),marks=new Map((meta&&meta.marks||[]).map(z=>[z.position,z]));
       els.forEach((el,i)=>{el.innerHTML=hNo===14&&i===13?`<span class="loa-center-origin" title="VEINTISIETE">${esc(x.l[i])}</span>`:markHorizontal(x.l[i],marks.get(i+1))});
+      return;
+    }
+    if(x.e&&/DIAGONAL CENTRAL/.test(x.e)){
+      els.forEach((el,i)=>{el.classList.toggle('diag-center',i===13);el.innerHTML=i===13?`<span class="loa-center-origin" title="Centro">${esc(x.l[i])}</span>`:esc(x.l[i])});
     }
   };
 
@@ -88,6 +107,6 @@
   $('#hvn').onclick=()=>{hp++;horiz()};
 
   const brand=document.querySelector('.brand small');if(brand)brand.textContent='Un siglo después';
-  vert();horiz();cleanRadial();book();
-  const h=location.hash.slice(1);if(['bookview','verticalreader','horizontal','radial'].includes(h))mode(h);
+  vert();horiz();cleanDiagonal();cleanRadial();book();
+  const h=location.hash.slice(1);if(['bookview','verticalreader','horizontal','diagonal','radial'].includes(h))mode(h);
 })();
