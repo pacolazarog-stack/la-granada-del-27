@@ -2,7 +2,7 @@
 
 ## La Granada del 27 · Un siglo después
 
-La edición física queda fijada como una obra de **56 poemas matriciales** y **58 piezas poéticas** en total.
+La edición física queda fijada como una obra de **56 poemas matriciales** y **58 piezas poéticas** en total, construida sobre la **matriz canónica v2.4**.
 
 ## Cómputo
 
@@ -76,22 +76,45 @@ La inscripción final es:
 
 Romance octosílabo. Fuera de numeración matricial.
 
+## Capa coral oculta
+
+La matriz v2.4 incorpora dos voces suplementarias que no alteran la lectura ordinaria.
+
+- **Voz I**: acrósticos constelados formados por determinadas iniciales de los poemas horizontales.
+- **Voz II**: telésticos léxicos formados por las iniciales de determinadas palabras terminales en la lectura vertical.
+- Ambas voces se organizan alrededor del eje **VEINTISIETE** y actúan como loa duplicada y especular al 27.
+
+La capa coral no debe anunciarse al comienzo del libro. Su existencia se revela únicamente en la nota final **OTRA MANERA DE LEER**.
+
 ## Dramaturgia editorial
 
-El índice inicial no revela el Libro III ni la mecánica radial. El lector atraviesa primero el poemario vertical, descubre después el segundo poemario horizontal y encuentra finalmente el centro oculto.
+El índice inicial no revela el Libro III ni la mecánica radial. Tampoco anticipa los acrósticos ni los telésticos. El lector atraviesa primero el poemario vertical, descubre después el segundo poemario horizontal y encuentra finalmente el centro oculto.
 
 H14 · **BAJO LA CAL** recibe tratamiento central y excepcional.
 
 Las dos ramas radiales se presentan como díptico o doble página cuando la producción lo permita.
 
+## Métrica canónica v2.4
+
+La auditoría completa de la matriz arroja:
+
+- **726 endecasílabos**.
+- **3 estribillos palindrómicos 6+6**.
+- **729/729 posiciones conformes**.
+- **0 incidencias métricas**.
+
+H14 y **LA VEGA** permanecen íntegros respecto de su versión fijada.
+
 ## Estado de la edición A5
 
-La maqueta A5 canónica ya ha sido reconstruida con las **58 piezas reales**, no sólo con los 27 poemas verticales. La edición resultante ocupa **68 páginas A5** porque el prólogo y el epílogo se extienden en varias páginas y existen portadillas y páginas de revelación.
+La maqueta A5 canónica v2.4 contiene las **58 piezas reales** y ocupa **68 páginas A5**. Mantiene la secuencia de portadillas y la página final de revelación.
 
-El modo **LIBRO** de GitHub Pages reproduce ya esta arquitectura completa en texto dinámico, mientras que los modos **VERTICAL**, **HORIZONTAL** y **RADIAL** permiten inspeccionar cada sistema por separado.
+En la última página, **OTRA MANERA DE LEER** explica ya la existencia del coro doble después de que el lector haya atravesado la obra completa.
+
+La aplicación de GitHub Pages reproduce esta arquitectura en texto dinámico. Los modos **VERTICAL**, **HORIZONTAL** y **RADIAL** permiten inspeccionar cada sistema por separado; la lectura vertical muestra de forma discreta los finales que sostienen la segunda voz.
 
 ## Principio de edición
 
 Los poemas horizontales son poemas autónomos de pleno derecho, no aparato crítico. Los dos radiales constituyen igualmente dos composiciones poéticas autónomas nacidas del centro H14.
 
-La explicación técnica de la matriz 27 × 27 aparece únicamente al final, después de la experiencia poética.
+El secreto debe ejercer gravedad sobre el libro, no uniformidad: ninguna capa oculta justifica rebajar la calidad del poema visible.
