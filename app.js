@@ -4,17 +4,26 @@
   const hMeta=n=>GRANADA_ACROSTIC[`H${String(n).padStart(2,'0')}`]||null;
   const pMeta=n=>GRANADA_TELESTIC[`P${String(n).padStart(2,'0')}`]||null;
   const mMeta=(side,n)=>(window.GRANADA_MESOSTIC||{})[`${side}${String(n).padStart(2,'0')}`]||null;
+  let diagDirection='down';
 
-  function composite(line,{hMark=null,vMark=null,mMark=null,mText='',initial=false}={}){
+  function bounds(line){
+    const chars=Array.from(line);
+    const idx=[];
+    chars.forEach((c,i)=>{if(alpha.test(c))idx.push(i)});
+    return idx.length?{first:idx[0],last:idx[idx.length-1]}:{first:-1,last:-1};
+  }
+
+  function composite(line,{hMark=null,vMark=null,mMark=null,mText='',structure=true}={}){
     const slots=Array.from({length:line.length},()=>({classes:new Set(),titles:[]}));
     const add=(i,cls,title)=>{
       if(!Number.isInteger(i)||i<0||i>=slots.length)return;
       slots[i].classes.add(cls);
       if(title)slots[i].titles.push(title);
     };
-    if(initial){
-      const i=Array.from(line).findIndex(c=>alpha.test(c));
-      if(i>=0)add(i,'radial-initial','');
+    if(structure){
+      const b=bounds(line);
+      if(b.first>=0)add(b.first,'acrostic-letter','ACRÓSTICO · primera letra');
+      if(b.last>=0&&b.last!==b.first)add(b.last,'telestic-letter','TELÉSTICO · última letra');
     }
     if(hMark){
       const i=Number(hMark.offset);
@@ -42,7 +51,11 @@
   }
 
   const markHorizontal=(line,loaMark,mesoMark,mesoText)=>composite(line,{hMark:loaMark,mMark:mesoMark,mText:mesoText});
-  const markVertical=(line,loaMark,mesoMark,mesoText)=>composite(line,{vMark:loaMark,mMark:mesoMark,mText:mesoText,initial:true});
+  const markVertical=(line,loaMark,mesoMark,mesoText)=>composite(line,{vMark:loaMark,mMark:mesoMark,mText:mesoText});
+
+  function legend(label){
+    return `<div class="poem-guide-title">${label}</div><div class="structure-legend"><span class="acrostic-letter">A</span><span>ACRÓSTICO</span><span class="mesostic-letter">M</span><span>MESÓSTICO</span><span class="telestic-letter">T</span><span>TELÉSTICO</span></div>`;
+  }
 
   function cleanRadial(){
     const v=GRANADA_ROWS[13].verses;
@@ -57,9 +70,30 @@
     render($('#rr'),'II · HACIA LO ABIERTO',[v[13],...v.slice(14)]);
   }
 
+  function ensureDiagonalControls(){
+    const view=$('#diagonal');
+    if(!view)return;
+    let bar=view.querySelector('.diag-direction');
+    if(!bar){
+      bar=document.createElement('div');
+      bar.className='diag-direction';
+      bar.innerHTML='<button type="button" data-dir="down">DESCENDENTE</button><button type="button" data-dir="up">ASCENDENTE</button>';
+      view.prepend(bar);
+      bar.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{
+        diagDirection=btn.dataset.dir;
+        cleanDiagonal();
+      }));
+    }
+    bar.querySelectorAll('button').forEach(btn=>btn.classList.toggle('active',btn.dataset.dir===diagDirection));
+  }
+
   function cleanDiagonal(){
-    const down=GRANADA_ROWS.map((r,i)=>r.verses[i]);
-    const up=GRANADA_ROWS.map((r,i)=>r.verses[26-i]);
+    ensureDiagonalControls();
+    const principal=GRANADA_ROWS.map((r,i)=>r.verses[i]);
+    const secondary=GRANADA_ROWS.map((r,i)=>r.verses[26-i]);
+    const ascending=diagDirection==='up';
+    const down=ascending?[...principal].reverse():principal;
+    const cross=ascending?[...secondary].reverse():secondary;
     const render=(el,title,verses)=>{
       el.innerHTML='';
       const h=document.createElement('div');h.className='btitle';h.textContent=title;el.appendChild(h);
@@ -71,8 +105,8 @@
       });
       el.appendChild(poem);
     };
-    render($('#dl'),'I · DIAGONAL CENTRAL ↘',down);
-    render($('#dr'),'II · DIAGONAL CENTRAL ↗',up);
+    render($('#dl'),ascending?'I · PRINCIPAL ASCENDENTE ↖':'I · PRINCIPAL DESCENDENTE ↘',down);
+    render($('#dr'),ascending?'II · SECUNDARIA ASCENDENTE ↗':'II · SECUNDARIA DESCENDENTE ↙',cross);
   }
 
   window.vert=function(){
@@ -84,7 +118,7 @@
     const verses=pv(pi);
     const tel=pMeta(pNo),tmarks=new Map((tel&&tel.marks||[]).map(m=>[m.row,m]));
     const mes=mMeta('P',pNo),mmarks=new Map((mes&&mes.valid&&mes.marks||[]).map(m=>[m.row,m]));
-    const guide=document.createElement('div');guide.className='poem-guide';guide.textContent='LECTURA VERTICAL';host.appendChild(guide);
+    const guide=document.createElement('div');guide.className='poem-guide';guide.innerHTML=legend('LECTURA VERTICAL');host.appendChild(guide);
     verses.forEach((z,i)=>{
       const verseNo=i+1;
       let text=markVertical(z,tmarks.get(verseNo),mmarks.get(verseNo),mes&&mes.text||'');
@@ -104,7 +138,7 @@
     const host=$('#hl');host.innerHTML='';
     const loa=hMeta(hNo),lmarks=new Map((loa&&loa.marks||[]).map(m=>[m.position,m]));
     const mes=mMeta('H',hNo),mmarks=new Map((mes&&mes.valid&&mes.marks||[]).map(m=>[m.position,m]));
-    const guide=document.createElement('div');guide.className='poem-guide';guide.textContent='LECTURA HORIZONTAL';host.appendChild(guide);
+    const guide=document.createElement('div');guide.className='poem-guide';guide.innerHTML=legend('LECTURA HORIZONTAL');host.appendChild(guide);
     r.verses.forEach((z,i)=>{
       const pos=i+1;
       let text=markHorizontal(z,lmarks.get(pos),mmarks.get(pos),mes&&mes.text||'');
