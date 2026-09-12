@@ -1,0 +1,53 @@
+/* Lector diagonal: dos ejes, cuatro modos y cruce 14×14. */
+#diagonal{overflow:auto!important;padding:18px 24px 34px!important;position:relative!important}
+#diagonal>.diag-direction{display:none!important}
+.diag-reader{width:min(1180px,96%);margin:0 auto}
+.diag-toolbar{position:sticky;top:0;z-index:7;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 12px;padding:6px 0 14px;background:linear-gradient(var(--bg) 72%,transparent)}
+.diag-control{display:flex;align-items:center;gap:4px;padding:4px;border:1px solid #ffffff33;border-radius:999px;background:#15120fee;max-width:100%;overflow:auto}
+.diag-control-label{padding:0 7px 0 9px;font-size:8px;letter-spacing:.13em;color:#8f8174;white-space:nowrap}
+.diag-control button{border:0;border-radius:999px;background:transparent;color:#cbbeb1;padding:6px 10px;font:inherit;font-size:9px;letter-spacing:.09em;white-space:nowrap;cursor:pointer}
+.diag-control button.active{background:#efe6db;color:#211d19}
+.diag-double{display:none;padding:6px 10px;font-size:9px;letter-spacing:.1em;color:#efe6db;white-space:nowrap}
+.diag-control.is-double button[data-direction]{display:none}
+.diag-control.is-double .diag-double{display:inline-block}
+.diag-reading{display:flex;justify-content:center}
+.diag-sheet{width:min(900px,100%);background:var(--paper);color:var(--ink);padding:30px 54px 38px;box-shadow:0 20px 50px #0008}
+.diag-sheet-kicker{text-align:center;font-size:9px;letter-spacing:.16em;color:#8d8176;text-transform:uppercase}
+.diag-sheet h2{font-size:24px;margin:8px 0 8px}
+.diag-sheet-note{max-width:46em;margin:0 auto 22px;text-align:center;font-size:10px;line-height:1.5;letter-spacing:.03em;color:#7c7065}
+.diag-sequence{width:min(100%,38em);margin:0 auto}
+.diag-line{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:baseline;padding:3px 0;font-size:16px;line-height:1.36}
+.diag-line-no{text-align:right;font-size:8px;letter-spacing:.08em;color:#aaa096;user-select:none}
+.diag-cross{margin:7px -8px;padding:8px 8px;border-top:1px solid #cbbfb4;border-bottom:1px solid #cbbfb4;background:#f0e7dc}
+.diag-junction{width:min(100%,38em);margin:18px auto 20px;padding:14px 20px;text-align:center;border-top:1px solid #cbbfb4;border-bottom:1px solid #cbbfb4;background:#f0e7dc}
+.diag-junction-label{font-size:8px;letter-spacing:.15em;color:#8d8176;margin-bottom:9px}
+.diag-junction-verse{font-size:18px;line-height:1.4}
+.diag-junction-axis{margin-top:8px;font-size:8px;letter-spacing:.13em;color:#7c211d}
+.diag-branches{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#d8cec4;border:1px solid #d8cec4}
+.diag-branch{background:var(--paper);padding:18px 26px 24px}
+.diag-branch-title{text-align:center;font-size:9px;letter-spacing:.12em;color:#7c211d;margin-bottom:13px}
+.diag-arrow{font-size:14px;vertical-align:-1px}
+.diag-sheet-bifurcated{width:min(1060px,100%)}
+.diag-sheet-bifurcated .diag-sequence{width:100%}
+.diag-sheet-bifurcated .diag-line{font-size:14px;grid-template-columns:25px minmax(0,1fr)}
+
+@media(max-width:900px){
+  .diag-toolbar{justify-content:flex-start}
+  .diag-control-wide{max-width:100%;order:3}
+  .diag-sheet{padding:26px 30px 34px}
+  .diag-branches{grid-template-columns:1fr}
+  .diag-branch+.diag-branch{border-top:1px solid #d8cec4}
+}
+@media(max-width:600px){
+  #diagonal{padding:12px 10px 24px!important}
+  .diag-reader{width:100%}
+  .diag-toolbar{gap:6px;padding-bottom:10px}
+  .diag-control{width:100%;border-radius:14px}
+  .diag-control-label{min-width:58px}
+  .diag-sheet{padding:22px 16px 28px}
+  .diag-sheet h2{font-size:20px}
+  .diag-line{font-size:13px;grid-template-columns:22px minmax(0,1fr);gap:7px}
+  .diag-junction-verse{font-size:15px}
+  .diag-branch{padding:16px 14px 20px}
+  .diag-sheet-bifurcated .diag-line{font-size:12.5px}
+}
