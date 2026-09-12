@@ -1,10 +1,7 @@
 (()=>{
   const $=s=>document.querySelector(s);
-  const esc=s=>String(s??'').replace(/[&<>\"]/g,c=>c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':'&quot;');
   const rand=n=>{
-    if(window.crypto&&crypto.getRandomValues){
-      const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]%n;
-    }
+    if(window.crypto&&crypto.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]%n}
     return Math.floor(Math.random()*n);
   };
   const perspectives=[
@@ -16,89 +13,70 @@
   const vTitle=c=>GRANADA_TITLES[c-1];
   const hTitle=r=>GRANADA_H_TITLES[r-1];
   const coord=(r,c)=>`(${String(r).padStart(2,'0')}, ${String(c).padStart(2,'0')})`;
-  const meta=(r,c)=>`VERTICAL ${String(c).padStart(2,'0')} · ${vTitle(c)} · HORIZONTAL ${String(r).padStart(2,'0')} · ${hTitle(r)}`;
+  const side=(r,c)=>r===14&&c===14?'GOZNE':r===c?'DIAGONAL AUTORREFLEXIVA':r<c?'ESPEJO SUPERIOR':'ESPEJO INFERIOR';
+  const meta=(r,c)=>`${coord(r,c)} · VERTICAL ${String(c).padStart(2,'0')} · ${vTitle(c)} · HORIZONTAL ${String(r).padStart(2,'0')} · ${hTitle(r)}`;
 
-  function half(label,r,c,origin){
-    return `
-      <section class="chance-half ${origin?'chance-origin':''}">
-        <div class="chance-half-head">
-          <span>${label}</span>
-          <span>${coord(r,c)}${origin?' · GOLPE':''}</span>
-        </div>
-        <blockquote>${esc(cell(r,c))}</blockquote>
-        <div class="chance-meta">${esc(meta(r,c))}</div>
-      </section>`;
-  }
+  let hit=null,stage=0,stages=[];
 
-  function render(){
-    const r=rand(27)+1,c=rand(27)+1,p=perspectives[rand(3)];
-    const diagonal=r===c;
+  function buildStages(){
+    const {r,c,p}=hit;
     const center=r===14&&c===14;
-    const originSide=center?'GOZNE':diagonal?'DIAGONAL':r<c?'ESPEJO SUPERIOR':'ESPEJO INFERIOR';
-    const centerVerse=cell(14,14);
-    const host=$('#chance-body');
-    if(!host)return;
-
+    const diagonal=r===c;
     if(center){
-      host.innerHTML=`
-        <div class="chance-kicker">ÚLTIMA CAPA · EL AZAR</div>
-        <div class="chance-center-hit">
-          <div class="chance-center-hit-label">14 × 14 · GOZNE · ESPEJO SOBRE SÍ MISMO</div>
-          <blockquote>${esc(centerVerse)}</blockquote>
-          <div class="chance-axis">LA VEGA ↔ BAJO LA CAL</div>
-          <p>El golpe ha caído en el único punto que es a la vez diagonal, centro y bisagra temporal. La secuencia se detiene aquí.</p>
-        </div>`;
-      $('#chance-seed').textContent='GOLPE: GOZNE · 14 × 14';
+      stages=[{
+        label:'GOZNE · 14 × 14',
+        current:cell(14,14),
+        pos:'LA VEGA ↔ BAJO LA CAL · centro, diagonal y bisagra temporal'
+      }];
       return;
     }
-
-    let mirror;
-    if(diagonal){
-      mirror=`
-        <div class="chance-mirror chance-mirror-diagonal">
-          <section class="chance-half chance-origin chance-diagonal-half">
-            <div class="chance-half-head"><span>DIAGONAL AUTORREFLEXIVA</span><span>${coord(r,c)} · GOLPE</span></div>
-            <blockquote>${esc(cell(r,c))}</blockquote>
-            <div class="chance-meta">${esc(meta(r,c))}</div>
-          </section>
-          <div class="chance-mirror-axis">r = c · EL PUNTO SE REFLEJA SOBRE SÍ MISMO</div>
-        </div>`;
-    }else{
-      const upper=r<c?[r,c]:[c,r];
-      const lower=r<c?[c,r]:[r,c];
-      const originUpper=r<c;
-      mirror=`
-        <div class="chance-mirror">
-          ${half('ESPEJO SUPERIOR',upper[0],upper[1],originUpper)}
-          <div class="chance-mirror-axis">EJE DE TRANSPOSICIÓN · (r,c) ↔ (c,r)</div>
-          ${half('ESPEJO INFERIOR',lower[0],lower[1],!originUpper)}
-        </div>`;
-    }
-
-    host.innerHTML=`
-      <div class="chance-kicker">ÚLTIMA CAPA · EL AZAR</div>
-      <div class="chance-layout">
-        ${mirror}
-        <aside class="chance-context">
-          <section class="chance-door-panel">
-            <div class="chance-step">PUERTA · ${esc(p.name)}</div>
-            <p class="chance-question">${esc(p.question)}</p>
-            <p class="chance-note">La perspectiva no mueve los versos: decide desde qué tiempo se contempla el par.</p>
-          </section>
-          <section class="chance-reference">
-            <div class="chance-step">REFERENCIA AXIAL · 14 × 14</div>
-            <blockquote>${esc(centerVerse)}</blockquote>
-            <div class="chance-axis">LA VEGA ↔ BAJO LA CAL</div>
-            <p class="chance-note">El centro organiza el sistema, pero no es el destino obligatorio del golpe.</p>
-          </section>
-        </aside>
-      </div>`;
-    $('#chance-seed').textContent=`GOLPE: ${originSide} · perspectiva: ${p.name}`;
+    stages=[
+      {
+        label:`GOLPE · ${side(r,c)}`,
+        current:cell(r,c),
+        pos:`${meta(r,c)} · el azar ha caído aquí`
+      },
+      {
+        label:diagonal?'ESPEJO · EL MISMO PUNTO':`REFLEJO · ${side(c,r)}`,
+        current:cell(c,r),
+        pos:diagonal?`${coord(r,c)} · r = c · el punto se refleja sobre sí mismo`:`${meta(c,r)} · reflejo de ${coord(r,c)}`
+      },
+      {
+        label:`PUERTA · ${p.name}`,
+        current:p.question,
+        pos:'La perspectiva decide desde qué tiempo se contempla el par; no altera los versos.'
+      },
+      {
+        label:'GOZNE · REFERENCIA AXIAL · 14 × 14',
+        current:cell(14,14),
+        pos:'LA VEGA ↔ BAJO LA CAL · el centro organiza el sistema, pero no es el destino obligatorio del golpe.'
+      }
+    ];
   }
 
-  const btn=$('#chance-roll');
-  if(btn)btn.addEventListener('click',render);
-  render();
+  function paint(){
+    if(!stages.length)return;
+    stage=(stage+stages.length)%stages.length;
+    const s=stages[stage];
+    $('#chance-stage-label').textContent=s.label;
+    $('#chance-current').textContent=s.current;
+    $('#chance-pos').textContent=s.pos;
+    $('#chance-seed').textContent=stages.length===1?'GOLPE: GOZNE · 14 × 14':`GOLPE: ${side(hit.r,hit.c)} ↔ ${side(hit.c,hit.r)} · perspectiva: ${hit.p.name} · ${stage+1}/${stages.length}`;
+    $('#chance-prev').disabled=stages.length===1;
+    $('#chance-next').disabled=stages.length===1;
+  }
+
+  function roll(){
+    hit={r:rand(27)+1,c:rand(27)+1,p:perspectives[rand(3)]};
+    stage=0;
+    buildStages();
+    paint();
+  }
+
+  $('#chance-roll')?.addEventListener('click',roll);
+  $('#chance-prev')?.addEventListener('click',()=>{stage--;paint()});
+  $('#chance-next')?.addEventListener('click',()=>{stage++;paint()});
+  roll();
 
   const h=location.hash.slice(1);
   if(h==='chance'&&typeof mode==='function')mode('chance');
