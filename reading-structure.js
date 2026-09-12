@@ -6,33 +6,57 @@
   const canvas=document.createElement('canvas');
   const ctx=canvas.getContext('2d');
 
-  function fitPoem(host,verses){
-    if(!host||!verses?.length)return;
+  function renderedNodes(host){
+    const poem=[...host.querySelectorAll('.poem-line > .poem-verse')];
+    if(poem.length)return poem;
+    return [...host.children].filter(n=>n.classList&&n.classList.contains('line'));
+  }
+
+  function measureRendered(host,verses,base){
+    const nodes=renderedNodes(host);
+    if(nodes.length===verses.length&&nodes.length){
+      const probe=document.createElement('div');
+      Object.assign(probe.style,{position:'fixed',left:'-10000px',top:'-10000px',visibility:'hidden',whiteSpace:'nowrap',width:'max-content',zIndex:'-1'});
+      document.body.appendChild(probe);
+      const widths=[];
+      nodes.forEach(node=>{
+        const clone=node.cloneNode(true);
+        const cs=getComputedStyle(node);
+        Object.assign(clone.style,{display:'inline-block',width:'auto',maxWidth:'none',whiteSpace:'nowrap',fontSize:`${base}px`,fontFamily:cs.fontFamily,fontWeight:cs.fontWeight,letterSpacing:cs.letterSpacing,textAlign:'left',textAlignLast:'auto'});
+        probe.appendChild(clone);
+        widths.push(clone.getBoundingClientRect().width);
+        clone.remove();
+      });
+      probe.remove();
+      return widths;
+    }
+
+    const family='Georgia, "Times New Roman", serif';
+    if(ctx){
+      ctx.font=`${base}px ${family}`;
+      return verses.map(v=>ctx.measureText(v).width);
+    }
+    return verses.map(v=>v.length*base*.52);
+  }
+
+  function fitPoem(host,displayVerses,measureVerses=displayVerses){
+    if(!host||!displayVerses?.length||!measureVerses?.length)return;
     requestAnimationFrame(()=>{
       const mobile=window.matchMedia('(max-width:780px)').matches;
       const base=mobile?14:17;
       const min=mobile?11.5:12.5;
-      const family='Georgia, "Times New Roman", serif';
-      const available=Math.max(220,host.clientWidth||520);
+      const available=Math.max(220,(host.clientWidth||520)-8);
+      const widths=measureRendered(host,measureVerses,base);
       let maxWidth=0,maxIndex=0;
-      if(ctx){
-        ctx.font=`${base}px ${family}`;
-        verses.forEach((v,i)=>{
-          const w=ctx.measureText(v).width;
-          if(w>maxWidth){maxWidth=w;maxIndex=i;}
-        });
-      }else{
-        verses.forEach((v,i)=>{if(v.length>(verses[maxIndex]||'').length)maxIndex=i;});
-        maxWidth=(verses[maxIndex]||'').length*base*.52;
-      }
-      const size=Math.max(min,Math.min(base,base*((available-6)/Math.max(1,maxWidth))));
-      if(ctx)ctx.font=`${size}px ${family}`;
-      const finalWidth=ctx?Math.max(...verses.map(v=>ctx.measureText(v).width)):Math.min(maxWidth*(size/base),available);
-      host.classList.add('fit-poem');
+      widths.forEach((w,i)=>{if(w>maxWidth){maxWidth=w;maxIndex=i;}});
+      const size=Math.max(min,Math.min(base,base*(available/Math.max(1,maxWidth))));
+      const finalWidth=Math.min(available,maxWidth*(size/base));
+
+      host.classList.add('fit-poem','poem-justified');
       host.style.setProperty('--poem-font-size',`${size.toFixed(2)}px`);
-      host.style.setProperty('--poem-measure',`${Math.ceil(Math.min(finalWidth,available))}px`);
+      host.style.setProperty('--poem-measure',`${Math.ceil(finalWidth)}px`);
       host.dataset.widestVerse=String(maxIndex+1);
-      host.title=`Escala común gobernada por el verso ${maxIndex+1}: «${verses[maxIndex]}»`;
+      host.title=`Escala común gobernada por el verso ${maxIndex+1}: «${measureVerses[maxIndex]}»`;
     });
   }
 
@@ -75,13 +99,42 @@
     addRegister($('#hl'),idx+1,'H');
   }
 
+  function resetHeartBook(page){
+    if(!page)return;
+    page.classList.remove('heart-book-page','heart-book-buried','heart-book-open');
+    page.querySelector('.book-heart-kicker')?.remove();
+  }
+
+  function markHeartBook(page,x){
+    if(!page||!x)return false;
+    const buried=x.e==='III · RADIAL';
+    const open=x.e==='IV · RADIAL';
+    if(!buried&&!open)return false;
+    page.classList.add('heart-book-page',buried?'heart-book-buried':'heart-book-open');
+    const h2=page.querySelector('h2');
+    if(h2){
+      const k=document.createElement('div');
+      k.className='book-heart-kicker';
+      k.textContent=buried?'CORAZÓN DEL SISTEMA · SONETO I':'CORAZÓN DEL SISTEMA · SONETO II';
+      h2.before(k);
+    }
+    return true;
+  }
+
   function enhanceBook(){
+    const page=$('#page');
+    resetHeartBook(page);
     const list=typeof items!=='undefined'?items:null;
     const index=typeof bi==='number'?bi:null;
     const x=list&&index!==null?list[index]:null;
     if(!x||x.k!=='p'||!Array.isArray(x.l))return;
     const host=$('#page .lines');
-    fitPoem(host,x.l);
+    const heart=markHeartBook(page,x);
+    if(heart){
+      fitPoem(host,x.l,window.GRANADA_ROWS?.[13]?.verses||x.l);
+    }else{
+      fitPoem(host,x.l);
+    }
   }
 
   if(typeof window.vert==='function'){
