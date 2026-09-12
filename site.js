@@ -161,6 +161,8 @@ const LOA_II=[
 
 let items=[],bi=0,pi=0,row=13,hp=0;
 const pv=i=>GRANADA_ROWS.map(r=>r.verses[i]);
+const diagDown=()=>GRANADA_ROWS.map((r,i)=>r.verses[i]);
+const diagUp=()=>GRANADA_ROWS.map((r,i)=>r.verses[26-i]);
 
 function build(){
   const add=(k,e,t,l)=>items.push({k,e,t,l});
@@ -171,12 +173,14 @@ function build(){
   items.push({k:'s',t:'LIBRO II · BAJO LA CAL',sub:'27 poemas horizontales'});
   GRANADA_ROWS.forEach((r,i)=>add('p',`H${String(i+1).padStart(2,'0')} · HORIZONTAL`,GRANADA_H_TITLES[i],r.verses));
   items.push({k:'s',t:'LIBRO III · LA GRANADA DEL 27',sub:'El centro secreto'});
+  add('p','I · DIAGONAL CENTRAL ↘','DIAGONAL ↘',diagDown());
+  add('p','II · DIAGONAL CENTRAL ↗','DIAGONAL ↗',diagUp());
   const v=GRANADA_ROWS[13].verses;
-  add('p','I · RADIAL','HACIA LO ENTERRADO',[v[13],...v.slice(0,13).reverse()]);
-  add('p','II · RADIAL','HACIA LO ABIERTO',[v[13],...v.slice(14)]);
-  items.push({k:'r',t:'LA GRANADA DEL DOS SIETE',sub:'LA GRANADA DEL 27',body:'Dos lecturas que nacen del mismo verso central'});
+  add('p','III · RADIAL','HACIA LO ENTERRADO',[v[13],...v.slice(0,13).reverse()]);
+  add('p','IV · RADIAL','HACIA LO ABIERTO',[v[13],...v.slice(14)]);
+  items.push({k:'r',t:'LA GRANADA DEL DOS SIETE',sub:'LA GRANADA DEL 27',body:'Cuatro lecturas articuladas por el mismo verso central'});
   add('t','EPÍLOGO','GRANADA QUEDA',EPI.split('\n'));
-  items.push({k:'s',t:'OTRA MANERA DE LEER',sub:'',body:'Los poemas admiten lectura vertical, horizontal y radial. Dos loas recorren la matriz: una nace de letras destacadas en los poemas horizontales y otra de palabras destacadas en los verticales. Ambas convergen en VEINTISIETE.'});
+  items.push({k:'s',t:'OTRA MANERA DE LEER',sub:'',body:'Los poemas admiten lectura vertical, horizontal, diagonal y radial. Las dos diagonales centrales se cruzan en «Late bajo la cal la acequia hundida.». Dos loas recorren la matriz: una nace de letras destacadas en los poemas horizontales y otra de palabras destacadas en los verticales. Ambas convergen en VEINTISIETE.'});
   items.push({k:'c',t:'LAS DOS LOAS',sub:'',v1:LOA_I,v2:LOA_II});
 }
 
@@ -207,6 +211,18 @@ function rr(el,a){
 }
 function radial(){let v=GRANADA_ROWS[13].verses;rr($('#rl'),[v[13],...v.slice(0,13).reverse()]);rr($('#rr'),[v[13],...v.slice(14)])}
 
+function diagonal(){
+  const render=(el,title,verses)=>{
+    el.innerHTML='';
+    const h=document.createElement('div');h.className='btitle';h.textContent=title;el.appendChild(h);
+    const poem=document.createElement('div');poem.className='radial-clean-poem';
+    verses.forEach((z,i)=>{const d=document.createElement('div');d.className='radial-clean-line'+(i===13?' diag-center':'');d.textContent=z;poem.appendChild(d)});
+    el.appendChild(poem);
+  };
+  render($('#dl'),'I · DIAGONAL CENTRAL ↘',diagDown());
+  render($('#dr'),'II · DIAGONAL CENTRAL ↗',diagUp());
+}
+
 function mode(id){
   $$('.view').forEach(v=>v.classList.add('hidden'));
   $('#'+id).classList.remove('hidden');
@@ -214,6 +230,7 @@ function mode(id){
   if(id==='bookview')book();
   if(id==='verticalreader')vert();
   if(id==='horizontal')horiz();
+  if(id==='diagonal')diagonal();
   if(id==='radial')radial();
   history.replaceState(null,'','#'+id);
 }
