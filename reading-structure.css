@@ -3,13 +3,13 @@
 .fit-poem .poem-verse{width:var(--poem-measure,min(100%,31em));max-width:100%;margin-left:auto;margin-right:auto}
 .fit-poem.lines .line{font-size:var(--poem-font-size,16px);width:var(--poem-measure,100%);max-width:100%;margin-left:auto;margin-right:auto}
 
-/* Las extracciones de las loas permanecen semánticamente, pero no añaden un cuarto código visual. */
-.loa1-letter,.loa2-word,.loa2-key{font-family:inherit!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
+/* Las palabras de apoyo no crean un cuarto código visual. */
+.loa2-word{font-family:inherit!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
 
-/* Gramática única en VERTICAL y HORIZONTAL: solo cambia la familia tipográfica. */
-.acrostic-letter{font-family:Arial,Helvetica,sans-serif!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
+/* Gramática única en VERTICAL y HORIZONTAL: A / M / T solo por familia tipográfica. */
+.acrostic-letter,.loa1-letter{font-family:Arial,Helvetica,sans-serif!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
 .mesostic-letter{font-family:"Trebuchet MS",Arial,Helvetica,sans-serif!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
-.telestic-letter{font-family:"Courier New",Courier,monospace!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
+.telestic-letter,.loa2-key{font-family:"Courier New",Courier,monospace!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
 
 .poem-guide{display:grid!important;gap:5px}
 .poem-guide-title{text-align:center}
