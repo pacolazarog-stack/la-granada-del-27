@@ -2,6 +2,7 @@
 .fit-poem .poem-line{font-size:var(--poem-font-size,17px)}
 .fit-poem .poem-verse{width:var(--poem-measure,min(100%,31em));max-width:100%;margin-left:auto;margin-right:auto}
 .fit-poem.lines .line{font-size:var(--poem-font-size,16px);width:var(--poem-measure,100%);max-width:100%;margin-left:auto;margin-right:auto}
+.fit-poem.poem-justified .poem-verse,.fit-poem.lines.poem-justified>.line{display:block;white-space:nowrap;text-align:justify;text-align-last:justify;text-justify:inter-word}
 
 /* Las palabras de apoyo no crean un cuarto código visual. */
 .loa2-word{font-family:inherit!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
@@ -30,17 +31,22 @@
 .structure-dialogue>div:not(.structure-mirror){display:grid;gap:3px}
 .structure-mirror{font-size:8px;letter-spacing:.14em;color:#a39589;margin:2px 0}
 
-/* Diagonales: dos ejes, cada uno reversible. */
-#diagonal{position:relative;padding-top:70px!important}
-.diag-direction{position:absolute;top:18px;left:50%;transform:translateX(-50%);display:flex;gap:4px;padding:4px;border:1px solid #ffffff33;border-radius:999px;background:#15120fee;z-index:5}
-.diag-direction button{border:0;border-radius:999px;background:transparent;color:#cbbeb1;padding:6px 12px;font:inherit;font-size:9px;letter-spacing:.11em;cursor:pointer}
-.diag-direction button.active{background:#efe6db;color:#211d19}
+/* Los dos sonetos radiales conservan su rango también cuando aparecen por separado en LIBRO. */
+.page.heart-book-page{position:relative;isolation:isolate;overflow:auto}
+.page.heart-book-page>*{position:relative;z-index:2}
+.page.heart-book-page::before{content:'LA VEGA';position:absolute;left:0;right:0;top:49%;transform:translateY(-50%);z-index:0;text-align:center;font-size:76px;letter-spacing:.22em;color:rgba(63,72,47,.06);white-space:nowrap;pointer-events:none}
+.page.heart-book-page::after{content:'';position:absolute;left:0;right:0;top:43%;height:120px;z-index:0;background:linear-gradient(to bottom,transparent,rgba(88,91,61,.05) 42%,rgba(89,73,52,.08) 55%,transparent);pointer-events:none}
+.page.heart-book-buried{background:linear-gradient(to bottom,#f4eee4 0%,#f0e8dc 100%)}
+.page.heart-book-open{background:linear-gradient(to bottom,#f6f0e7 0%,#f4eee4 100%)}
+.book-heart-kicker{text-align:center;font-size:9px;letter-spacing:.18em;color:#7f7267;margin:0 0 7px}
+
+/* Diagonales: la interfaz avanzada se sirve desde diagonal-reader.css; estas reglas quedan como fallback. */
+#diagonal{position:relative}
 
 @media(max-width:780px){
   .fit-poem .poem-line{font-size:var(--poem-font-size,14px)}
   .structure-register{margin-top:14px}
   .structure-dialogue{font-size:9px}
   .structure-legend{gap:4px 6px;font-size:6px;letter-spacing:.05em}
-  .diag-direction{top:12px}
-  .diag-direction button{font-size:8px;padding:6px 9px}
+  .page.heart-book-page::before{font-size:44px;letter-spacing:.16em}
 }
