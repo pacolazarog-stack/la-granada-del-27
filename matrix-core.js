@@ -2,7 +2,7 @@ window.GRANADA_TITLES=["GRANADA, 1927","EL RINCONCILLO","DON MANUEL","FEDERICO",
 window.GRANADA_ROWS=[];
 
 (function(){
-  const STYLE_ID='granada-reading-refine-v10';
+  const STYLE_ID='granada-reading-refine-v11';
   function installStyle(){
     if(document.getElementById(STYLE_ID)) return;
     const style=document.createElement('style');
@@ -94,7 +94,7 @@ window.GRANADA_ROWS=[];
       .radial .rline:first-child{
         font-size:clamp(20px,1.48vw,24px)!important;
         line-height:1.44!important;
-        text-align:center!important;
+        text-align:left!important;
         margin:0 0 1.55em!important;
         padding:0 0 1.25em!important;
         border-bottom:1px solid rgba(80,62,48,.20)!important;
