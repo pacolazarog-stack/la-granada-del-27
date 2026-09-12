@@ -17,19 +17,32 @@
 .structure-legend{display:flex;justify-content:center;align-items:baseline;gap:5px 8px;font-size:7px;letter-spacing:.08em;color:#9b8e82;white-space:nowrap}
 .structure-legend .acrostic-letter,.structure-legend .mesostic-letter,.structure-legend .telestic-letter{font-size:9px}
 
-/* Registro desplegable: mantiene la clave secreta y hace explícito el diálogo Pn ↔ Hn. */
+/* Registro desplegable: mantiene la clave secreta, la jerarquía axial y el diálogo Pn ↔ Hn. */
 .structure-register{width:min(100%,var(--poem-measure,31em));margin:18px auto 0;border-top:1px solid #d1c7bd;color:#74695f}
 .structure-register summary{list-style:none;cursor:pointer;padding:9px 0 0;text-align:center;font-size:8px;letter-spacing:.13em;color:#94877b;user-select:none}
 .structure-register summary::-webkit-details-marker{display:none}
 .structure-register summary::before{content:'＋ ';font-family:Arial,sans-serif}
 .structure-register[open] summary::before{content:'− '}
 .structure-register-body{padding:12px 0 2px}
+.structure-role{display:grid;gap:4px;text-align:center;margin:0 0 12px;padding:9px 10px;border-top:1px solid #d7cdc3;border-bottom:1px solid #d7cdc3}
+.structure-role span{font-size:8px;letter-spacing:.15em;color:#756a60}
+.structure-role strong{font-size:10px;line-height:1.45;font-weight:400;color:#4f4741;letter-spacing:.03em}
+.structure-role-origin{background:rgba(89,101,66,.045)}
+.structure-role-axis{background:rgba(124,33,29,.025)}
 .structure-row{display:flex;justify-content:center;gap:10px;align-items:baseline;font-size:9px;letter-spacing:.09em}
 .structure-row span,.structure-dialogue span{color:#96897e}
 .structure-row strong,.structure-dialogue strong{font-weight:400;color:#4f4741;letter-spacing:.03em}
 .structure-dialogue{display:grid;gap:5px;margin-top:12px;padding-top:10px;border-top:1px dotted #d7cdc3;text-align:center;font-size:10px;line-height:1.45}
 .structure-dialogue>div:not(.structure-mirror){display:grid;gap:3px}
 .structure-mirror{font-size:8px;letter-spacing:.14em;color:#a39589;margin:2px 0}
+
+/* LA VEGA es origen/regreso y H14 el eje transversal; los sonetos son motor/corazón. */
+.page.origin-book-page,.page.axis-book-page{position:relative;isolation:isolate;overflow:auto}
+.page.origin-book-page>* ,.page.axis-book-page>*{position:relative;z-index:2}
+.page.origin-book-page::before{content:'LA VEGA';position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);z-index:0;text-align:center;font-size:78px;letter-spacing:.23em;color:rgba(63,72,47,.055);white-space:nowrap;pointer-events:none}
+.page.origin-book-page::after{content:'';position:absolute;left:0;right:0;top:44%;height:118px;z-index:0;background:linear-gradient(to bottom,transparent,rgba(88,91,61,.045) 42%,rgba(89,73,52,.07) 55%,transparent);pointer-events:none}
+.page.axis-book-page::after{content:'14 × 14';position:absolute;inset:0;display:grid;place-items:center;z-index:0;font-size:84px;letter-spacing:.16em;color:rgba(124,33,29,.035);pointer-events:none}
+.book-origin-kicker{text-align:center;font-size:8px;letter-spacing:.16em;color:#6f685f;margin:0 0 7px}
 
 /* Los dos sonetos radiales conservan su rango también cuando aparecen por separado en LIBRO. */
 .page.heart-book-page{position:relative;isolation:isolate;overflow:auto}
@@ -48,5 +61,6 @@
   .structure-register{margin-top:14px}
   .structure-dialogue{font-size:9px}
   .structure-legend{gap:4px 6px;font-size:6px;letter-spacing:.05em}
-  .page.heart-book-page::before{font-size:44px;letter-spacing:.16em}
+  .page.heart-book-page::before,.page.origin-book-page::before{font-size:44px;letter-spacing:.16em}
+  .page.axis-book-page::after{font-size:52px}
 }
