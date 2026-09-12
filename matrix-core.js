@@ -1,18 +1,4 @@
 window.GRANADA_TITLES=["GRANADA, 1927","EL RINCONCILLO","DON MANUEL","FEDERICO","HERMENEGILDO","MANUEL ÁNGELES","LOS TÍTERES","LA PUERTA DEL VINO","ANTES DE SABERLO","AGOSTO","EL BARRANCO","LA CIUDAD CALLÓ","LA CASA CERRADA","LA VEGA","GRAN VÍA","ALHAMBRA S. A.","HABITACIÓN CON TURISTAS","CIEN AÑOS","GRANADA, 2027","EL NUEVO RINCONCILLO","GALLO VUELVE A CANTAR","LOS OTROS","LAS QUE FALTABAN","CANCIÓN PARA QUIEN ACABA DE LLEGAR","LA CIUDAD QUE TODAVÍA PUEDE SER","QUE VUELVA A OCURRIR","UN SIGLO DESPUÉS"];
 window.GRANADA_H_TITLES=["LA PRIMERA MAÑANA","ANTES DEL NOMBRE","UNA VOZ NUEVA","LA LUZ ANTIGUA","LA MANO QUE MUEVE","EL NOMBRE EN EL PORTAL","LO QUE NO FIGURA","NINGUNA VOZ SOLA","LO QUE SE PRESIENTE","LA SOMBRA EN LA PARED","LA HUELLA","DEBAJO","EL UMBRAL","BAJO LA CAL","EL OTRO LADO","LO QUE REGRESA","LA MUESCA","LA FORMA QUE CAMBIA","LO QUE VENDRÁ","EL AGUA ANTIGUA","TODAVÍA","LO QUE QUEDA","HACER SITIO","OTRA LUZ","LA PUERTA ABIERTA","VOLVER A EMPEZAR","EL PORVENIR"];
-window.GRANADA_EDITION={
-  matrixVersion:"v2.3",
-  matrixSize:"27 × 27",
-  positions:729,
-  verticalPoems:27,
-  horizontalPoems:27,
-  radialPoems:2,
-  matrixPoems:56,
-  totalPoeticPieces:58,
-  radialCenter:"Late bajo la cal la acequia hundida.",
-  radialTitle:"BAJO LA CAL",
-  radialBranches:["HACIA LO ENTERRADO","HACIA LO ABIERTO"],
-  revelation:"LA GRANADA DEL DOS SIETE · LA GRANADA DEL 27",
-  canonicalTelestic:false
-};
-window.GRANADA_ROWS=window.GRANADA_ROWS||[];
+window.GRANADA_EDITION={"matrixVersion":"v2.4","canonical":true,"canonicalDate":"2026-09-12","matrixSize":"27 × 27","positions":729,"verticalPoems":27,"horizontalPoems":27,"radialPoems":2,"matrixPoems":56,"totalPoeticPieces":58,"radialCenter":"Late bajo la cal la acequia hundida.","radialTitle":"BAJO LA CAL","radialBranches":["HACIA LO ENTERRADO","HACIA LO ABIERTO"],"revelation":"LA GRANADA DEL DOS SIETE · LA GRANADA DEL 27","canonicalAcrostic":true,"canonicalTelestic":true};
+window.GRANADA_ROWS=[];
