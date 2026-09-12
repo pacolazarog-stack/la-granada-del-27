@@ -4,6 +4,9 @@
   const view=$('#radial');
   if(!view)return;
 
+  // H14 · BAJO LA CAL es el eje transversal que, desde la celda 14×14,
+  // se bifurca en los dos sonetos. La primacía estructural del centro
+  // corresponde al verso 14 de P14 · LA VEGA, que ocupa esa misma celda.
   const row14=()=>GRANADA_ROWS[13].verses;
   const center=()=>row14()[13];
   const buried=()=>row14().slice(0,13).reverse();
@@ -37,7 +40,7 @@
     view.style.setProperty('--heart-font-size',`${size.toFixed(2)}px`);
     view.style.setProperty('--heart-measure',`${Math.ceil(width)}px`);
     view.dataset.widestVerse=String(maxIndex+1);
-    view.title=`Los dos sonetos comparten la medida del verso más ancho de H14: verso ${maxIndex+1}, «${all[maxIndex]}»`;
+    view.title=`Los dos sonetos comparten la medida del verso más ancho del eje H14 · BAJO LA CAL: verso ${maxIndex+1}, «${all[maxIndex]}»`;
   }
 
   function branch(title,subtitle,lines,kind){
@@ -55,23 +58,32 @@
     view.innerHTML=`
       <section class="radial-heart">
         <header class="radial-heart-head">
-          <div class="radial-heart-kicker">CORAZÓN DEL SISTEMA · 14 × 14</div>
-          <h2>DOS SONETOS AXIALES</h2>
-          <p>Un mismo verso abre dos direcciones contrarias. La Vega permanece detrás del cruce.</p>
+          <div class="radial-heart-kicker">PUNTO DE PARTIDA Y DE REGRESO · LA VEGA</div>
+          <h2>LOS DOS SONETOS · MOTOR Y CORAZÓN</h2>
+          <p>El verso 14 de <em>LA VEGA</em> fija el centro de simetría de todo el sistema. En esa misma celda 14 × 14, <em>BAJO LA CAL</em> se bifurca y pone en marcha los dos sonetos.</p>
         </header>
+
+        <div class="radial-cycle" aria-label="Recorrido estructural">
+          <span>LA VEGA · PARTIDA</span><b>→</b><span>VERSO 14 · CENTRO</span><b>→</b><span>SONETOS · MOTOR / CORAZÓN</span><b>→</b><span>LA VEGA · REGRESO</span>
+        </div>
 
         <div class="radial-vega-band" aria-hidden="true"><span>LA VEGA</span></div>
 
         <div class="radial-axis-verse">
-          <div class="radial-axis-label">VERSO COMÚN · 01 / 14</div>
+          <div class="radial-axis-label">CENTRO DE SIMETRÍA · LA VEGA · VERSO 14 · 14 × 14</div>
           <div class="radial-axis-text">${esc(center())}</div>
-          <div class="radial-axis-caption">LA VEGA ↔ BAJO LA CAL</div>
+          <div class="radial-axis-caption">PUNTO FIJO DEL SISTEMA · CELDA COMPARTIDA CON BAJO LA CAL</div>
         </div>
 
         <div class="radial-sonnet-pair">
-          ${branch('HACIA LO ENTERRADO','SONETO I · DESCENSO',buried(),'buried')}
-          ${branch('HACIA LO ABIERTO','SONETO II · APERTURA',open(),'open')}
+          ${branch('HACIA LO ENTERRADO','SONETO I · MOTOR · DESCENSO',buried(),'buried')}
+          ${branch('HACIA LO ABIERTO','SONETO II · CORAZÓN · APERTURA',open(),'open')}
         </div>
+
+        <footer class="radial-return">
+          <span>REGRESO · LA VEGA</span>
+          <strong>El recorrido termina donde comenzó: en el poema que contiene el centro de simetría.</strong>
+        </footer>
       </section>`;
     requestAnimationFrame(measureShared);
   }
