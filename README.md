@@ -4,7 +4,7 @@ Edición digital y arquitectura canónica de **La Granada del 27 · Un siglo des
 
 ## Estado canónico
 
-- Matriz literaria: **v2.3**.
+- Matriz literaria: **v2.4**.
 - Dimensión: **27 × 27 = 729 posiciones**.
 - **27 poemas verticales**.
 - **27 poemas horizontales titulados**.
@@ -14,11 +14,14 @@ Edición digital y arquitectura canónica de **La Granada del 27 · Un siglo des
 - H14: **BAJO LA CAL**.
 - Centro común: `Late bajo la cal la acequia hundida.`
 - Inscripción radial: **LA GRANADA DEL DOS SIETE / LA GRANADA DEL 27**.
-- No existe una capa teléstica canónica.
+- Voz I canónica: **acrósticos constelados horizontales**.
+- Voz II canónica: **telésticos léxicos verticales**.
+- Ambas voces convergen en **VEINTISIETE**.
+- Auditoría métrica: **726 endecasílabos + 3 estribillos 6+6 = 729/729 posiciones conformes**.
 
 ## Edición completa
 
-El modo **LIBRO** de la web ya no muestra el antiguo facsímil de 27 poemas. Ahora construye dinámicamente la edición completa de **58 piezas** a partir de la matriz canónica v2.3 y de los textos canónicos de prólogo y epílogo.
+El modo **LIBRO** construye dinámicamente la edición completa de **58 piezas** a partir de la matriz canónica v2.4 y de los textos canónicos de prólogo y epílogo.
 
 Orden de lectura:
 
@@ -31,6 +34,20 @@ Orden de lectura:
 5. Revelación: **LA GRANADA DEL DOS SIETE / LA GRANADA DEL 27**.
 6. **EPÍLOGO · GRANADA QUEDA**.
 7. Nota final **OTRA MANERA DE LEER**.
+
+## Capa coral oculta
+
+La v2.4 incorpora una loa doble al 27 sin alterar la lectura ordinaria del libro.
+
+**Voz I — comienzos / horizontales**
+
+> Granada abre la mesa: agua y música despiertan juventud, amistad; agosto deja silencio. VEINTISIETE devuelven voces, nombres, manos, luz, hilo, canto; agua abre otra mesa. Granada responde.
+
+**Voz II — finales / verticales**
+
+> Granada guarda lo que falta bajo la cal; agua nombra ausencias, sangre vuelve memoria. VEINTISIETE escuchan: silencio abre voces, devuelve nombres; agua sube, rompe cal; Granada vuelve, canta.
+
+La primera voz permanece semiescondida en la lectura horizontal. La segunda se hace visible sólo en el modo **VERTICAL**, donde las palabras terminales seleccionadas reciben un tratamiento tipográfico discreto.
 
 ## Los 27 poemas horizontales
 
@@ -67,17 +84,17 @@ Orden de lectura:
 La web ofrece cuatro modos complementarios:
 
 - **LIBRO**: edición completa de 58 piezas.
-- **VERTICAL**: los 27 poemas verticales canónicos.
-- **HORIZONTAL**: los 27 poemas horizontales con sus títulos canónicos.
+- **VERTICAL**: los 27 poemas verticales y la lectura teléstica léxica.
+- **HORIZONTAL**: los 27 poemas horizontales; las iniciales de la Voz I aparecen sólo como indicio visual tenue.
 - **RADIAL**: las dos ramas **HACIA LO ENTERRADO** y **HACIA LO ABIERTO**.
 
-La matriz se distribuye en `matrix-1.js`, `matrix-2.js` y `matrix-3.js`. `index.html` construye las cuatro lecturas sin duplicar el corpus.
+La matriz se distribuye en `matrix-1.js`, `matrix-2.js` y `matrix-3.js`; `matrix-secret.js` contiene los mapas de la doble voz; `site-v24.js` construye las cuatro lecturas.
 
 ## Edición en papel
 
-La edición A5 canónica mantiene la misma arquitectura de **58 piezas poéticas**. La explicación técnica de la matriz debe aparecer sólo al final, después de la experiencia poética.
+La edición A5 canónica v2.4 mantiene la misma arquitectura de **58 piezas poéticas** y ocupa **68 páginas A5**. La explicación técnica de la matriz y del coro oculto aparece sólo al final, después de la experiencia poética.
 
-El índice inicial no debe revelar el Libro III ni el mecanismo radial.
+El índice inicial no debe revelar el Libro III ni los mecanismos radial, acróstico o teléstico.
 
 ## Publicación
 
