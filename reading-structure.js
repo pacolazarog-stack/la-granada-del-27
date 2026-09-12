@@ -60,6 +60,14 @@
     });
   }
 
+  function structuralRole(n,side){
+    if(n!==14)return '';
+    if(side==='P'){
+      return `<div class="structure-role structure-role-origin"><span>PUNTO DE PARTIDA Y DE REGRESO</span><strong>LA VEGA · su verso 14 fija el centro de simetría 14 × 14</strong></div>`;
+    }
+    return `<div class="structure-role structure-role-axis"><span>EJE TRANSVERSAL</span><strong>BAJO LA CAL · en 14 × 14 se bifurca y genera los dos sonetos</strong></div>`;
+  }
+
   function addRegister(host,n,side){
     if(!host)return;
     host.querySelector('.structure-register')?.remove();
@@ -75,6 +83,7 @@
     details.innerHTML=`
       <summary>CAPAS INTERIORES · ACRÓSTICO · MESÓSTICO · TELÉSTICO</summary>
       <div class="structure-register-body">
+        ${structuralRole(n,side)}
         <div class="structure-row"><span>${secretLabel}</span><strong>${secret?.word||'—'}</strong></div>
         <div class="structure-dialogue">
           <div><span>${here} · MESÓSTICO</span><strong>${current||'—'}</strong></div>
@@ -99,38 +108,64 @@
     addRegister($('#hl'),idx+1,'H');
   }
 
-  function resetHeartBook(page){
+  function resetStructuralBook(page){
     if(!page)return;
-    page.classList.remove('heart-book-page','heart-book-buried','heart-book-open');
+    page.classList.remove('heart-book-page','heart-book-buried','heart-book-open','origin-book-page','axis-book-page');
     page.querySelector('.book-heart-kicker')?.remove();
+    page.querySelector('.book-origin-kicker')?.remove();
   }
 
-  function markHeartBook(page,x){
-    if(!page||!x)return false;
+  function markStructuralBook(page,x){
+    if(!page||!x)return {heart:false};
+
+    if(x.e==='14 · VERTICAL'){
+      page.classList.add('origin-book-page');
+      const h2=page.querySelector('h2');
+      if(h2){
+        const k=document.createElement('div');
+        k.className='book-origin-kicker';
+        k.textContent='PUNTO DE PARTIDA Y DE REGRESO · VERSO 14 = CENTRO DE SIMETRÍA';
+        h2.before(k);
+      }
+      return {heart:false};
+    }
+
+    if(x.e==='H14 · HORIZONTAL'){
+      page.classList.add('axis-book-page');
+      const h2=page.querySelector('h2');
+      if(h2){
+        const k=document.createElement('div');
+        k.className='book-origin-kicker';
+        k.textContent='EJE TRANSVERSAL · EN 14 × 14 NACEN LOS DOS SONETOS';
+        h2.before(k);
+      }
+      return {heart:false};
+    }
+
     const buried=x.e==='III · RADIAL';
     const open=x.e==='IV · RADIAL';
-    if(!buried&&!open)return false;
+    if(!buried&&!open)return {heart:false};
     page.classList.add('heart-book-page',buried?'heart-book-buried':'heart-book-open');
     const h2=page.querySelector('h2');
     if(h2){
       const k=document.createElement('div');
       k.className='book-heart-kicker';
-      k.textContent=buried?'CORAZÓN DEL SISTEMA · SONETO I':'CORAZÓN DEL SISTEMA · SONETO II';
+      k.textContent=buried?'MOTOR / CORAZÓN · SONETO I':'MOTOR / CORAZÓN · SONETO II';
       h2.before(k);
     }
-    return true;
+    return {heart:true};
   }
 
   function enhanceBook(){
     const page=$('#page');
-    resetHeartBook(page);
+    resetStructuralBook(page);
     const list=typeof items!=='undefined'?items:null;
     const index=typeof bi==='number'?bi:null;
     const x=list&&index!==null?list[index]:null;
     if(!x||x.k!=='p'||!Array.isArray(x.l))return;
     const host=$('#page .lines');
-    const heart=markHeartBook(page,x);
-    if(heart){
+    const role=markStructuralBook(page,x);
+    if(role.heart){
       fitPoem(host,x.l,window.GRANADA_ROWS?.[13]?.verses||x.l);
     }else{
       fitPoem(host,x.l);
