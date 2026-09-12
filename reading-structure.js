@@ -76,7 +76,9 @@
   }
 
   function enhanceBook(){
-    const x=window.items?.[window.bi];
+    const list=typeof items!=='undefined'?items:null;
+    const index=typeof bi==='number'?bi:null;
+    const x=list&&index!==null?list[index]:null;
     if(!x||x.k!=='p'||!Array.isArray(x.l))return;
     const host=$('#page .lines');
     fitPoem(host,x.l);
