@@ -1,30 +1,38 @@
 # La Granada del 27 · Un siglo después
 
-Edición digital de **La Granada del 27 · Un siglo después**, concebida como una **matriz 27 × 27**: 27 poemas verticales de 27 versos, 27 poemas horizontales formados por las filas de la misma matriz y una lectura radial central en H14.
+Edición digital y arquitectura canónica de **La Granada del 27 · Un siglo después**, concebida como una **matriz 27 × 27** de 729 versos.
 
 ## Estado canónico
 
-- Matriz canónica: **v2.3**.
+- Matriz literaria: **v2.3**.
 - Dimensión: **27 × 27 = 729 posiciones**.
-- Lectura vertical: **27 poemas**.
-- Lectura horizontal: **27 poemas titulados**.
-- Lectura radial: **2 ramas poéticas** desde P14/V14.
-- Total matricial para la edición en papel: **56 poemas**.
-- Con prólogo y epílogo: **58 piezas poéticas**.
+- **27 poemas verticales**.
+- **27 poemas horizontales titulados**.
+- **2 poemas radiales** nacidos de H14.
+- Total matricial: **56 poemas**.
+- Con **Prólogo · ANTES DE CONTAR** y **Epílogo · GRANADA QUEDA**: **58 piezas poéticas**.
 - H14: **BAJO LA CAL**.
 - Centro común: `Late bajo la cal la acequia hundida.`
 - Inscripción radial: **LA GRANADA DEL DOS SIETE / LA GRANADA DEL 27**.
 - No existe una capa teléstica canónica.
 
-## Lecturas
+## Edición completa
 
-### Vertical
+El modo **LIBRO** de la web ya no muestra el antiguo facsímil de 27 poemas. Ahora construye dinámicamente la edición completa de **58 piezas** a partir de la matriz canónica v2.3 y de los textos canónicos de prólogo y epílogo.
 
-Los 27 poemas originales se leen de P01 a P27. Cada poema contiene 27 versos y conserva su título propio, desde **GRANADA, 1927** hasta **UN SIGLO DESPUÉS**.
+Orden de lectura:
 
-### Horizontal
+1. **PRÓLOGO · ANTES DE CONTAR**.
+2. **LIBRO I · LA GRANADA DEL 27** — 27 poemas verticales.
+3. **LIBRO II · BAJO LA CAL** — 27 poemas horizontales.
+4. **LIBRO III · LA GRANADA DEL 27** — dos poemas radiales:
+   - **I · HACIA LO ENTERRADO** — P14 → P01.
+   - **II · HACIA LO ABIERTO** — P14 → P27.
+5. Revelación: **LA GRANADA DEL DOS SIETE / LA GRANADA DEL 27**.
+6. **EPÍLOGO · GRANADA QUEDA**.
+7. Nota final **OTRA MANERA DE LEER**.
 
-Cada fila H01–H27 constituye un poema autónomo de 27 versos. Sus títulos canónicos son:
+## Los 27 poemas horizontales
 
 1. LA PRIMERA MAÑANA
 2. ANTES DEL NOMBRE
@@ -54,64 +62,28 @@ Cada fila H01–H27 constituye un poema autónomo de 27 versos. Sus títulos can
 26. VOLVER A EMPEZAR
 27. EL PORVENIR
 
-### Radial
+## Aplicación digital
 
-La lectura radial parte de **P14/V14** y abre dos ramas de catorce versos, ambas iniciadas por el mismo centro:
+La web ofrece cuatro modos complementarios:
 
-- **I · HACIA LO ENTERRADO**: P14 → P13 → … → P01.
-- **II · HACIA LO ABIERTO**: P14 → P15 → … → P27.
+- **LIBRO**: edición completa de 58 piezas.
+- **VERTICAL**: los 27 poemas verticales canónicos.
+- **HORIZONTAL**: los 27 poemas horizontales con sus títulos canónicos.
+- **RADIAL**: las dos ramas **HACIA LO ENTERRADO** y **HACIA LO ABIERTO**.
 
-Las iniciales de las dos ramas forman `LAGRANADADELDS`, con `D = DOS` y `S = SIETE`, de modo que la inscripción completa se lee **LA GRANADA DEL DOS SIETE**, es decir, **LA GRANADA DEL 27**.
+La matriz se distribuye en `matrix-1.js`, `matrix-2.js` y `matrix-3.js`. `index.html` construye las cuatro lecturas sin duplicar el corpus.
 
 ## Edición en papel
 
-La arquitectura canónica de la edición física es:
+La edición A5 canónica mantiene la misma arquitectura de **58 piezas poéticas**. La explicación técnica de la matriz debe aparecer sólo al final, después de la experiencia poética.
 
-1. **Prólogo** en verso libre.
-2. **LIBRO I · LA GRANADA DEL 27** — 27 poemas verticales.
-3. Página de silencio.
-4. **LIBRO II · BAJO LA CAL** — 27 poemas horizontales.
-5. Página de silencio.
-6. **LIBRO III · LA GRANADA DEL 27** — dos poemas radiales: **HACIA LO ENTERRADO** y **HACIA LO ABIERTO**.
-7. Página de revelación: **LA GRANADA DEL DOS SIETE / LA GRANADA DEL 27**.
-8. **Epílogo · GRANADA QUEDA**, romance octosílabo.
-9. Nota final sobre la matriz 27 × 27 y colofón.
-
-El índice inicial de la edición en papel **no debe revelar el Libro III ni el mecanismo radial**. La lectura está concebida como descubrimiento progresivo: primero los 27 verticales, después los otros 27 poemas atravesándolos y, finalmente, el centro secreto.
-
-## Aplicación digital
-
-La web ofrece cuatro modos:
-
-- **LIBRO**: facsímil de la edición gráfica actualmente publicada.
-- **VERTICAL**: los 27 poemas verticales canónicos.
-- **HORIZONTAL**: los 27 poemas horizontales con sus títulos canónicos.
-- **RADIAL**: las dos ramas **HACIA LO ENTERRADO** y **HACIA LO ABIERTO** y la inscripción estructural.
-
-La matriz canónica se distribuye en `matrix-1.js`, `matrix-2.js` y `matrix-3.js`.
-
-## Estructura del repositorio
-
-```text
-.
-├── .nojekyll
-├── index.html
-├── manifest.webmanifest
-├── matrix-core.js
-├── matrix-1.js
-├── matrix-2.js
-├── matrix-3.js
-├── EDICION-PAPEL.md
-├── README.md
-└── pages/
-    ├── page-01.webp
-    ├── ...
-    └── page-38.webp
-```
+El índice inicial no debe revelar el Libro III ni el mecanismo radial.
 
 ## Publicación
 
-GitHub Pages sirve la rama `main` desde la raíz `/`. La aplicación es estática y no necesita servidor, base de datos ni proceso de compilación.
+GitHub Pages sirve la rama `main` desde la raíz `/`.
+
+Página pública: https://pacolazarog-stack.github.io/la-granada-del-27/
 
 ## Derechos
 
