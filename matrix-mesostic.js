@@ -1,3 +1,4 @@
+/* Mesósticos especulares v1.0 · 27 dípticos · 54 voces */
 (()=> {
   const VOICES={
     1:{v:"ARDE GRANADA AÚN",h:"AÚN LA CALLE ARDE"},
