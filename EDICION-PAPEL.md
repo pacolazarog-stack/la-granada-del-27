@@ -2,7 +2,7 @@
 
 ## La Granada del 27 · Un siglo después
 
-La edición física queda concebida como una obra de **56 poemas matriciales** y **58 piezas poéticas** en total.
+La edición física queda fijada como una obra de **56 poemas matriciales** y **58 piezas poéticas** en total.
 
 ## Cómputo
 
@@ -14,11 +14,11 @@ La edición física queda concebida como una obra de **56 poemas matriciales** y
 
 **Total: 58 piezas poéticas.**
 
-## Orden de lectura
+## Orden material
 
-### PRÓLOGO
+### PRÓLOGO · ANTES DE CONTAR
 
-Verso libre. Fuera de numeración.
+Verso libre. Fuera de numeración matricial.
 
 ### LIBRO I · LA GRANADA DEL 27
 
@@ -63,11 +63,11 @@ Dos poemas radiales:
 - **I · HACIA LO ENTERRADO** — P14 → P13 → … → P01.
 - **II · HACIA LO ABIERTO** — P14 → P15 → … → P27.
 
-Ambos parten de:
+Ambos parten del mismo verso central:
 
 > Late bajo la cal la acequia hundida.
 
-La inscripción estructural final es:
+La inscripción final es:
 
 **LA GRANADA DEL DOS SIETE**  
 **LA GRANADA DEL 27**
@@ -78,16 +78,20 @@ Romance octosílabo. Fuera de numeración matricial.
 
 ## Dramaturgia editorial
 
-El índice inicial no revela el Libro III ni la mecánica radial. El lector debe atravesar primero el poemario vertical, descubrir después el segundo poemario horizontal y encontrar finalmente el centro oculto.
+El índice inicial no revela el Libro III ni la mecánica radial. El lector atraviesa primero el poemario vertical, descubre después el segundo poemario horizontal y encuentra finalmente el centro oculto.
 
-Se recomienda una página de silencio entre Libro I y Libro II y otra entre Libro II y Libro III.
+H14 · **BAJO LA CAL** recibe tratamiento central y excepcional.
 
-H14 · **BAJO LA CAL** debe recibir un tratamiento gráfico excepcional como centro de la matriz.
+Las dos ramas radiales se presentan como díptico o doble página cuando la producción lo permita.
 
-Las dos ramas radiales deben presentarse enfrentadas como díptico o en una doble página desplegable cuando la producción lo permita.
+## Estado de la edición A5
+
+La maqueta A5 canónica ya ha sido reconstruida con las **58 piezas reales**, no sólo con los 27 poemas verticales. La edición resultante ocupa **68 páginas A5** porque el prólogo y el epílogo se extienden en varias páginas y existen portadillas y páginas de revelación.
+
+El modo **LIBRO** de GitHub Pages reproduce ya esta arquitectura completa en texto dinámico, mientras que los modos **VERTICAL**, **HORIZONTAL** y **RADIAL** permiten inspeccionar cada sistema por separado.
 
 ## Principio de edición
 
-Los poemas horizontales no son aparato crítico ni simple visualización de la matriz: se consideran poemas autónomos de pleno derecho y deben maquetarse como tales.
+Los poemas horizontales son poemas autónomos de pleno derecho, no aparato crítico. Los dos radiales constituyen igualmente dos composiciones poéticas autónomas nacidas del centro H14.
 
-La explicación técnica de la matriz 27 × 27 debe ir al final, después de la experiencia poética y antes del colofón.
+La explicación técnica de la matriz 27 × 27 aparece únicamente al final, después de la experiencia poética.
