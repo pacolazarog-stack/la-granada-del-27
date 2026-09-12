@@ -1,6 +1,0 @@
-/* v34 · radial literary view: no explicit acrostic column */
-#radial .branch{padding:30px 48px 36px}
-#radial .radial-clean-poem{width:min(100%,31em);margin:0 auto}
-#radial .radial-clean-line{display:block;margin:.52em 0;padding:0;color:var(--ink);font-size:20px;line-height:1.45;font-weight:400;text-align:left}
-#radial .btitle{margin-bottom:20px}
-@media(max-width:780px){#radial .branch{padding:26px 30px 32px}#radial .radial-clean-line{font-size:17px}}
