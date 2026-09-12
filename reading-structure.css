@@ -1,16 +1,22 @@
-/* Restauración estructural: verso mayor, teléstico y diálogo mesóstico. */
+/* Restauración estructural: verso mayor, A/M/T homogéneos y diálogo mesóstico. */
 .fit-poem .poem-line{font-size:var(--poem-font-size,17px)}
 .fit-poem .poem-verse{width:var(--poem-measure,min(100%,31em));max-width:100%;margin-left:auto;margin-right:auto}
 .fit-poem.lines .line{font-size:var(--poem-font-size,16px);width:var(--poem-measure,100%);max-width:100%;margin-left:auto;margin-right:auto}
 
-/* El teléstico permanece dentro del verso: solo la letra clave cambia de familia. */
-.loa2-word{font-family:inherit!important;font-weight:400!important;color:inherit!important}
-.loa2-key{font-family:"Courier New",Courier,monospace!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
+/* Las extracciones de las loas permanecen semánticamente, pero no añaden un cuarto código visual. */
+.loa1-letter,.loa2-word,.loa2-key{font-family:inherit!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
 
-/* La inicial estructural del vertical se integra en el verso, sin columna lateral. */
-.radial-initial{font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;font-weight:400;color:inherit;font-size:.98em;letter-spacing:.015em}
+/* Gramática única en VERTICAL y HORIZONTAL: solo cambia la familia tipográfica. */
+.acrostic-letter{font-family:Arial,Helvetica,sans-serif!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
+.mesostic-letter{font-family:"Trebuchet MS",Arial,Helvetica,sans-serif!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
+.telestic-letter{font-family:"Courier New",Courier,monospace!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
 
-/* Registro desplegable: recupera la relación Pn ↔ Hn sin competir con el poema. */
+.poem-guide{display:grid!important;gap:5px}
+.poem-guide-title{text-align:center}
+.structure-legend{display:flex;justify-content:center;align-items:baseline;gap:5px 8px;font-size:7px;letter-spacing:.08em;color:#9b8e82;white-space:nowrap}
+.structure-legend .acrostic-letter,.structure-legend .mesostic-letter,.structure-legend .telestic-letter{font-size:9px}
+
+/* Registro desplegable: mantiene la clave secreta y hace explícito el diálogo Pn ↔ Hn. */
 .structure-register{width:min(100%,var(--poem-measure,31em));margin:18px auto 0;border-top:1px solid #d1c7bd;color:#74695f}
 .structure-register summary{list-style:none;cursor:pointer;padding:9px 0 0;text-align:center;font-size:8px;letter-spacing:.13em;color:#94877b;user-select:none}
 .structure-register summary::-webkit-details-marker{display:none}
@@ -24,8 +30,17 @@
 .structure-dialogue>div:not(.structure-mirror){display:grid;gap:3px}
 .structure-mirror{font-size:8px;letter-spacing:.14em;color:#a39589;margin:2px 0}
 
+/* Diagonales: dos ejes, cada uno reversible. */
+#diagonal{position:relative;padding-top:70px!important}
+.diag-direction{position:absolute;top:18px;left:50%;transform:translateX(-50%);display:flex;gap:4px;padding:4px;border:1px solid #ffffff33;border-radius:999px;background:#15120fee;z-index:5}
+.diag-direction button{border:0;border-radius:999px;background:transparent;color:#cbbeb1;padding:6px 12px;font:inherit;font-size:9px;letter-spacing:.11em;cursor:pointer}
+.diag-direction button.active{background:#efe6db;color:#211d19}
+
 @media(max-width:780px){
   .fit-poem .poem-line{font-size:var(--poem-font-size,14px)}
   .structure-register{margin-top:14px}
   .structure-dialogue{font-size:9px}
+  .structure-legend{gap:4px 6px;font-size:6px;letter-spacing:.05em}
+  .diag-direction{top:12px}
+  .diag-direction button{font-size:8px;padding:6px 9px}
 }
