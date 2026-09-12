@@ -1,6 +1,6 @@
 # La Granada del 27 · Un siglo después
 
-Edición digital en formato **flipbook** del poemario **La Granada del 27 · Un siglo después**.
+Edición digital del poemario **La Granada del 27 · Un siglo después**, concebida como una **Matriz 27**: 27 poemas de 27 versos, con 729 posiciones y tres direcciones de lectura.
 
 ## Publicación
 
@@ -15,6 +15,10 @@ La aplicación es completamente estática: no necesita servidor, base de datos n
 ├── .nojekyll
 ├── index.html
 ├── manifest.webmanifest
+├── matrix-core.js
+├── matrix-1.js
+├── matrix-2.js
+├── matrix-3.js
 ├── README.md
 └── pages/
     ├── page-01.webp
@@ -23,16 +27,33 @@ La aplicación es completamente estática: no necesita servidor, base de datos n
     └── page-38.webp
 ```
 
-## Lectura
+## Tres direcciones de lectura
 
-El visor permite:
+### Vertical
 
-- lectura a página simple y doble página;
-- navegación mediante botones, teclado y zonas laterales;
-- gesto de deslizamiento en dispositivos móviles;
-- vista de miniaturas;
-- pantalla completa;
-- funcionamiento local sin conexión una vez descargados los archivos.
+Lectura editorial ordinaria del libro, conservando las 38 páginas de la edición digital. Permite avanzar y retroceder mediante botones, zonas laterales, teclado y gesto de deslizamiento.
+
+### Horizontal
+
+El corpus forma una matriz **27 × 27**. La fila `H01` reúne el verso 1 de los poemas 01–27; `H02`, el verso 2; y así sucesivamente hasta `H27`.
+
+La interfaz permite seleccionar cualquiera de las 27 filas y recorrer lateralmente sus 27 versos. El poema 14, **LA VEGA**, queda señalado como eje central.
+
+### Radial
+
+La lectura radial toma el **verso 14** de los 27 poemas. Parte del centro `P14/V14` —**LA VEGA**— y avanza por parejas equidistantes:
+
+`13/15 · 12/16 · 11/17 · ... · 01/27`
+
+Las iniciales de cada pareja son simétricas y condensan la inscripción estructural **LA GRANADA DEL 27**; la última pareja `D/S` se lee «dos / siete».
+
+## Controles
+
+- Selector superior: **VERTICAL · HORIZONTAL · RADIAL**.
+- Flechas izquierda/derecha: navegación vertical.
+- Flechas arriba/abajo: cambio de fila en lectura horizontal.
+- Pantalla completa disponible desde la cabecera.
+- El botón `?` explica la arquitectura de lectura.
 
 ## Despliegue en GitHub Pages
 
