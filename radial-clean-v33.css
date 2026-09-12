@@ -1,0 +1,5 @@
+#radial .radial-poem-row{display:block;margin:.48em auto;width:min(100%,25em)}
+#radial .radial-poem-row .rtext{font-size:20px;line-height:1.45;font-weight:400;color:var(--ink);text-align:left}
+#radial .branch{padding-left:54px;padding-right:54px}
+#radial .btitle{margin-bottom:20px}
+@media(max-width:900px){#radial .branch{padding-left:34px;padding-right:34px}#radial .radial-poem-row{width:min(100%,23em)}}
