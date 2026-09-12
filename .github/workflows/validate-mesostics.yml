@@ -1,0 +1,25 @@
+name: Validate mesostics
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'matrix-core.js'
+      - 'matrix-1.js'
+      - 'matrix-2.js'
+      - 'matrix-3.js'
+      - 'matrix-mesostic.js'
+      - 'validate-mesostics.mjs'
+      - '.github/workflows/validate-mesostics.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate 54 mesostic voices
+        run: node validate-mesostics.mjs
