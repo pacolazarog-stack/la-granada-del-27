@@ -1,25 +1,29 @@
 #radial{overflow:auto;padding:22px}
 .radial-heart{position:relative;width:min(1180px,96%);margin:0 auto;background:var(--paper);color:var(--ink);box-shadow:0 20px 50px #0008;overflow:hidden;padding:28px 34px 36px;isolation:isolate}
-.radial-heart-head{text-align:center;position:relative;z-index:3;margin-bottom:24px}
+.radial-heart-head{text-align:center;position:relative;z-index:3;margin-bottom:16px}
 .radial-heart-kicker{font-size:9px;letter-spacing:.18em;color:#8f8174;margin-bottom:7px}
 .radial-heart-head h2{font-size:27px;margin:0 0 7px;font-weight:400}
-.radial-heart-head p{margin:0 auto;max-width:48em;font-size:10px;line-height:1.5;color:#786d63;letter-spacing:.03em}
+.radial-heart-head p{margin:0 auto;max-width:58em;font-size:10px;line-height:1.55;color:#786d63;letter-spacing:.03em}
 
-/* La Vega permanece a la altura del verso axial, como estrato y no como ilustración. */
-.radial-vega-band{position:absolute;left:0;right:0;top:173px;height:128px;z-index:0;pointer-events:none;opacity:.18;background:linear-gradient(to bottom,transparent 0%,rgba(83,91,60,.07) 30%,rgba(83,91,60,.13) 49%,rgba(103,83,58,.08) 66%,transparent 100%)}
+.radial-cycle{position:relative;z-index:4;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:0 auto 18px;padding:8px 12px;width:max-content;max-width:100%;border-top:1px solid #d3c8bd;border-bottom:1px solid #d3c8bd;font-size:8px;letter-spacing:.12em;color:#8b7d71}
+.radial-cycle b{font-weight:400;color:#b0a398}
+.radial-cycle span:first-child,.radial-cycle span:last-child{color:#5f6650}
+
+/* La Vega permanece exactamente a la altura del centro de simetría: estrato, no ilustración. */
+.radial-vega-band{position:absolute;left:0;right:0;top:204px;height:134px;z-index:0;pointer-events:none;opacity:.18;background:linear-gradient(to bottom,transparent 0%,rgba(83,91,60,.07) 30%,rgba(83,91,60,.13) 49%,rgba(103,83,58,.08) 66%,transparent 100%)}
 .radial-vega-band::before,.radial-vega-band::after{content:"";position:absolute;left:4%;right:4%;border-top:1px solid rgba(77,83,58,.18);border-radius:50%}
 .radial-vega-band::before{top:49%;transform:skewY(-1.2deg)}
 .radial-vega-band::after{top:60%;left:11%;right:9%;transform:skewY(.9deg);opacity:.7}
 .radial-vega-band span{position:absolute;inset:0;display:grid;place-items:center;font-size:72px;letter-spacing:.24em;color:rgba(57,66,43,.13);white-space:nowrap}
 
-.radial-axis-verse{position:relative;z-index:3;width:min(100%,760px);margin:0 auto 24px;padding:16px 24px 17px;text-align:center;border-top:1px solid #c9beb2;border-bottom:1px solid #c9beb2;background:rgba(244,238,228,.78);backdrop-filter:blur(.3px)}
-.radial-axis-label{font-size:8px;letter-spacing:.16em;color:#8f8174;margin-bottom:8px}
-.radial-axis-text{font-size:21px;line-height:1.35}
-.radial-axis-caption{font-size:8px;letter-spacing:.15em;color:var(--red);margin-top:8px}
+.radial-axis-verse{position:relative;z-index:3;width:min(100%,780px);margin:0 auto 24px;padding:18px 24px 19px;text-align:center;border-top:1px solid #bfb2a5;border-bottom:1px solid #bfb2a5;background:rgba(244,238,228,.82);backdrop-filter:blur(.3px);box-shadow:0 8px 24px rgba(60,45,35,.04)}
+.radial-axis-label{font-size:8px;letter-spacing:.16em;color:#6f675f;margin-bottom:8px}
+.radial-axis-text{font-size:22px;line-height:1.35}
+.radial-axis-caption{font-size:8px;letter-spacing:.13em;color:var(--red);margin-top:8px}
 
-.radial-sonnet-pair{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid #d5cbc1}
-.radial-sonnet{padding:24px 34px 10px;min-width:0}
-.radial-sonnet+ .radial-sonnet{border-left:1px solid #d5cbc1}
+.radial-sonnet-pair{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid #d5cbc1;border-bottom:1px solid #d5cbc1}
+.radial-sonnet{padding:24px 34px 18px;min-width:0}
+.radial-sonnet+.radial-sonnet{border-left:1px solid #d5cbc1}
 .radial-sonnet-buried{background:linear-gradient(to bottom,rgba(96,78,60,.035),rgba(73,62,52,.07))}
 .radial-sonnet-open{background:linear-gradient(to bottom,rgba(255,255,255,.11),rgba(255,255,255,.025))}
 .radial-sonnet-kicker{text-align:center;font-size:8px;letter-spacing:.15em;color:#8f8174;margin-bottom:6px}
@@ -29,13 +33,18 @@
 .radial-sonnet-no{text-align:right;font-size:7px;letter-spacing:.08em;color:#aa9d91;user-select:none}
 .radial-sonnet-text{display:block;width:var(--heart-measure,auto);max-width:100%;white-space:nowrap;text-align:justify;text-align-last:justify;text-justify:inter-word}
 
+.radial-return{position:relative;z-index:3;display:grid;gap:5px;text-align:center;margin:18px auto 0;max-width:760px;color:#6f665e}
+.radial-return span{font-size:8px;letter-spacing:.17em;color:#5f6650}
+.radial-return strong{font-size:10px;line-height:1.5;font-weight:400;letter-spacing:.02em}
+
 @media(max-width:900px){
   #radial{padding:14px}
   .radial-heart{width:100%;padding:24px 18px 28px}
   .radial-sonnet-pair{grid-template-columns:1fr}
   .radial-sonnet+.radial-sonnet{border-left:0;border-top:1px solid #d5cbc1}
-  .radial-vega-band{top:168px}
+  .radial-vega-band{top:226px}
   .radial-vega-band span{font-size:48px}
-  .radial-sonnet{padding:22px 20px 12px}
+  .radial-sonnet{padding:22px 20px 16px}
   .radial-axis-text{font-size:18px}
+  .radial-cycle{font-size:7px;gap:5px}
 }
