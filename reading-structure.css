@@ -1,0 +1,31 @@
+/* Restauración estructural: verso mayor, teléstico y diálogo mesóstico. */
+.fit-poem .poem-line{font-size:var(--poem-font-size,17px)}
+.fit-poem .poem-verse{width:var(--poem-measure,min(100%,31em));max-width:100%;margin-left:auto;margin-right:auto}
+.fit-poem.lines .line{font-size:var(--poem-font-size,16px);width:var(--poem-measure,100%);max-width:100%;margin-left:auto;margin-right:auto}
+
+/* El teléstico permanece dentro del verso: solo la letra clave cambia de familia. */
+.loa2-word{font-family:inherit!important;font-weight:400!important;color:inherit!important}
+.loa2-key{font-family:"Courier New",Courier,monospace!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
+
+/* La inicial estructural del vertical se integra en el verso, sin columna lateral. */
+.radial-initial{font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;font-weight:400;color:inherit;font-size:.98em;letter-spacing:.015em}
+
+/* Registro desplegable: recupera la relación Pn ↔ Hn sin competir con el poema. */
+.structure-register{width:min(100%,var(--poem-measure,31em));margin:18px auto 0;border-top:1px solid #d1c7bd;color:#74695f}
+.structure-register summary{list-style:none;cursor:pointer;padding:9px 0 0;text-align:center;font-size:8px;letter-spacing:.13em;color:#94877b;user-select:none}
+.structure-register summary::-webkit-details-marker{display:none}
+.structure-register summary::before{content:'＋ ';font-family:Arial,sans-serif}
+.structure-register[open] summary::before{content:'− '}
+.structure-register-body{padding:12px 0 2px}
+.structure-row{display:flex;justify-content:center;gap:10px;align-items:baseline;font-size:9px;letter-spacing:.09em}
+.structure-row span,.structure-dialogue span{color:#96897e}
+.structure-row strong,.structure-dialogue strong{font-weight:400;color:#4f4741;letter-spacing:.03em}
+.structure-dialogue{display:grid;gap:5px;margin-top:12px;padding-top:10px;border-top:1px dotted #d7cdc3;text-align:center;font-size:10px;line-height:1.45}
+.structure-dialogue>div:not(.structure-mirror){display:grid;gap:3px}
+.structure-mirror{font-size:8px;letter-spacing:.14em;color:#a39589;margin:2px 0}
+
+@media(max-width:780px){
+  .fit-poem .poem-line{font-size:var(--poem-font-size,14px)}
+  .structure-register{margin-top:14px}
+  .structure-dialogue{font-size:9px}
+}
