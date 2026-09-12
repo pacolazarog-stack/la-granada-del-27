@@ -1,18 +1,21 @@
 (()=>{
-  const norm=s=>Array.from((s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-zÑñ]/g,'')).map(x=>x.toUpperCase());
-  const radialLetters=code=>norm(code);
   const esc=s=>String(s??'').replace(/[&<>\"]/g,c=>c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':'&quot;');
+  const alpha=/[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/;
   const hMeta=n=>GRANADA_ACROSTIC[`H${String(n).padStart(2,'0')}`]||null;
   const pMeta=n=>GRANADA_TELESTIC[`P${String(n).padStart(2,'0')}`]||null;
   const mMeta=(side,n)=>(window.GRANADA_MESOSTIC||{})[`${side}${String(n).padStart(2,'0')}`]||null;
 
-  function composite(line,{hMark=null,vMark=null,mMark=null,mText=''}={}){
+  function composite(line,{hMark=null,vMark=null,mMark=null,mText='',initial=false}={}){
     const slots=Array.from({length:line.length},()=>({classes:new Set(),titles:[]}));
     const add=(i,cls,title)=>{
       if(!Number.isInteger(i)||i<0||i>=slots.length)return;
       slots[i].classes.add(cls);
       if(title)slots[i].titles.push(title);
     };
+    if(initial){
+      const i=Array.from(line).findIndex(c=>alpha.test(c));
+      if(i>=0)add(i,'radial-initial','');
+    }
     if(hMark){
       const i=Number(hMark.offset);
       add(i,'loa1-letter',`LOA I · ${hMark.key||line[i]||''}`);
@@ -39,7 +42,7 @@
   }
 
   const markHorizontal=(line,loaMark,mesoMark,mesoText)=>composite(line,{hMark:loaMark,mMark:mesoMark,mText:mesoText});
-  const markVertical=(line,loaMark,mesoMark,mesoText)=>composite(line,{vMark:loaMark,mMark:mesoMark,mText:mesoText});
+  const markVertical=(line,loaMark,mesoMark,mesoText)=>composite(line,{vMark:loaMark,mMark:mesoMark,mText:mesoText,initial:true});
 
   function cleanRadial(){
     const v=GRANADA_ROWS[13].verses;
@@ -81,39 +84,36 @@
     const verses=pv(pi);
     const tel=pMeta(pNo),tmarks=new Map((tel&&tel.marks||[]).map(m=>[m.row,m]));
     const mes=mMeta('P',pNo),mmarks=new Map((mes&&mes.valid&&mes.marks||[]).map(m=>[m.row,m]));
-    const guide=document.createElement('div');
-    guide.className='rv-guide';
-    guide.innerHTML='<div>↖ V14→V01</div><div>LECTURA VERTICAL</div><div>V14→V27 ↘</div>';
-    host.appendChild(guide);
-
-    const letters=pNo===14?[]:radialLetters(GRANADA_RADIAL_VERTICAL_KEYS[`P${String(pNo).padStart(2,'0')}`]);
+    const guide=document.createElement('div');guide.className='poem-guide';guide.textContent='LECTURA VERTICAL';host.appendChild(guide);
     verses.forEach((z,i)=>{
       const verseNo=i+1;
-      let left='',right='';
-      if(pNo!==14){
-        if(verseNo<=14)left=letters[14-verseNo]||'';
-        if(verseNo>=14)right=letters[verseNo-14]||'';
-      }
       let text=markVertical(z,tmarks.get(verseNo),mmarks.get(verseNo),mes&&mes.text||'');
       if(pNo===14&&verseNo===14)text=`<span class="loa-center-origin" title="VEINTISIETE">${text}</span>`;
       const d=document.createElement('div');
-      d.className='vline rv-line'+(verseNo===14?' rv-center':'');
-      d.innerHTML=`<span class="rv-margin rv-left">${left}</span><span class="rv-verse">${text}</span><span class="rv-margin rv-right">${right}</span>`;
+      d.className='poem-line vline'+(verseNo===14?' poem-center':'');
+      d.innerHTML=`<span class="poem-verse">${text}</span>`;
       host.appendChild(d);
     });
   };
 
   window.horiz=function(){
-    const r=GRANADA_ROWS[row];hp=(hp+27)%27;
-    const hNo=r.row,pos=hp+1;
-    const loa=hMeta(hNo),loaMark=(loa&&loa.marks||[]).find(m=>m.position===pos);
-    const mes=mMeta('H',hNo),mesMark=(mes&&mes.valid&&mes.marks||[]).find(m=>m.position===pos);
-    $('#hr').textContent=`H${String(hNo).padStart(2,'0')} / 27`;
+    row=(row+27)%27;
+    const r=GRANADA_ROWS[row],hNo=r.row;
+    $('#hi').textContent=`H${String(hNo).padStart(2,'0')} / 27`;
     $('#ht').textContent=GRANADA_H_TITLES[row];
-    let text=markHorizontal(r.verses[hp],loaMark,mesMark,mes&&mes.text||'');
-    if(hNo===14&&pos===14)text=`<span class="loa-center-origin" title="VEINTISIETE">${text}</span>`;
-    $('#hc').innerHTML=text;
-    $('#hp').textContent=`${String(pos).padStart(2,'0')} / 27 · ${GRANADA_TITLES[hp]}`;
+    const host=$('#hl');host.innerHTML='';
+    const loa=hMeta(hNo),lmarks=new Map((loa&&loa.marks||[]).map(m=>[m.position,m]));
+    const mes=mMeta('H',hNo),mmarks=new Map((mes&&mes.valid&&mes.marks||[]).map(m=>[m.position,m]));
+    const guide=document.createElement('div');guide.className='poem-guide';guide.textContent='LECTURA HORIZONTAL';host.appendChild(guide);
+    r.verses.forEach((z,i)=>{
+      const pos=i+1;
+      let text=markHorizontal(z,lmarks.get(pos),mmarks.get(pos),mes&&mes.text||'');
+      if(hNo===14&&pos===14)text=`<span class="loa-center-origin" title="VEINTISIETE">${text}</span>`;
+      const d=document.createElement('div');
+      d.className='poem-line hline'+(pos===14?' poem-center':'');
+      d.innerHTML=`<span class="poem-verse">${text}</span>`;
+      host.appendChild(d);
+    });
   };
 
   window.radial=cleanRadial;
@@ -156,10 +156,8 @@
 
   $('#vp').onclick=()=>{pi--;vert()};
   $('#vn').onclick=()=>{pi++;vert()};
-  $('#hrp').onclick=()=>{row=(row+26)%27;hp=0;horiz()};
-  $('#hrn').onclick=()=>{row=(row+1)%27;hp=0;horiz()};
-  $('#hvp').onclick=()=>{hp--;horiz()};
-  $('#hvn').onclick=()=>{hp++;horiz()};
+  $('#hrp').onclick=()=>{row=(row+26)%27;horiz()};
+  $('#hrn').onclick=()=>{row=(row+1)%27;horiz()};
 
   const brand=document.querySelector('.brand small');if(brand)brand.textContent='Un siglo después';
   vert();horiz();cleanDiagonal();cleanRadial();book();
