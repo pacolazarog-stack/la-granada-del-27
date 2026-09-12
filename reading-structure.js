@@ -43,15 +43,15 @@
     const current=side==='P'?pair.v:pair.h;
     const mirror=side==='P'?pair.h:pair.v;
     const secret=side==='P'?pSecret(n):hSecret(n);
-    const label=side==='P'?'TELÉSTICO':'ACRÓSTICO';
+    const secretLabel=side==='P'?'CLAVE TELÉSTICA':'CLAVE ACRÓSTICA';
     const here=`${side}${String(n).padStart(2,'0')}`;
     const there=`${side==='P'?'H':'P'}${String(n).padStart(2,'0')}`;
     const details=document.createElement('details');
     details.className='structure-register';
     details.innerHTML=`
-      <summary>CAPAS INTERIORES · ${label} · MESÓSTICO</summary>
+      <summary>CAPAS INTERIORES · ACRÓSTICO · MESÓSTICO · TELÉSTICO</summary>
       <div class="structure-register-body">
-        <div class="structure-row"><span>${label}</span><strong>${secret?.word||'—'}</strong></div>
+        <div class="structure-row"><span>${secretLabel}</span><strong>${secret?.word||'—'}</strong></div>
         <div class="structure-dialogue">
           <div><span>${here} · MESÓSTICO</span><strong>${current||'—'}</strong></div>
           <div class="structure-mirror">↕ ESPEJO ↕</div>
