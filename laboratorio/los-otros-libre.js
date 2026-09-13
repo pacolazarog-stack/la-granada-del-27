@@ -35,10 +35,14 @@ window.GRANADA_LAB_LOS_OTROS = {
     'Entonces deja un margen blanco alrededor',
     'y monta la fotografía sin cortar nada.',
     '',
-    'En la pared, por primera vez,',
-    'el borde también forma parte de la imagen.'
+    'En la pared quedan',
+    'la escoba,',
+    'la mano,',
+    'el brazo del niño',
+    'y cuatro dedos de blanco',
+    'alrededor.'
   ],
-  respiration: 'descubrimiento por ampliaciones sucesivas; el poema avanza cada vez que cambia el recorte',
+  respiration: 'descubrimiento por ampliaciones sucesivas; el cierre deja visible la materia del margen sin traducirla a una tesis',
   corporeality: ['delantal','mano','silla','zapato','escoba','brazo','bandeja','pared'],
   mirrorPotential: {
     with: 'MANUEL ÁNGELES',
@@ -47,8 +51,8 @@ window.GRANADA_LAB_LOS_OTROS = {
       'papel que se ensancha ↔ fotografía que deja de recortarse',
       'sombra imprevista ↔ medio cuerpo reaparecido',
       'mancha que cruza el límite ↔ escoba y brazo que entran por el margen',
-      'ensanchar el borde ↔ convertir el margen en parte visible de la obra'
+      'ensanchar el borde ↔ dejar cuatro dedos de blanco alrededor'
     ]
   },
-  status: 'laboratorio; poema autónomo, no sustituye todavía P22 en el libro público'
+  status: 'poema de superficie'
 };
