@@ -1,0 +1,22 @@
+name: Validate stone matrix
+
+on:
+  push:
+    paths:
+      - 'matrix-*.js'
+      - 'laboratorio/bajo-la-cal-nucleo.js'
+      - 'laboratorio/piedra-matriz.js'
+      - 'laboratorio/validacion-piedra.js'
+      - 'validate-stone.mjs'
+      - '.github/workflows/validate-stone.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node validate-stone.mjs
