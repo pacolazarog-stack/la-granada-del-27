@@ -35,12 +35,13 @@ window.GRANADA_LAB_LA_PUERTA_DEL_VINO = {
     'El eco tarda un instante',
     'y sale detrás de él.',
     '',
-    'La puerta permanece abierta',
-    'porque nunca ha sido solo piedra:',
-    'también es el hueco',
-    'que los pasos siguen haciendo.'
+    'Al caer la tarde',
+    'entra otra suela en la hendidura.',
+    'Sale por el otro lado.',
+    'En el borde, la piedra',
+    'queda un poco más lisa.'
   ],
-  respiration: 'secuencia de pasos y contactos; repeticiones breves que imitan el tránsito sin metrónomo fijo',
+  respiration: 'secuencia de pasos y contactos; repeticiones breves que imitan el tránsito y un cierre material en la piedra modificada',
   corporeality: ['suela','mano','hombro','niño','piedra','grieta','polvo','hierba'],
   mirrorPotential: {
     with: 'EL NUEVO RINCONCILLO',
@@ -52,5 +53,5 @@ window.GRANADA_LAB_LA_PUERTA_DEL_VINO = {
       'huella acumulada ↔ huella que acaba de empezar'
     ]
   },
-  status: 'laboratorio; poema autónomo, no sustituye todavía P08 en el libro público'
+  status: 'poema de superficie'
 };
