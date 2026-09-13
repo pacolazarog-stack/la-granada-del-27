@@ -1,8 +1,6 @@
 /* LA CIUDAD QUE TODAVÍA PUEDE SER · poema libre de escucha urbana
    Espejo no simétrico de DON MANUEL.
-
-   Se abandona la obligación de 27 versos, endecasílabo, H14 y A/M/T.
-   La ciudad no se define: se corrige cuando el cuerpo demuestra que la medida falla.
+   La ciudad se corrige cuando el cuerpo demuestra que la medida falla.
 */
 
 window.GRANADA_LAB_LA_CIUDAD_QUE_TODAVIA_PUEDE_SER = {
@@ -12,7 +10,7 @@ window.GRANADA_LAB_LA_CIUDAD_QUE_TODAVIA_PUEDE_SER = {
     'A las ocho pintan una raya blanca',
     'junto al bordillo nuevo.',
     '',
-    'A las nueve una mujer llega con un carrito',
+    'Una hora después una mujer llega con un carrito',
     'y tiene que bajar a la calzada',
     'porque entre la raya y la farola no cabe.',
     '',
@@ -26,21 +24,21 @@ window.GRANADA_LAB_LA_CIUDAD_QUE_TODAVIA_PUEDE_SER = {
     '',
     'Pasa un niño en patinete.',
     'Pasa un hombre con dos bolsas.',
-    'Una anciana espera a que termine.',
-    'Nadie dice ciudad.',
+    'Una anciana espera junto al bordillo.',
     '',
     'A mediodía vuelven con la brocha.',
     'La raya aparece de nuevo',
     'un palmo más allá.',
     '',
-    'No ha cambiado el plano.',
-    'Ha cambiado el sitio.',
+    'La pintura tarda en secarse.',
     '',
-    'Y por primera vez',
-    'caben todos al pasar.'
+    'Al caer la tarde',
+    'otro carrito pasa junto a la farola.',
+    'La rueda exterior deja una línea de polvo',
+    'a un dedo de la pintura.'
   ],
-  respiration: 'escena única con silencios, enumeración corporal y un cierre sin declaración programática',
-  corporeality: ['carrito','ruedas','farola','cono','suela','patinete','bolsas','brocha'],
+  respiration: 'escena única de medida, error, borrado y corrección; el final vuelve a medir el espacio mediante una huella real',
+  corporeality: ['carrito','ruedas','farola','cono','suela','patinete','bolsas','bordillo','brocha','polvo'],
   mirrorPotential: {
     with: 'DON MANUEL',
     axis: 'corregir la medida después de escuchar la realidad',
@@ -48,9 +46,9 @@ window.GRANADA_LAB_LA_CIUDAD_QUE_TODAVIA_PUEDE_SER = {
       'tecla ↔ bordillo',
       'nota tachada ↔ pintura borrada',
       'escuchar ↔ mirar cómo pasan los cuerpos',
-      'pentagrama ↔ plano',
-      'silencio ↔ espacio suficiente'
+      'pentagrama ↔ trazado',
+      'intervalo sonoro ↔ un dedo entre rueda y pintura'
     ]
   },
-  status: 'laboratorio; poema autónomo, no sustituye todavía P25 en el libro público'
+  status: 'poema de superficie'
 };
