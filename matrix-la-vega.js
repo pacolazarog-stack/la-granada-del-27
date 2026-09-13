@@ -23,7 +23,7 @@
     'La linde sobrevive entre dos muros.',
     'La tapia tuerce el gesto de una higuera.',
     'Resiste un brazal donde aparcan coches.',
-    'Por un taller cruza el barro espeso.',
+    'Por el taller avanza barro espeso.',
     'Bajo un portal regresa el agua oscura,',
     'palpando las raíces que resisten.',
     'Un tubo corta en dos la tierra húmeda.',
