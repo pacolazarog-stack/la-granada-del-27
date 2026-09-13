@@ -23,7 +23,7 @@
     'La linde sobrevive entre dos muros.',
     'La tapia tuerce el gesto de una higuera.',
     'Resiste un brazal donde aparcan coches.',
-    'Por un taller cruza barro espeso.',
+    'Por un taller cruza el barro espeso.',
     'Bajo un portal regresa el agua oscura,',
     'palpando las raíces que resisten.',
     'Un tubo corta en dos la tierra húmeda.',
@@ -55,8 +55,7 @@
     localCrossingAdjustments:4,
     changedCells:31,
     periods:[[1,8],[9,14],[15,22],[23,27]],
-    metricCounts:[11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,10,11,11,11,11,11,11,11],
-    metricMethod:'recuento manual con sinalefas naturales; el v.20 queda señalado como posible decasílabo sin forzar dialefa',
-    metricObservation:{verse:20,text:'Por un taller cruza barro espeso.',naturalCount:10}
+    metricCounts:Array(27).fill(11),
+    metricMethod:'recuento manual con sinalefas naturales; 27 endecasílabos'
   };
 })();
