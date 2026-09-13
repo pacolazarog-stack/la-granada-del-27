@@ -10,7 +10,7 @@ window.GRANADA_LAB_QUE_VUELVA_A_OCURRIR = {
   retainedConstraints: ['eco de mesa', 'fricción oral', 'objetos reflejados desde EL RINCONCILLO'],
   releasedConstraints: ['27 versos','endecasílabo uniforme','horizontal obligatoria','A/M/T simultáneos','simetría formal con 1927'],
   verses: [
-    'A las ocho apartan dos mesas del fondo.',
+    'Apartan dos mesas del fondo.',
     'Una muchacha pega un cable al suelo con cinta negra',
     'y otro busca un enchufe detrás de la nevera.',
     'Llegan tarde tres personas.',
@@ -50,5 +50,5 @@ window.GRANADA_LAB_QUE_VUELVA_A_OCURRIR = {
     ],
     difference: '1927 concentra; 2027 reactiva. El espejo está en la conducta, no en la métrica.'
   },
-  status: 'laboratorio; no sustituye todavía P26 en la lectura pública'
+  status: 'poema de superficie'
 };
