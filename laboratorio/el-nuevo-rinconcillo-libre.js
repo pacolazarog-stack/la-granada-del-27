@@ -37,14 +37,9 @@ window.GRANADA_LAB_EL_NUEVO_RINCONCILLO = {
     '',
     'Cuando cierran,',
     'la pared sigue blanca',
-    'pero el umbral no.',
-    '',
-    'Mañana volverán a abrir',
-    'y habrá que mover otra vez la cuña',
-    'porque el sitio empieza exactamente ahí:',
-    'donde alguien impide que la puerta se cierre.'
+    'pero el umbral no.'
   ],
-  respiration: 'entrada progresiva de personas y objetos; frases breves que se acumulan hasta transformar físicamente el umbral',
+  respiration: 'entrada progresiva de personas y objetos; frases breves que se acumulan hasta que el umbral recién estrenado deja de estar intacto',
   corporeality: ['puerta','cuña','cartón','silla','cable','guitarra','bisagra','caja','polvo','zapatos'],
   mirrorPotential: {
     with: 'LA PUERTA DEL VINO',
@@ -56,5 +51,5 @@ window.GRANADA_LAB_EL_NUEVO_RINCONCILLO = {
       'puerta abierta por el uso ↔ puerta mantenida abierta por una cuña'
     ]
   },
-  status: 'laboratorio; poema autónomo, no sustituye todavía P20 en el libro público'
+  status: 'poema de superficie'
 };
