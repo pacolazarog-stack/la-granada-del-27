@@ -32,7 +32,6 @@ window.GRANADA_LAB_UN_SIGLO_DESPUES = {
     'Un niño salta el charco junto a la obra.',
     'El barro le sube por las medias.',
     'Su madre tira de él y se ríe.',
-    'Bajo la avenida sigue pasando el agua.',
     'Granada sucede — sucede Granada.'
   ],
   respiration: [
@@ -41,7 +40,7 @@ window.GRANADA_LAB_UN_SIGLO_DESPUES = {
     [12,14],
     [15,19],
     [20,21],
-    [22,26]
+    [22,25]
   ],
   mirrorPotential: {
     with: 'GRANADA, 1927',
