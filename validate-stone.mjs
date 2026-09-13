@@ -8,9 +8,7 @@ const files=[
   'matrix-1.js',
   'matrix-2.js',
   'matrix-3.js',
-  'matrix-la-vega.js',
   'matrix-secret.js',
-  'matrix-secret-patch.js',
   'matrix-mesostic.js',
   'laboratorio/bajo-la-cal-nucleo.js',
   'laboratorio/piedra-matriz.js',
@@ -45,6 +43,8 @@ const assertions=[
 const failed=assertions.filter(([,ok])=>!ok);
 console.log(JSON.stringify({
   structuralStable:report.structuralStable,
+  source:globalThis.GRANADA_STONE?.source,
+  relationToSurface:globalThis.GRANADA_STONE?.relationToSurface,
   horizontals:report.horizontals,
   diagonals:report.diagonals,
   radial:{valid:report.radial.valid,center:report.radial.center},
