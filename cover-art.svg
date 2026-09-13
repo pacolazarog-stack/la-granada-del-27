@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-labelledby="t d">
+<title id="t">La Vega vista a través de una puerta</title>
+<desc id="d">Paisaje simbólico de Granada desde 2027: una puerta de piedra abre la mirada hacia la Vega, la Sierra y la ciudad.</desc>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#223244"/><stop offset=".42" stop-color="#7f8790"/><stop offset=".68" stop-color="#d5a875"/><stop offset="1" stop-color="#e8d4ae"/>
+  </linearGradient>
+  <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#6e745b"/><stop offset=".45" stop-color="#4f5a43"/><stop offset="1" stop-color="#283126"/>
+  </linearGradient>
+  <linearGradient id="stone" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#171512"/><stop offset=".45" stop-color="#3a332c"/><stop offset=".72" stop-color="#66594a"/><stop offset="1" stop-color="#201c18"/>
+  </linearGradient>
+  <linearGradient id="water" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#18252a"/><stop offset=".55" stop-color="#6f8584"/><stop offset="1" stop-color="#d0aa76"/></linearGradient>
+  <radialGradient id="sun"><stop offset="0" stop-color="#fff6d8" stop-opacity=".95"/><stop offset=".25" stop-color="#f5c67f" stop-opacity=".72"/><stop offset="1" stop-color="#f5c67f" stop-opacity="0"/></radialGradient>
+  <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="27" result="n"/><feColorMatrix in="n" type="saturate" values="0" result="g"/><feComponentTransfer in="g"><feFuncA type="table" tableValues="0 .09"/></feComponentTransfer></filter>
+</defs>
+<rect width="900" height="1200" fill="#161713"/>
+<rect x="120" y="0" width="660" height="1200" fill="url(#sky)"/>
+<circle cx="575" cy="370" r="190" fill="url(#sun)" filter="url(#soft)"/>
+<!-- Sierra -->
+<path d="M120 510 L205 450 270 486 335 426 398 475 472 402 544 468 612 418 684 474 780 430 780 620 120 620Z" fill="#53606a" opacity=".72"/>
+<path d="M205 450 L270 486 335 426 398 475 472 402 544 468 612 418 684 474" fill="none" stroke="#d8d9d3" stroke-width="6" stroke-opacity=".58"/>
+<!-- Vega -->
+<path d="M120 560 C260 530 400 575 540 545 C650 522 715 540 780 518 L780 925 L120 925Z" fill="url(#land)"/>
+<g opacity=".38" fill="none" stroke="#b6aa79" stroke-width="2">
+  <path d="M138 690 C260 646 397 706 760 612"/><path d="M135 742 C306 704 442 748 770 666"/><path d="M130 810 C300 762 485 812 772 730"/>
+</g>
+<!-- Acequia -->
+<path d="M152 870 C282 826 360 858 458 817 C566 772 647 794 759 747" fill="none" stroke="url(#water)" stroke-width="17" opacity=".85"/>
+<path d="M152 866 C280 825 358 854 456 813 C564 770 646 790 759 744" fill="none" stroke="#e8d29f" stroke-width="2.5" opacity=".65"/>
+<!-- City 2027 as thin geometry -->
+<g fill="#d8cab2" opacity=".50">
+  <rect x="245" y="613" width="30" height="82"/><rect x="280" y="638" width="48" height="57"/><rect x="340" y="598" width="24" height="97"/><rect x="370" y="626" width="56" height="69"/><rect x="438" y="610" width="32" height="85"/><rect x="478" y="643" width="65" height="52"/><rect x="555" y="592" width="26" height="103"/><rect x="590" y="622" width="52" height="73"/><rect x="654" y="605" width="34" height="90"/>
+</g>
+<g stroke="#efe6d9" stroke-width="1.3" opacity=".38"><path d="M255 613v82M352 598v97M568 592v103M670 605v90"/><path d="M245 640h443M245 665h443"/></g>
+<!-- Cypress silhouettes -->
+<g fill="#182019"><path d="M188 820 C164 730 180 620 202 536 C224 638 232 744 210 820Z"/><path d="M704 842 C680 744 697 626 720 528 C744 652 752 758 728 842Z"/></g>
+<!-- Portal -->
+<path d="M0 0H175V1200H0Z" fill="url(#stone)"/><path d="M725 0H900V1200H725Z" fill="url(#stone)"/><path d="M0 0H900V132H0Z" fill="url(#stone)"/>
+<path d="M147 0V1200M752 0V1200M0 118H900" stroke="#9b876f" stroke-opacity=".28" stroke-width="2"/>
+<!-- Threshold -->
+<path d="M115 924 H785 L900 1200 H0Z" fill="#26221e"/><path d="M149 955 H751" stroke="#99836a" stroke-opacity=".42" stroke-width="3"/>
+<!-- Reflection / mirror seam -->
+<path d="M450 140V1090" stroke="#f2e7d8" stroke-opacity=".12" stroke-width="1" stroke-dasharray="2 12"/>
+<circle cx="450" cy="606" r="10" fill="#eee0c9" opacity=".55"/><circle cx="450" cy="606" r="24" fill="none" stroke="#eee0c9" stroke-opacity=".18"/>
+<!-- subtle grain -->
+<rect width="900" height="1200" filter="url(#grain)" opacity=".55"/>
+</svg>
