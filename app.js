@@ -1,9 +1,11 @@
 (()=>{
   const esc=s=>String(s??'').replace(/[&<>\"]/g,c=>c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':'&quot;');
   const alpha=/[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/;
-  const hMeta=n=>GRANADA_ACROSTIC[`H${String(n).padStart(2,'0')}`]||null;
-  const pMeta=n=>GRANADA_TELESTIC[`P${String(n).padStart(2,'0')}`]||null;
-  const mMeta=(side,n)=>(window.GRANADA_MESOSTIC||{})[`${side}${String(n).padStart(2,'0')}`]||null;
+  const stoneRows=()=>window.GRANADA_STONE_ROWS||window.GRANADA_ROWS||[];
+  const hMeta=n=>(window.GRANADA_STONE_ACROSTIC||{})[`H${String(n).padStart(2,'0')}`]||null;
+  const pMeta=n=>(window.GRANADA_STONE_TELESTIC||{})[`P${String(n).padStart(2,'0')}`]||null;
+  const mMeta=(side,n)=>(window.GRANADA_STONE_MESOSTIC||{})[`${side}${String(n).padStart(2,'0')}`]||null;
+  const core=()=>window.GRANADA_LAB_BAJO_LA_CAL||null;
   let diagDirection='down';
 
   function bounds(line){
@@ -51,14 +53,14 @@
   }
 
   const markHorizontal=(line,loaMark,mesoMark,mesoText)=>composite(line,{hMark:loaMark,mMark:mesoMark,mText:mesoText});
-  const markVertical=(line,loaMark,mesoMark,mesoText)=>composite(line,{vMark:loaMark,mMark:mesoMark,mText:mesoText});
 
   function legend(label){
     return `<div class="poem-guide-title">${label}</div><div class="structure-legend"><span class="acrostic-letter">A</span><span>ACRÓSTICO</span><span class="mesostic-letter">M</span><span>MESÓSTICO</span><span class="telestic-letter">T</span><span>TELÉSTICO</span></div>`;
   }
 
   function cleanRadial(){
-    const v=GRANADA_ROWS[13].verses;
+    const buried=core()?.radial?.buried?.verses||[];
+    const open=core()?.radial?.open?.verses||[];
     const render=(el,title,verses)=>{
       el.innerHTML='';
       const h=document.createElement('div');h.className='btitle';h.textContent=title;el.appendChild(h);
@@ -66,8 +68,8 @@
       verses.forEach(z=>{const d=document.createElement('div');d.className='radial-clean-line';d.textContent=z;poem.appendChild(d)});
       el.appendChild(poem);
     };
-    render($('#rl'),'I · HACIA LO ENTERRADO',[v[13],...v.slice(0,13).reverse()]);
-    render($('#rr'),'II · HACIA LO ABIERTO',[v[13],...v.slice(14)]);
+    render($('#rl'),'I · HACIA LO ENTERRADO',buried);
+    render($('#rr'),'II · HACIA LO ABIERTO',open);
   }
 
   function ensureDiagonalControls(){
@@ -89,8 +91,9 @@
 
   function cleanDiagonal(){
     ensureDiagonalControls();
-    const principal=GRANADA_ROWS.map((r,i)=>r.verses[i]);
-    const secondary=GRANADA_ROWS.map((r,i)=>r.verses[26-i]);
+    const rows=stoneRows();
+    const principal=rows.map((r,i)=>r.verses[i]);
+    const secondary=rows.map((r,i)=>r.verses[26-i]);
     const ascending=diagDirection==='up';
     const down=ascending?[...principal].reverse():principal;
     const cross=ascending?[...secondary].reverse():secondary;
@@ -100,7 +103,7 @@
       const poem=document.createElement('div');poem.className='radial-clean-poem';
       verses.forEach((z,i)=>{
         const d=document.createElement('div');d.className='radial-clean-line'+(i===13?' diag-center':'');
-        d.innerHTML=i===13?`<span class="loa-center-origin" title="Centro">${esc(z)}</span>`:esc(z);
+        d.innerHTML=i===13?`<span class="loa-center-origin" title="Centro 14 × 14">${esc(z)}</span>`:esc(z);
         poem.appendChild(d);
       });
       el.appendChild(poem);
@@ -111,20 +114,18 @@
 
   window.vert=function(){
     pi=(pi+27)%27;
-    const pNo=pi+1;
+    const poem=window.GRANADA_SURFACE_POEMS?.[pi];
+    if(!poem)return;
+    const pNo=poem.number;
     $('#vi').textContent=`${String(pNo).padStart(2,'0')} / 27`;
-    $('#vt').textContent=GRANADA_TITLES[pi];
+    $('#vt').textContent=poem.title;
     const host=$('#vl');host.innerHTML='';
-    const verses=pv(pi);
-    const tel=pMeta(pNo),tmarks=new Map((tel&&tel.marks||[]).map(m=>[m.row,m]));
-    const mes=mMeta('P',pNo),mmarks=new Map((mes&&mes.valid&&mes.marks||[]).map(m=>[m.row,m]));
-    const guide=document.createElement('div');guide.className='poem-guide';guide.innerHTML=legend('LECTURA VERTICAL');host.appendChild(guide);
-    verses.forEach((z,i)=>{
+    poem.verses.forEach((z,i)=>{
       const verseNo=i+1;
-      let text=markVertical(z,tmarks.get(verseNo),mmarks.get(verseNo),mes&&mes.text||'');
-      if(pNo===14&&verseNo===14)text=`<span class="loa-center-origin" title="VEINTISIETE">${text}</span>`;
+      let text=z===''?'&nbsp;':esc(z);
+      if(pNo===14&&verseNo===14)text=`<span class="loa-center-origin" title="Centro 14 × 14">${text}</span>`;
       const d=document.createElement('div');
-      d.className='poem-line vline'+(verseNo===14?' poem-center':'');
+      d.className='poem-line vline'+(pNo===14&&verseNo===14?' poem-center':'')+(z===''?' poem-space':'');
       d.innerHTML=`<span class="poem-verse">${text}</span>`;
       host.appendChild(d);
     });
@@ -132,17 +133,18 @@
 
   window.horiz=function(){
     row=(row+27)%27;
-    const r=GRANADA_ROWS[row],hNo=r.row;
-    $('#hi').textContent=`H${String(hNo).padStart(2,'0')} / 27`;
+    const rows=stoneRows(),r=rows[row],hNo=row+1;
+    if(!r)return;
+    $('#hi').textContent=`H${String(hNo).padStart(2,'0')} / 27 · MATRIZ PROFUNDA`;
     $('#ht').textContent=GRANADA_H_TITLES[row];
     const host=$('#hl');host.innerHTML='';
     const loa=hMeta(hNo),lmarks=new Map((loa&&loa.marks||[]).map(m=>[m.position,m]));
     const mes=mMeta('H',hNo),mmarks=new Map((mes&&mes.valid&&mes.marks||[]).map(m=>[m.position,m]));
-    const guide=document.createElement('div');guide.className='poem-guide';guide.innerHTML=legend('LECTURA HORIZONTAL');host.appendChild(guide);
+    const guide=document.createElement('div');guide.className='poem-guide';guide.innerHTML=legend('LECTURA HORIZONTAL · PIEDRA');host.appendChild(guide);
     r.verses.forEach((z,i)=>{
       const pos=i+1;
       let text=markHorizontal(z,lmarks.get(pos),mmarks.get(pos),mes&&mes.text||'');
-      if(hNo===14&&pos===14)text=`<span class="loa-center-origin" title="VEINTISIETE">${text}</span>`;
+      if(hNo===14&&pos===14)text=`<span class="loa-center-origin" title="VEINTISIETE · centro 14 × 14">${text}</span>`;
       const d=document.createElement('div');
       d.className='poem-line hline'+(pos===14?' poem-center':'');
       d.innerHTML=`<span class="poem-verse">${text}</span>`;
@@ -156,26 +158,22 @@
   const baseBook=window.book;
   window.book=function(){
     baseBook();
-    const x=items[bi];if(!x||x.k!=='p')return;
+    const x=items[bi];if(!x)return;
     const els=[...document.querySelectorAll('#page .line')];
-    let m=x.e&&x.e.match(/^(\d{2}) · VERTICAL$/);
-    if(m){
-      const pNo=Number(m[1]),tel=pMeta(pNo),tmarks=new Map((tel&&tel.marks||[]).map(z=>[z.row,z]));
-      const mes=mMeta('P',pNo),mmarks=new Map((mes&&mes.valid&&mes.marks||[]).map(z=>[z.row,z]));
-      els.forEach((el,i)=>{
-        let text=markVertical(x.l[i],tmarks.get(i+1),mmarks.get(i+1),mes&&mes.text||'');
-        if(pNo===14&&i===13)text=`<span class="loa-center-origin" title="VEINTISIETE">${text}</span>`;
-        el.innerHTML=text;
-      });
+
+    /* Los poemas de superficie no reciben A/M/T. Solo se señala el gozne 14×14. */
+    if(x.k==='v'){
+      if(x.n===14&&els[13])els[13].innerHTML=`<span class="loa-center-origin" title="Centro 14 × 14">${esc(x.l[13])}</span>`;
       return;
     }
-    m=x.e&&x.e.match(/^H(\d{2}) · HORIZONTAL$/);
+
+    let m=x.e&&x.e.match(/^H(\d{2}) · HORIZONTAL$/);
     if(m){
       const hNo=Number(m[1]),loa=hMeta(hNo),lmarks=new Map((loa&&loa.marks||[]).map(z=>[z.position,z]));
       const mes=mMeta('H',hNo),mmarks=new Map((mes&&mes.valid&&mes.marks||[]).map(z=>[z.position,z]));
       els.forEach((el,i)=>{
         let text=markHorizontal(x.l[i],lmarks.get(i+1),mmarks.get(i+1),mes&&mes.text||'');
-        if(hNo===14&&i===13)text=`<span class="loa-center-origin" title="VEINTISIETE">${text}</span>`;
+        if(hNo===14&&i===13)text=`<span class="loa-center-origin" title="VEINTISIETE · centro 14 × 14">${text}</span>`;
         el.innerHTML=text;
       });
       return;
@@ -183,7 +181,7 @@
     if(x.e&&/DIAGONAL CENTRAL/.test(x.e)){
       els.forEach((el,i)=>{
         el.classList.toggle('diag-center',i===13);
-        el.innerHTML=i===13?`<span class="loa-center-origin" title="Centro">${esc(x.l[i])}</span>`:esc(x.l[i]);
+        el.innerHTML=i===13?`<span class="loa-center-origin" title="Centro 14 × 14">${esc(x.l[i])}</span>`:esc(x.l[i]);
       });
     }
   };
