@@ -7,7 +7,7 @@ window.GRANADA_LAB_EL_NUEVO_RINCONCILLO = {
   title: 'EL NUEVO RINCONCILLO',
   retainedConstraints: ['ninguna restricción matricial obligatoria'],
   verses: [
-    'A las cinco aún huele a pintura.',
+    'Todavía huele a pintura cuando abren.',
     '',
     'La puerta cierra sola',
     'hasta que alguien mete debajo',
@@ -27,7 +27,7 @@ window.GRANADA_LAB_EL_NUEVO_RINCONCILLO = {
     'con una caja de libros',
     'y dejan polvo de la calle sobre el suelo recién fregado.',
     '',
-    'Nadie lo limpia enseguida.',
+    'El polvo se queda.',
     '',
     'Una mujer sostiene la puerta',
     'mientras entra alguien que no conoce.',
