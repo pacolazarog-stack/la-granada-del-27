@@ -20,6 +20,7 @@ on:
       - 'radial-heart.js'
       - 'chance.js'
       - 'book-cover.js'
+      - 'validation-loader.mjs'
       - 'validate-surface.mjs'
       - '.github/workflows/validate-surface.yml'
   workflow_dispatch:

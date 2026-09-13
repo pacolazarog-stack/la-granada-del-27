@@ -3,11 +3,14 @@ name: Validate stone matrix
 on:
   push:
     paths:
+      - 'index.html'
       - 'matrix-*.js'
+      - 'stone-mesostic.js'
       - 'laboratorio/bajo-la-cal-nucleo.js'
       - 'laboratorio/piedra-matriz.js'
       - 'laboratorio/mesosticos-piedra-redisenados.js'
       - 'laboratorio/validacion-piedra.js'
+      - 'validation-loader.mjs'
       - 'validate-stone.mjs'
       - '.github/workflows/validate-stone.yml'
   workflow_dispatch:

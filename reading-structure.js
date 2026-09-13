@@ -46,7 +46,8 @@
       widths.forEach((w,i)=>{if(w>maxWidth){maxWidth=w;maxIndex=i;}});
       const size=Math.max(min,Math.min(base,base*(available/Math.max(1,maxWidth))));
       const finalWidth=Math.min(available,maxWidth*(size/base));
-      host.classList.add('fit-poem','poem-justified');
+      host.classList.add('fit-poem');
+      host.classList.remove('poem-justified');
       host.style.setProperty('--poem-font-size',`${size.toFixed(2)}px`);
       host.style.setProperty('--poem-measure',`${Math.ceil(finalWidth)}px`);
       host.dataset.widestVerse=String(maxIndex+1);

@@ -1,51 +1,9 @@
-import fs from 'node:fs';
-import vm from 'node:vm';
+import {loadScripts,scriptsFromIndexThrough} from './validation-loader.mjs';
 
 globalThis.window=globalThis;
 
-/* Mismo orden de datos que index.html: primero piedra, después LA VEGA y superficie. */
-const files=[
-  'matrix-core.js','matrix-1.js','matrix-2.js','matrix-3.js',
-  'matrix-secret.js','matrix-mesostic.js',
-  'laboratorio/bajo-la-cal-nucleo.js',
-  'laboratorio/piedra-matriz.js',
-  'laboratorio/mesosticos-piedra-redisenados.js',
-  'stone-mesostic.js',
-  'matrix-la-vega.js',
-  'laboratorio/granada-1927-libre.js',
-  'laboratorio/el-rinconcillo-libre.js',
-  'laboratorio/don-manuel-libre.js',
-  'laboratorio/federico-libre.js',
-  'laboratorio/hermenegildo-libre.js',
-  'laboratorio/manuel-angeles-libre.js',
-  'laboratorio/los-titeres-libre.js',
-  'laboratorio/la-puerta-del-vino-libre.js',
-  'laboratorio/antes-de-saberlo-libre.js',
-  'laboratorio/agosto-libre.js',
-  'laboratorio/el-barranco-libre.js',
-  'laboratorio/la-ciudad-callo-libre.js',
-  'laboratorio/la-casa-cerrada-densidad.js',
-  'laboratorio/gran-via-densidad.js',
-  'laboratorio/alhambra-sa-libre.js',
-  'laboratorio/habitacion-con-turistas-libre.js',
-  'laboratorio/cien-anos-libre.js',
-  'laboratorio/granada-2027-libre.js',
-  'laboratorio/el-nuevo-rinconcillo-libre.js',
-  'laboratorio/gallo-vuelve-a-cantar-libre.js',
-  'laboratorio/los-otros-libre.js',
-  'laboratorio/las-que-faltaban-libre.js',
-  'laboratorio/cancion-para-quien-acaba-de-llegar-libre.js',
-  'laboratorio/la-ciudad-que-todavia-puede-ser-libre.js',
-  'laboratorio/que-vuelva-a-ocurrir-libre.js',
-  'laboratorio/un-siglo-despues-libre.js',
-  'laboratorio/palindromo-tres-juntas.js',
-  'surface-poems.js'
-];
-
-for(const file of files){
-  const code=fs.readFileSync(new URL(`./${file}`,import.meta.url),'utf8');
-  vm.runInThisContext(code,{filename:file});
-}
+/* Valida el mismo ensamblaje y el mismo orden que publica index.html. */
+loadScripts(scriptsFromIndexThrough('surface-poems.js'));
 
 const poems=globalThis.GRANADA_SURFACE_POEMS;
 const stone=globalThis.GRANADA_STONE_ROWS;

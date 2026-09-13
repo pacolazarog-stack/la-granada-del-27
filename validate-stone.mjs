@@ -1,25 +1,13 @@
-import fs from 'node:fs';
-import vm from 'node:vm';
+import {loadScripts,scriptsFromIndexThrough} from './validation-loader.mjs';
 
 globalThis.window=globalThis;
 
-const files=[
-  'matrix-core.js',
-  'matrix-1.js',
-  'matrix-2.js',
-  'matrix-3.js',
-  'matrix-secret.js',
-  'matrix-mesostic.js',
-  'laboratorio/bajo-la-cal-nucleo.js',
-  'laboratorio/piedra-matriz.js',
-  'laboratorio/mesosticos-piedra-redisenados.js',
-  'laboratorio/validacion-piedra.js'
-];
-
-for(const file of files){
-  const code=fs.readFileSync(new URL(`./${file}`,import.meta.url),'utf8');
-  vm.runInThisContext(code,{filename:file});
+/* Carga la capa pétrea en el orden público, antes de LA VEGA. */
+const files=scriptsFromIndexThrough('stone-mesostic.js');
+if(files.includes('matrix-la-vega.js')){
+  throw new Error('PIEDRA: index.html aplica LA VEGA antes de congelar la matriz pétrea');
 }
+loadScripts([...files,'laboratorio/validacion-piedra.js']);
 
 const report=globalThis.GRANADA_STONE_REPORT;
 if(!report) throw new Error('No se generó GRANADA_STONE_REPORT');
