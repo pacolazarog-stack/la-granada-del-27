@@ -4,10 +4,9 @@
   const view=$('#radial');
   if(!view)return;
 
-  // H14 · BAJO LA CAL es el eje transversal que, desde la celda 14×14,
-  // se bifurca en los dos sonetos. La primacía estructural del centro
-  // corresponde al verso 14 de P14 · LA VEGA, que ocupa esa misma celda.
-  const row14=()=>GRANADA_ROWS[13].verses;
+  // H14 · BAJO LA CAL es el eje transversal nuevo. LA VEGA conserva la
+  // primacía del centro: ambos estratos comparten exactamente la celda 14×14.
+  const row14=()=>window.GRANADA_LAB_BAJO_LA_CAL?.verses||[];
   const center=()=>row14()[13];
   const buried=()=>row14().slice(0,13).reverse();
   const open=()=>row14().slice(14);
@@ -18,7 +17,7 @@
   function measureShared(){
     const all=row14();
     const hosts=[...view.querySelectorAll('.radial-sonnet-lines')];
-    if(!hosts.length)return;
+    if(!hosts.length||!all.length)return;
     const available=Math.max(220,Math.min(...hosts.map(h=>h.clientWidth||480))-4);
     const mobile=window.matchMedia('(max-width:820px)').matches;
     const base=mobile?15:18;
@@ -27,12 +26,9 @@
     let maxWidth=0,maxIndex=0;
     if(ctx){
       ctx.font=`${base}px ${family}`;
-      all.forEach((v,i)=>{
-        const w=ctx.measureText(v).width;
-        if(w>maxWidth){maxWidth=w;maxIndex=i;}
-      });
+      all.forEach((v,i)=>{const w=ctx.measureText(v).width;if(w>maxWidth){maxWidth=w;maxIndex=i}});
     }else{
-      all.forEach((v,i)=>{if(v.length>(all[maxIndex]||'').length)maxIndex=i;});
+      all.forEach((v,i)=>{if(v.length>(all[maxIndex]||'').length)maxIndex=i});
       maxWidth=(all[maxIndex]||'').length*base*.52;
     }
     const size=Math.max(min,Math.min(base,base*(available/Math.max(1,maxWidth))));
@@ -40,7 +36,7 @@
     view.style.setProperty('--heart-font-size',`${size.toFixed(2)}px`);
     view.style.setProperty('--heart-measure',`${Math.ceil(width)}px`);
     view.dataset.widestVerse=String(maxIndex+1);
-    view.title=`Los dos sonetos comparten la medida del verso más ancho del eje H14 · BAJO LA CAL: verso ${maxIndex+1}, «${all[maxIndex]}»`;
+    view.title=`Los dos sonetos comparten la medida del verso más ancho de BAJO LA CAL: verso ${maxIndex+1}, «${all[maxIndex]}»`;
   }
 
   function branch(title,subtitle,lines,kind){
@@ -55,6 +51,7 @@
   }
 
   function render(){
+    if(row14().length!==27)return;
     view.innerHTML=`
       <section class="radial-heart">
         <header class="radial-heart-head">
@@ -89,9 +86,7 @@
   }
 
   window.radial=render;
-  window.addEventListener('resize',()=>{
-    if(view&&!view.classList.contains('hidden'))measureShared();
-  });
+  window.addEventListener('resize',()=>{if(view&&!view.classList.contains('hidden'))measureShared()});
   document.querySelector('[data-mode="radial"]')?.addEventListener('click',()=>setTimeout(render,0));
   render();
 })();
