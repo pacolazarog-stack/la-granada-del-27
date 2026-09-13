@@ -1,0 +1,21 @@
+name: Validate surface poems
+
+on:
+  push:
+    paths:
+      - 'surface-poems.js'
+      - 'matrix-la-vega.js'
+      - 'laboratorio/*-libre.js'
+      - 'validate-surface.mjs'
+      - '.github/workflows/validate-surface.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node validate-surface.mjs
