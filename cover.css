@@ -1,0 +1,44 @@
+/* Cubierta digital: 2027 mira a 1927 a través de la puerta; la Vega permanece. */
+.page.cover-page,.page.back-cover-page{padding:0;overflow:hidden;position:relative;background:#171512;color:#f7f0e6}
+.page.cover-page::before,.page.back-cover-page::before{content:"";position:absolute;inset:0;background-image:linear-gradient(to bottom,rgba(6,8,8,.10),rgba(10,9,7,.22) 48%,rgba(9,7,5,.68) 100%),url('cover-art.svg');background-size:cover;background-position:center;z-index:0;transform:scale(1.003)}
+.page.back-cover-page::before{transform:scaleX(-1) scale(1.003);filter:saturate(.72) brightness(.72);opacity:.78}
+.page.cover-page::after,.page.back-cover-page::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),inset 0 -220px 180px rgba(8,6,4,.34)}
+
+.book-cover{position:relative;z-index:2;min-height:100%;height:100%;display:grid;grid-template-rows:auto 1fr auto;padding:34px 44px 36px;text-shadow:0 2px 16px rgba(0,0,0,.62)}
+.cover-top{display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:.20em;text-transform:uppercase;color:rgba(255,245,231,.76)}
+.cover-axis{border:1px solid rgba(255,241,219,.45);border-radius:999px;padding:5px 9px;letter-spacing:.12em}
+.cover-center{align-self:center;text-align:center;margin-top:6vh}
+.cover-title{font-size:clamp(42px,6.2vw,74px);line-height:.91;letter-spacing:.025em;font-weight:400;margin:0;text-wrap:balance}
+.cover-title span{display:block}
+.cover-subtitle{margin:23px auto 0;font-size:clamp(15px,2.2vw,24px);letter-spacing:.23em;text-transform:uppercase;font-weight:400}
+.cover-rule{width:72px;height:1px;background:rgba(255,239,216,.72);margin:22px auto}
+.cover-motto{font-size:clamp(14px,1.65vw,19px);line-height:1.48;margin:0 auto;max-width:25em;font-style:italic}
+.cover-bottom{text-align:center}
+.cover-author{font-size:clamp(15px,2vw,22px);letter-spacing:.045em}
+.cover-hinge{margin-top:14px;font-size:8px;letter-spacing:.19em;text-transform:uppercase;color:rgba(255,245,231,.70)}
+
+.book-back{position:relative;z-index:2;height:100%;overflow:auto;display:grid;align-content:center;padding:44px 58px;background:linear-gradient(90deg,rgba(18,15,12,.88),rgba(18,15,12,.73) 64%,rgba(18,15,12,.46));text-shadow:0 1px 10px rgba(0,0,0,.72)}
+.back-copy{width:min(100%,35em);margin-right:auto}
+.back-kicker{font-size:9px;letter-spacing:.20em;text-transform:uppercase;color:#d1b79a;margin-bottom:16px}
+.back-copy h2{text-align:left;font-size:clamp(28px,4vw,43px);line-height:1.08;margin:0 0 24px;color:#fff6e9;font-weight:400}
+.back-copy p{font-size:clamp(13px,1.45vw,16px);line-height:1.56;color:rgba(255,246,234,.92);margin:0 0 14px}
+.back-copy .back-axis-line{font-style:italic;font-size:clamp(15px,1.7vw,19px);margin:19px 0;color:#fff4e3}
+.back-copy .back-questions{margin:22px 0;padding-left:18px;border-left:1px solid rgba(210,177,142,.65)}
+.back-copy .back-questions p{margin:4px 0;font-style:italic}
+.back-final{margin-top:27px!important;font-size:clamp(19px,2.5vw,27px)!important;line-height:1.24!important;color:#e0b58b!important}
+.back-credit{margin-top:24px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,240,223,.62)}
+
+/* En cubierta, la navegación actúa como gesto físico de abrir/cerrar el libro. */
+#bookview:has(.cover-page) .progress,#bookview:has(.back-cover-page) .progress{letter-spacing:.12em;text-transform:uppercase}
+
+@media(max-width:780px){
+  .book-cover{padding:24px 24px 28px}
+  .cover-top{font-size:7px}
+  .cover-center{margin-top:2vh}
+  .cover-title{font-size:42px}
+  .cover-subtitle{font-size:14px;letter-spacing:.15em}
+  .cover-motto{font-size:14px;max-width:20em}
+  .book-back{padding:32px 26px;background:rgba(18,15,12,.76)}
+  .back-copy h2{font-size:30px}
+  .back-copy p{font-size:13px;line-height:1.48}
+}
