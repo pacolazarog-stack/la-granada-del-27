@@ -1,1 +1,99 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#15120f"><title>La Granada del 27 · Un siglo después</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="reading-structure.css"><link rel="stylesheet" href="diagonal-reader.css"><link rel="stylesheet" href="radial-heart.css"><link rel="stylesheet" href="cover.css"><script src="matrix-core.js"></script><script src="matrix-1.js"></script><script src="matrix-2.js"></script><script src="matrix-3.js"></script><script src="matrix-la-vega.js"></script><script src="matrix-secret.js"></script><script src="matrix-secret-patch.js"></script><script src="matrix-mesostic.js"></script><script src="matrix-validation.js"></script></head><body><div id="app"><header><div class="brand"><strong>LA GRANADA DEL 27</strong><small>Un siglo después</small></div><nav><button class="mode active" data-mode="bookview">LIBRO</button><button class="mode" data-mode="verticalreader">VERTICAL</button><button class="mode" data-mode="horizontal">HORIZONTAL</button><button class="mode" data-mode="diagonal">DIAGONAL</button><button class="mode" data-mode="radial">RADIAL</button><button class="mode" data-mode="chance">AZAR</button></nav><div><button class="btn" id="full">⛶</button></div></header><main><section id="bookview" class="view"><div class="stage"><article class="page" id="page"></article></div><div class="nav"><button class="btn" id="bp">← Anterior</button><div class="progress" id="prog"></div><button class="btn" id="bn">Siguiente →</button></div></section><section id="verticalreader" class="view reader hidden"><button class="move prev" id="vp">‹</button><button class="move next" id="vn">›</button><article class="sheet"><div class="eyebrow" id="vi"></div><h2 id="vt"></h2><div id="vl"></div></article></section><section id="horizontal" class="view reader hidden"><button class="move prev" id="hrp">‹</button><button class="move next" id="hrn">›</button><article class="sheet"><div class="eyebrow" id="hi"></div><h2 id="ht"></h2><div id="hl"></div></article></section><section id="diagonal" class="view hidden"><div class="rad"><div class="branch" id="dl"><div class="btitle">I · DIAGONAL CENTRAL ↘</div></div><div class="branch" id="dr"><div class="btitle">II · DIAGONAL CENTRAL ↗</div></div></div></section><section id="radial" class="view hidden"><div class="rad"><div class="branch" id="rl"><div class="btitle">I · HACIA LO ENTERRADO</div></div><div class="branch" id="rr"><div class="btitle">II · HACIA LO ABIERTO</div></div></div></section><section id="chance" class="view hidden"><div class="chance-nav"><button class="btn" id="chance-roll">Golpe de azar</button><span id="chance-seed"></span></div><div class="chance-wrap"><button class="btn chance-arrow" id="chance-prev">‹</button><div class="chance-center"><div class="chance-title">EL GOLPE DE AZAR</div><div class="chance-stage-label" id="chance-stage-label"></div><div class="chance-current" id="chance-current"></div><div class="chance-pos" id="chance-pos"></div></div><button class="btn chance-arrow" id="chance-next">›</button></div></section></main></div><script src="site.js"></script><script src="app.js"></script><script src="reading-structure.js"></script><script src="diagonal-reader.js"></script><script src="radial-heart.js"></script><script src="chance.js"></script><script src="book-cover.js"></script></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#15120f">
+  <title>La Granada del 27 · Un siglo después</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reading-structure.css">
+  <link rel="stylesheet" href="diagonal-reader.css">
+  <link rel="stylesheet" href="radial-heart.css">
+  <link rel="stylesheet" href="cover.css">
+
+  <!-- PIEDRA · matriz profunda heredada -->
+  <script src="matrix-core.js"></script>
+  <script src="matrix-1.js"></script>
+  <script src="matrix-2.js"></script>
+  <script src="matrix-3.js"></script>
+  <script src="matrix-secret.js"></script>
+  <script src="matrix-mesostic.js"></script>
+  <script src="laboratorio/bajo-la-cal-nucleo.js"></script>
+  <script src="laboratorio/piedra-matriz.js"></script>
+  <script src="laboratorio/mesosticos-piedra-redisenados.js"></script>
+  <script src="stone-mesostic.js"></script>
+
+  <!-- CUBIERTA · LA VEGA entra después de congelar la piedra -->
+  <script src="matrix-la-vega.js"></script>
+
+  <!-- SUPERFICIE · cuerpo poético visible -->
+  <script src="laboratorio/granada-1927-libre.js"></script>
+  <script src="laboratorio/el-rinconcillo-libre.js"></script>
+  <script src="laboratorio/don-manuel-libre.js"></script>
+  <script src="laboratorio/federico-libre.js"></script>
+  <script src="laboratorio/hermenegildo-libre.js"></script>
+  <script src="laboratorio/manuel-angeles-libre.js"></script>
+  <script src="laboratorio/los-titeres-libre.js"></script>
+  <script src="laboratorio/la-puerta-del-vino-libre.js"></script>
+  <script src="laboratorio/antes-de-saberlo-libre.js"></script>
+  <script src="laboratorio/agosto-libre.js"></script>
+  <script src="laboratorio/el-barranco-libre.js"></script>
+  <script src="laboratorio/la-ciudad-callo-libre.js"></script>
+  <script src="laboratorio/la-casa-cerrada-densidad.js"></script>
+  <script src="laboratorio/gran-via-densidad.js"></script>
+  <script src="laboratorio/alhambra-sa-libre.js"></script>
+  <script src="laboratorio/habitacion-con-turistas-libre.js"></script>
+  <script src="laboratorio/cien-anos-libre.js"></script>
+  <script src="laboratorio/granada-2027-libre.js"></script>
+  <script src="laboratorio/el-nuevo-rinconcillo-libre.js"></script>
+  <script src="laboratorio/gallo-vuelve-a-cantar-libre.js"></script>
+  <script src="laboratorio/los-otros-libre.js"></script>
+  <script src="laboratorio/las-que-faltaban-libre.js"></script>
+  <script src="laboratorio/cancion-para-quien-acaba-de-llegar-libre.js"></script>
+  <script src="laboratorio/la-ciudad-que-todavia-puede-ser-libre.js"></script>
+  <script src="laboratorio/que-vuelva-a-ocurrir-libre.js"></script>
+  <script src="laboratorio/un-siglo-despues-libre.js"></script>
+  <script src="laboratorio/palindromo-tres-juntas.js"></script>
+  <script src="surface-poems.js"></script>
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="brand"><strong>LA GRANADA DEL 27</strong><small>Un siglo después</small></div>
+    <nav>
+      <button class="mode active" data-mode="bookview">LIBRO</button>
+      <button class="mode" data-mode="verticalreader">VERTICAL</button>
+      <button class="mode" data-mode="horizontal">HORIZONTAL</button>
+      <button class="mode" data-mode="diagonal">DIAGONAL</button>
+      <button class="mode" data-mode="radial">RADIAL</button>
+      <button class="mode" data-mode="chance">AZAR</button>
+    </nav>
+    <div><button class="btn" id="full">⛶</button></div>
+  </header>
+  <main>
+    <section id="bookview" class="view">
+      <div class="stage"><article class="page" id="page"></article></div>
+      <div class="nav"><button class="btn" id="bp">← Anterior</button><div class="progress" id="prog"></div><button class="btn" id="bn">Siguiente →</button></div>
+    </section>
+    <section id="verticalreader" class="view reader hidden">
+      <button class="move prev" id="vp">‹</button><button class="move next" id="vn">›</button>
+      <article class="sheet"><div class="eyebrow" id="vi"></div><h2 id="vt"></h2><div id="vl"></div></article>
+    </section>
+    <section id="horizontal" class="view reader hidden">
+      <button class="move prev" id="hrp">‹</button><button class="move next" id="hrn">›</button>
+      <article class="sheet"><div class="eyebrow" id="hi"></div><h2 id="ht"></h2><div id="hl"></div></article>
+    </section>
+    <section id="diagonal" class="view hidden"><div class="rad"><div class="branch" id="dl"><div class="btitle">I · DIAGONAL CENTRAL ↘</div></div><div class="branch" id="dr"><div class="btitle">II · DIAGONAL CENTRAL ↗</div></div></div></section>
+    <section id="radial" class="view hidden"><div class="rad"><div class="branch" id="rl"><div class="btitle">I · HACIA LO ENTERRADO</div></div><div class="branch" id="rr"><div class="btitle">II · HACIA LO ABIERTO</div></div></div></section>
+    <section id="chance" class="view hidden"><div class="chance-nav"><button class="btn" id="chance-roll">Golpe de azar</button><span id="chance-seed"></span></div><div class="chance-wrap"><button class="btn chance-arrow" id="chance-prev">‹</button><div class="chance-center"><div class="chance-title">EL GOLPE DE AZAR</div><div class="chance-stage-label" id="chance-stage-label"></div><div class="chance-current" id="chance-current"></div><div class="chance-pos" id="chance-pos"></div></div><button class="btn chance-arrow" id="chance-next">›</button></div></section>
+  </main>
+</div>
+<script src="site.js"></script>
+<script src="app.js"></script>
+<script src="reading-structure.js"></script>
+<script src="diagonal-reader.js"></script>
+<script src="radial-heart.js"></script>
+<script src="chance.js"></script>
+<script src="book-cover.js"></script>
+</body>
+</html>
