@@ -11,12 +11,13 @@ Canon vigente: **13 de septiembre de 2026**
 - PDF: 84 páginas.
 - Texto vectorial y fuentes incrustadas.
 - PDF canónico en Google Drive: https://drive.google.com/file/d/12wQoz7Oyyu15m3LGTUH2PChrkvq6Tbcd/view
-- SHA-256: `7c02c5b7928ec3313491510c77e9de6ad01c92433e444cecfd95e8ffd72c20d6`
+- SHA-256: `57efd7e26f9824b3d9676106527b2bb175839dbacc6d652a41ea896dd0a27a89`
 
 ## Reglas editoriales de cierre
 
 La edición impresa **no incluye Nota de lectura ni guía explicativa final**.
 
+- **Página 45 · UN SIGLO DESPUÉS**: el poema termina en `Su madre tira de él y se ríe.` seguido directamente por `Granada sucede — sucede Granada.`. No reintroducir `Bajo la avenida sigue pasando el agua.`.
 - **Página 80 · REVELACIÓN**: conservar únicamente `REVELACIÓN`, `LA GRANADA DEL DOS SIETE` y `LA GRANADA DEL 27`. No añadir explicación de la relación entre superficie, piedra, sonetos o centro estructural.
 - **Página 82 · GRANADA QUEDA**: el epílogo termina en `Granada queda en el agua.`
 - **Página 83**: página completamente en blanco, sin título, texto, línea ni folio.
@@ -24,7 +25,7 @@ La edición impresa **no incluye Nota de lectura ni guía explicativa final**.
 
 El ritmo final buscado es:
 
-**epílogo → silencio → contraportada**.
+**risa → estribillo → epílogo → silencio → contraportada**.
 
 ## Arquitectura
 
@@ -35,4 +36,9 @@ El ritmo final buscado es:
 
 ## Alcance de la última poda
 
-Esta revisión es **puramente editorial**. No modifica ningún poema, ninguna lectura de piedra ni el centro 14 × 14. Solo elimina la frase explicativa de la página 80 y convierte la antigua página de guía final en la página blanca 83.
+La revisión vigente incorpora dos tipos de poda ya fijados:
+
+1. **Poda poética mínima en P27**: se elimina únicamente `Bajo la avenida sigue pasando el agua.` por repetición funcional con P15 y con el propio campo hídrico de P27.
+2. **Poda editorial final**: se elimina la frase explicativa de la página 80 y la antigua guía final, convertida en página blanca 83.
+
+No se modifica **LA VEGA**, ninguna lectura de piedra ni el centro 14 × 14.
