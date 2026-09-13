@@ -1,11 +1,25 @@
-name: Validate surface poems
+name: Validate public assembly
 
 on:
   push:
     paths:
+      - 'index.html'
       - 'surface-poems.js'
-      - 'matrix-la-vega.js'
+      - 'stone-mesostic.js'
+      - 'matrix-*.js'
       - 'laboratorio/*-libre.js'
+      - 'laboratorio/*-densidad.js'
+      - 'laboratorio/bajo-la-cal-nucleo.js'
+      - 'laboratorio/piedra-matriz.js'
+      - 'laboratorio/mesosticos-piedra-redisenados.js'
+      - 'laboratorio/palindromo-tres-juntas.js'
+      - 'site.js'
+      - 'app.js'
+      - 'reading-structure.js'
+      - 'diagonal-reader.js'
+      - 'radial-heart.js'
+      - 'chance.js'
+      - 'book-cover.js'
       - 'validate-surface.mjs'
       - '.github/workflows/validate-surface.yml'
   workflow_dispatch:
@@ -18,4 +32,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node validate-surface.mjs
+      - name: Validate data assembly
+        run: node validate-surface.mjs
+      - name: Check reader syntax
+        run: |
+          node --check site.js
+          node --check app.js
+          node --check reading-structure.js
+          node --check diagonal-reader.js
+          node --check radial-heart.js
+          node --check chance.js
+          node --check book-cover.js
