@@ -159,45 +159,64 @@ const LOA_II=[
   'Granada vuelve, canta.'
 ];
 
+const SURFACE=window.GRANADA_SURFACE_POEMS||[];
+const STONE=window.GRANADA_STONE_ROWS||window.GRANADA_ROWS||[];
+const CORE=window.GRANADA_LAB_BAJO_LA_CAL||null;
+const PAL=window.GRANADA_LAB_PALINDROMO?.text||'Granada sucede — sucede Granada.';
+
 let items=[],bi=0,pi=0,row=13,hp=0;
-const pv=i=>GRANADA_ROWS.map(r=>r.verses[i]);
-const diagDown=()=>GRANADA_ROWS.map((r,i)=>r.verses[i]);
-const diagUp=()=>GRANADA_ROWS.map((r,i)=>r.verses[26-i]);
+const pv=i=>SURFACE[i]?.verses||[];
+const diagDown=()=>STONE.map((r,i)=>r.verses[i]);
+const diagUp=()=>STONE.map((r,i)=>r.verses[26-i]);
+const buried=()=>CORE?.radial?.buried?.verses||[];
+const opened=()=>CORE?.radial?.open?.verses||[];
 
 function build(){
-  const add=(k,e,t,l)=>items.push({k,e,t,l});
+  const add=(k,e,t,l,extra={})=>items.push({k,e,t,l,...extra});
+  const joint=after=>items.push({k:'j',after,text:PAL});
+  items=[];
   items.push({k:'s',t:'LA GRANADA DEL 27 · UN SIGLO DESPUÉS',sub:''});
   add('t','PRÓLOGO','ANTES DE CONTAR',PRO.split('\n'));
-  items.push({k:'s',t:'LIBRO I · LA GRANADA DEL 27',sub:'27 poemas verticales'});
-  GRANADA_TITLES.forEach((t,i)=>add('p',`${String(i+1).padStart(2,'0')} · VERTICAL`,t,pv(i)));
-  items.push({k:'s',t:'LIBRO II · BAJO LA CAL',sub:'27 poemas horizontales'});
-  GRANADA_ROWS.forEach((r,i)=>add('p',`H${String(i+1).padStart(2,'0')} · HORIZONTAL`,GRANADA_H_TITLES[i],r.verses));
-  items.push({k:'s',t:'LIBRO III · LA GRANADA DEL 27',sub:'El centro secreto'});
-  add('p','I · DIAGONAL CENTRAL ↘','DIAGONAL ↘',diagDown());
-  add('p','II · DIAGONAL CENTRAL ↗','DIAGONAL ↗',diagUp());
-  const v=GRANADA_ROWS[13].verses;
-  add('p','III · RADIAL','HACIA LO ENTERRADO',[v[13],...v.slice(0,13).reverse()]);
-  add('p','IV · RADIAL','HACIA LO ABIERTO',[v[13],...v.slice(14)]);
-  items.push({k:'r',t:'LA GRANADA DEL DOS SIETE',sub:'LA GRANADA DEL 27',body:'Cuatro lecturas articuladas por el mismo verso central'});
-  add('t','EPÍLOGO','GRANADA QUEDA',EPI.split('\n'));
-  items.push({k:'s',t:'OTRA MANERA DE LEER',sub:'',body:'Los poemas admiten lectura vertical, horizontal, diagonal y radial. Las dos diagonales centrales se cruzan en «Late bajo la cal la acequia hundida.». Dos loas recorren la matriz: una nace de letras destacadas en los poemas horizontales y otra de palabras destacadas en los verticales. Ambas convergen en VEINTISIETE.'});
+  items.push({k:'s',t:'LIBRO I · LA GRANADA DEL 27',sub:'27 poemas'});
+
+  SURFACE.forEach(p=>{
+    add('v',`${String(p.number).padStart(2,'0')} · POEMA`,p.title,p.verses,{n:p.number});
+    if(p.number===9||p.number===18)joint(p.number);
+  });
+
+  /* La tercera aparición del palíndromo ya es el último verso de P27.
+     Las dos Loas se enfrentan inmediatamente después: no hay cuarta repetición. */
   items.push({k:'c',t:'LAS DOS LOAS',sub:'',v1:LOA_I,v2:LOA_II});
+
+  items.push({k:'s',t:'LIBRO II · BAJO LA CAL',sub:'27 poemas horizontales · matriz profunda'});
+  STONE.forEach((r,i)=>add('p',`H${String(i+1).padStart(2,'0')} · HORIZONTAL`,GRANADA_H_TITLES[i],r.verses,{n:i+1,layer:'stone'}));
+
+  items.push({k:'s',t:'LIBRO III · LA GRANADA DEL 27',sub:'El centro secreto'});
+  add('p','I · DIAGONAL CENTRAL ↘','DIAGONAL ↘',diagDown(),{layer:'stone'});
+  add('p','II · DIAGONAL CENTRAL ↗','DIAGONAL ↗',diagUp(),{layer:'stone'});
+  add('p','III · RADIAL','HACIA LO ENTERRADO',buried(),{layer:'core'});
+  add('p','IV · RADIAL','HACIA LO ABIERTO',opened(),{layer:'core'});
+  items.push({k:'r',t:'LA GRANADA DEL DOS SIETE',sub:'LA GRANADA DEL 27',body:'La superficie, la piedra y los dos sonetos se articulan por el mismo verso central.'});
+  add('t','EPÍLOGO','GRANADA QUEDA',EPI.split('\n'));
+  items.push({k:'s',t:'OTRA MANERA DE LEER',sub:'',body:'Arriba, los 27 poemas se miran por parejas alrededor de LA VEGA. Debajo permanece una matriz de 729 posiciones: 27 horizontales, dos diagonales, dos Loas y 54 voces mesósticas. Ambas construcciones se encuentran exactamente en 14 × 14: «Late bajo la cal la acequia hundida.»'});
 }
 
 function book(){
-  let x=items[bi],el=$('#page');
+  const x=items[bi],el=$('#page');
   el.innerHTML='';el.scrollTop=0;
   if(x.k==='s'||x.k==='r'){
     el.innerHTML=`<div class="section"><div><h2 class="${x.k==='r'?'reveal':''}">${x.t}</h2><p>${x.sub||''}</p><p>${x.body||''}</p></div></div>`;
+  }else if(x.k==='j'){
+    el.innerHTML=`<div class="section"><div><p style="font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.25rem,3vw,2rem);letter-spacing:.02em;text-align:center;margin:0">${x.text}</p></div></div>`;
   }else if(x.k==='c'){
-    el.innerHTML='<div class="eyebrow">CODA · CORO DOBLE</div><h2>LAS DOS LOAS</h2><div class="eyebrow">VOZ I · LOA HORIZONTAL</div><div class="text" id="loa1"></div><div style="height:18px"></div><div class="eyebrow">VOZ II · LOA VERTICAL</div><div class="text" id="loa2"></div>';
+    el.innerHTML='<div class="eyebrow">CODA · DOS DIRECCIONES</div><h2>LAS DOS LOAS</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:32px;align-items:start"><div><div class="eyebrow">LOA I · HACIA FUERA</div><div class="text" id="loa1"></div></div><div><div class="eyebrow">LOA II · HACIA DENTRO</div><div class="text" id="loa2"></div></div></div>';
     $('#loa1').textContent=x.v1.join('\n');
     $('#loa2').textContent=x.v2.join('\n');
   }else{
     el.innerHTML=`<div class="eyebrow">${x.e}</div><h2>${x.t}</h2><div class="${x.k==='t'?'text':'lines'}"></div>`;
-    let b=el.lastElementChild;
+    const b=el.lastElementChild;
     if(x.k==='t')b.textContent=x.l.join('\n');
-    else x.l.forEach(z=>{let d=document.createElement('div');d.className='line';d.textContent=z;b.appendChild(d)});
+    else x.l.forEach(z=>{const d=document.createElement('div');d.className='line';if(z==='')d.innerHTML='&nbsp;';else d.textContent=z;b.appendChild(d)});
   }
   $('#prog').textContent=`${bi+1} / ${items.length}`;
   $('#bp').disabled=bi===0;
@@ -206,10 +225,10 @@ function book(){
 
 function rr(el,a){
   [...el.querySelectorAll('.rrow')].forEach(n=>n.remove());
-  let m=['L','A','G','R','A','N','A','D','A','D','E','L','DOS','SIETE'];
-  a.forEach((z,i)=>{let d=document.createElement('div');d.className='rrow';d.innerHTML=`<div class="rmark">${m[i]}</div><div class="rtext"></div>`;d.lastChild.textContent=z;el.appendChild(d)});
+  const m=['L','A','G','R','A','N','A','D','A','D','E','L','DOS','SIETE'];
+  a.forEach((z,i)=>{const d=document.createElement('div');d.className='rrow';d.innerHTML=`<div class="rmark">${m[i]}</div><div class="rtext"></div>`;d.lastChild.textContent=z;el.appendChild(d)});
 }
-function radial(){let v=GRANADA_ROWS[13].verses;rr($('#rl'),[v[13],...v.slice(0,13).reverse()]);rr($('#rr'),[v[13],...v.slice(14)])}
+function radial(){rr($('#rl'),buried());rr($('#rr'),opened())}
 
 function diagonal(){
   const render=(el,title,verses)=>{
