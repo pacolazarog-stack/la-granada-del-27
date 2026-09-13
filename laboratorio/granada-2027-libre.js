@@ -46,11 +46,13 @@ window.GRANADA_LAB_GRANADA_2027 = {
     'La fotografía queda en la memoria del teléfono',
     'junto a otras ciento cuarenta y seis imágenes.',
     '',
-    'La ciudad continúa.'
+    'La pantalla se apaga.',
+    'En la pared del garaje',
+    'una gota alcanza el suelo.'
   ],
-  respiration: 'presente urbano en secuencias de acción; la fecha aparece tarde y sin énfasis celebratorio',
-  corporeality: ['broca','acera','bicicleta','farola','pared','garaje','móvil','camiseta','tubo','coche','pan'],
-  soundField: ['broca sobre hormigón','tráfico implícito','voz directa','actividad de panadería'],
+  respiration: 'presente urbano en secuencias de acción; la fecha aparece tarde y sin énfasis celebratorio; el cierre devuelve la mirada del archivo digital a la materia húmeda',
+  corporeality: ['broca','acera','bicicleta','farola','pared','garaje','móvil','camiseta','tubo','coche','pan','gota'],
+  soundField: ['broca sobre hormigón','tráfico implícito','voz directa','actividad de panadería','gota final'],
   mirrorPotential: {
     with: 'ANTES DE SABERLO',
     axis: 'el presente queda fechado sin que quienes lo viven sepan qué conservará el tiempo',
@@ -59,8 +61,8 @@ window.GRANADA_LAB_GRANADA_2027 = {
       'papeles alineados ↔ imágenes acumuladas',
       '1927 estampado ↔ 2027 almacenado',
       'tranvía ↔ bicicleta y obra',
-      'tinta que se seca ↔ fotografía que queda archivada'
+      'tinta que se seca ↔ pantalla que se apaga mientras la humedad continúa'
     ]
   },
-  status: 'laboratorio; poema autónomo, no sustituye todavía P19 en el libro público'
+  status: 'poema de superficie'
 };
