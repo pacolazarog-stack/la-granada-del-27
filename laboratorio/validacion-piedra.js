@@ -7,7 +7,7 @@
   const source=window.GRANADA_ROWS;
   const acrostic=window.GRANADA_STONE_ACROSTIC;
   const telestic=window.GRANADA_STONE_TELESTIC;
-  const voices=window.GRANADA_MESOSTIC_VOICES;
+  const voices=window.GRANADA_STONE_MESOSTIC_VOICES||window.GRANADA_MESOSTIC_VOICES;
   if(!rows||!source||!acrostic||!telestic||!voices){
     throw new Error('VALIDACIÓN PIEDRA: faltan dependencias');
   }
@@ -108,7 +108,11 @@
   function makeMesostic(n,side,text){
     const wanted=letters(text);
     const positions=path(n);
+    const expected=n===14?27:14;
     const errors=[];
+    if(wanted.length!==expected){
+      errors.push({position:null,key:'',line:'',detail:`longitud ${wanted.length}; esperada ${expected}`});
+    }
     positions.forEach((pos,i)=>{
       const line=side==='P' ? rows[pos-1].verses[n-1] : rows[n-1].verses[pos-1];
       const target=wanted[i]||'';
@@ -132,10 +136,11 @@
     validIds:mesosticItems.filter(x=>x.valid).map(x=>x.id),
     invalidIds:invalid.map(x=>x.id),
     invalid:invalid.map(x=>({id:x.id,text:x.text,errors:x.errors})),
-    complete:invalid.length===0
+    complete:invalid.length===0,
+    redesign:window.GRANADA_STONE_MESOSTIC_REDESIGN||null
   };
 
-  const structuralStable=matrix.valid&&horizontals.valid&&diagonals.valid&&radial.valid&&loaI.valid&&loaII.valid;
+  const structuralStable=matrix.valid&&horizontals.valid&&diagonals.valid&&radial.valid&&loaI.valid&&loaII.valid&&mesostics.complete;
   window.GRANADA_STONE_REPORT={
     structuralStable,
     matrix,
@@ -145,6 +150,6 @@
     loaI,
     loaII,
     mesostics,
-    policy:'Los mesósticos pendientes se rediseñan; no se cambia un poema conseguido para insertar una letra.'
+    policy:'Las voces mesósticas se adaptan a las letras disponibles; ningún verso se modifica para servir al mecanismo.'
   };
 })();
