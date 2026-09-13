@@ -44,6 +44,6 @@ window.GRANADA_RESPIRACION_H14 = {
     'Las conjunciones y subordinantes se usan como bisagras sintácticas, no como adorno.',
     'La mitad enterrada debe poder leerse también en orden inverso desde el centro.',
     'La celda H14/P26 conserva intactos todos sus caracteres hasta «día»; solo cambia el signo final.',
-    'Antes de pasar estos versos a matrix-2.js deben resolverse sus enlaces verticales con H13 y H15.'
+    'Los enlaces verticales inmediatos H13–H14–H15 están resueltos en respiracion-h13-h15.js; la siguiente expansión corresponde a H12 y H16.'
   ]
 };
