@@ -1,11 +1,12 @@
 /* CIEN AÑOS · poema libre del tiempo que no consigue cerrar una frase
    Espejo asimétrico de AGOSTO.
-   Comienza completando la sintaxis suspendida al final del poema anterior.
+   Su primer verso completa, ocho poemas más tarde, la sintaxis suspendida en AGOSTO:
+   una sintaxis diferida que atraviesa el cuerpo central del libro.
 */
 
 window.GRANADA_LAB_CIEN_ANOS = {
   title: 'CIEN AÑOS',
-  retainedConstraints: ['continuación sintáctica de AGOSTO'],
+  retainedConstraints: ['sintaxis diferida desde AGOSTO'],
   verses: [
     'cuánto tarda un agosto en terminar.',
     '',
@@ -39,12 +40,15 @@ window.GRANADA_LAB_CIEN_ANOS = {
     'Pero la frase todavía no ha terminado',
     'de pasar de una boca a otra.'
   ],
-  respiration: 'entrada dependiente del poema anterior; expansión temporal; retorno final a la transmisión oral',
+  respiration: 'entrada dependiente de una frase suspendida ocho poemas antes; expansión temporal; retorno final a la transmisión oral',
   corporeality: ['persianas','mesas','motores','puerta','cuaderno','recibos','fotografías','llave','habitación'],
   soundField: ['frase repetida','lectura en voz alta','silencio de habitación'],
-  interpoemEnjambment: {
-    beginsFrom: 'AGOSTO',
-    inheritedSyntax: 'y nadie sabe todavía / cuánto tarda un agosto en terminar.'
+  deferredSyntax: {
+    beginsIn: 'AGOSTO',
+    distance: 'P10 → P18',
+    suspendedText: 'y nadie sabe todavía',
+    completion: 'cuánto tarda un agosto en terminar.',
+    function: 'la frase queda abierta mientras ocho poemas atraviesan la herida y se cierra solo al llegar a CIEN AÑOS'
   },
   mirrorPotential: {
     with: 'AGOSTO',
@@ -56,5 +60,5 @@ window.GRANADA_LAB_CIEN_ANOS = {
       'instante cerrado en apariencia ↔ tiempo abierto por transmisión'
     ]
   },
-  status: 'laboratorio; poema autónomo, no sustituye todavía P18 en el libro público'
+  status: 'poema de superficie'
 };
