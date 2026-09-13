@@ -5,6 +5,7 @@
   const state={axis:'principal',mode:'bifurcated',direction:'down'};
   const center=13;
   const esc=s=>String(s??'').replace(/[&<>\"]/g,c=>c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':'&quot;');
+  const stone=()=>window.GRANADA_STONE_ROWS||window.GRANADA_ROWS||[];
 
   const range=(a,b,step=1)=>{
     const out=[];
@@ -14,8 +15,9 @@
   };
 
   function axisData(){
-    const principal=GRANADA_ROWS.map((r,i)=>r.verses[i]);
-    const secondary=GRANADA_ROWS.map((r,i)=>r.verses[26-i]);
+    const rows=stone();
+    const principal=rows.map((r,i)=>r.verses[i]);
+    const secondary=rows.map((r,i)=>r.verses[26-i]);
     const isPrincipal=state.axis==='principal';
     return {
       verses:isPrincipal?principal:secondary,
@@ -66,7 +68,7 @@
     const a=axisData();
     return `
       <article class="diag-sheet">
-        <div class="diag-sheet-kicker">${a.name} · ${a.equation}</div>
+        <div class="diag-sheet-kicker">${a.name} · ${a.equation} · MATRIZ PROFUNDA</div>
         <h2>${title}</h2>
         <div class="diag-sheet-note">${note}</div>
         <div class="diag-sequence">
@@ -77,11 +79,10 @@
 
   function renderBifurcated(){
     const a=axisData();
-    const upper=range(center-1,0,-1);
-    const lower=range(center+1,26,1);
+    const upper=range(center-1,0,-1),lower=range(center+1,26,1);
     return `
       <article class="diag-sheet diag-sheet-bifurcated">
-        <div class="diag-sheet-kicker">${a.name} · ${a.equation}</div>
+        <div class="diag-sheet-kicker">${a.name} · ${a.equation} · MATRIZ PROFUNDA</div>
         <h2>LECTURA BIFURCADA</h2>
         <div class="diag-sheet-note">El 14 × 14 aparece una sola vez y abre simultáneamente los dos brazos del eje.</div>
         <div class="diag-junction">
@@ -105,26 +106,15 @@
   function renderReading(){
     const a=axisData();
     if(state.mode==='bifurcated')return renderBifurcated();
-
     if(state.mode==='complete'){
-      const down=state.direction==='down';
-      const idx=down?range(0,26,1):range(26,0,-1);
-      const arrow=down?a.down:a.up;
+      const down=state.direction==='down',idx=down?range(0,26,1):range(26,0,-1),arrow=down?a.down:a.up;
       return sequence(idx,`RECORRIDO COMPLETO ${arrow}`,`27 versos · el recorrido atraviesa el cruce 14 × 14 y continúa hasta el extremo opuesto.`);
     }
-
     if(state.mode==='toward'){
-      const down=state.direction==='down';
-      const idx=down?range(0,center,1):range(26,center,-1);
-      const arrow=down?a.down:a.up;
-      const origin=down?'DESDE ARRIBA':'DESDE ABAJO';
+      const down=state.direction==='down',idx=down?range(0,center,1):range(26,center,-1),arrow=down?a.down:a.up,origin=down?'DESDE ARRIBA':'DESDE ABAJO';
       return sequence(idx,`${origin} ${arrow} · HACIA EL CENTRO`,`14 versos · el cruce 14 × 14 es el destino de esta media diagonal.`);
     }
-
-    const down=state.direction==='down';
-    const idx=down?range(center,26,1):range(center,0,-1);
-    const arrow=down?a.down:a.up;
-    const destination=down?'HACIA ABAJO':'HACIA ARRIBA';
+    const down=state.direction==='down',idx=down?range(center,26,1):range(center,0,-1),arrow=down?a.down:a.up,destination=down?'HACIA ABAJO':'HACIA ARRIBA';
     return sequence(idx,`DESDE EL CENTRO ${arrow} · ${destination}`,`14 versos · el cruce 14 × 14 actúa como origen y la lectura se abre hacia un extremo.`);
   }
 
@@ -132,16 +122,10 @@
     view.querySelectorAll('[data-axis]').forEach(b=>b.classList.toggle('active',b.dataset.axis===state.axis));
     view.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('active',b.dataset.mode===state.mode));
     view.querySelectorAll('[data-direction]').forEach(b=>b.classList.toggle('active',b.dataset.direction===state.direction));
-    const direction=view.querySelector('[data-control="direction"]');
-    direction?.classList.toggle('is-double',state.mode==='bifurcated');
+    view.querySelector('[data-control="direction"]')?.classList.toggle('is-double',state.mode==='bifurcated');
   }
 
-  function render(){
-    shell();
-    syncControls();
-    const host=view.querySelector('#diag-reading');
-    if(host)host.innerHTML=renderReading();
-  }
+  function render(){shell();syncControls();const host=view.querySelector('#diag-reading');if(host)host.innerHTML=renderReading()}
 
   window.diagonal=render;
   window.GRANADA_DIAGONAL_READER_STATE=state;
