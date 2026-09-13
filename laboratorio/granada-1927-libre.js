@@ -1,12 +1,8 @@
-/* GRANADA, 1927 · ensayo de restricción mínima
+/* GRANADA, 1927 · apertura de la ciudad antes de la mesa
    Díptico con UN SIGLO DESPUÉS.
 
-   Se conservan únicamente:
-   - 27 versos como memoria profunda del libro;
-   - el verso 14 procedente del extremo de BAJO LA CAL.
-
-   Se liberan endecasílabo uniforme, A/M/T obligatorios,
-   horizontal completa, línea autosuficiente y simetría léxica.
+   Conserva 27 versos y la costura del verso 14, pero deja a EL RINCONCILLO
+   la discusión, el gallo y la fricción específica del café.
 */
 
 window.GRANADA_LAB_GRANADA_1927 = {
@@ -15,42 +11,42 @@ window.GRANADA_LAB_GRANADA_1927 = {
   releasedConstraints: ['endecasílabo uniforme','horizontal obligatoria','A/M/T simultáneos','línea autosuficiente','simetría total'],
   verses: [
     'Amanece la sierra sobre los tejados.',
-    'Alguien levanta el cierre de un café.',
-    'El agua del cubo corre por la acera',
+    'El agua de un cubo corre por la acera',
     'y arrastra colillas, barro, una hoja doblada.',
-    'Dentro, un camarero endereza las sillas.',
-    'Deja cuatro vasos sobre el mármol.',
-    'El primero que llega trae un cuaderno',
-    'con una mancha de tinta en el pulgar.',
-    'Después entra otro, con frío en los hombros,',
-    'y otro que tararea a Bach sin terminarlo.',
-    'Nadie ha venido a fundar nada.',
-    'Piden café, discuten, se interrumpen,',
-    'dibujan un gallo en el margen de una cuenta.',
+    'Un cierre metálico sube a tirones.',
+    'En la tahona sacan la primera bandeja.',
+    'Un tranvía toca hierro en la curva.',
+    'La campana de una bicicleta lo atraviesa.',
+    'En una imprenta, una mano ordena tipos',
+    'y deja tinta negra en el pulgar.',
+    'Una mujer barre un portal hacia la calle.',
+    'En el café enderezan las sillas.',
+    'Dos hombres ocupan una mesa del fondo.',
+    'Otro deja un cuaderno junto al vaso.',
     'Siete baldosas ceden de costado.',
-    'Una mesa se inclina; alguien la calza',
+    'La mesa se inclina; el camarero la calza',
     'con un periódico doblado cuatro veces.',
-    'Ya son cinco, quizá seis.',
-    'El humo sube y borra los espejos.',
-    'Afuera pasa Granada sin mirarlos:',
-    'un vendedor empuja su carrito,',
-    'una mujer recoge el pan del día,',
-    'un niño cruza corriendo hacia la escuela.',
-    'Dentro, una frase prende otra frase,',
-    'una risa contradice a la anterior,',
-    'y nadie sabe aún qué quedará de aquello.',
-    'Solo la mesa tiembla cuando apoyan las manos.',
-    'Granada todavía no sabe que la miran.'
+    'Nadie mira el reloj todavía.',
+    'Afuera se cruzan un vendedor y un niño.',
+    'Desde un balcón cae polvo de una manta.',
+    'Una persiana golpea dos veces.',
+    'Alguien compra pan y cuenta las monedas.',
+    'En la esquina, el agua busca la pendiente.',
+    'Dentro, una frase apenas ha empezado.',
+    'Una mano queda quieta sobre el mármol.',
+    'Otra acerca el cuaderno.',
+    'La mañana entra por debajo de la puerta.',
+    'En el espejo del café pasa media Granada.'
   ],
-  respiration: [[1,4],[5,10],[11,16],[17,18],[19,22],[23,27]],
+  respiration: [[1,4],[5,10],[11,16],[17,22],[23,27]],
   anchor: {
     verse: 14,
     text: 'Siete baldosas ceden de costado.',
     function: 'Mantiene una única costura con BAJO LA CAL; el resto del poema no se somete a la horizontal.'
   },
   bodyActions: [
-    'levantar el cierre','baldear la acera','enderezar sillas','dejar vasos','entrar con frío',
-    'pedir café','discutir','dibujar','calzar una mesa','empujar un carrito','recoger pan','correr','apoyar las manos'
+    'baldear la acera','subir un cierre','sacar pan','ordenar tipos','barrer un portal',
+    'enderezar sillas','sentarse','dejar un cuaderno','calzar una mesa','contar monedas','acercar el cuaderno'
   ],
   mirrorWith2027: {
     counterpart: 'UN SIGLO DESPUÉS',
@@ -60,10 +56,9 @@ window.GRANADA_LAB_GRANADA_1927 = {
       'agua del cubo sobre la acera / agua del baldeo hacia la alcantarilla',
       'mano manchada de tinta / mano que entra en el hueco y toca barro',
       'mesa presente y temblorosa / mesa desaparecida recordada cien años después',
-      'cuaderno y cuenta / mapa en la palma y pantalla',
-      'niño que cruza hacia la escuela / niño que salta el charco junto a la obra',
-      'Granada no sabe que la miran / Granada no cabe en la pantalla'
+      'cuaderno / mapa en la palma y pantalla',
+      'Granada reflejada en el café / Granada que no cabe en la pantalla'
     ]
   },
-  status: 'laboratorio; no sustituye todavía P01 en la matriz activa'
+  status: 'poema de superficie'
 };
