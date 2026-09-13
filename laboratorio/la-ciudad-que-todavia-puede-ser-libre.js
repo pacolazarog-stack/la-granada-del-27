@@ -7,7 +7,7 @@ window.GRANADA_LAB_LA_CIUDAD_QUE_TODAVIA_PUEDE_SER = {
   title: 'LA CIUDAD QUE TODAVÍA PUEDE SER',
   retainedConstraints: ['ninguna restricción matricial obligatoria'],
   verses: [
-    'A las ocho pintan una raya blanca',
+    'Pintan una raya blanca',
     'junto al bordillo nuevo.',
     '',
     'Una hora después una mujer llega con un carrito',
