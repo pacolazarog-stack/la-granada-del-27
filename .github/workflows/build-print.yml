@@ -21,10 +21,13 @@ jobs:
           python-version: '3.12'
 
       - name: Dependencies
-        run: python -m pip install --disable-pip-version-check reportlab pypdf svglib
+        run: python -m pip install --disable-pip-version-check reportlab pypdf svglib cairosvg
 
       - name: Build PDF
         run: python print/build_print.py
+
+      - name: Restore canonical covers at 353 ppi
+        run: python print/replace_covers.py dist/La_Granada_del_27_Edicion_Integral_A5_Imprenta.pdf
 
       - name: Remove unused standard-font resources
         run: python print/clean_standard_fonts.py dist/La_Granada_del_27_Edicion_Integral_A5_Imprenta.pdf
@@ -40,7 +43,8 @@ jobs:
           assert len(r.pages)==84, len(r.pages)
           print(json.dumps(json.loads(Path('dist/preflight.json').read_text()),ensure_ascii=False,indent=2))
           PY
-          pdffonts dist/La_Granada_del_27_Edicion_Integral_A5_Imprenta.pdf | tee dist/fonts.txt
+          pdffonts dist/La_Granada_del_27_Edicion_Integral_A5_Imprenta.pdf > dist/fonts.txt
+          cat dist/fonts.txt
           awk 'NR>2 && $4=="no" {bad=1} END {exit bad}' dist/fonts.txt
 
       - name: Upload print artifact
