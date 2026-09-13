@@ -7,7 +7,7 @@ window.GRANADA_LAB_GRANADA_2027 = {
   title: 'GRANADA, 2027',
   retainedConstraints: ['ninguna restricción matricial obligatoria'],
   verses: [
-    'A las ocho y cuarto perforan una acera.',
+    'Perforan una acera a las ocho y cuarto.',
     'La broca entra en el hormigón',
     'y levanta un polvo fino que se pega a los escaparates.',
     '',
