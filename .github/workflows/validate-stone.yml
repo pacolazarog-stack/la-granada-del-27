@@ -6,6 +6,7 @@ on:
       - 'matrix-*.js'
       - 'laboratorio/bajo-la-cal-nucleo.js'
       - 'laboratorio/piedra-matriz.js'
+      - 'laboratorio/mesosticos-piedra-redisenados.js'
       - 'laboratorio/validacion-piedra.js'
       - 'validate-stone.mjs'
       - '.github/workflows/validate-stone.yml'
