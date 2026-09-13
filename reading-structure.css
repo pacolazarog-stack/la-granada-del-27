@@ -2,7 +2,11 @@
 .fit-poem .poem-line{font-size:var(--poem-font-size,17px)}
 .fit-poem .poem-verse{width:var(--poem-measure,min(100%,31em));max-width:100%;margin-left:auto;margin-right:auto}
 .fit-poem.lines .line{font-size:var(--poem-font-size,16px);width:var(--poem-measure,100%);max-width:100%;margin-left:auto;margin-right:auto}
+/* LIBRO y VERTICAL: caja común, verso natural alineado a la izquierda. */
 .fit-poem .poem-verse,.fit-poem.lines>.line{display:block;white-space:nowrap;text-align:left;text-align-last:auto}
+
+/* HORIZONTAL: los extremos A/T forman ejes y exigen anchura visual completa. */
+#horizontal .fit-poem .poem-verse{text-align:justify;text-align-last:justify;text-justify:inter-word}
 
 /* Las palabras de apoyo no crean un cuarto código visual. */
 .loa2-word{font-family:inherit!important;font-weight:400!important;color:inherit!important;text-decoration:none!important}
