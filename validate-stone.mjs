@@ -23,6 +23,37 @@ for(const file of files){
 const report=globalThis.GRANADA_STONE_REPORT;
 if(!report) throw new Error('No se generó GRANADA_STONE_REPORT');
 
+const alpha=/[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/;
+const key=c=>String(c||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase();
+const mesosticPath=n=>n===14
+  ? Array.from({length:27},(_,i)=>i+1)
+  : n<14
+    ? Array.from({length:14},(_,i)=>14-i)
+    : Array.from({length:14},(_,i)=>14+i);
+
+function interiorAlphabet(line){
+  const chars=Array.from(line||'');
+  const alphaIdx=[];
+  chars.forEach((c,i)=>{if(alpha.test(c))alphaIdx.push(i)});
+  if(alphaIdx.length<3)return '';
+  const first=alphaIdx[0],last=alphaIdx[alphaIdx.length-1];
+  return [...new Set(alphaIdx.filter(i=>i>first&&i<last).map(i=>key(chars[i])))].sort().join('');
+}
+
+function constraintsFor(id){
+  const side=id[0];
+  const n=Number(id.slice(1));
+  return mesosticPath(n).map(pos=>{
+    const line=side==='P'
+      ? globalThis.GRANADA_STONE_ROWS[pos-1].verses[n-1]
+      : globalThis.GRANADA_STONE_ROWS[n-1].verses[pos-1];
+    return {position:pos,alphabet:interiorAlphabet(line),line};
+  });
+}
+
+const redesignIds=['P03','P05','H14','P19','P27'];
+const redesignConstraints=Object.fromEntries(redesignIds.map(id=>[id,constraintsFor(id)]));
+
 const expectedInvalid=['H14','P03','P05','P19','P27'];
 const actualInvalid=[...report.mesostics.invalidIds].sort();
 const expectedSorted=[...expectedInvalid].sort();
@@ -43,8 +74,8 @@ const assertions=[
 const failed=assertions.filter(([,ok])=>!ok);
 console.log(JSON.stringify({
   structuralStable:report.structuralStable,
-  source:globalThis.GRANADA_STONE?.source,
-  relationToSurface:globalThis.GRANADA_STONE?.relationToSurface,
+  source:globalThis.GRANADA_STONE.source,
+  relationToSurface:globalThis.GRANADA_STONE.relationToSurface,
   horizontals:report.horizontals,
   diagonals:report.diagonals,
   radial:{valid:report.radial.valid,center:report.radial.center},
@@ -57,6 +88,7 @@ console.log(JSON.stringify({
     invalidIds:report.mesostics.invalidIds,
     invalid:report.mesostics.invalid
   },
+  redesignConstraints,
   assertions:assertions.map(([name,ok])=>({name,ok}))
 },null,2));
 
