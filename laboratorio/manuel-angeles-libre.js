@@ -35,7 +35,7 @@ window.GRANADA_LAB_MANUEL_ANGELES = {
     'Vuelve a mirar el papel.',
     'Ya no corrige el centro.',
     '',
-    'Ensacha el borde.'
+    'Ensancha el borde.'
   ],
   respiration: 'avance por correcciones sucesivas; silencios después de cada cambio de encuadre',
   corporeality: ['papel','pared','pulgar','silla','suelo','pincel','hoja','persiana','pasos'],
