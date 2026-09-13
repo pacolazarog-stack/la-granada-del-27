@@ -1,16 +1,16 @@
 # Prueba de carga · matriz pétrea
 
-La capa profunda se construye desde la matriz heredada de `matrix-1/2/3`, antes de aplicar la superficie de **LA VEGA**. Solo se sustituye H14 por el nuevo **BAJO LA CAL**.
+La capa profunda se construye desde la matriz heredada de `matrix-1/2/3`, anterior a la superficie nueva de los poemas visibles. Solo se sustituye H14 por el nuevo **BAJO LA CAL**.
 
 La superficie y la piedra coinciden de manera absoluta en una sola celda:
 
 > **14×14 · Late bajo la cal la acequia hundida.**
 
-Esto evita que los nuevos poemas tengan que volver a convertirse en columnas literales de la retícula.
+Esto permite conservar la máquina profunda sin obligar a los poemas nuevos a volver a convertirse en sus columnas literales.
 
 ## Resultado ejecutado
 
-La prueba automática `validate-stone.mjs`, ejecutada por GitHub Actions, da resultado satisfactorio.
+La prueba automática `validate-stone.mjs`, ejecutada por GitHub Actions, termina correctamente.
 
 - matriz profunda: **27×27 · 729 celdas**;
 - horizontales: **27/27**;
@@ -19,67 +19,80 @@ La prueba automática `validate-stone.mjs`, ejecutada por GitHub Actions, da res
 - diagonales: **2/2 intactas**;
 - centro 14×14: **intacto**;
 - radial: **válido**;
-  - HACIA LO ENTERRADO;
-  - HACIA LO ABIERTO;
+  - **HACIA LO ENTERRADO**;
+  - **HACIA LO ABIERTO**;
 - Loa I / acróstico: **válida**;
 - Loa II / teléstico: **válida**;
-  - solo se desplaza una marca, P26/H14, sin cambiar el verso;
-- mesósticos: **49/54 válidos**;
-- mesósticos que necesitan rediseño: **5**.
+  - una sola marca, P26/H14, se desplaza a otra E ya existente sin cambiar el verso;
+- mesósticos: **54/54 válidos**.
 
-## Las cinco voces pendientes
+## Cinco voces rediseñadas
 
-### P03 · VOZ NACE MEMORIA
+La renovación de H14 dejó cinco mensajes antiguos sin extracción completa. No se modificó ningún verso para recuperarlos. Se redactaron nuevas voces exclusivamente con las letras interiores ya presentes en sus trayectorias.
 
-El recorrido necesita **V** en su paso por H14/P03, pero el verso 3 de BAJO LA CAL es:
+### P03
 
-> Cede una losa; asoma tierra negra.
+Antes:
 
-No contiene V interior. No se modifica el verso.
+> VOZ NACE MEMORIA
 
-### P05 · MANO ABRE EL HILO
+Ahora:
 
-El recorrido necesita **M** en H14/P05, pero el verso 5 es:
+> **NOTA NACE DENTRO**
 
-> La raíz ha torcido una baldosa.
+14 letras alfabéticas. La nueva voz se ajusta a la escucha de **DON MANUEL** y desplaza el énfasis desde una memoria declarada hacia el nacimiento interior de la nota.
 
-No contiene M interior. No se modifica el verso.
+### P05
 
-### H14 · TIERRA GUARDA LA PUERTA ANTIGUA
+Antes:
 
-El antiguo mensaje horizontal de 27 letras no puede extraerse completo del nuevo BAJO LA CAL. Faltan tres letras en sus posiciones heredadas:
+> MANO ABRE EL HILO
 
-- verso 1: necesita **T**;
-- verso 7: necesita **G**;
-- verso 23: necesita **T**.
+Ahora:
 
-Los versos afectados son:
+> **LA FORMA RESPIRA**
 
-> Bajo la cal respira un muro viejo.  
-> Sale del muro un clavo sin cabeza.  
-> La piedra húmeda devuelve su color.
+14 letras alfabéticas. La materia y la talla dejan de describirse como mecanismo y adquieren respiración.
 
-El mensaje H14 debe rediseñarse alrededor del poema, no el poema alrededor del mensaje.
+### H14
 
-### P19 · GRANADA MIRA AÚN
+Antes:
 
-El recorrido necesita **G** en H14/P19, pero el verso 19 es:
+> TIERRA GUARDA LA PUERTA ANTIGUA
 
-> Un niño mira el hilo entre sus botas.
+Ahora:
 
-No contiene G interior. No se modifica el verso.
+> **EL SILENCIO SUENA BAJO LA TIERRA**
 
-### P27 · TIERRA PRESENTE
+27 letras alfabéticas, una por cada verso de **BAJO LA CAL**. La voz central ya no se superpone al nuevo poema: nace de él.
 
-El recorrido necesita **T** en H14/P27, pero el verso 27 es:
+### P19
 
-> Bajo la casa el agua sigue andando.
+Antes:
 
-No contiene T interior. No se modifica el verso.
+> GRANADA MIRA AÚN
+
+Ahora:
+
+> **AÚN NACE MEMORIA**
+
+14 letras alfabéticas. El presente de 2027 deja de contemplarse a sí mismo y empieza a convertirse en memoria mientras todavía sucede.
+
+### P27
+
+Antes:
+
+> TIERRA PRESENTE
+
+Ahora:
+
+> **AGUA CRUZA SIGLO**
+
+14 letras alfabéticas. La continuidad del agua atraviesa directamente la puerta 1927↔2027 y enlaza con el cauce enterrado del núcleo.
 
 ## Loa II · único reajuste de marca
 
-El teléstico P26 conserva la palabra **VUELVE** desplazando su marca de H14 al carácter E ya existente en:
+El teléstico P26 conserva **VUELVE** desplazando su marca en H14 al carácter E ya presente en:
 
 > Se abre la puerta; cruza aire del patio.
 
@@ -91,12 +104,27 @@ Nueva localización:
 
 No se cambia texto alguno.
 
+## Validación final
+
+La comprobación automática exige y confirma simultáneamente:
+
+- matriz 27×27;
+- 27 horizontales;
+- 2 diagonales;
+- núcleo radial;
+- Loa I;
+- Loa II;
+- **54/54 mesósticos**;
+- identidad exacta de las cinco voces nuevas.
+
 ## Conclusión constructiva
 
-La prueba confirma el equilibrio buscado:
+La estructura profunda queda completa sin regresión poética:
 
-**superficie poética nueva + matriz heredada independiente + núcleo común en 14×14.**
+**superficie poética nueva + matriz heredada independiente + nuevo H14 + encuentro absoluto en 14×14.**
 
-La pérdida real no es de la arquitectura general. Se reduce a cinco mensajes mesósticos que pueden rediseñarse usando únicamente las letras disponibles.
+No queda ningún mesóstico pendiente. La campaña de letras puede considerarse resuelta en la capa pétrea.
 
-La siguiente operación debe limitarse a esas cinco voces. No se reabre ningún poema para satisfacerlas.
+La regla demostrada es la misma que gobierna el libro:
+
+> **rediseñar el mensaje con la materia disponible; nunca deformar el poema para recuperar una letra antigua.**
