@@ -23,11 +23,14 @@ Versión vigente: **13 de septiembre de 2026**.
 
 - Formato: A5, 148 × 210 mm.
 - Sangrado: 3 mm.
+- Extensión: 84 páginas.
 - Edición integral: Libro I + Cuaderno de piedra + lecturas diagonales y radiales.
 - PDF canónico en Google Drive: https://drive.google.com/file/d/12wQoz7Oyyu15m3LGTUH2PChrkvq6Tbcd/view
-- SHA-256: `63d20d7e9b6158278645076facb249e496a2b7a2216a4380cf7b0d7b65eb1e81`
+- SHA-256: `7c02c5b7928ec3313491510c77e9de6ad01c92433e444cecfd95e8ffd72c20d6`
 
 La edición del 13/09/2026 incorpora, entre otras revisiones ya fijadas, la depuración de **GRAN VÍA**, la poda mínima de **ALHAMBRA S. A.** y el cierre revisado de **UN SIGLO DESPUÉS**, sin alterar **LA VEGA** ni el centro 14 × 14.
+
+En el cierre impreso se aplica además la última poda editorial: la página de **REVELACIÓN** conserva únicamente «LA GRANADA DEL DOS SIETE / LA GRANADA DEL 27», sin explicación añadida; la antigua **GUÍA FINAL · OTRA MANERA DE LEER** desaparece y su página queda en blanco, de modo que el final respira como **epílogo → silencio → contraportada**.
 
 Página pública: https://pacolazarog-stack.github.io/la-granada-del-27/
 
