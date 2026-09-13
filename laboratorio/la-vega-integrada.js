@@ -98,7 +98,7 @@ window.GRANADA_LA_VEGA_INTEGRADA = {
     H05_P13: 'A inicial de Loa I + E interior de mesóstico H05 conservadas',
     H06_P13: 'R interior de mesóstico H06 conservada',
     H23_P13: 'A inicial de Loa I conservada',
-    H23_P15: 'I interior H23 + I interior P15 + A teléstica final en «opaco» conservadas',
+    H23_P15: 'I interior H23 + D interior P15 + A teléstica final en «opaco» conservadas',
     H25_P15: 'B interior H25 + I interior P15 conservadas',
     P14_LoaI_offsets: {H08:{key:'E',newOffset:13},H12:{key:'J',newOffset:22},H17:{key:'M',newOffset:29}}
   },
@@ -107,8 +107,11 @@ window.GRANADA_LA_VEGA_INTEGRADA = {
     horizontalCrossingsAtP14: 27,
     unresolvedCrossingsAtP14: 0,
     centerIntact: true,
-    p14MesosticCompatible: true,
-    horizontalMesosticsAtP14Compatible: true,
-    next: 'Aplicar candidato sobre copia de matriz y ejecutar comprobación global de A/M/T, diagonales, radial y métrica antes de promover a los archivos matrix-*.'
+    p14MesosticLettersValidated: '27/27',
+    horizontalMesosticLettersAtP14Validated: '27/27',
+    loaIAtP14Validated: '3/3',
+    diagonalsAffectedOutsideCenter: false,
+    radialAffectedOutsideCenter: false,
+    next: 'Aplicar candidato sobre copia de matriz y ejecutar comprobación global de A/M/T y métrica antes de promover a los archivos matrix-*.'
   }
 };
