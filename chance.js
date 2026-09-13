@@ -9,12 +9,13 @@
     {name:'2027',question:'¿Qué queda todavía de aquello que ocurrió?'},
     {name:'LA VEGA',question:'¿Qué permanece debajo de los dos tiempos?'}
   ];
-  const cell=(r,c)=>GRANADA_ROWS[r-1].verses[c-1];
+  const rows=()=>window.GRANADA_STONE_ROWS||window.GRANADA_ROWS;
+  const cell=(r,c)=>rows()[r-1].verses[c-1];
   const vTitle=c=>GRANADA_TITLES[c-1];
   const hTitle=r=>GRANADA_H_TITLES[r-1];
   const coord=(r,c)=>`(${String(r).padStart(2,'0')}, ${String(c).padStart(2,'0')})`;
   const side=(r,c)=>r===14&&c===14?'GOZNE':r===c?'DIAGONAL AUTORREFLEXIVA':r<c?'ESPEJO SUPERIOR':'ESPEJO INFERIOR';
-  const meta=(r,c)=>`${coord(r,c)} · VERTICAL ${String(c).padStart(2,'0')} · ${vTitle(c)} · HORIZONTAL ${String(r).padStart(2,'0')} · ${hTitle(r)}`;
+  const meta=(r,c)=>`${coord(r,c)} · COLUMNA ${String(c).padStart(2,'0')} · ${vTitle(c)} · HORIZONTAL ${String(r).padStart(2,'0')} · ${hTitle(r)}`;
 
   let hit=null,stage=0,stages=[];
 
@@ -23,34 +24,14 @@
     const center=r===14&&c===14;
     const diagonal=r===c;
     if(center){
-      stages=[{
-        label:'GOZNE · 14 × 14',
-        current:cell(14,14),
-        pos:'LA VEGA ↔ BAJO LA CAL · centro, diagonal y bisagra temporal'
-      }];
+      stages=[{label:'GOZNE · 14 × 14',current:cell(14,14),pos:'LA VEGA ↔ BAJO LA CAL · centro, diagonal y bisagra temporal'}];
       return;
     }
     stages=[
-      {
-        label:`GOLPE · ${side(r,c)}`,
-        current:cell(r,c),
-        pos:`${meta(r,c)} · el azar ha caído aquí`
-      },
-      {
-        label:diagonal?'ESPEJO · EL MISMO PUNTO':`REFLEJO · ${side(c,r)}`,
-        current:cell(c,r),
-        pos:diagonal?`${coord(r,c)} · r = c · el punto se refleja sobre sí mismo`:`${meta(c,r)} · reflejo de ${coord(r,c)}`
-      },
-      {
-        label:`PUERTA · ${p.name}`,
-        current:p.question,
-        pos:'La perspectiva decide desde qué tiempo se contempla el par; no altera los versos.'
-      },
-      {
-        label:'GOZNE · REFERENCIA AXIAL · 14 × 14',
-        current:cell(14,14),
-        pos:'LA VEGA ↔ BAJO LA CAL · el centro organiza el sistema, pero no es el destino obligatorio del golpe.'
-      }
+      {label:`GOLPE · ${side(r,c)}`,current:cell(r,c),pos:`${meta(r,c)} · el azar ha caído en la piedra`},
+      {label:diagonal?'ESPEJO · EL MISMO PUNTO':`REFLEJO · ${side(c,r)}`,current:cell(c,r),pos:diagonal?`${coord(r,c)} · r = c · el punto se refleja sobre sí mismo`:`${meta(c,r)} · reflejo de ${coord(r,c)}`},
+      {label:`PUERTA · ${p.name}`,current:p.question,pos:'La perspectiva decide desde qué tiempo se contempla el par; no altera los versos.'},
+      {label:'GOZNE · REFERENCIA AXIAL · 14 × 14',current:cell(14,14),pos:'LA VEGA ↔ BAJO LA CAL · el centro organiza el sistema, pero no es el destino obligatorio del golpe.'}
     ];
   }
 
@@ -66,12 +47,7 @@
     $('#chance-next').disabled=stages.length===1;
   }
 
-  function roll(){
-    hit={r:rand(27)+1,c:rand(27)+1,p:perspectives[rand(3)]};
-    stage=0;
-    buildStages();
-    paint();
-  }
+  function roll(){hit={r:rand(27)+1,c:rand(27)+1,p:perspectives[rand(3)]};stage=0;buildStages();paint()}
 
   $('#chance-roll')?.addEventListener('click',roll);
   $('#chance-prev')?.addEventListener('click',()=>{stage--;paint()});
