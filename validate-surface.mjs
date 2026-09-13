@@ -56,7 +56,7 @@ if(!Array.isArray(poems)||poems.length!==27) throw new Error(`SUPERFICIE: ${poem
 if(poems.some((p,i)=>p.number!==i+1||!Array.isArray(p.verses)||!p.verses.length)) throw new Error('SUPERFICIE: orden o contenido inválido');
 if(poems.some((p,i)=>p.title!==globalThis.GRANADA_TITLES[i])) throw new Error('SUPERFICIE: títulos fuera de orden');
 if(poems[13].verses.length!==27||poems[13].verses[13]!=='Late bajo la cal la acequia hundida.') throw new Error('SUPERFICIE: LA VEGA perdió el centro');
-if(poems[13].verses[19]!=='Por el taller avanza barro espeso.') throw new Error('SUPERFICIE: verso 20 de LA VEGA no actualizado');
+if(poems[13].verses[19]!=='Por el taller avanza fango espeso.') throw new Error('SUPERFICIE: verso 20 de LA VEGA no actualizado');
 if(poems[26].verses.at(-1)!=='Granada sucede — sucede Granada.') throw new Error('SUPERFICIE: falta la tercera junta palindrómica en P27');
 for(let i=0;i<13;i++){
   if(poems[i].mirror!==27-i||poems[26-i].mirror!==i+1) throw new Error(`SUPERFICIE: espejo roto ${i+1}↔${27-i}`);
