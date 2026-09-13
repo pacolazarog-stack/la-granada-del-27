@@ -1,5 +1,5 @@
-/* LA VEGA · centro activo de la matriz 27×27.
-   Se carga después de matrix-1/2/3 y antes de las capas ocultas.
+/* LA VEGA · centro activo de la superficie.
+   Se carga después de congelar la matriz pétrea.
    El verso 14 conserva intacto el centro 14×14.
 */
 (()=>{
@@ -39,7 +39,8 @@
 
   p14.forEach((verse,r)=>{ window.GRANADA_ROWS[r].verses[13]=verse; });
 
-  /* Ajustes locales de cruce conservados mientras siga activa la matriz profunda. */
+  /* Ajustes locales de cruce conservados en la antigua matriz activa.
+     La nueva capa pétrea ya ha sido congelada antes de llegar aquí. */
   const local=[
     [6,15,'pasa entre la multitud rozando humo.'],
     [23,15,'y el vidrio copia un resplandor opaco.'],
@@ -50,6 +51,7 @@
 
   window.GRANADA_LA_VEGA_ACTIVE={
     title:'LA VEGA',
+    verses:[...p14],
     center:'Late bajo la cal la acequia hundida.',
     p14Verses:27,
     localCrossingAdjustments:4,
