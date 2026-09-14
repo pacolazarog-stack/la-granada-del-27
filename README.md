@@ -44,6 +44,19 @@ Tesis crítica de cierre:
 
 > **En La Granada del 27, recordar no significa regresar. Significa reconocer qué continúa actuando bajo aquello que ha cambiado.**
 
+## Experiencia digital móvil
+
+La plataforma pública incluye una capa responsive específica en [`mobile.css`](mobile.css), pensada para **Android y pantallas de 320–780 px** sin modificar el contenido ni los recorridos de lectura.
+
+- viewport dinámico mediante `100dvh` para convivir con la barra del navegador móvil;
+- áreas táctiles de al menos 44 px y navegación horizontal desplazable;
+- respeto de `safe-area-inset` y de la barra inferior del dispositivo;
+- páginas de **LIBRO** y lectores **VERTICAL / HORIZONTAL** adaptados a una sola columna sin recortes laterales;
+- **DIAGONAL** y **RADIAL** apilados en móvil, conservando el 14 × 14 y sus recorridos;
+- **AZAR** reformulado visualmente para lectura táctil estrecha;
+- cubierta, contracubierta y tipografía escalables entre 320 y 430 px;
+- tratamiento específico para Android en orientación horizontal y compatibilidad con `prefers-reduced-motion`.
+
 Página pública: https://pacolazarog-stack.github.io/la-granada-del-27/
 
 © 2026 Francisco Javier Lázaro Guil. Todos los derechos reservados.
