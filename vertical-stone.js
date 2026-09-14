@@ -1,16 +1,48 @@
 /* LIBRO VERTICAL · restauración canónica de la matriz profunda.
    VERTICAL vuelve a leer las 27 columnas de la matriz 27×27 y esas mismas
    27 piezas reaparecen dentro de LIBRO antes de los horizontales.
+   Los títulos verticales son propios de la matriz y NO repiten los títulos
+   literarios de los 27 poemas de superficie.
 */
 (()=>{
   const $=s=>document.querySelector(s);
   const esc=s=>String(s??'').replace(/[&<>\"]/g,c=>c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':'&quot;');
   const rows=()=>window.GRANADA_STONE_ROWS||window.GRANADA_ROWS||[];
-  const titles=()=>window.GRANADA_TITLES||[];
-  const alpha=/[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/;
+  const VERTICAL_TITLES=[
+    'SIETE ALBORADAS',
+    'DOS VOCES LABRAN',
+    'LA GRANADA FALLA',
+    'EN LORCA GRANADA',
+    'DE LANZ GRANADAS',
+    'ARISTAS DE ORTIZ',
+    'DANZAN LOS HILOS',
+    'ABRE OTRO TIEMPO',
+    'NADIE SABE: SURGE',
+    'AGOSTO PARTE DOS',
+    'RAÍZ EN SILENCIO',
+    'GRANADA CALLADA',
+    'AUSENCIA HABITA',
+    'CENTRO 14 × 14',
+    'ASFALTO Y PIEDRA',
+    'GRANADA SE VENDE',
+    'RAÍCES VIAJERAS',
+    'AÚN EL SIGLO GIRA',
+    'NACE GRANADA HOY',
+    'AQUÍ LA MESA ARDE',
+    'DESPIERTA EL DÍA',
+    'AQUÍ CABEN OTROS',
+    'DE ELLAS EL MUNDO',
+    'ENTRA Y ECHA RAÍZ',
+    'LUGAR PARA TODOS',
+    'DOS VECES RENACE',
+    'SIGUE OTRO SIGLO'
+  ];
   const vertical=n=>rows().map(r=>r?.verses?.[n]??'');
   const telestic=n=>(window.GRANADA_STONE_TELESTIC||window.GRANADA_TELESTIC||{})[`P${String(n).padStart(2,'0')}`]||null;
   const mesostic=n=>(window.GRANADA_STONE_MESOSTIC||{})[`P${String(n).padStart(2,'0')}`]||null;
+  const alpha=/[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/;
+
+  window.GRANADA_VERTICAL_TITLES=Object.freeze([...VERTICAL_TITLES]);
 
   function decorated(line,pNo,rowNo){
     const chars=Array.from(String(line||''));
@@ -88,7 +120,7 @@
     const pNo=pi+1,verses=vertical(pi);
     if(verses.length!==27)return;
     $('#vi').textContent=`P${String(pNo).padStart(2,'0')} / 27 · VERTICAL · MATRIZ PROFUNDA`;
-    $('#vt').textContent=titles()[pi]||`P${String(pNo).padStart(2,'0')}`;
+    $('#vt').textContent=VERTICAL_TITLES[pi]||`P${String(pNo).padStart(2,'0')}`;
     const host=$('#vl');
     if(!host)return;
     host.innerHTML='';
@@ -117,7 +149,7 @@
     for(let i=0;i<27;i++)block.push({
       k:'p',
       e:`P${String(i+1).padStart(2,'0')} · VERTICAL · MATRIZ PROFUNDA`,
-      t:titles()[i]||`P${String(i+1).padStart(2,'0')}`,
+      t:VERTICAL_TITLES[i]||`P${String(i+1).padStart(2,'0')}`,
       l:vertical(i),
       n:i+1,
       layer:'stone',
