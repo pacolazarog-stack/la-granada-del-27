@@ -1,0 +1,104 @@
+/* Corrección móvil posterior a prueba en Android real.
+   Evita que el libro expanda el viewport por su anchura intrínseca. */
+
+@media (max-width:780px){
+  html,body,#app,main,.view,#bookview{
+    width:100%;
+    max-width:100vw;
+    min-width:0;
+    overflow-x:hidden;
+  }
+
+  #bookview{
+    grid-template-columns:minmax(0,1fr);
+  }
+
+  .stage{
+    display:block;
+    width:100%;
+    max-width:100vw;
+    min-width:0;
+    overflow-x:hidden;
+    padding-left:8px;
+    padding-right:8px;
+  }
+
+  .page,
+  .page.cover-page,
+  .page.back-cover-page{
+    display:block;
+    width:calc(100vw - 16px);
+    max-width:calc(100vw - 16px);
+    min-width:0;
+    margin:0 auto;
+    overflow-x:hidden;
+  }
+
+  .book-cover,
+  .book-back,
+  .cover-center,
+  .cover-bottom,
+  .back-copy{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+
+  .cover-top{
+    width:100%;
+    min-width:0;
+    gap:8px;
+  }
+  .cover-top>span:first-child{
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .cover-axis{
+    flex:0 0 auto;
+    white-space:nowrap;
+  }
+
+  .cover-title{
+    max-width:100%;
+    font-size:clamp(32px,10.5vw,43px);
+  }
+  .cover-title span{
+    max-width:100%;
+  }
+  .cover-subtitle,
+  .cover-author,
+  .cover-hinge,
+  .cover-motto{
+    max-width:100%;
+    overflow-wrap:anywhere;
+  }
+
+  .nav{
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr) auto;
+    width:100%;
+    max-width:100vw;
+    min-width:0;
+    overflow:hidden;
+  }
+  .nav .btn{
+    min-width:0;
+    max-width:30vw;
+  }
+  .progress{
+    min-width:0;
+    max-width:100%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+}
+
+@media (max-width:420px){
+  .cover-title{font-size:clamp(30px,10vw,39px)}
+  .cover-author{font-size:clamp(13px,3.7vw,16px)}
+  .cover-hinge{font-size:7px;letter-spacing:.14em}
+  .nav .btn{font-size:9px;padding-inline:7px}
+}
