@@ -160,6 +160,45 @@ La matriz y el agua realizan finalmente la misma operación mediante materias di
 
 Ambas permanecen ocultas bajo una superficie inmediatamente legible. Ambas pueden ser descubiertas sin que lo visible deje de existir. Ambas demuestran que la continuidad no significa repetición idéntica.
 
+## 8. Prueba adversarial: cuando la virtud puede convertirse en coartada
+
+Toda poética consistente debe soportar la inversión de sus propias virtudes.
+
+La primera sospecha afecta a la arquitectura. Una matriz 27 × 27, acompañada de diagonales, radiales, recorridos digitales y lecturas ocultas, puede convertirse en una forma de narcisismo estructural si el lector necesita conocer el mecanismo para que el poema funcione. El criterio de defensa no puede consistir en exhibir todavía más ingeniería. Debe ser exactamente el contrario: **la arquitectura nunca debe exigir ser comprendida para que el poema exista literariamente**.
+
+Por ello, el orden de acceso es decisivo. Primero se lee la superficie. Después, si se desea, se descubre el subsuelo. La matriz no es una cerradura cuya combinación permita entender los poemas; es una segunda profundidad que modifica retrospectivamente una lectura ya suficiente.
+
+La segunda sospecha afecta a la dimensión urbana y política. Acequia, hormigón, turismo, pantallas, garajes, pérdida de la Vega y transformación de la ciudad pertenecen a un repertorio contemporáneo susceptible de volverse tópico. La obra pierde fuerza cuando explica la degradación y la recupera cuando la hace visible. Un código en una pantalla, un torno, un tubo que corta tierra húmeda o barro entrando en un garaje poseen mayor capacidad crítica que cualquier formulación doctrinal.
+
+De ahí una regla de vigilancia:
+
+> **Cada vez que el poema explica la degradación de Granada, conviene sospechar. Cada vez que la hace visible mediante una acción, un objeto o una materia, conviene confiar.**
+
+La tercera objeción es todavía más exigente y afecta al núcleo de esta poética. La ética de la metonimia puede convertirse en una coartada de modestia: mostrar siempre la taza, la silla, el dobladillo, la humedad o la puerta podría ser una forma elegante de no asumir nunca el riesgo de formular una conciencia histórica de mayor alcance.
+
+La respuesta no consiste en abandonar la metonimia, sino en exigirle más. El objeto no debe reducir la ambición del poema; debe concentrarla. El detalle material es válido cuando soporta una presión histórica mayor que su tamaño.
+
+En ese sentido:
+
+> **La metonimia no debe servir para disminuir la ambición histórica, sino para concentrarla.**
+
+El verso central constituye el ejemplo más claro. «Late bajo la cal la acequia hundida» continúa siendo una descripción física y, precisamente por ello, puede cargar sobre sí memoria, tiempo, territorio y estructura sin convertirse en proclama.
+
+La cuarta prueba afecta al conjunto. El libro debe poder responder afirmativamente a una pregunta sencilla y severa:
+
+> **Si desaparecieran la matriz, la web y todas las explicaciones, ¿seguirían sosteniéndose los veintisiete poemas como libro?**
+
+Si la respuesta es sí, la arquitectura añade profundidad. Si la respuesta empieza a ser no, el subsuelo se ha convertido en búnker.
+
+De esta prueba adversarial se derivan cuatro criterios de control:
+
+1. **La arquitectura nunca debe exigir ser comprendida para que el poema funcione.**
+2. **La crítica social nunca debe formularse cuando puede hacerse visible.**
+3. **La metonimia nunca debe servir para reducir la ambición histórica, sino para concentrarla.**
+4. **La matriz debe actuar como subsuelo, no como cerradura.**
+
+Estas objeciones no debilitan necesariamente la poética del libro. La vuelven falsable. Le impiden convertir sus procedimientos en dogmas y obligan a comprobar, poema a poema, que cada recurso sigue siendo una necesidad literaria y no una demostración de sistema.
+
 De ahí puede derivarse la proposición crítica central del volumen:
 
 > **En *La Granada del 27*, recordar no significa regresar. Significa reconocer qué continúa actuando bajo aquello que ha cambiado.**
