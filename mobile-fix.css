@@ -1,5 +1,6 @@
 /* Corrección móvil posterior a prueba en Android real.
-   Evita que el libro expanda el viewport por su anchura intrínseca. */
+   Evita que el libro expanda el viewport por su anchura intrínseca
+   sin alterar la métrica visual canónica de VERTICAL/HORIZONTAL. */
 
 @media (max-width:780px){
   html,body,#app,main,.view,#bookview{
@@ -93,6 +94,44 @@
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
+  }
+
+  /* INVARIANTE CANÓNICA: VERTICAL y HORIZONTAL conservan la caja
+     calculada por reading-structure.js a partir del verso más ancho. */
+  #verticalreader .fit-poem .poem-verse,
+  #verticalreader .fit-poem.lines>.line,
+  #horizontal .fit-poem .poem-verse,
+  #horizontal .fit-poem.lines>.line{
+    width:var(--poem-measure,min(100%,31em))!important;
+    max-width:100%!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    white-space:nowrap!important;
+    overflow-wrap:normal!important;
+    word-break:normal!important;
+    font-size:var(--poem-font-size,14px)!important;
+  }
+
+  /* VERTICAL conserva verso natural alineado a la izquierda. */
+  #verticalreader .fit-poem .poem-verse,
+  #verticalreader .fit-poem.lines>.line{
+    text-align:left!important;
+    text-align-last:auto!important;
+  }
+
+  /* HORIZONTAL conserva exactamente la medida del verso mayor
+     y justifica cada verso de extremo a extremo dentro de esa caja. */
+  #horizontal .fit-poem .poem-verse,
+  #horizontal .fit-poem.lines>.line{
+    text-align:justify!important;
+    text-align-last:justify!important;
+    text-justify:inter-word!important;
+  }
+
+  #verticalreader .poem-line,
+  #horizontal .poem-line{
+    width:100%;
+    max-width:100%;
   }
 }
 
