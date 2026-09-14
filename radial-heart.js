@@ -54,11 +54,11 @@
     if(row14().length!==27)return;
     view.innerHTML=`
       <section class="radial-heart">
-        <header class="radial-heart-head">
+        <div class="radial-heart-head" role="group" aria-label="Introducción a los dos sonetos radiales">
           <div class="radial-heart-kicker">PUNTO DE PARTIDA Y DE REGRESO · LA VEGA</div>
           <h2>LOS DOS SONETOS · MOTOR Y CORAZÓN</h2>
           <p>El verso 14 de <em>LA VEGA</em> fija el centro de simetría de todo el sistema. En esa misma celda 14 × 14, <em>BAJO LA CAL</em> se bifurca y pone en marcha los dos sonetos.</p>
-        </header>
+        </div>
 
         <div class="radial-cycle" aria-label="Recorrido estructural">
           <span>LA VEGA · PARTIDA</span><b>→</b><span>VERSO 14 · CENTRO</span><b>→</b><span>SONETOS · MOTOR / CORAZÓN</span><b>→</b><span>LA VEGA · REGRESO</span>
