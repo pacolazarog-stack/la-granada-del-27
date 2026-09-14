@@ -19,20 +19,30 @@ El estribillo palindrómico canónico es:
 
 ## Edición canónica de imprenta
 
-Versión vigente: **13 de septiembre de 2026**.
+Versión vigente: **14 de septiembre de 2026 · MASTER DE IMPRENTA FINAL**.
 
 - Formato: A5, 148 × 210 mm.
 - Sangrado: 3 mm.
 - Extensión: 84 páginas.
 - Edición integral: Libro I + Cuaderno de piedra + lecturas diagonales y radiales.
 - PDF canónico en Google Drive: https://drive.google.com/file/d/12wQoz7Oyyu15m3LGTUH2PChrkvq6Tbcd/view
-- SHA-256: `57efd7e26f9824b3d9676106527b2bb175839dbacc6d652a41ea896dd0a27a89`
+- SHA-256: `1a63ec961197ad4f03986da595f3ba6be96bf798c08aff66b6ce32f3b8a19af6`
 
-La edición del 13/09/2026 incorpora, entre otras revisiones ya fijadas, la depuración de **GRAN VÍA**, la poda mínima de **ALHAMBRA S. A.** y el cierre revisado de **UN SIGLO DESPUÉS**, sin alterar **LA VEGA** ni el centro 14 × 14.
+La edición vigente incorpora las revisiones ya fijadas de **GRAN VÍA**, **ALHAMBRA S. A.** y **UN SIGLO DESPUÉS**, sin alterar **LA VEGA** ni el centro 14 × 14.
 
-En **UN SIGLO DESPUÉS** se elimina además el eco redundante «Bajo la avenida sigue pasando el agua.». El Libro I termina así en el gesto humano «Su madre tira de él y se ríe.» antes del estribillo canónico.
+En **UN SIGLO DESPUÉS** se elimina el eco redundante «Bajo la avenida sigue pasando el agua.». El Libro I termina en el gesto humano «Su madre tira de él y se ríe.» antes del estribillo canónico.
 
-En el cierre impreso se aplica también la poda editorial: la página de **REVELACIÓN** conserva únicamente «LA GRANADA DEL DOS SIETE / LA GRANADA DEL 27», sin explicación añadida; la antigua **GUÍA FINAL · OTRA MANERA DE LEER** desaparece y su página queda en blanco, de modo que el final respira como **epílogo → silencio → contraportada**.
+En el cierre impreso, la página de **REVELACIÓN** conserva únicamente «LA GRANADA DEL DOS SIETE / LA GRANADA DEL 27», la antigua guía final desaparece y la página 83 queda en blanco: **risa → estribillo → epílogo → silencio → contraportada**.
+
+La revisión forense de imprenta del 14/09/2026 corrige el único desbordamiento material detectado: la cabecera de continuación de **CANCIÓN PARA QUIEN ACABA DE LLEGAR** en la página 42. El título queda íntegro y `· continuación` pasa a una segunda línea. El diff visual confirma que **solo cambia la página 42** respecto de la edición definitiva anterior. Se fija además el metadato de autor: **Francisco Javier Lázaro Guil**.
+
+## Texto crítico canónico
+
+El estudio central del dossier queda fijado en [`DOSSIER_CRITICO_CANONICO.md`](DOSSIER_CRITICO_CANONICO.md): **«La ética de la metonimia. Materia, memoria y arquitectura subterránea en La Granada del 27 · Un siglo después»**.
+
+Tesis crítica de cierre:
+
+> **En La Granada del 27, recordar no significa regresar. Significa reconocer qué continúa actuando bajo aquello que ha cambiado.**
 
 Página pública: https://pacolazarog-stack.github.io/la-granada-del-27/
 
