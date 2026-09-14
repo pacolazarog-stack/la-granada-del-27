@@ -62,7 +62,7 @@
       </div>`;
     progress.textContent=`CONTRAPORTADA · ${items.length} / ${items.length}`;
     prev.disabled=false;
-    prev.textContent='← Volver al libro';
+    prev.textContent='← Volver a la portada';
     next.disabled=true;
     next.textContent='Libro cerrado';
   }
@@ -80,7 +80,7 @@
   prev.onclick=()=>{
     if(backCover){
       backCover=false;
-      bi=items.length-1;
+      bi=0;
     }else{
       bi=Math.max(0,bi-1);
     }
