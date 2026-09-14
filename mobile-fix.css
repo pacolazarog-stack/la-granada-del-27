@@ -152,6 +152,31 @@
     width:100%;
     max-width:100%;
   }
+
+  /* DIAGONAL · la fila LECTURA pasa a 2×2 para evitar solapes. */
+  #diagonal .diag-control[data-control="mode"]{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:5px!important;
+    overflow:visible!important;
+    border-radius:14px!important;
+    padding:6px!important;
+  }
+  #diagonal .diag-control[data-control="mode"] .diag-control-label{
+    grid-column:1 / -1;
+    min-width:0!important;
+    padding:2px 6px 4px!important;
+    text-align:left;
+  }
+  #diagonal .diag-control[data-control="mode"] button{
+    width:100%;
+    min-width:0!important;
+    min-height:40px;
+    padding:8px 6px!important;
+    white-space:normal!important;
+    line-height:1.15;
+    text-align:center;
+  }
 }
 
 @media (max-width:420px){
