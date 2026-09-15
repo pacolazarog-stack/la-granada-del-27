@@ -9,10 +9,29 @@
   const baseBook=window.book;
   let backCover=false;
   let vegaTrip=false;
+  let vegaSource=null;
+  let vegaReturn=null;
 
   if(items.length){items[0]={k:'cover',t:'LA GRANADA DEL 27',sub:'UN SIGLO DESPUÉS'};}
   const vegaIndex=items.findIndex(x=>x&&x.k==='v'&&Number(x.n)===14);
   const emitState=state=>document.dispatchEvent(new CustomEvent('book:state',{detail:{state,page:bi,total:items.length,title:'La Granada del 27'}}));
+
+  function activeViewId(){
+    return [...document.querySelectorAll('.view')].find(v=>!v.classList.contains('hidden'))?.id||'bookview';
+  }
+
+  function captureOrigin(){
+    return {
+      mode:activeViewId(),
+      bi,
+      backCover,
+      hash:location.hash||'#bookview'
+    };
+  }
+
+  function coverOrigin(){
+    return {mode:'bookview',bi:0,backCover:false,hash:'#bookview'};
+  }
 
   function activateBookView(){
     document.querySelectorAll('.view').forEach(v=>v.classList.add('hidden'));
@@ -26,13 +45,21 @@
     if(!vegaButton)return;
     vegaButton.classList.toggle('active',vegaTrip);
     vegaButton.setAttribute('aria-pressed',vegaTrip?'true':'false');
-    vegaButton.setAttribute('aria-label',vegaTrip?'Volver desde La Vega a la portada':'Ir directamente al poema La Vega y volver obligatoriamente a la portada');
-    vegaButton.title=vegaTrip?'Volver a la portada':'Ir a LA VEGA · ida y vuelta';
+    if(vegaTrip&&vegaSource==='cover'){
+      vegaButton.setAttribute('aria-label','Volver desde La Vega a la portada');
+      vegaButton.title='Volver a la portada';
+    }else if(vegaTrip){
+      vegaButton.setAttribute('aria-label','Volver desde La Vega a la página desde la que se accedió');
+      vegaButton.title='Volver exactamente a la página de origen';
+    }else{
+      vegaButton.setAttribute('aria-label','Ir directamente al poema La Vega y volver a la misma página');
+      vegaButton.title='Ir a LA VEGA y regresar a esta misma página';
+    }
   }
 
   function renderFront(){
     page.className='page cover-page';page.scrollTop=0;
-    page.innerHTML=`<div class="book-cover" aria-label="Portada de La Granada del 27. Un siglo después"><div class="cover-top"><span>GRANADA · 2027</span><span class="cover-axis">14 × 14</span></div><div class="cover-center"><h1 class="cover-title"><span>LA GRANADA</span><span>DEL 27</span></h1><div class="cover-subtitle">UN SIGLO DESPUÉS</div><div class="cover-rule"></div><p class="cover-motto">Dos Granadas se miran.<br>Al fondo permanece la Vega.</p></div><div class="cover-bottom"><button class="cover-hinge cover-hinge-button" type="button" data-vega-direct aria-label="Ir directamente al poema La Vega">LA VEGA · PARTIDA Y REGRESO ↔</button><a class="cover-author" href="autor.html" aria-label="Autor: flag">flag</a></div></div>`;
+    page.innerHTML=`<div class="book-cover" aria-label="Portada de La Granada del 27. Un siglo después"><div class="cover-top"><span>GRANADA · 2027</span><span class="cover-axis">14 × 14</span></div><div class="cover-center"><h1 class="cover-title"><span>LA GRANADA</span><span>DEL 27</span></h1><div class="cover-subtitle">UN SIGLO DESPUÉS</div><div class="cover-rule"></div><p class="cover-motto">Dos Granadas se miran.<br>Al fondo permanece la Vega.</p></div><div class="cover-bottom"><button class="cover-hinge cover-hinge-button" type="button" data-vega-cover aria-label="Ir a La Vega y regresar a la portada">LA VEGA · PARTIDA Y REGRESO ↔</button><a class="cover-author" href="autor.html" aria-label="Autor: flag">flag</a></div></div>`;
     progress.textContent=`PORTADA · ${items.length} PIEZAS`;
     prev.hidden=false;next.hidden=false;
     prev.disabled=true;prev.textContent='← Anterior';
@@ -51,17 +78,35 @@
     syncVegaState();
   }
 
-  function returnToFront(){
-    vegaTrip=false;backCover=false;bi=0;
-    activateBookView();
-    window.book();
-    history.replaceState(null,'','#bookview');
+  function closeVegaTrip(){
+    const destination=vegaReturn||coverOrigin();
+    vegaTrip=false;
+    vegaSource=null;
+    vegaReturn=null;
+    bi=Math.max(0,Math.min(items.length-1,Number(destination.bi)||0));
+    backCover=!!destination.backCover;
+
+    if(destination.mode==='bookview'){
+      activateBookView();
+      window.book();
+    }else if(typeof window.mode==='function'){
+      window.mode(destination.mode);
+    }else{
+      activateBookView();
+      window.book();
+    }
+
+    if(destination.hash)history.replaceState(null,'',destination.hash);
     syncVegaState();
   }
 
-  function openVegaTrip(){
+  function openVegaTrip(source='toolbar'){
     if(vegaIndex<0)return;
-    backCover=false;vegaTrip=true;bi=vegaIndex;
+    vegaReturn=source==='cover'?coverOrigin():captureOrigin();
+    vegaSource=source;
+    backCover=false;
+    vegaTrip=true;
+    bi=vegaIndex;
     activateBookView();
     window.book();
     history.replaceState(null,'','#la-vega');
@@ -73,9 +118,21 @@
       backCover=false;
       page.className='page';
       baseBook();
-      prev.hidden=false;prev.disabled=false;prev.textContent='← Volver a portada';
-      next.hidden=true;
-      progress.textContent='LA VEGA · IDA Y VUELTA';
+      prev.hidden=false;next.hidden=false;
+
+      if(vegaSource==='cover'){
+        prev.disabled=false;next.disabled=false;
+        prev.textContent='← Volver a portada';
+        next.textContent='Volver a portada →';
+        progress.textContent='LA VEGA · PARTIDA Y REGRESO';
+      }else{
+        prev.disabled=bi<=1;
+        next.disabled=bi>=items.length-1;
+        prev.textContent='← Anterior';
+        next.textContent='Siguiente →';
+        progress.textContent=`${bi+1} / ${items.length} · LA VEGA ↔ vuelve al origen`;
+      }
+
       emitState('text');
       syncVegaState();
       return;
@@ -92,12 +149,18 @@
   };
 
   prev.onclick=()=>{
-    if(vegaTrip){returnToFront();return;}
+    if(vegaTrip){
+      if(vegaSource==='cover'){closeVegaTrip();return;}
+      bi=Math.max(1,bi-1);window.book();return;
+    }
     if(backCover){backCover=false;bi=items.length-1;window.book();return;}
     bi=Math.max(0,bi-1);window.book();
   };
   next.onclick=()=>{
-    if(vegaTrip){returnToFront();return;}
+    if(vegaTrip){
+      if(vegaSource==='cover'){closeVegaTrip();return;}
+      bi=Math.min(items.length-1,bi+1);window.book();return;
+    }
     if(backCover){if(typeof window.mode==='function')window.mode('chance');return;}
     if(bi===items.length-1){backCover=true;window.book();return;}
     bi=Math.min(items.length-1,bi+1);window.book();
@@ -106,26 +169,32 @@
   if(vegaButton){
     vegaButton.onclick=ev=>{
       ev.preventDefault();ev.stopPropagation();
-      if(vegaTrip)returnToFront();else openVegaTrip();
+      if(vegaTrip)closeVegaTrip();else openVegaTrip('toolbar');
     };
   }
 
   document.addEventListener('click',ev=>{
-    const trigger=ev.target.closest?.('[data-vega-direct]');
-    if(trigger){
+    const coverTrigger=ev.target.closest?.('[data-vega-cover]');
+    if(coverTrigger){
       ev.preventDefault();
-      if(vegaTrip)returnToFront();else openVegaTrip();
+      if(vegaTrip)closeVegaTrip();else openVegaTrip('cover');
       return;
     }
     if(vegaTrip&&ev.target.closest?.('.brand')){
       ev.preventDefault();
-      returnToFront();
+      closeVegaTrip();
     }
   });
 
-  window.GRANADA_VEGA_TRIP={open:openVegaTrip,close:returnToFront,isActive:()=>vegaTrip};
-  window.GRANADA_BOOK_COVER={open:()=>{vegaTrip=false;backCover=false;bi=0;activateBookView();window.book();},close:()=>{vegaTrip=false;backCover=true;activateBookView();window.book();}};
+  window.GRANADA_VEGA_TRIP={
+    open:()=>openVegaTrip('toolbar'),
+    openFromCover:()=>openVegaTrip('cover'),
+    close:closeVegaTrip,
+    isActive:()=>vegaTrip,
+    source:()=>vegaSource
+  };
+  window.GRANADA_BOOK_COVER={open:()=>{vegaTrip=false;vegaSource=null;vegaReturn=null;backCover=false;bi=0;activateBookView();window.book();},close:()=>{vegaTrip=false;vegaSource=null;vegaReturn=null;backCover=true;activateBookView();window.book();}};
 
-  if(location.hash==='#la-vega')openVegaTrip();
+  if(location.hash==='#la-vega')openVegaTrip('cover');
   else window.book();
 })();
