@@ -1,6 +1,8 @@
 # Libro · Poética del límite
 
-Proyecto literario de **Francisco Javier Lázaro Guil**. El repositorio nació para **La Granada del 27 · Un siglo después** y mantiene su edición digital y sus validadores, pero desde el 15 de septiembre de 2026 documenta también el conjunto literario completo y sus masters canónicos.
+Proyecto literario firmado públicamente por **flag**. El repositorio nació para **La Granada del 27 · Un siglo después** y conserva su edición digital y sus validadores; desde el 15 de septiembre de 2026 documenta también el conjunto literario completo y sus masters canónicos.
+
+La identidad autoral se mantiene deliberadamente discreta. La relación `flag = fli`, su trasfondo y la identificación civil pueden consultarse en [`autor.html`](autor.html).
 
 ## Corpus
 
@@ -10,7 +12,7 @@ Proyecto literario de **Francisco Javier Lázaro Guil**. El repositorio nació p
 4. **La poética del archivo** — ensayo, contraensayo, coda satírica y postdata.
 5. **Poética del límite** — dossier crítico final del conjunto.
 
-El inventario canónico, los enlaces a los masters, las huellas SHA-256 y el estado de cada obra están en [`CORPUS_FINAL.md`](CORPUS_FINAL.md). El ZIP maestro se documenta en [`FINAL_260915.md`](FINAL_260915.md), pero **no forma parte del repositorio público**.
+El inventario canónico, los enlaces a los masters y las huellas SHA-256 están en [`CORPUS_FINAL.md`](CORPUS_FINAL.md). El paquete privado se documenta en [`FINAL_260915.md`](FINAL_260915.md) y **no forma parte del repositorio público**.
 
 ## Tesis crítica común
 
@@ -22,7 +24,7 @@ El inventario canónico, los enlaces a los masters, las huellas SHA-256 y el est
 - La cuadrícula termina y el poema continúa.
 - La generación termina y la autoría decide.
 
-La categoría superior es la **poética del límite**. El archivo, el plano, la linde, la matriz y la herramienta generativa no se presentan como males absolutos: organizan, defienden, relacionan y descubren. El problema aparece cuando la precisión aspira a convertirse en totalidad.
+La categoría superior es la **poética del límite**. El archivo, el plano, la linde, la matriz y la herramienta generativa organizan, defienden, relacionan y descubren; el problema aparece cuando la precisión aspira a convertirse en totalidad.
 
 ## La Granada del 27 · Un siglo después
 
@@ -31,17 +33,17 @@ La obra se organiza en dos capas relacionadas pero no equivalentes:
 - **LIBRO I · superficie**: 27 poemas visibles con autonomía literaria. **LA VEGA** conserva excepcionalmente 27 endecasílabos y su verso 14 —«Late bajo la cal la acequia hundida.»— coincide con el centro 14 × 14.
 - **CUADERNO DE PIEDRA / matriz profunda**: estructura de 27 × 27 posiciones para lecturas horizontales, diagonales, radiales y ocultas.
 
-El centro común del sistema es:
+Centro común del sistema:
 
 > Late bajo la cal la acequia hundida.
 
-El estribillo palindrómico canónico es:
+Estribillo palindrómico canónico:
 
 > Granada sucede — sucede Granada.
 
 Master definitivo de 15/09/2026: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
 
-La plataforma digital de Granada conserva sus validadores estructurales y la capa responsive para móvil. Página pública: https://pacolazarog-stack.github.io/la-granada-del-27/
+Página pública: https://pacolazarog-stack.github.io/la-granada-del-27/
 
 ## Paco Olmo de Males
 
@@ -51,29 +53,23 @@ Master definitivo: https://drive.google.com/file/d/1KKYu0I-xQ8InOapuT_Etg3MgRORf
 
 ## La terraza del Miramar
 
-Canon **1.6**. El Acto III · **NACE LA REINA** incorpora como umbral el fragmento **DK 22 B 53** de Heráclito:
-
-> «El conflicto es el padre de todas las cosas, el rey de todas las cosas; a unos los muestra como dioses y a otros como hombres, a unos los hace esclavos y a otros libres.»
-
-La cita ilumina el *pólemos* como principio de diferenciación, no como elogio de la violencia. El conflicto produce posiciones y autoridad; los «diez minutos» del desenlace impiden que esa forma se vuelva absoluta.
+Canon **1.6**. El Acto III · **NACE LA REINA** incorpora como umbral el fragmento **DK 22 B 53** de Heráclito. La cita ilumina el *pólemos* como principio de diferenciación, no como elogio de la violencia. El conflicto produce posiciones y autoridad; los «diez minutos» del desenlace impiden que esa forma se vuelva absoluta.
 
 Master definitivo: https://drive.google.com/file/d/1Nl2RhEdDDOSgYVFQmjeupGCoZ2EVgdpv/view
 
 ## Ensayo y dossier crítico
 
-**La poética del archivo** conserva el ensayo, contraensayo, coda y postdata, ahora rematados por una adenda que sitúa el archivo dentro de la **poética del límite**.
+**La poética del archivo** conserva el ensayo, contraensayo, coda y postdata, rematados por una adenda que sitúa el archivo dentro de la **poética del límite**.
 
 **Poética del límite** reúne la crítica de *La Vega*, Paco, Miramar, la matriz 27 × 27, la constelación comparatista y la reflexión sobre inteligencia artificial y dirección autoral.
 
 - Ensayo: https://drive.google.com/file/d/1fBC_i2A2NkMjL0sXcQ1wliVcAADVViUi/view
 - Dossier crítico: https://drive.google.com/file/d/1PZzS4Knzc3a2ssEhheIMBvVjkWDRzO7F/view
 
-## Paquete definitivo
+## Edición definitiva · 15/09/2026
 
-El paquete `FINAL_260915.zip` contiene los masters PDF, los editables DOCX de Miramar, ensayo y dossier, manifiesto de revisión, archivo de lectura y hashes SHA-256.
+La maquetación común prioriza A5, jerarquía tipográfica sobria, firma `flag` discreta y mínima interferencia explicativa. Granada conserva su master a sangre; Paco mantiene su cuerpo canónico A5; Miramar, el ensayo y el dossier se han revisado para una presentación editorial coherente.
 
-El ZIP se conserva **sólo en Google Drive para almacenamiento y descarga controlada**. No se publica ni se sube a GitHub. El repositorio mantiene únicamente su registro, composición y huella de integridad.
+El paquete privado **`FINAL_FLAG_260915.zip`** contiene los masters PDF, los editables DOCX, `AUTOR.txt`, manifiesto, archivo de lectura y hashes SHA-256. Se conserva **sólo en Google Drive para almacenamiento y descarga controlada**; no se publica ni se sube a GitHub.
 
-Todos los nombres de archivo del paquete definitivo tienen menos de 24 caracteres, incluida la extensión.
-
-© 2026 Francisco Javier Lázaro Guil. Todos los derechos reservados.
+© 2026 flag. Todos los derechos reservados.
