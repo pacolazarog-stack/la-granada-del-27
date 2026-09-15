@@ -1,0 +1,24 @@
+name: Refresca control de retorno
+
+on:
+  push:
+    paths:
+      - '.github/workflows/bump-return-cache.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Actualiza versión de section-audio
+        run: |
+          sed -i 's/section-audio.js?v=20260915-sound1/section-audio.js?v=20260915-return3/g' granada.html paco.html miramar.html ensayo.html final.html
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add granada.html paco.html miramar.html ensayo.html final.html
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Fuerza el controlador robusto de retorno en todas las obras'
+          git push
