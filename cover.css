@@ -14,7 +14,8 @@
 .cover-rule{width:72px;height:1px;background:rgba(255,239,216,.72);margin:22px auto}
 .cover-motto{font-size:clamp(14px,1.65vw,19px);line-height:1.48;margin:0 auto;max-width:25em;font-style:italic}
 .cover-bottom{text-align:center}
-.cover-author{font-size:clamp(15px,2vw,22px);letter-spacing:.045em}
+.cover-author{font-size:clamp(9px,1vw,12px);letter-spacing:.16em;font-weight:400;opacity:.72;color:inherit;text-decoration:none}
+.cover-author:hover{opacity:1}
 .cover-hinge{margin-top:14px;font-size:8px;letter-spacing:.19em;text-transform:uppercase;color:rgba(255,245,231,.70)}
 
 .book-back{position:relative;z-index:2;height:100%;overflow:auto;display:grid;align-content:center;padding:44px 58px;background:linear-gradient(90deg,rgba(18,15,12,.88),rgba(18,15,12,.73) 64%,rgba(18,15,12,.46));text-shadow:0 1px 10px rgba(0,0,0,.72)}
@@ -26,7 +27,8 @@
 .back-copy .back-questions{margin:22px 0;padding-left:18px;border-left:1px solid rgba(210,177,142,.65)}
 .back-copy .back-questions p{margin:4px 0;font-style:italic}
 .back-final{margin-top:27px!important;font-size:clamp(19px,2.5vw,27px)!important;line-height:1.24!important;color:#e0b58b!important}
-.back-credit{margin-top:24px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,240,223,.62)}
+.back-credit{margin-top:24px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,240,223,.50)}
+.back-credit a{color:inherit;text-decoration:none}.back-credit a:hover{color:rgba(255,240,223,.82)}
 
 /* En cubierta, la navegación actúa como gesto físico de abrir/cerrar el libro. */
 #bookview:has(.cover-page) .progress,#bookview:has(.back-cover-page) .progress{letter-spacing:.12em;text-transform:uppercase}
