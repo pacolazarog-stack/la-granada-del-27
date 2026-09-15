@@ -2,7 +2,10 @@
 
 Proyecto literario firmado públicamente por **flag**. El repositorio nació para **La Granada del 27 · Un siglo después** y conserva su edición digital y sus validadores; desde el 15 de septiembre de 2026 documenta también el conjunto literario completo y sus masters canónicos.
 
-La identidad autoral se mantiene deliberadamente discreta. La relación `flag = fli`, su trasfondo y la identificación civil pueden consultarse en [`autor.html`](autor.html).
+La firma autoral se mantiene deliberadamente discreta. Su formulación mínima puede consultarse en [`autor.html`](autor.html):
+
+> Flag quedó perdido sin Fli.  
+> Y estas palabras, sin ti.
 
 ## Corpus
 
