@@ -12,6 +12,7 @@
   let unlocked=false;
   let started=false;
   let firstCycle=true;
+  let assetReady=false;
   const audio=new Audio(src);
   audio.preload='auto';
   audio.loop=false;
@@ -33,7 +34,7 @@
     root.classList.add('audio-locked');
   };
 
-  const unlockCards=(fallback=false)=>{
+  const unlockCards=()=>{
     unlocked=true;
     cards.forEach(a=>{
       a.classList.remove('is-locked');
@@ -42,15 +43,9 @@
     });
     root.classList.remove('audio-locked');
     gate.classList.add('is-open');
-    if(fallback){
-      status.textContent='AUDIO PREVIO PENDIENTE · ACCESO TEMPORAL ABIERTO';
-      clock.textContent='';
-      fill.style.width='0';
-    }else{
-      status.textContent='ACCESO ABIERTO · MÚSICA EN BUCLE';
-      clock.textContent='CICLO COMPLETADO';
-      fill.style.width='100%';
-    }
+    status.textContent='ACCESO ABIERTO · MÚSICA EN BUCLE';
+    clock.textContent='CICLO COMPLETADO';
+    fill.style.width='100%';
   };
 
   cards.forEach(a=>a.addEventListener('click',e=>{
@@ -71,29 +66,47 @@
     }
   };
 
+  const markMissing=()=>{
+    assetReady=false;
+    started=false;
+    start.hidden=false;
+    start.disabled=true;
+    start.textContent='AUDIO PREVIO NO PUBLICADO';
+    gate.classList.remove('is-playing');
+    status.textContent='FALTA PUBLICAR audio/PREVIO.mp3 EN EL REPOSITORIO';
+    clock.textContent='';
+    fill.style.width='0';
+  };
+
   const begin=async()=>{
+    if(!assetReady){markMissing();return;}
     try{
       await audio.play();
       started=true;
+      start.disabled=false;
       start.hidden=true;
       gate.classList.add('is-playing');
       status.textContent='CICLO SONORO EN CURSO · ACCESO BLOQUEADO';
       update();
     }catch(err){
       started=false;
+      start.disabled=false;
       start.hidden=false;
+      start.textContent='INICIAR CICLO SONORO';
       gate.classList.remove('is-playing');
       status.textContent='EL NAVEGADOR REQUIERE UNA ACCIÓN PARA INICIAR EL SONIDO';
     }
   };
 
-  audio.addEventListener('loadedmetadata',update);
+  audio.addEventListener('loadedmetadata',()=>{assetReady=true;update();});
+  audio.addEventListener('canplay',()=>{assetReady=true;});
   audio.addEventListener('timeupdate',update);
   audio.addEventListener('playing',()=>{
     if(!unlocked){start.hidden=true;status.textContent='CICLO SONORO EN CURSO · ACCESO BLOQUEADO';}
   });
   audio.addEventListener('pause',()=>{
     if(!unlocked&&started&&!audio.ended){
+      start.disabled=false;
       start.hidden=false;
       start.textContent='REANUDAR CICLO';
       status.textContent='CICLO INTERRUMPIDO · DEBE COMPLETARSE';
@@ -102,24 +115,34 @@
   audio.addEventListener('ended',async()=>{
     if(firstCycle){
       firstCycle=false;
-      unlockCards(false);
+      unlockCards();
       audio.loop=true;
       audio.currentTime=0;
       try{await audio.play();}catch(_){/* el acceso ya queda abierto */}
     }
   });
-  audio.addEventListener('error',()=>{
-    start.hidden=true;
-    unlockCards(true);
-  });
+  audio.addEventListener('error',markMissing);
 
   start.addEventListener('click',()=>{
+    if(start.disabled)return;
     if(audio.ended||!started)audio.currentTime=0;
     begin();
   });
 
-  lockCards();
-  start.hidden=true;
-  status.textContent='INICIANDO UMBRAL SONORO…';
-  begin();
+  const verify=async()=>{
+    lockCards();
+    start.hidden=true;
+    status.textContent='COMPROBANDO UMBRAL SONORO…';
+    try{
+      const response=await fetch(src,{method:'GET',cache:'no-store',headers:{Range:'bytes=0-1'}});
+      if(!response.ok){markMissing();return;}
+      assetReady=true;
+      status.textContent='INICIANDO UMBRAL SONORO…';
+      begin();
+    }catch(_){
+      markMissing();
+    }
+  };
+
+  verify();
 })();
