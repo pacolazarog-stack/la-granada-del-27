@@ -18,13 +18,22 @@
   const side=(r,c)=>r===14&&c===14?'GOZNE':r===c?'DIAGONAL AUTORREFLEXIVA':r<c?'ESPEJO SUPERIOR':'ESPEJO INFERIOR';
   const meta=(r,c)=>`${coord(r,c)} · COLUMNA ${String(c).padStart(2,'0')} · ${vTitle(c)} · HORIZONTAL ${String(r).padStart(2,'0')} · ${hTitle(r)}`;
   const slotFx=new Audio('audio/slot-hit.mp3');
-  slotFx.preload='auto';slotFx.volume=.48;
+  slotFx.preload='auto';slotFx.volume=.14;
 
   let hit=null,stage=0,stages=[];
 
   function playSlotFx(){
     if(!soundEnabled())return;
-    try{const fx=slotFx.cloneNode();fx.volume=slotFx.volume;fx.play().catch(()=>{});}catch(_){}
+    try{
+      const fx=slotFx.cloneNode();
+      fx.volume=.14;
+      fx.playbackRate=1.12;
+      const stop=()=>{try{fx.pause();fx.currentTime=0;}catch(_){}};
+      fx.play().then(()=>{
+        setTimeout(()=>{try{fx.volume=.06;}catch(_){}},65);
+        setTimeout(stop,125);
+      }).catch(()=>{});
+    }catch(_){}
   }
 
   function buildStages(){
