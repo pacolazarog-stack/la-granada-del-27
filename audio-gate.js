@@ -19,8 +19,18 @@
 
   const introSrc=document.body.dataset.audioSrc||'';
   const returnSources=[document.body.dataset.returnAudio1||'',document.body.dataset.returnAudio2||''].filter(Boolean);
+
+  let readyOrigin='';
+  try{readyOrigin=sessionStorage.getItem('volumeReturnReady')||'';}catch(_){}
+  if(pref.isEnabled()&&localStorage.getItem('volumeReturnPending')!=='1'&&readyOrigin&&returnSources.length){
+    localStorage.setItem('volumeReturnOrigin',readyOrigin);
+    localStorage.setItem('volumeReturnPending','1');
+    try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
+  }
+
   let origin=localStorage.getItem('volumeReturnOrigin')||'';
   let pending=pref.isEnabled()&&localStorage.getItem('volumeReturnPending')==='1'&&origin&&returnSources.length;
+  if(pending){try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}}
   let firstIntro=!pending&&!pref.introCompleted();
   let chosen=pending?returnSources[Math.floor(Math.random()*returnSources.length)]:introSrc;
   let unlocked=false,started=false,choiceVisible=false;
@@ -73,6 +83,7 @@
     try{pref.setEnabled(false,'intro-choice')}catch(_){localStorage.setItem('volumeSoundMode','off');}
     if(audio){audio.pause();audio.currentTime=0;}
     pref.clearPendingAudio?.();
+    try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
     unlockCards('MODO SIN SONIDO · ACCESO ABIERTO');
   };
 
@@ -91,6 +102,7 @@
     if(sameOriginCard(a)){
       localStorage.setItem('volumeResumeBook',origin);
       localStorage.removeItem('volumeReturnPending');localStorage.removeItem('volumeReturnOrigin');
+      try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
       if(audio)audio.pause();return;
     }
     if(unlocked)return;
@@ -104,21 +116,21 @@
   };
   const markMissing=()=>{
     started=false;start.hidden=false;start.disabled=false;start.textContent='REINTENTAR AUDIO';gate.classList.remove('is-playing');
-    status.textContent='NO SE HA PODIDO CARGAR EL UMBRAL SONORO';clock.textContent='';fill.style.width='0';
+    status.textContent=pending?'NO SE HA PODIDO CARGAR EL CONTRAPUNTO DE RETORNO':'NO SE HA PODIDO CARGAR EL UMBRAL SONORO';clock.textContent='';fill.style.width='0';
   };
   const begin=async()=>{
     if(!audio||!pref.isEnabled())return;
     try{
       await audio.play();started=true;start.disabled=false;start.hidden=true;gate.classList.add('is-playing');
       status.textContent=pending?`RETORNO DESDE ${origin.toUpperCase()} · ESCUCHE UNA VERSIÓN COMPLETA`:'PRELUDIO SONORO EN CURSO · ACCESO BLOQUEADO';update();
-    }catch(_){started=false;start.disabled=false;start.hidden=false;start.textContent=pending?'INICIAR MÚSICA DE RETORNO':'INICIAR PRELUDIO';gate.classList.remove('is-playing');status.textContent='EL NAVEGADOR REQUIERE UNA ACCIÓN PARA INICIAR EL SONIDO';}
+    }catch(_){started=false;start.disabled=false;start.hidden=false;start.textContent=pending?'INICIAR MÚSICA DE RETORNO':'INICIAR PRELUDIO';gate.classList.remove('is-playing');status.textContent=pending?'PULSE PARA INICIAR EL CONTRAPUNTO DE RETORNO':'EL NAVEGADOR REQUIERE UNA ACCIÓN PARA INICIAR EL SONIDO';}
   };
 
   if(audio){
     audio.addEventListener('loadedmetadata',update);
     audio.addEventListener('timeupdate',update);
     audio.addEventListener('playing',()=>{if(!unlocked&&!choiceVisible)start.hidden=true;});
-    audio.addEventListener('pause',()=>{if(!unlocked&&!choiceVisible&&started&&!audio.ended&&pref.isEnabled()){start.disabled=false;start.hidden=false;start.textContent='REANUDAR CICLO';status.textContent='CICLO INTERRUMPIDO · DEBE COMPLETARSE';}});
+    audio.addEventListener('pause',()=>{if(!unlocked&&!choiceVisible&&started&&!audio.ended&&pref.isEnabled()){start.disabled=false;start.hidden=false;start.textContent=pending?'REANUDAR RETORNO':'REANUDAR CICLO';status.textContent=pending?'RETORNO INTERRUMPIDO · DEBE COMPLETARSE':'CICLO INTERRUMPIDO · DEBE COMPLETARSE';}});
     audio.addEventListener('ended',async()=>{
       if(pending){unlockCards('RETORNO COMPLETADO · PUEDE ABRIR OTRO LIBRO');return;}
       if(firstIntro&&!pref.isChosen()){showChoice();return;}
@@ -134,14 +146,28 @@
     if(!enabled){
       if(audio)audio.pause();
       pref.markIntroCompleted();pref.clearPendingAudio?.();pending=false;origin='';firstIntro=false;
+      try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
       unlockCards('MODO SIN SONIDO · ACCESO ABIERTO');
       return;
     }
     if(pref.introCompleted()&&!pending){unlockCards('CON SONIDO · ACCESO ABIERTO');}
   });
 
+  addEventListener('pageshow',ev=>{
+    if(!ev.persisted||!pref.isEnabled())return;
+    let ready='';try{ready=sessionStorage.getItem('volumeReturnReady')||'';}catch(_){}
+    const storedPending=localStorage.getItem('volumeReturnPending')==='1'&&localStorage.getItem('volumeReturnOrigin');
+    if(!storedPending&&ready){
+      localStorage.setItem('volumeReturnOrigin',ready);
+      localStorage.setItem('volumeReturnPending','1');
+      try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
+    }
+    if(storedPending||ready)location.reload();
+  });
+
   if(!pref.isEnabled()){
     pref.markIntroCompleted();pref.clearPendingAudio?.();
+    try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
     unlockCards('MODO SIN SONIDO · ACCESO ABIERTO');
     return;
   }
