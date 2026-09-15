@@ -16,7 +16,12 @@
   <link rel="stylesheet" href="mobile-fix.css?v=20260914c">
   <link rel="stylesheet" href="loas.css?v=20260915">
   <link rel="stylesheet" href="author-modal.css?v=20260915-fli4">
-  <style>.brand{color:inherit;text-decoration:none}.home-link{display:inline-flex;align-items:center;text-decoration:none}</style>
+  <style>
+    .brand{color:inherit;text-decoration:none}.home-link{display:inline-flex;align-items:center;text-decoration:none}
+    .vega-direct-nav{white-space:nowrap;border-color:#d2b28f88;background:#2b211a;color:#f5dfc5}.vega-direct-nav:hover,.vega-direct-nav.active{background:#efe6db;color:#211d19;border-color:#efe6db}
+    .cover-hinge-button{display:inline-block;border:1px solid rgba(255,245,231,.32);background:rgba(22,18,14,.42);border-radius:999px;padding:7px 12px;cursor:pointer;font-family:inherit;text-shadow:inherit}.cover-hinge-button:hover,.cover-hinge-button:focus{color:#fff4e3;border-color:rgba(255,245,231,.70);background:rgba(22,18,14,.72)}
+    .vega-trip nav .mode{pointer-events:none;opacity:.28}.vega-trip .brand{pointer-events:none;opacity:.35}.vega-trip #vega-direct{pointer-events:auto;opacity:1}
+  </style>
 
   <script src="matrix-core.js"></script>
   <script src="matrix-1.js"></script>
@@ -65,6 +70,7 @@
     <nav>
       <a class="mode home-link" href="index.html">INICIO</a>
       <button class="mode active" data-mode="bookview">LIBRO</button>
+      <button class="btn vega-direct-nav" id="vega-direct" type="button" aria-pressed="false" aria-label="Ir directamente al poema La Vega y volver obligatoriamente a la portada">LA VEGA ↔</button>
       <button class="mode" data-mode="verticalreader">VERTICAL</button>
       <button class="mode" data-mode="horizontal">HORIZONTAL</button>
       <button class="mode" data-mode="diagonal">DIAGONAL</button>
@@ -92,7 +98,7 @@
 <script src="radial-heart.js?v=20260914d"></script>
 <script src="audio-preference.js?v=20260915-sound1"></script>
 <script src="chance.js?v=20260915-sound2"></script>
-<script src="book-cover.js?v=20260915-coda2"></script>
+<script src="book-cover.js?v=20260915-vega1"></script>
 <script src="vertical-stone.js?v=20260914b"></script>
 <script src="section-audio.js?v=20260915-sound1"></script>
 <script src="author-modal.js?v=20260915-fli4"></script>
