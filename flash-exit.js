@@ -14,8 +14,13 @@
 
   const overlay=document.createElement('div');
   overlay.id='finalFlashOverlay';
-  overlay.hidden=true;
-  Object.assign(overlay.style,{position:'fixed',inset:'0',zIndex:'40000',background:'#000',display:'grid',placeItems:'center',opacity:'0',transition:'opacity .22s ease'});
+  overlay.setAttribute('aria-hidden','true');
+  Object.assign(overlay.style,{
+    position:'fixed',inset:'0',zIndex:'40000',background:'#000',
+    display:'none',placeItems:'center',opacity:'0',pointerEvents:'none',
+    transition:'opacity .22s ease'
+  });
+
   const video=document.createElement('video');
   video.id='finalFlashVideo';
   video.src=VIDEO_SRC;
@@ -26,14 +31,30 @@
   video.disablePictureInPicture=true;
   video.controls=false;
   Object.assign(video.style,{width:'100vw',height:'100vh',objectFit:'contain',background:'#000'});
+
   const msg=document.createElement('div');
   msg.id='finalFlashMessage';
-  Object.assign(msg.style,{position:'absolute',left:'50%',bottom:'26px',transform:'translateX(-50%)',font:'11px Georgia,serif',letterSpacing:'.1em',color:'rgba(255,255,255,.72)',textAlign:'center'});
+  Object.assign(msg.style,{
+    position:'absolute',left:'50%',bottom:'26px',transform:'translateX(-50%)',
+    font:'11px Georgia,serif',letterSpacing:'.1em',color:'rgba(255,255,255,.72)',textAlign:'center'
+  });
+
   overlay.append(video,msg);
   document.body.appendChild(overlay);
 
-  const showOverlay=()=>{overlay.hidden=false;requestAnimationFrame(()=>{overlay.style.opacity='1';});};
-  const hideOverlay=()=>{overlay.style.opacity='0';setTimeout(()=>{overlay.hidden=true;},230);};
+  const showOverlay=()=>{
+    overlay.style.display='grid';
+    overlay.style.pointerEvents='auto';
+    overlay.setAttribute('aria-hidden','false');
+    requestAnimationFrame(()=>{overlay.style.opacity='1';});
+  };
+
+  const hideOverlay=()=>{
+    overlay.style.opacity='0';
+    overlay.style.pointerEvents='none';
+    overlay.setAttribute('aria-hidden','true');
+    setTimeout(()=>{overlay.style.display='none';},230);
+  };
 
   const showExitState=()=>{
     playing=false;
@@ -100,7 +121,9 @@
   });
   video.addEventListener('ended',finishFlash);
   video.addEventListener('error',failFlash);
-  document.addEventListener('volume:soundchange',ev=>{if(playing&&ev.detail?.source!=='final-flash')video.muted=!Boolean(ev.detail?.enabled);});
+  document.addEventListener('volume:soundchange',ev=>{
+    if(playing&&ev.detail?.source!=='final-flash')video.muted=!Boolean(ev.detail?.enabled);
+  });
 
   if(completed())showExitState();
 })();
