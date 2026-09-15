@@ -1,0 +1,33 @@
+name: Materializa PREVIO
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/fetch-previo.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materializa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar PREVIO desde Drive
+        run: |
+          mkdir -p audio
+          curl -L --fail --retry 2 'https://drive.usercontent.google.com/download?id=1z-6OLt_4Ft5a_MBu8vEX1DH3DpvCirGe&export=download&confirm=t' -o audio/PREVIO.mp3
+          test $(stat -c%s audio/PREVIO.mp3) -gt 3000000
+          file audio/PREVIO.mp3 | grep -Eiq 'audio|MPEG|ID3'
+      - name: Publicar audio
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add audio/PREVIO.mp3
+          if git diff --cached --quiet; then
+            echo 'Sin cambios'
+          else
+            git commit -m 'Añade PREVIO al umbral sonoro'
+            git push
+          fi
