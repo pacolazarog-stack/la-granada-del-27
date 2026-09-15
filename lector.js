@@ -27,7 +27,7 @@
   const $=s=>document.querySelector(s);
   try{
     const data=decodeWork();
-    let page=0;
+    let page=0,codaReady=false;
     const text=$('#readerText'),cover=$('#readerCover'),back=$('#readerBack'),article=$('#readerPage');
     const progress=$('#readerProgress'),jump=$('#readerJump');
     const prev=$('#readerPrev'),next=$('#readerNext');
@@ -61,78 +61,62 @@
 
       text.classList.remove('paco-structured');
       text.replaceChildren();
-      if(!headerMatch){
-        text.textContent=source;
-        return;
-      }
+      if(!headerMatch){text.textContent=source;return;}
 
       let i=first+1;
       while(i<lines.length&&!lines[i].trim())i++;
-
-      if(i<lines.length&&/^\d+$/.test(lines[i].trim())){
-        i++;
-        while(i<lines.length&&!lines[i].trim())i++;
-      }
+      if(i<lines.length&&/^\d+$/.test(lines[i].trim())){i++;while(i<lines.length&&!lines[i].trim())i++;}
 
       const titleLines=[];
-      while(i<lines.length&&lines[i].trim()){
-        titleLines.push(lines[i].trim());
-        i++;
-      }
+      while(i<lines.length&&lines[i].trim()){titleLines.push(lines[i].trim());i++;}
       while(i<lines.length&&!lines[i].trim())i++;
+      if(!titleLines.length){text.textContent=source;return;}
 
-      if(!titleLines.length){
-        text.textContent=source;
-        return;
-      }
-
-      const head=document.createElement('div');
-      head.className='paco-page-head';
-      const kicker=document.createElement('div');
-      kicker.className='paco-page-kicker';
-      kicker.textContent=`${headerMatch[1]} · ${headerMatch[2].toUpperCase()}`;
-      const pieceTitle=document.createElement('h2');
-      pieceTitle.className='paco-piece-title';
-      pieceTitle.textContent=titleLines.join(' ');
+      const head=document.createElement('div');head.className='paco-page-head';
+      const kicker=document.createElement('div');kicker.className='paco-page-kicker';kicker.textContent=`${headerMatch[1]} · ${headerMatch[2].toUpperCase()}`;
+      const pieceTitle=document.createElement('h2');pieceTitle.className='paco-piece-title';pieceTitle.textContent=titleLines.join(' ');
       head.append(kicker,pieceTitle);
-
-      const body=document.createElement('div');
-      body.className='paco-page-body';
-      body.textContent=lines.slice(i).join('\n').replace(/^\s+/, '');
-
-      text.classList.add('paco-structured');
-      text.append(head,body);
+      const body=document.createElement('div');body.className='paco-page-body';body.textContent=lines.slice(i).join('\n').replace(/^\s+/, '');
+      text.classList.add('paco-structured');text.append(head,body);
     }
 
     function renderWorkPage(raw){
       if(isPaco) renderPacoPage(raw);
-      else {
-        text.classList.remove('paco-structured');
-        text.textContent=raw||'';
-      }
+      else {text.classList.remove('paco-structured');text.textContent=raw||'';}
+    }
+
+    function renderCodaPage(){
+      text.classList.remove('paco-structured');
+      text.replaceChildren();
+      const wrap=document.createElement('div');
+      wrap.style.cssText='min-height:65vh;display:grid;place-items:center;text-align:center;white-space:normal;padding:8vh 8vw;box-sizing:border-box';
+      wrap.innerHTML='<div><div style="font-size:11px;letter-spacing:.18em;margin-bottom:18px">CODA</div><div style="font-family:Georgia,serif;font-size:clamp(24px,4vw,44px);line-height:1.15;margin-bottom:22px">La obra termina.<br>La música continúa.</div><div style="max-width:620px;margin:auto;line-height:1.65;opacity:.78">La coda comienza en esta estancia, nunca en la contraportada. Al completar un ciclo se abrirá la salida al volumen total.</div></div>';
+      text.appendChild(wrap);
     }
 
     function render(){
-      page=Math.max(0,Math.min(total+1,page));
+      page=Math.max(0,Math.min(total+2,page));
       prev.hidden=false;next.hidden=false;
       if(page===0){
         article.classList.add('cover-mode');showOnly('cover');
         progress.textContent=`PORTADA · ${total} PÁGINAS`;
         jump.hidden=true;prev.disabled=true;prev.textContent='← Anterior';
         next.disabled=total===0;next.textContent='Abrir libro →';
-        history.replaceState(null,'','#portada');
-        emitState('cover');
-        return;
+        history.replaceState(null,'','#portada');emitState('cover');return;
       }
       if(page===total+1){
         article.classList.add('cover-mode');showOnly('back');
-        progress.textContent='CONTRAPORTADA';
-        jump.hidden=true;
-        prev.disabled=false;prev.textContent='← Inicio';
-        next.hidden=true;
-        history.replaceState(null,'','#contraportada');
-        emitState('back');
-        return;
+        progress.textContent='CONTRAPORTADA';jump.hidden=true;
+        prev.disabled=false;prev.textContent='← Última página';
+        next.hidden=false;next.disabled=false;next.textContent='Coda →';
+        history.replaceState(null,'','#contraportada');emitState('back');return;
+      }
+      if(page===total+2){
+        article.classList.remove('cover-mode');showOnly('text');renderCodaPage();article.scrollTop=0;
+        progress.textContent='CODA';jump.hidden=true;
+        prev.disabled=false;prev.textContent='← Contraportada';
+        next.hidden=!codaReady;next.disabled=!codaReady;next.textContent='Volver al volumen total →';
+        history.replaceState(null,'','#coda');emitState('coda');return;
       }
       article.classList.remove('cover-mode');showOnly('text');
       renderWorkPage(data.pages[page-1]||'');article.scrollTop=0;
@@ -140,21 +124,27 @@
       jump.hidden=false;jump.value=page;
       prev.disabled=false;prev.textContent=page===1?'← Portada':'← Anterior';
       next.disabled=false;next.textContent=page===total?'Contraportada →':'Siguiente →';
-      history.replaceState(null,'',`#p${page}`);
-      emitState('text');
+      history.replaceState(null,'',`#p${page}`);emitState('text');
     }
 
-    prev.onclick=()=>{if(page===total+1){goStart();return;}if(page>0){page--;render();}};
-    next.onclick=()=>{if(page<total+1){page++;render();}};
+    prev.onclick=()=>{if(page>0){page--;render();}};
+    next.onclick=()=>{
+      if(page===total+2){if(codaReady)goStart();return;}
+      if(page<total+2){page++;render();}
+    };
     jump.onchange=()=>{const n=parseInt(jump.value,10);if(Number.isFinite(n)){page=n;render();}};
     $('#readerFull').onclick=()=>!document.fullscreenElement?document.documentElement.requestFullscreen?.():document.exitFullscreen?.();
     addEventListener('keydown',e=>{
-      if(e.key==='ArrowLeft'){if(page===total+1)goStart();else if(page>0){page--;render();}}
-      else if(e.key==='ArrowRight'&&page<total+1){page++;render();}
-      else if(e.key==='Home'){page=0;render();}
-      else if(e.key==='End'){page=total+1;render();}
+      if(e.key==='ArrowLeft'&&page>0){page--;render();}
+      else if(e.key==='ArrowRight'){
+        if(page===total+2){if(codaReady)goStart();}
+        else if(page<total+2){page++;render();}
+      }else if(e.key==='Home'){page=0;render();}
+      else if(e.key==='End'){page=total+2;render();}
     });
-    if(location.hash==='#contraportada') page=total+1;
+    document.addEventListener('coda:complete',()=>{codaReady=true;if(page===total+2)render();});
+    if(location.hash==='#coda') page=total+2;
+    else if(location.hash==='#contraportada') page=total+1;
     else {const m=location.hash.match(/^#p(\d+)$/);if(m)page=Math.max(1,Math.min(total,parseInt(m[1],10)||1));}
     render();
   }catch(err){
