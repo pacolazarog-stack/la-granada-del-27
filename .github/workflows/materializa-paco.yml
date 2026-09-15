@@ -43,3 +43,5 @@ jobs:
           git add paco-data.js
           git commit -m "Materializa Paco canónico para el lector web" || exit 0
           git push
+
+# relanzado tras completar los seis bloques canónicos
