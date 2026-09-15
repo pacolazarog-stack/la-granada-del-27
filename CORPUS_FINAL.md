@@ -1,6 +1,6 @@
 # Corpus final · 15/09/2026
 
-Este repositorio ya no documenta únicamente **La Granada del 27 · Un siglo después**. Desde esta revisión conserva el mapa canónico del conjunto literario de Francisco Javier Lázaro Guil y enlaza sus masters definitivos.
+Este repositorio conserva el mapa canónico del conjunto literario firmado públicamente por **flag** y enlaza sus masters definitivos. La identidad civil se mantiene disponible de forma discreta en [`autor.html`](autor.html), sin competir visualmente con las obras.
 
 ## 01 · La Granada del 27 · Un siglo después
 
@@ -8,7 +8,7 @@ Poesía, memoria territorial y matriz profunda 27 × 27. La lectura de superfici
 
 - Master definitivo: `01_GRANADA27.pdf`
 - Drive: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
-- SHA-256: `f682aeb87c468132224f829d7d25b58e5101dcbb3b04183d99e11b5e7b98c8d6`
+- SHA-256: `b20de6e291132ae5f97c9cc3ff55cc8bf0fda3efd0d40f502a9a522e26dba8f9`
 
 ## 02 · Las cuatro estaciones de Paco Olmo de Males
 
@@ -16,7 +16,7 @@ Novela compuesta de estructura contrapuntística y componente menipeo-carnavales
 
 - Master definitivo: `02_PACO_OLMO.pdf`
 - Drive: https://drive.google.com/file/d/1KKYu0I-xQ8InOapuT_Etg3MgRORfVBtJ/view
-- SHA-256: `c9de5f616b1d10cc80aa630dd5731ef130da2417a38c88ae7fedaf84728a2de3`
+- SHA-256: `098f66dc1246231366981ef58131ba1bb20e6e64c4a8a35459c07daea0a28542`
 
 ## 03 · La terraza del Miramar
 
@@ -27,9 +27,10 @@ Tragicomedia visual en treinta escenas. Canon 1.6. El Acto III · **NACE LA REIN
 
 - PDF definitivo: `03_MIRAMAR.pdf`
 - Drive PDF: https://drive.google.com/file/d/1Nl2RhEdDDOSgYVFQmjeupGCoZ2EVgdpv/view
+- SHA-256 PDF: `89be2e9b48d6ad7c56ab6b5a827335d20d2a23df1d725f5043fedcaa6b5af64a`
 - DOCX definitivo: `03_MIRAMAR.docx`
 - Drive DOCX: https://docs.google.com/document/d/1aRXi4Ljb7Yb8C1lAXno5hcU8nBgwR5wz/edit
-- SHA-256 PDF: `a6b8f52e45530cc9e5834211a20ef041a76d872aca12a350dbeddfd63d62e847`
+- SHA-256 DOCX: `2269eb9d6cabbff37275711aafe8adf586bd0f206336c82384c1ae139567c524`
 
 ## 04 · La poética del archivo
 
@@ -37,9 +38,10 @@ Ensayo, contraensayo, coda satírica y postdata testamentaria. La revisión fina
 
 - PDF definitivo: `04_ENSAYO.pdf`
 - Drive PDF: https://drive.google.com/file/d/1fBC_i2A2NkMjL0sXcQ1wliVcAADVViUi/view
+- SHA-256 PDF: `df91a086c740a1587c448cb2c8288f9d7929f43ec2805b085b4bab9805d6b529`
 - DOCX definitivo: `04_ENSAYO.docx`
 - Drive DOCX: https://docs.google.com/document/d/1igdw-J7NQQntlXqDgQzbWD7SMiKZRaWd/edit
-- SHA-256 PDF: `2e3599ab39a13286b51e8ffdd217d83613880d3a2e62c2611bce072010e0c7e4`
+- SHA-256 DOCX: `6e18a76e599f8968dadd2fcfd4c52e6a2bb4f6aaefa281c3b84e327ba8133ddb`
 
 ## 05 · Poética del límite
 
@@ -47,9 +49,14 @@ Dossier crítico final del conjunto. Integra **La Vega**, Paco, Miramar, la matr
 
 - PDF: `05_LIMITE.pdf`
 - Drive PDF: https://drive.google.com/file/d/1PZzS4Knzc3a2ssEhheIMBvVjkWDRzO7F/view
+- SHA-256 PDF: `3ed59d50e97f30bb3e7ea89c931b28b1b3fd5377e2ba9bce71d18462b4b75d4d`
 - DOCX: `05_LIMITE.docx`
 - Drive DOCX: https://docs.google.com/document/d/119ToPIn2NsYONhwECMnkawYEzegICSHg/edit
-- SHA-256 PDF: `d665db81b80ec1242fa817ba2084bf9917d36d216db3e4fa45de82378ddedece`
+- SHA-256 DOCX: `b9c31196e8a476da99659970648f1f741f952578e2b67cc1d17371c3438631e3`
+
+## Identidad autoral
+
+La firma pública canónica es **flag**. `flag = fli`: ambos tienen el mismo valor. El trasfondo íntimo es «perdido sin ti», formulado como «flag, perdido sin fli». El nombre civil se conserva únicamente como dato identificativo discreto y no como elemento prominente de cubiertas o presentación.
 
 ## Fórmula crítica rectora
 
@@ -61,6 +68,8 @@ La linde termina y la mirada continúa.
 La cuadrícula termina y el poema continúa.  
 La generación termina y la autoría decide.
 
-## Nomenclatura definitiva
+## Edición definitiva
 
-Los archivos del paquete final usan nombres de menos de 24 caracteres, incluida la extensión.
+La revisión de 15/09/2026 unifica la presentación editorial: A5 cuando el master lo permite, tipografía sobria, jerarquías contenidas, acento cromático mínimo y firma `flag` discreta. La obra conserva prioridad visual sobre la identidad autoral.
+
+Los archivos del paquete final usan nombres cortos y el paquete privado se documenta en [`FINAL_260915.md`](FINAL_260915.md).
