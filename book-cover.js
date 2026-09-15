@@ -14,6 +14,13 @@
   const vegaIndex=items.findIndex(x=>x&&x.k==='v'&&Number(x.n)===14);
   const emitState=state=>document.dispatchEvent(new CustomEvent('book:state',{detail:{state,page:bi,total:items.length,title:'La Granada del 27'}}));
 
+  function activateBookView(){
+    document.querySelectorAll('.view').forEach(v=>v.classList.add('hidden'));
+    document.querySelector('#bookview')?.classList.remove('hidden');
+    document.querySelectorAll('.mode').forEach(b=>b.classList.toggle('active',b.dataset.mode==='bookview'));
+    document.dispatchEvent(new CustomEvent('view:mode',{detail:{id:'bookview'}}));
+  }
+
   function syncVegaState(){
     document.documentElement.classList.toggle('vega-trip',vegaTrip);
     if(!vegaButton)return;
@@ -25,7 +32,7 @@
 
   function renderFront(){
     page.className='page cover-page';page.scrollTop=0;
-    page.innerHTML=`<div class="book-cover" aria-label="Portada de La Granada del 27. Un siglo después"><div class="cover-top"><span>GRANADA · 2027</span><span class="cover-axis">14 × 14</span></div><div class="cover-center"><h1 class="cover-title"><span>LA GRANADA</span><span>DEL 27</span></h1><div class="cover-subtitle">UN SIGLO DESPUÉS</div><div class="cover-rule"></div><p class="cover-motto">Dos Granadas se miran.<br>Al fondo permanece la Vega.</p></div><div class="cover-bottom"><a class="cover-author" href="autor.html" aria-label="Autor: flag">flag</a><button class="cover-hinge cover-hinge-button" type="button" data-vega-direct aria-label="Ir directamente al poema La Vega">LA VEGA · PARTIDA Y REGRESO ↔</button></div></div>`;
+    page.innerHTML=`<div class="book-cover" aria-label="Portada de La Granada del 27. Un siglo después"><div class="cover-top"><span>GRANADA · 2027</span><span class="cover-axis">14 × 14</span></div><div class="cover-center"><h1 class="cover-title"><span>LA GRANADA</span><span>DEL 27</span></h1><div class="cover-subtitle">UN SIGLO DESPUÉS</div><div class="cover-rule"></div><p class="cover-motto">Dos Granadas se miran.<br>Al fondo permanece la Vega.</p></div><div class="cover-bottom"><button class="cover-hinge cover-hinge-button" type="button" data-vega-direct aria-label="Ir directamente al poema La Vega">LA VEGA · PARTIDA Y REGRESO ↔</button><a class="cover-author" href="autor.html" aria-label="Autor: flag">flag</a></div></div>`;
     progress.textContent=`PORTADA · ${items.length} PIEZAS`;
     prev.hidden=false;next.hidden=false;
     prev.disabled=true;prev.textContent='← Anterior';
@@ -46,8 +53,8 @@
 
   function returnToFront(){
     vegaTrip=false;backCover=false;bi=0;
-    if(typeof window.mode==='function')window.mode('bookview');
-    else window.book();
+    activateBookView();
+    window.book();
     history.replaceState(null,'','#bookview');
     syncVegaState();
   }
@@ -55,8 +62,8 @@
   function openVegaTrip(){
     if(vegaIndex<0)return;
     backCover=false;vegaTrip=true;bi=vegaIndex;
-    if(typeof window.mode==='function')window.mode('bookview');
-    else window.book();
+    activateBookView();
+    window.book();
     history.replaceState(null,'','#la-vega');
     syncVegaState();
   }
@@ -96,6 +103,13 @@
     bi=Math.min(items.length-1,bi+1);window.book();
   };
 
+  if(vegaButton){
+    vegaButton.onclick=ev=>{
+      ev.preventDefault();ev.stopPropagation();
+      if(vegaTrip)returnToFront();else openVegaTrip();
+    };
+  }
+
   document.addEventListener('click',ev=>{
     const trigger=ev.target.closest?.('[data-vega-direct]');
     if(trigger){
@@ -110,7 +124,7 @@
   });
 
   window.GRANADA_VEGA_TRIP={open:openVegaTrip,close:returnToFront,isActive:()=>vegaTrip};
-  window.GRANADA_BOOK_COVER={open:()=>{vegaTrip=false;backCover=false;bi=0;window.book();},close:()=>{vegaTrip=false;backCover=true;window.book();}};
+  window.GRANADA_BOOK_COVER={open:()=>{vegaTrip=false;backCover=false;bi=0;activateBookView();window.book();},close:()=>{vegaTrip=false;backCover=true;activateBookView();window.book();}};
 
   if(location.hash==='#la-vega')openVegaTrip();
   else window.book();
