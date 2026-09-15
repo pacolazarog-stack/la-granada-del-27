@@ -5,19 +5,17 @@
   const VIDEO_SRC='video/04%20-%20Firework_recortado_0.3s.mp4';
   const COMPLETE_KEY='volumeFlashCompleted';
   const EXIT_ONCE_KEY='volumeFlashExitOnce';
-  let playing=false;
+  let playing=false,wasSoundOn=false;
 
   const soundEnabled=()=>window.VOLUME_AUDIO?.isEnabled?.() ?? localStorage.getItem('volumeSoundMode')!=='off';
   const completed=()=>{try{return sessionStorage.getItem(COMPLETE_KEY)==='1';}catch(_){return false;}};
   const setCompleted=()=>{try{sessionStorage.setItem(COMPLETE_KEY,'1');}catch(_){}localStorage.setItem('volumeCompletedAt',String(Date.now()));};
+  const dispatchSound=enabled=>document.dispatchEvent(new CustomEvent('volume:soundchange',{detail:{enabled,source:'final-flash'}}));
 
   const overlay=document.createElement('div');
   overlay.id='finalFlashOverlay';
   overlay.hidden=true;
-  Object.assign(overlay.style,{
-    position:'fixed',inset:'0',zIndex:'40000',background:'#000',display:'grid',placeItems:'center',
-    opacity:'0',transition:'opacity .22s ease'
-  });
+  Object.assign(overlay.style,{position:'fixed',inset:'0',zIndex:'40000',background:'#000',display:'grid',placeItems:'center',opacity:'0',transition:'opacity .22s ease'});
   const video=document.createElement('video');
   video.id='finalFlashVideo';
   video.src=VIDEO_SRC;
@@ -34,14 +32,8 @@
   overlay.append(video,msg);
   document.body.appendChild(overlay);
 
-  const showOverlay=()=>{
-    overlay.hidden=false;
-    requestAnimationFrame(()=>{overlay.style.opacity='1';});
-  };
-  const hideOverlay=()=>{
-    overlay.style.opacity='0';
-    setTimeout(()=>{overlay.hidden=true;},230);
-  };
+  const showOverlay=()=>{overlay.hidden=false;requestAnimationFrame(()=>{overlay.style.opacity='1';});};
+  const hideOverlay=()=>{overlay.style.opacity='0';setTimeout(()=>{overlay.hidden=true;},230);};
 
   const showExitState=()=>{
     playing=false;
@@ -49,8 +41,8 @@
     btn.textContent='SALIR DEL VOLUMEN →';
     btn.classList.add('is-complete');
     btn.setAttribute('aria-label','Salir del volumen; flash completado');
-    const note=document.querySelector('.final-note');
-    if(note)note.textContent='El flash se ha completado. El volumen puede cerrarse.';
+    const lock=document.querySelector('.final-lock');if(lock)lock.textContent='FLASH COMPLETADO · SALIDA ABIERTA';
+    const note=document.querySelector('.final-note');if(note)note.textContent='El flash se ha completado. El volumen puede cerrarse.';
   };
 
   const finishFlash=async()=>{
@@ -65,11 +57,11 @@
     playing=false;
     try{if(document.fullscreenElement)document.exitFullscreen();}catch(_){}
     hideOverlay();
+    if(wasSoundOn)dispatchSound(true);
     btn.disabled=false;
     btn.textContent='& flash · REINTENTAR';
     msg.textContent='';
-    const note=document.querySelector('.final-note');
-    if(note)note.textContent='El flash no se ha podido reproducir. Debe completarse para cerrar el volumen.';
+    const note=document.querySelector('.final-note');if(note)note.textContent='El flash no se ha podido reproducir. Debe completarse para cerrar el volumen.';
   };
 
   const playFlash=async()=>{
@@ -78,8 +70,9 @@
     btn.disabled=true;
     btn.textContent='FLASH EN CURSO…';
     try{window.speechSynthesis?.cancel?.();}catch(_){}
-    document.dispatchEvent(new CustomEvent('volume:flashstart'));
-    video.muted=!soundEnabled();
+    wasSoundOn=soundEnabled();
+    if(wasSoundOn)dispatchSound(false);
+    video.muted=!wasSoundOn;
     video.currentTime=0;
     msg.textContent='FLASH FINAL · 9,70 s';
     showOverlay();
@@ -107,7 +100,7 @@
   });
   video.addEventListener('ended',finishFlash);
   video.addEventListener('error',failFlash);
-  document.addEventListener('volume:soundchange',ev=>{if(playing)video.muted=!Boolean(ev.detail?.enabled);});
+  document.addEventListener('volume:soundchange',ev=>{if(playing&&ev.detail?.source!=='final-flash')video.muted=!Boolean(ev.detail?.enabled);});
 
   if(completed())showExitState();
 })();
