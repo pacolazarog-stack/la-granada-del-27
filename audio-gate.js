@@ -33,7 +33,7 @@
     root.classList.add('audio-locked');
   };
 
-  const unlockCards=()=>{
+  const unlockCards=(fallback=false)=>{
     unlocked=true;
     cards.forEach(a=>{
       a.classList.remove('is-locked');
@@ -42,9 +42,15 @@
     });
     root.classList.remove('audio-locked');
     gate.classList.add('is-open');
-    status.textContent='ACCESO ABIERTO · MÚSICA EN BUCLE';
-    clock.textContent='CICLO COMPLETADO';
-    fill.style.width='100%';
+    if(fallback){
+      status.textContent='AUDIO PREVIO PENDIENTE · ACCESO TEMPORAL ABIERTO';
+      clock.textContent='';
+      fill.style.width='0';
+    }else{
+      status.textContent='ACCESO ABIERTO · MÚSICA EN BUCLE';
+      clock.textContent='CICLO COMPLETADO';
+      fill.style.width='100%';
+    }
   };
 
   cards.forEach(a=>a.addEventListener('click',e=>{
@@ -96,16 +102,15 @@
   audio.addEventListener('ended',async()=>{
     if(firstCycle){
       firstCycle=false;
-      unlockCards();
+      unlockCards(false);
       audio.loop=true;
       audio.currentTime=0;
-      try{await audio.play();}catch(_){/* si el navegador pausa, el acceso ya queda abierto */}
+      try{await audio.play();}catch(_){/* el acceso ya queda abierto */}
     }
   });
   audio.addEventListener('error',()=>{
     start.hidden=true;
-    status.textContent='AUDIO PREVIO NO DISPONIBLE · ACCESO BLOQUEADO';
-    clock.textContent='';
+    unlockCards(true);
   });
 
   start.addEventListener('click',()=>{
