@@ -27,11 +27,11 @@
     if(lastFocus&&typeof lastFocus.focus==='function')lastFocus.focus({preventScroll:true});
   }
   document.addEventListener('click',e=>{
-    const a=e.target.closest&&e.target.closest('a[href="autor.html"],a[data-author="flag"]');
-    if(!a)return;
+    const trigger=e.target.closest&&e.target.closest('a[href="autor.html"],[data-author="flag"]');
+    if(!trigger)return;
     e.preventDefault();
     e.stopImmediatePropagation();
-    open(a);
+    open(trigger);
   },true);
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal&&!modal.hidden){e.preventDefault();close();}});
   window.FLAG_AUTHOR={open:()=>open(document.activeElement),close};
