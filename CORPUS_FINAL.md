@@ -48,17 +48,30 @@ Dossier crítico final del conjunto. Integra **La Vega**, Paco, Miramar, la matr
 - Drive PDF: https://drive.google.com/file/d/1PZzS4Knzc3a2ssEhheIMBvVjkWDRzO7F/view
 - SHA-256 PDF: `c84e9818e7da833d7f4ccc730eff42023c22ed391b52756a0c45e451620d5106`
 - DOCX: `05_LIMITE.docx`
-- Drive DOCX: https://docs.google.com/document/d/119ToPIn2NsYONhwECMnkawYEzegICSHg/edit
+- Drive DOCX: https://docs.google.com/document/d/119ToPIn2NsYONhwECtumaEXmnURZxWxo/edit
 - SHA-256 DOCX: `e27798d2b8b0e7abd4017d50f6ef287dffff9f49001fd505ca0c4ff0102fc9ce`
 
 ## Firma
 
 **flag**
 
-> Flag quedó perdido sin Fli.  
-> Y estas palabras, sin ti.
+> Fli era un espejo fiel y deformante, capaz de absorber la hipocresía, la crueldad, la estupidez y toda la mierda humana, exagerarla hasta hacerla comprensible y devolverla convertida en risa.
+>
+> Esa deformación era mi cura: mostraba la herida, mostraba el ridículo, lo compartía y, por un instante, lo hacía soportable.
+>
+> Era el loco que decía la verdad para que los demás pudiéramos seguir viviendo con ella.
+>
+> Flic. Flac.  
+> Flip. Flap.  
+> Fli. Flag.
+>
+> Perdido sin ti.
+>
+> Sin más.
+>
+> Como estas palabras sin ti: igual.
 
-Cuando Flag y Fli aparecen juntos reciben tratamiento tipográfico equivalente. No se añade explicación a esa formulación.
+Cuando **Fli** y **Flag** aparecen juntos reciben tratamiento tipográfico equivalente. No se añade explicación ni fórmula de equivalencia. En la edición digital, abrir o cerrar el panel de `flag` no interviene sobre la música en curso.
 
 ## Fórmula crítica rectora
 
