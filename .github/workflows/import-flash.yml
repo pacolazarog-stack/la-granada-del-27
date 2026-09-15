@@ -10,17 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Descargar MP4 final desde Drive
+      - name: Descargar MP4 original desde Drive
         run: |
           set -euo pipefail
+          python -m pip install --quiet gdown
           mkdir -p video
-          curl -L --fail --retry 3 --retry-delay 2 \
-            'https://drive.usercontent.google.com/download?id=1VhRFQg3_bP0q_G6WrRf9_vUz4T-1E2z3&export=download&confirm=t' \
-            -o 'video/04 - Firework_recortado_0.3s.mp4'
-      - name: Verificar MP4
+          python -m gdown 'https://drive.google.com/uc?id=1VhRFQg3_bP0q_G6WrRf9_vUz4T-1E2z3' \
+            -O 'video/04 - Firework_recortado_0.3s.mp4'
+      - name: Verificar exactamente el MP4
         run: |
           set -euo pipefail
-          test $(stat -c%s 'video/04 - Firework_recortado_0.3s.mp4') -gt 3500000
+          test "$(stat -c%s 'video/04 - Firework_recortado_0.3s.mp4')" = '3990282'
+          test "$(sha256sum 'video/04 - Firework_recortado_0.3s.mp4' | awk '{print $1}')" = 'a9341c5f8fdb8759ac298329af0de8551fd03897042a40e79647178e4423d621'
           file 'video/04 - Firework_recortado_0.3s.mp4'
       - name: Guardar flash en main y retirar importador
         run: |
@@ -29,5 +30,5 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add 'video/04 - Firework_recortado_0.3s.mp4'
           git rm '.github/workflows/import-flash.yml'
-          git commit -m 'Incorpora flash final de 9,70 s'
+          git commit -m 'Incorpora flash final original de 9,70 s'
           git push
