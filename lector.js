@@ -33,6 +33,7 @@
     const prev=$('#readerPrev'),next=$('#readerNext');
     const title=$('#readerWork'),sub=$('#readerSub');
     const total=data.pages.length;
+    const isPaco=/Paco Olmo de Males/i.test(data.title||'');
     title.textContent=data.title||title.textContent||'';
     sub.textContent=data.subtitle||data.author||sub.textContent||'';
     jump.min=1;jump.max=Math.max(1,total);
@@ -43,6 +44,73 @@
       text.hidden=which!=='text';
       if(back)back.hidden=which!=='back';
     }
+
+    function renderPacoPage(raw){
+      const source=String(raw||'').replace(/\r/g,'');
+      const lines=source.split('\n');
+      const first=lines.findIndex(line=>line.trim());
+      const header=first>=0?lines[first].trim():'';
+      const headerMatch=header.match(/^(\d+)\s*[·.]\s*(PACO|SUPERPACO|DEAMBULAR)\s*$/i);
+
+      text.classList.remove('paco-structured');
+      text.replaceChildren();
+      if(!headerMatch){
+        text.textContent=source;
+        return;
+      }
+
+      let i=first+1;
+      while(i<lines.length&&!lines[i].trim())i++;
+
+      // En la antigua edición autónoma de Paco cada cuento llevaba otra
+      // numeración (5, 6, 17...). En el volumen integrado esa cifra duplica
+      // la numeración general (13 · PACO, 16 · PACO...) y se suprime sólo
+      // en presentación; el texto canónico de origen permanece intacto.
+      if(i<lines.length&&/^\d+$/.test(lines[i].trim())){
+        i++;
+        while(i<lines.length&&!lines[i].trim())i++;
+      }
+
+      const titleLines=[];
+      while(i<lines.length&&lines[i].trim()){
+        titleLines.push(lines[i].trim());
+        i++;
+      }
+      while(i<lines.length&&!lines[i].trim())i++;
+
+      // Si no hay un título reconocible, no arriesgamos una reinterpretación
+      // del contenido y mostramos la página sin transformar.
+      if(!titleLines.length){
+        text.textContent=source;
+        return;
+      }
+
+      const head=document.createElement('div');
+      head.className='paco-page-head';
+      const kicker=document.createElement('div');
+      kicker.className='paco-page-kicker';
+      kicker.textContent=`${headerMatch[1]} · ${headerMatch[2].toUpperCase()}`;
+      const pieceTitle=document.createElement('h2');
+      pieceTitle.className='paco-piece-title';
+      pieceTitle.textContent=titleLines.join(' ');
+      head.append(kicker,pieceTitle);
+
+      const body=document.createElement('div');
+      body.className='paco-page-body';
+      body.textContent=lines.slice(i).join('\n').replace(/^\s+/, '');
+
+      text.classList.add('paco-structured');
+      text.append(head,body);
+    }
+
+    function renderWorkPage(raw){
+      if(isPaco) renderPacoPage(raw);
+      else {
+        text.classList.remove('paco-structured');
+        text.textContent=raw||'';
+      }
+    }
+
     function render(){
       page=Math.max(0,Math.min(total+1,page));
       prev.hidden=false;next.hidden=false;
@@ -62,7 +130,7 @@
         history.replaceState(null,'','#contraportada');return;
       }
       article.classList.remove('cover-mode');showOnly('text');
-      text.textContent=data.pages[page-1]||'';article.scrollTop=0;
+      renderWorkPage(data.pages[page-1]||'');article.scrollTop=0;
       progress.textContent=`${page} / ${total}`;
       jump.hidden=false;jump.value=page;
       prev.disabled=false;prev.textContent=page===1?'← Portada':'← Anterior';
