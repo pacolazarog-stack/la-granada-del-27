@@ -1,10 +1,10 @@
 # Manifiesto de revisión final · 15/09/2026
 
 ## 1 · La Granada del 27
-Se mantiene el master actualizado vigente. La matriz 27 × 27 permanece como libro profundo bajo los 27 poemas de superficie; **La Vega** conserva la coordenada central 14 × 14: «Late bajo la cal la acequia hundida.» La revisión material incorpora la firma pública `flag` de forma mínima en cubierta y contracubierta y reserva la identificación civil para un colofón discreto.
+Se mantiene el master actualizado vigente. La matriz 27 × 27 permanece como libro profundo bajo los 27 poemas de superficie; **La Vega** conserva la coordenada central 14 × 14: «Late bajo la cal la acequia hundida.» La revisión material incorpora la firma pública `flag` de forma mínima.
 
 ## 2 · Paco Olmo de Males
-Se mantiene la edición canónica final revisada, con el índice reparado y sin reescritura sustantiva del corpus. La firma pública visible pasa a ser `flag`; la identificación civil queda relegada al colofón y metadatos.
+Se mantiene la edición canónica final revisada, con el índice reparado y sin reescritura sustantiva del corpus. La firma pública visible es `flag`; el cierre autoral permanece mínimo.
 
 ## 3 · La terraza del Miramar
 Canon 1.6. Se incorpora en el umbral del Acto III · **NACE LA REINA** el fragmento DK 22 B 53 de Heráclito. La cita funciona como clave del paso del conflicto doméstico a la producción de posiciones, autoridad y soberanía; no como elogio de la violencia. No se altera la numeración de treinta escenas. La maquetación A5 conserva la lógica dramatúrgica del documento y reduce la presencia autoral a `flag`.
@@ -17,12 +17,13 @@ El dossier crítico final integra *La Vega*, Paco, Miramar, la matriz 27 × 27, 
 
 > **La literatura comienza allí donde el sistema, aun funcionando con máxima precisión, descubre que la realidad contiene todavía algo que no cabe en él.**
 
-## 6 · Identidad autoral
+## 6 · Firma
 La firma pública canónica es **flag**.
 
-`flag = fli`: ambos tienen el mismo valor, sin jerarquía. El trasfondo es «perdido sin ti» y su formulación íntima es «flag, perdido sin fli».
+> Flag quedó perdido sin Fli.  
+> Y estas palabras, sin ti.
 
-La identidad civil debe poder encontrarse, pero no competir visualmente con la obra. Se conserva de forma discreta en `autor.html`, `AUTOR.txt`, colofones y metadatos pertinentes.
+Cuando Flag y Fli aparecen en un mismo texto reciben tratamiento tipográfico equivalente. No se añade etiqueta, ecuación ni explicación a estas líneas.
 
 ## 7 · Regla editorial
 **No corregir la singularidad; corregir la sobreexplicación.** Cada pieza debe conservar autonomía antes del mecanismo que la relaciona con las demás.
