@@ -30,14 +30,14 @@
     const soundOn=isEnabled();
     const voiceOn=isVoiceEnabled();
     if(soundBtn){
-      soundBtn.textContent=soundOn?'🔇  SIN SONIDO':'🔊  CON SONIDO';
+      soundBtn.textContent=soundOn?'🔊  CON SONIDO':'🔇  SIN SONIDO';
       soundBtn.setAttribute('aria-pressed',soundOn?'true':'false');
-      soundBtn.title=soundOn?'Desactivar la música y los efectos sonoros':'Activar la música y los efectos sonoros';
+      soundBtn.title=soundOn?'Sonido activado · pulsar para desactivar':'Sonido desactivado · pulsar para activar';
     }
     if(voiceBtn){
-      voiceBtn.textContent=voiceOn?'🤐  SIN VOZ':'🗣  CON VOZ';
+      voiceBtn.textContent=voiceOn?'🗣  CON VOZ':'🤐  SIN VOZ';
       voiceBtn.setAttribute('aria-pressed',voiceOn?'true':'false');
-      voiceBtn.title=voiceOn?'Detener y desactivar la lectura en voz':'Activar la lectura en voz de la página visible';
+      voiceBtn.title=voiceOn?'Voz activada · pulsar para desactivar':'Voz desactivada · pulsar para activar';
     }
     document.documentElement.classList.toggle('volume-sound-off',!soundOn);
     document.documentElement.classList.toggle('volume-voice-on',voiceOn);
