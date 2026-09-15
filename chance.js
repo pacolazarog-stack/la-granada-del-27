@@ -16,8 +16,19 @@
   const coord=(r,c)=>`(${String(r).padStart(2,'0')}, ${String(c).padStart(2,'0')})`;
   const side=(r,c)=>r===14&&c===14?'GOZNE':r===c?'DIAGONAL AUTORREFLEXIVA':r<c?'ESPEJO SUPERIOR':'ESPEJO INFERIOR';
   const meta=(r,c)=>`${coord(r,c)} · COLUMNA ${String(c).padStart(2,'0')} · ${vTitle(c)} · HORIZONTAL ${String(r).padStart(2,'0')} · ${hTitle(r)}`;
+  const slotFx=new Audio('audio/slot-hit.mp3');
+  slotFx.preload='auto';
+  slotFx.volume=.48;
 
   let hit=null,stage=0,stages=[];
+
+  function playSlotFx(){
+    try{
+      const fx=slotFx.cloneNode();
+      fx.volume=slotFx.volume;
+      fx.play().catch(()=>{});
+    }catch(_){}
+  }
 
   function buildStages(){
     const {r,c,p}=hit;
@@ -49,7 +60,7 @@
 
   function roll(){hit={r:rand(27)+1,c:rand(27)+1,p:perspectives[rand(3)]};stage=0;buildStages();paint()}
 
-  $('#chance-roll')?.addEventListener('click',roll);
+  $('#chance-roll')?.addEventListener('click',()=>{playSlotFx();roll()});
   $('#chance-prev')?.addEventListener('click',()=>{stage--;paint()});
   $('#chance-next')?.addEventListener('click',()=>{stage++;paint()});
   roll();
