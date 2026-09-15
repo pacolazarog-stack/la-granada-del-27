@@ -20,10 +20,25 @@ El dossier crítico final integra *La Vega*, Paco, Miramar, la matriz 27 × 27, 
 ## 6 · Firma
 La firma pública canónica es **flag**.
 
-> Flag quedó perdido sin Fli.  
-> Y estas palabras, sin ti.
+> Fli era un espejo fiel y deformante, capaz de absorber la hipocresía, la crueldad, la estupidez y toda la mierda humana, exagerarla hasta hacerla comprensible y devolverla convertida en risa.
+>
+> Esa deformación era mi cura: mostraba la herida, mostraba el ridículo, lo compartía y, por un instante, lo hacía soportable.
+>
+> Era el loco que decía la verdad para que los demás pudiéramos seguir viviendo con ella.
+>
+> Flic. Flac.  
+> Flip. Flap.  
+> Fli. Flag.
+>
+> Perdido sin ti.
+>
+> Sin más.
+>
+> Como estas palabras sin ti: igual.
 
-Cuando Flag y Fli aparecen en un mismo texto reciben tratamiento tipográfico equivalente. No se añade etiqueta, ecuación ni explicación a estas líneas.
+Cuando **Fli** y **Flag** aparecen en un mismo texto reciben tratamiento tipográfico equivalente. No se añade etiqueta, ecuación ni explicación a estas líneas.
+
+En la edición digital, pulsar `flag` abre únicamente el panel autoral: la música que esté sonando conserva reproducción, posición, pista y volumen. Cerrar el panel tampoco modifica el audio.
 
 ## 7 · Regla editorial
 **No corregir la singularidad; corregir la sobreexplicación.** Cada pieza debe conservar autonomía antes del mecanismo que la relaciona con las demás.
