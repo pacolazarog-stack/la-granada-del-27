@@ -49,10 +49,23 @@
   const clearAwayOrigin=()=>{try{sessionStorage.removeItem(AWAY_KEY);}catch(_){}};
   const navigationType=()=>performance.getEntriesByType?.('navigation')?.[0]?.type||'';
 
+  let skipFlashExit=false;
+  try{
+    skipFlashExit=sessionStorage.getItem('volumeFlashExitOnce')==='1';
+    if(skipFlashExit)sessionStorage.removeItem('volumeFlashExitOnce');
+  }catch(_){}
+  if(skipFlashExit){
+    localStorage.removeItem('volumeReturnPending');
+    localStorage.removeItem('volumeReturnOrigin');
+    localStorage.removeItem('volumeResumeBook');
+    try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
+    clearAwayOrigin();
+  }
+
   let readyOrigin='';
-  try{readyOrigin=sessionStorage.getItem('volumeReturnReady')||'';}catch(_){}
-  const directReturnOrigin=referrerOrigin();
-  const backReturnOrigin=navigationType()==='back_forward'?getAwayOrigin():'';
+  try{readyOrigin=skipFlashExit?'':(sessionStorage.getItem('volumeReturnReady')||'');}catch(_){}
+  const directReturnOrigin=skipFlashExit?'':referrerOrigin();
+  const backReturnOrigin=skipFlashExit?'':(navigationType()==='back_forward'?getAwayOrigin():'');
 
   if(pref.isEnabled()&&localStorage.getItem('volumeReturnPending')!=='1'&&returnSources.length){
     const detected=readyOrigin||directReturnOrigin||backReturnOrigin;
