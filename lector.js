@@ -23,7 +23,7 @@
   const $=s=>document.querySelector(s);
   try{
     const data=decodeWork();
-    let page=0; // 0 portada · 1..N interior · N+1 contraportada
+    let page=0;
     const text=$('#readerText'),cover=$('#readerCover'),back=$('#readerBack'),article=$('#readerPage');
     const progress=$('#readerProgress'),jump=$('#readerJump');
     const prev=$('#readerPrev'),next=$('#readerNext');
@@ -41,6 +41,7 @@
     }
     function render(){
       page=Math.max(0,Math.min(total+1,page));
+      prev.hidden=false;next.hidden=false;
       if(page===0){
         article.classList.add('cover-mode');showOnly('cover');
         progress.textContent=`PORTADA · ${total} PÁGINAS`;
@@ -51,8 +52,9 @@
       if(page===total+1){
         article.classList.add('cover-mode');showOnly('back');
         progress.textContent='CONTRAPORTADA';
-        jump.hidden=true;prev.disabled=false;prev.textContent='← Libro';
-        next.disabled=false;next.textContent='Inicio →';
+        jump.hidden=true;
+        prev.disabled=false;prev.textContent='← Inicio';
+        next.hidden=true;
         history.replaceState(null,'','#contraportada');return;
       }
       article.classList.remove('cover-mode');showOnly('text');
@@ -64,13 +66,13 @@
       history.replaceState(null,'',`#p${page}`);
     }
 
-    prev.onclick=()=>{if(page>0){page--;render();}};
-    next.onclick=()=>{if(page===total+1){goStart();return;}page++;render();};
+    prev.onclick=()=>{if(page===total+1){goStart();return;}if(page>0){page--;render();}};
+    next.onclick=()=>{if(page<total+1){page++;render();}};
     jump.onchange=()=>{const n=parseInt(jump.value,10);if(Number.isFinite(n)){page=n;render();}};
     $('#readerFull').onclick=()=>!document.fullscreenElement?document.documentElement.requestFullscreen?.():document.exitFullscreen?.();
     addEventListener('keydown',e=>{
-      if(e.key==='ArrowLeft'&&page>0){page--;render();}
-      else if(e.key==='ArrowRight'){if(page===total+1)goStart();else{page++;render();}}
+      if(e.key==='ArrowLeft'){if(page===total+1)goStart();else if(page>0){page--;render();}}
+      else if(e.key==='ArrowRight'&&page<total+1){page++;render();}
       else if(e.key==='Home'){page=0;render();}
       else if(e.key==='End'){page=total+1;render();}
     });
@@ -83,6 +85,8 @@
     const article=$('#readerPage');if(article)article.classList.remove('cover-mode');
     const text=$('#readerText');text.hidden=false;text.textContent='No se ha podido cargar esta obra.\n\n'+err.message;
     $('#readerProgress').textContent='';$('#readerJump').hidden=true;
-    const prev=$('#readerPrev'),next=$('#readerNext');prev.disabled=true;next.disabled=false;next.textContent='Inicio →';next.onclick=()=>{location.href='index.html';};
+    const prev=$('#readerPrev'),next=$('#readerNext');
+    prev.hidden=false;prev.disabled=false;prev.textContent='← Inicio';prev.onclick=()=>{location.href='index.html';};
+    next.hidden=true;
   }
 })();
