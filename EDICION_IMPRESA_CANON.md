@@ -11,18 +11,17 @@ Canon vigente: **15 de septiembre de 2026 · edición definitiva de colección**
 - Caja PDF: aproximadamente 154 × 216 mm, correspondiente al A5 más sangrado.
 - PDF canónico actual: **112 páginas**.
 - Master en Google Drive: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
-- SHA-256: `b20de6e291132ae5f97c9cc3ff55cc8bf0fda3efd0d40f502a9a522e26dba8f9`
-- Autor visible y metadato principal: `flag`.
-- La identidad civil queda disponible únicamente como identificación discreta en colofón/metadatos y en `autor.html`.
+- SHA-256: `694bed0978c703426350c05cdacac88cd3e9572ab1b5ee4d0f033f7e45a5a54d`
+- Firma visible y metadato principal: `flag`.
 
 ## Identidad editorial
 
-La obra debe preceder visualmente al autor. La firma `flag` aparece de manera mínima en cubierta y contracubierta; no actúa como reclamo ni compite con el título. La relación autoral canónica es:
+La obra precede visualmente a la firma. `flag` aparece de manera mínima en cubierta y contracubierta; no actúa como reclamo ni compite con el título. El colofón autoral se limita a:
 
-`flag = fli`  
-Trasfondo: «perdido sin ti» — «flag, perdido sin fli».
+> Flag quedó perdido sin Fli.  
+> Y estas palabras, sin ti.
 
-La identificación civil se reserva para quien decida buscarla.
+Flag y Fli reciben exactamente el mismo tratamiento tipográfico cuando aparecen juntos.
 
 ## Arquitectura
 
@@ -34,8 +33,6 @@ La identificación civil se reserva para quien decida buscarla.
 La matriz actúa como subsuelo y no como requisito de lectura. La edición impresa no debe convertir el mecanismo en explicación obligatoria.
 
 ## Reglas editoriales de cierre
-
-Se mantienen los criterios de cirugía literaria ya fijados:
 
 1. Los poemas de superficie deben sostenerse sin necesidad de comprender la matriz.
 2. No se reintroduce una guía explicativa final que resuelva aquello que el libro ya demuestra.
@@ -49,9 +46,9 @@ La regla rectora es:
 
 ## Cierre material de la edición actual
 
-- **Página 111**: colofón mínimo de identidad, sin función explicativa: `flag = fli · «perdido sin ti»`, seguido de la identificación civil en cuerpo reducido.
+- **Página 111**: colofón mínimo con las dos líneas autorales, sin función explicativa.
 - **Página 112**: contraportada; mantiene el retorno al verso central y la firma `flag` en posición discreta.
 
 ## Validación final
 
-El master actual fue abierto y verificado como PDF de 112 páginas. La cubierta, el colofón y la contraportada fueron revisados visualmente después de la actualización de firma y metadatos. No se altera el corpus poético para introducir la nueva identidad autoral: el cambio pertenece a la presentación editorial y al aparato de identificación.
+El master actual fue abierto y verificado como PDF de 112 páginas. La cubierta, el colofón y la contraportada fueron revisados visualmente después de la actualización de firma y metadatos. No se altera el corpus poético para introducir la firma: el cambio pertenece exclusivamente a la presentación editorial.
