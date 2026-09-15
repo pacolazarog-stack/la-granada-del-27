@@ -36,39 +36,66 @@
   const $=s=>document.querySelector(s);
   try{
     const data=await decodeWork();
-    let page=0;
-    const text=$('#readerText'), progress=$('#readerProgress'), jump=$('#readerJump');
+    let page=0; // 0 = portada; 1..N = páginas del master
+    const text=$('#readerText'), cover=$('#readerCover'), article=$('#readerPage');
+    const progress=$('#readerProgress'), jump=$('#readerJump');
+    const prev=$('#readerPrev'), next=$('#readerNext');
     const title=$('#readerWork'), sub=$('#readerSub');
-    title.textContent=data.title||'';
-    sub.textContent=data.subtitle||data.author||'';
-    jump.max=data.pages.length;
+    title.textContent=data.title||title.textContent||'';
+    sub.textContent=data.subtitle||data.author||sub.textContent||'';
+    const total=data.pages.length;
+    jump.min=1;
+    jump.max=total;
 
     function render(){
-      page=Math.max(0,Math.min(data.pages.length-1,page));
-      text.textContent=data.pages[page]||'';
-      $('#readerPage').scrollTop=0;
-      progress.textContent=`${page+1} / ${data.pages.length}`;
-      jump.value=page+1;
-      $('#readerPrev').disabled=page===0;
-      $('#readerNext').disabled=page===data.pages.length-1;
-      history.replaceState(null,'',`#p${page+1}`);
+      page=Math.max(0,Math.min(total,page));
+      const isCover=page===0;
+      if(isCover){
+        article.classList.add('cover-mode');
+        if(cover) cover.hidden=false;
+        text.hidden=true;
+        progress.textContent=`PORTADA · ${total} PÁGINAS`;
+        jump.hidden=true;
+        prev.disabled=true;
+        next.disabled=total===0;
+        next.textContent='Abrir libro →';
+        history.replaceState(null,'','#portada');
+      }else{
+        article.classList.remove('cover-mode');
+        if(cover) cover.hidden=true;
+        text.hidden=false;
+        text.textContent=data.pages[page-1]||'';
+        article.scrollTop=0;
+        progress.textContent=`${page} / ${total}`;
+        jump.hidden=false;
+        jump.value=page;
+        prev.disabled=false;
+        next.disabled=page===total;
+        next.textContent='Siguiente →';
+        history.replaceState(null,'',`#p${page}`);
+      }
     }
 
-    $('#readerPrev').onclick=()=>{page--;render()};
-    $('#readerNext').onclick=()=>{page++;render()};
-    jump.onchange=()=>{const n=parseInt(jump.value,10);if(Number.isFinite(n)){page=n-1;render()}};
+    prev.onclick=()=>{page--;render()};
+    next.onclick=()=>{page++;render()};
+    jump.onchange=()=>{const n=parseInt(jump.value,10);if(Number.isFinite(n)){page=n;render()}};
     $('#readerFull').onclick=()=>!document.fullscreenElement?document.documentElement.requestFullscreen?.():document.exitFullscreen?.();
     addEventListener('keydown',e=>{
       if(e.key==='ArrowLeft'){page--;render()}
       else if(e.key==='ArrowRight'){page++;render()}
       else if(e.key==='Home'){page=0;render()}
-      else if(e.key==='End'){page=data.pages.length-1;render()}
+      else if(e.key==='End'){page=total;render()}
     });
     const m=location.hash.match(/^#p(\d+)$/);
-    if(m) page=parseInt(m[1],10)-1;
+    if(m) page=parseInt(m[1],10);
+    else page=0;
     render();
   }catch(err){
-    $('#readerText').textContent='No se ha podido cargar esta obra.\n\n'+err.message;
+    const cover=$('#readerCover'); if(cover) cover.hidden=true;
+    const article=$('#readerPage'); if(article) article.classList.remove('cover-mode');
+    const text=$('#readerText'); text.hidden=false;
+    text.textContent='No se ha podido cargar esta obra.\n\n'+err.message;
     $('#readerProgress').textContent='';
+    $('#readerJump').hidden=true;
   }
 })();
