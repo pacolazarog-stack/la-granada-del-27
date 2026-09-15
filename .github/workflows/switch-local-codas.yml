@@ -1,0 +1,59 @@
+name: Conectar codas locales y cierre
+
+on:
+  push:
+    paths:
+      - '.github/workflows/switch-local-codas.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Cambiar codas a recursos locales y maquetar cierre
+        shell: python
+        run: |
+          from pathlib import Path
+
+          replacements = {
+              'granada.html': ('https://drive.usercontent.google.com/download?id=1_s9AhZHLF39Fj7w53hR5Yo5ZT0yMHXmT&export=download&confirm=t', 'audio/LA%20GRANADA%20DEL%2027(2).mp3'),
+              'paco.html': ('https://drive.usercontent.google.com/download?id=13ZnracCpv36q5Hap7E-O2CLytCK5pwfs&export=download&confirm=t', 'audio/PACO%20OLMO%20DE%20MALES(2).mp3'),
+              'miramar.html': ('https://drive.usercontent.google.com/download?id=1W7rn3OJ78aceG8qzWt37sTg03UAJoy1j&export=download&confirm=t', 'audio/LA%20TERRAZA%20DEL%20MIRAMAR(2).mp3'),
+              'ensayo.html': ('https://drive.usercontent.google.com/download?id=1NMxByFfuR2PSmaL5Ifbt4Znc2Fu4-1yj&export=download&confirm=t', 'audio/LA%20PO%C3%89TICA%20DEL%20ARCHIVO(1).mp3'),
+          }
+          for name, (old, new) in replacements.items():
+              p = Path(name)
+              s = p.read_text(encoding='utf-8')
+              if old not in s:
+                  raise SystemExit(f'No encuentro la URL antigua en {name}')
+              s = s.replace(old, new)
+              s = s.replace('section-audio.js?v=20260916-coda4', 'section-audio.js?v=20260916-localcoda1')
+              p.write_text(s, encoding='utf-8')
+
+          p = Path('final.html')
+          s = p.read_text(encoding='utf-8')
+          old = '<p class="author-note"><a href="autor.html">flag</a></p>'
+          new = '''<div class="final-sign-group" aria-label="fli flag and flash"><button type="button" class="final-sign-btn" data-author="flag">fli</button><button type="button" class="final-sign-btn" data-author="flag">flag</button><button type="button" class="final-sign-btn final-flash-btn">&amp; flash</button></div>'''
+          if old not in s:
+              raise SystemExit('No encuentro el flag inferior en final.html')
+          s = s.replace(old, new)
+          style = '''<style>.final-sign-group{display:flex;justify-content:center;align-items:center;gap:9px;margin-top:18px;flex-wrap:wrap}.final-sign-btn{border:1px solid rgba(255,255,255,.28);background:rgba(22,19,16,.9);color:#f4ede5;border-radius:999px;padding:7px 14px;font:11px Georgia,serif;letter-spacing:.08em;cursor:pointer;box-shadow:0 5px 18px rgba(0,0,0,.28)}.final-sign-btn:hover,.final-sign-btn:focus{border-color:rgba(255,255,255,.52);background:rgba(40,33,27,.95)}</style>'''
+          s = s.replace('</head>', style + '</head>')
+          p.write_text(s, encoding='utf-8')
+
+      - name: Guardar cambios y retirar parche temporal
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add granada.html paco.html miramar.html ensayo.html final.html
+          git rm -f .github/workflows/switch-local-codas.yml
+          git commit -m 'Usa codas locales y añade fli flag & flash al cierre'
+          git push origin HEAD:main
