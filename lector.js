@@ -37,7 +37,14 @@
     title.textContent=data.title||title.textContent||'';
     sub.textContent=data.subtitle||data.author||sub.textContent||'';
     jump.min=1;jump.max=Math.max(1,total);
-    const goStart=()=>{location.href='index.html';};
+
+    const emitState=state=>document.dispatchEvent(new CustomEvent('book:state',{detail:{state,page,total,title:data.title||''}}));
+    const goStart=()=>{
+      if(window.BOOK_AUDIO_GATE&&typeof window.BOOK_AUDIO_GATE.requestExit==='function'){
+        if(!window.BOOK_AUDIO_GATE.requestExit())return;
+      }
+      location.href='index.html';
+    };
 
     function showOnly(which){
       if(cover)cover.hidden=which!=='cover';
@@ -62,10 +69,6 @@
       let i=first+1;
       while(i<lines.length&&!lines[i].trim())i++;
 
-      // En la antigua edición autónoma de Paco cada cuento llevaba otra
-      // numeración (5, 6, 17...). En el volumen integrado esa cifra duplica
-      // la numeración general (13 · PACO, 16 · PACO...) y se suprime sólo
-      // en presentación; el texto canónico de origen permanece intacto.
       if(i<lines.length&&/^\d+$/.test(lines[i].trim())){
         i++;
         while(i<lines.length&&!lines[i].trim())i++;
@@ -78,8 +81,6 @@
       }
       while(i<lines.length&&!lines[i].trim())i++;
 
-      // Si no hay un título reconocible, no arriesgamos una reinterpretación
-      // del contenido y mostramos la página sin transformar.
       if(!titleLines.length){
         text.textContent=source;
         return;
@@ -119,7 +120,9 @@
         progress.textContent=`PORTADA · ${total} PÁGINAS`;
         jump.hidden=true;prev.disabled=true;prev.textContent='← Anterior';
         next.disabled=total===0;next.textContent='Abrir libro →';
-        history.replaceState(null,'','#portada');return;
+        history.replaceState(null,'','#portada');
+        emitState('cover');
+        return;
       }
       if(page===total+1){
         article.classList.add('cover-mode');showOnly('back');
@@ -127,7 +130,9 @@
         jump.hidden=true;
         prev.disabled=false;prev.textContent='← Inicio';
         next.hidden=true;
-        history.replaceState(null,'','#contraportada');return;
+        history.replaceState(null,'','#contraportada');
+        emitState('back');
+        return;
       }
       article.classList.remove('cover-mode');showOnly('text');
       renderWorkPage(data.pages[page-1]||'');article.scrollTop=0;
@@ -136,6 +141,7 @@
       prev.disabled=false;prev.textContent=page===1?'← Portada':'← Anterior';
       next.disabled=false;next.textContent=page===total?'Contraportada →':'Siguiente →';
       history.replaceState(null,'',`#p${page}`);
+      emitState('text');
     }
 
     prev.onclick=()=>{if(page===total+1){goStart();return;}if(page>0){page--;render();}};
