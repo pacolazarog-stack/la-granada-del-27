@@ -20,7 +20,7 @@
   let codaEligible=false,exitUnlocked=!hasCoda||!soundEnabled(),codaStarted=false,codaCompleted=false;
   let codaFallback=null,codaPanel=null,codaTimer=0,stateTimer=0;
   const coda=hasCoda?new Audio(codaSrc):null;
-  if(coda){coda.preload='none';coda.playsInline=true;coda.loop=false;coda.volume=targetVolume;}
+  if(coda){coda.preload='auto';coda.playsInline=true;coda.loop=false;coda.volume=targetVolume;}
 
   const active=()=>players[current];
   const standby=()=>players[1-current];
@@ -134,28 +134,47 @@
   };
 
   function removeCodaFallback(){if(codaFallback){codaFallback.remove();codaFallback=null;}}
-  function makeCodaFallback(){
-    if(codaFallback||!coda||!codaEntryActive())return;
-    codaFallback=document.createElement('button');codaFallback.type='button';codaFallback.textContent='▶ INICIAR CODA';
-    Object.assign(codaFallback.style,{position:'fixed',left:'50%',bottom:'104px',transform:'translateX(-50%)',zIndex:'10001',border:'1px solid rgba(255,255,255,.42)',borderRadius:'999px',background:'#211d19',color:'#f4ede5',padding:'10px 16px',font:'11px Georgia,serif',letterSpacing:'.08em',cursor:'pointer'});
-    codaFallback.onclick=()=>playCoda();document.body.appendChild(codaFallback);
+  function makeCodaFallback(label='▶ INICIAR CODA'){
+    if(!coda||!codaEntryActive())return;
+    if(!codaFallback){
+      codaFallback=document.createElement('button');codaFallback.type='button';
+      Object.assign(codaFallback.style,{position:'fixed',left:'50%',bottom:'104px',transform:'translateX(-50%)',zIndex:'10001',border:'1px solid rgba(255,255,255,.42)',borderRadius:'999px',background:'#211d19',color:'#f4ede5',padding:'10px 16px',font:'11px Georgia,serif',letterSpacing:'.08em',cursor:'pointer'});
+      codaFallback.onclick=async()=>{
+        if(!codaEntryActive())return;
+        try{if(coda.error){coda.src=codaSrc;coda.load();}await playCoda();}catch(_){}
+      };
+      document.body.appendChild(codaFallback);
+    }
+    codaFallback.textContent=label;codaFallback.style.display='block';
   }
   async function playCoda(){
-    if(!coda||!codaEntryActive())return;
-    try{await coda.play();removeCodaFallback();setPanel(`CODA SONORA · SALIDA BLOQUEADA · ${fmt(coda.currentTime)} / ${fmt(coda.duration)}`);}catch(_){makeCodaFallback();setPanel('LA CODA DEBE INICIARSE PARA PODER ABRIR LA SALIDA');}
+    if(!coda||!codaEntryActive())return false;
+    try{
+      coda.volume=targetVolume;
+      await coda.play();
+      removeCodaFallback();
+      setPanel(`CODA SONORA · SALIDA BLOQUEADA · ${fmt(coda.currentTime)} / ${fmt(coda.duration)}`);
+      return true;
+    }catch(err){
+      makeCodaFallback(coda.error?'↻ RECARGAR CODA':'▶ INICIAR CODA');
+      setPanel(coda.error?'NO SE HA PODIDO CARGAR LA CODA · PULSE RECARGAR CODA':'LA CODA NECESITA UNA PULSACIÓN PARA INICIARSE');
+      return false;
+    }
   }
   function beginCoda(){
     if(!hasCoda||codaStarted||!codaEntryActive())return;
     codaStarted=true;
     saveBookMusic();
     players.forEach(a=>{a.pause();a.volume=0;});removeFallback();
-    coda.currentTime=0;coda.loop=false;coda.load();
-    setPanel('CODA SONORA · PREPARANDO CICLO OBLIGATORIO…');playCoda();
+    coda.currentTime=0;coda.loop=false;coda.src=codaSrc;coda.load();
+    setPanel('CODA SONORA · CARGANDO CICLO OBLIGATORIO…');
+    playCoda();
     codaTimer=setInterval(()=>{if(!coda||codaCompleted||!soundEnabled())return;setPanel(`CODA SONORA · SALIDA BLOQUEADA · ${fmt(coda.currentTime)} / ${fmt(coda.duration)}`);},250);
   }
 
   if(coda){
-    coda.addEventListener('playing',removeCodaFallback);
+    coda.addEventListener('loadedmetadata',()=>{if(codaEntryActive()&&!codaCompleted)setPanel(`CODA SONORA · PREPARADA · 00:00 / ${fmt(coda.duration)}`);});
+    coda.addEventListener('playing',()=>{removeCodaFallback();setPanel(`CODA SONORA · SALIDA BLOQUEADA · ${fmt(coda.currentTime)} / ${fmt(coda.duration)}`);});
     coda.addEventListener('ended',async()=>{
       if(codaCompleted||!soundEnabled())return;
       codaCompleted=true;if(codaTimer){clearInterval(codaTimer);codaTimer=0;}
@@ -163,9 +182,9 @@
       coda.loop=true;coda.currentTime=0;try{await coda.play()}catch(_){}
     });
     coda.addEventListener('error',()=>{
-      if(!codaStarted||!soundEnabled())return;
-      if(codaTimer){clearInterval(codaTimer);codaTimer=0;}
-      codaCompleted=true;unlockExit('CODA NO DISPONIBLE · SALIDA DE SEGURIDAD ABIERTA');
+      if(!codaStarted||!soundEnabled()||!codaEntryActive())return;
+      makeCodaFallback('↻ RECARGAR CODA');
+      setPanel('ERROR DE CARGA · LA CODA NO SE DA POR COMPLETADA · PULSE RECARGAR CODA');
     });
   }
 
@@ -208,7 +227,8 @@
       if(!hasCoda||exitUnlocked){markReturn();location.href='index.html';return true;}
       lockedNotice();return false;
     },
-    getState:()=>({bookState,currentMode,codaEligible,exitUnlocked,codaStarted,codaCompleted,soundEnabled:soundEnabled()})
+    retryCoda:()=>{if(codaEntryActive()){if(coda.error){coda.src=codaSrc;coda.load();}return playCoda();}return false;},
+    getState:()=>({bookState,currentMode,codaEligible,exitUnlocked,codaStarted,codaCompleted,codaReadyState:coda?.readyState||0,codaError:coda?.error?.code||0,soundEnabled:soundEnabled()})
   };
 
   if(hasCoda){
