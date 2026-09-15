@@ -20,7 +20,7 @@ Novela compuesta de estructura contrapuntística y componente menipeo-carnavales
 
 ## 03 · La terraza del Miramar
 
-Tragicomedia visual en treinta escenas. Canon 1.6. El Acto III · **NACE LA REINA** incorpora como segundo umbral el fragmento DK 22 B 53 de Heráclito sobre el *pólemos*. La cita no funciona como elogio de la violencia: ilumina el conflicto como principio de diferenciación que produce posiciones, soberanía y, finalmente, la necesidad de limitar la propia forma creada por la fricción.
+Tragicomedia multimedia en treinta escenas. Canon 1.6. El Acto III · **NACE LA REINA** incorpora como segundo umbral el fragmento DK 22 B 53 de Heráclito sobre el *pólemos*. La cita no funciona como elogio de la violencia: ilumina el conflicto como principio de diferenciación que produce posiciones, soberanía y, finalmente, la necesidad de limitar la propia forma creada por la fricción.
 
 - PDF definitivo: `03_MIRAMAR.pdf`
 - Drive PDF: https://drive.google.com/file/d/1Nl2RhEdDDOSgYVFQmjeupGCoZ2EVgdpv/view
@@ -50,6 +50,10 @@ Dossier crítico final del conjunto. Integra **La Vega**, Paco, Miramar, la matr
 - DOCX: `05_LIMITE.docx`
 - Drive DOCX: https://docs.google.com/document/d/119ToPIn2NsYONhwECMnkawYEzegICSHg/edit
 - SHA-256 DOCX: `e27798d2b8b0e7abd4017d50f6ef287dffff9f49001fd505ca0c4ff0102fc9ce`
+
+## Experiencia sonora digital
+
+La edición multimedia abre con un preludio. Al completarlo por primera vez el lector elige entre **CON SONIDO** y **SIN SONIDO**. Con sonido se mantienen activas las músicas de cada obra, las codas y los contrapuntos aleatorios de retorno; sin sonido se desactivan todos esos elementos y los bloqueos que dependen de ellos. Un control global permanece visible en todas las páginas y permite cambiar de modo en cualquier momento.
 
 ## Firma
 
