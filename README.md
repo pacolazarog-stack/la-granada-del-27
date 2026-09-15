@@ -10,7 +10,7 @@ Proyecto literario de **Francisco Javier Lázaro Guil**. El repositorio nació p
 4. **La poética del archivo** — ensayo, contraensayo, coda satírica y postdata.
 5. **Poética del límite** — dossier crítico final del conjunto.
 
-El inventario canónico, los enlaces a los masters, las huellas SHA-256 y el estado de cada obra están en [`CORPUS_FINAL.md`](CORPUS_FINAL.md). El ZIP maestro está registrado en [`FINAL_260915.md`](FINAL_260915.md).
+El inventario canónico, los enlaces a los masters, las huellas SHA-256 y el estado de cada obra están en [`CORPUS_FINAL.md`](CORPUS_FINAL.md). El ZIP maestro se documenta en [`FINAL_260915.md`](FINAL_260915.md), pero **no forma parte del repositorio público**.
 
 ## Tesis crítica común
 
@@ -72,7 +72,7 @@ Master definitivo: https://drive.google.com/file/d/1Nl2RhEdDDOSgYVFQmjeupGCoZ2EV
 
 El paquete `FINAL_260915.zip` contiene los masters PDF, los editables DOCX de Miramar, ensayo y dossier, manifiesto de revisión, archivo de lectura y hashes SHA-256.
 
-Drive: https://drive.google.com/file/d/1run5KdLa6PMchLNsXZ2GN5rak-SFxuB0/view
+El ZIP se conserva **sólo en Google Drive para almacenamiento y descarga controlada**. No se publica ni se sube a GitHub. El repositorio mantiene únicamente su registro, composición y huella de integridad.
 
 Todos los nombres de archivo del paquete definitivo tienen menos de 24 caracteres, incluida la extensión.
 
