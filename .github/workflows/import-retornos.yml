@@ -1,0 +1,48 @@
+name: Importa retornos sonoros
+
+on:
+  push:
+    paths:
+      - '.github/workflows/import-retornos.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-retornos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Descarga RETORNO_1
+        run: |
+          curl -L --fail --retry 3 --retry-delay 2 \
+            'https://drive.usercontent.google.com/download?id=1kqLyhYlyeLkpr1tFPuuudDpceUHvhKPg&export=download&confirm=t' \
+            -o 'audio/RETORNO_1.mp3'
+          test "$(stat -c%s 'audio/RETORNO_1.mp3')" -gt 100000
+
+      - name: Descarga RETORNO_2
+        run: |
+          curl -L --fail --retry 3 --retry-delay 2 \
+            'https://drive.usercontent.google.com/download?id=1HxGBmgB4g6wpMOCMPSn-XNW5WfLWyL8Z&export=download&confirm=t' \
+            -o 'audio/RETORNO_2.mp3'
+          test "$(stat -c%s 'audio/RETORNO_2.mp3')" -gt 100000
+
+      - name: Comprueba tamaños
+        run: |
+          echo "RETORNO_1: $(stat -c%s 'audio/RETORNO_1.mp3') bytes"
+          echo "RETORNO_2: $(stat -c%s 'audio/RETORNO_2.mp3') bytes"
+          file 'audio/RETORNO_1.mp3' 'audio/RETORNO_2.mp3'
+
+      - name: Publica audios locales
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 'audio/RETORNO_1.mp3' 'audio/RETORNO_2.mp3'
+          if git diff --cached --quiet; then
+            echo 'Sin cambios'
+          else
+            git commit -m 'Aloja localmente los contrapuntos de retorno'
+            git push
+          fi
