@@ -8,16 +8,20 @@
     for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
     return bytes;
   }
+  function normalizeData(data){
+    if(!data||!Array.isArray(data.pages)) throw new Error('Formato de páginas inválido.');
+    while(data.pages.length&&!String(data.pages[data.pages.length-1]??'').trim()) data.pages.pop();
+    return data;
+  }
   function decodeWork(){
+    if(window.WORK_DATA) return normalizeData(window.WORK_DATA);
     const bytes=b64ToBytes(window.WORK_B64||'');
     if(!window.pako||typeof window.pako.ungzip!=='function') throw new Error('No está disponible el descompresor del libro.');
     let raw;
     try{raw=window.pako.ungzip(bytes,{to:'string'});}catch(e){console.error(e);throw new Error('No se han podido descomprimir los datos locales de la obra.');}
     let data;
     try{data=JSON.parse(raw);}catch(e){throw new Error('Los datos descomprimidos no forman una obra válida.');}
-    if(!Array.isArray(data.pages)) throw new Error('Formato de páginas inválido.');
-    while(data.pages.length&&!String(data.pages[data.pages.length-1]??'').trim()) data.pages.pop();
-    return data;
+    return normalizeData(data);
   }
 
   const $=s=>document.querySelector(s);
