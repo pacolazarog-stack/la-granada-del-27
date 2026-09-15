@@ -42,11 +42,16 @@
     }catch(_){}
     return 0;
   }
+  function armReturn(){
+    if(!bookId||!soundEnabled())return;
+    try{sessionStorage.setItem('volumeReturnReady',bookId);}catch(_){}
+  }
   function markReturn(){
     if(!bookId||!soundEnabled())return;
     saveBookMusic();
     localStorage.setItem('volumeReturnOrigin',bookId);
     localStorage.setItem('volumeReturnPending','1');
+    try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
   }
 
   const exitButtons=()=>[...document.querySelectorAll('a[href="index.html"],a[href="./index.html"]')];
@@ -90,7 +95,7 @@
     transient('SALIDA BLOQUEADA · COMPLETE EL LIBRO Y LA CODA');
   }
   function unlockExit(reason='CODA COMPLETADA · SALIDA ABIERTA'){
-    exitUnlocked=true;styleLockedLinks();setPanel(reason,true);
+    exitUnlocked=true;armReturn();styleLockedLinks();setPanel(reason,true);
     document.dispatchEvent(new CustomEvent('coda:complete',{detail:{bookId}}));
   }
   const removeFallback=()=>{if(fallback){fallback.remove();fallback=null;}};
@@ -180,9 +185,11 @@
     if(!enabled){
       saveBookMusic();players.forEach(a=>a.pause());if(coda)coda.pause();
       removeFallback();removeCodaFallback();if(codaPanel)codaPanel.style.display='none';
+      try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
       exitUnlocked=true;styleLockedLinks();return;
     }
     exitUnlocked=!hasCoda||codaCompleted;
+    if(codaCompleted)armReturn();
     styleLockedLinks();
     if(codaEntryActive()){
       if(codaStarted)playCoda();else beginCoda();
@@ -197,7 +204,7 @@
   window.BOOK_AUDIO_GATE={
     canExit:()=>!soundEnabled()||exitUnlocked,
     requestExit:()=>{
-      if(!soundEnabled()){localStorage.removeItem('volumeReturnPending');localStorage.removeItem('volumeReturnOrigin');location.href='index.html';return true;}
+      if(!soundEnabled()){localStorage.removeItem('volumeReturnPending');localStorage.removeItem('volumeReturnOrigin');try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}location.href='index.html';return true;}
       if(!hasCoda||exitUnlocked){markReturn();location.href='index.html';return true;}
       lockedNotice();return false;
     },
