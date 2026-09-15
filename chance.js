@@ -4,6 +4,7 @@
     if(window.crypto&&crypto.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]%n}
     return Math.floor(Math.random()*n);
   };
+  const soundEnabled=()=>window.VOLUME_AUDIO?window.VOLUME_AUDIO.isEnabled():localStorage.getItem('volumeSoundMode')!=='off';
   const perspectives=[
     {name:'1927',question:'¿Qué llegará a ser aquello que estamos viendo?'},
     {name:'2027',question:'¿Qué queda todavía de aquello que ocurrió?'},
@@ -17,27 +18,20 @@
   const side=(r,c)=>r===14&&c===14?'GOZNE':r===c?'DIAGONAL AUTORREFLEXIVA':r<c?'ESPEJO SUPERIOR':'ESPEJO INFERIOR';
   const meta=(r,c)=>`${coord(r,c)} · COLUMNA ${String(c).padStart(2,'0')} · ${vTitle(c)} · HORIZONTAL ${String(r).padStart(2,'0')} · ${hTitle(r)}`;
   const slotFx=new Audio('audio/slot-hit.mp3');
-  slotFx.preload='auto';
-  slotFx.volume=.48;
+  slotFx.preload='auto';slotFx.volume=.48;
 
   let hit=null,stage=0,stages=[];
 
   function playSlotFx(){
-    try{
-      const fx=slotFx.cloneNode();
-      fx.volume=slotFx.volume;
-      fx.play().catch(()=>{});
-    }catch(_){}
+    if(!soundEnabled())return;
+    try{const fx=slotFx.cloneNode();fx.volume=slotFx.volume;fx.play().catch(()=>{});}catch(_){}
   }
 
   function buildStages(){
     const {r,c,p}=hit;
     const center=r===14&&c===14;
     const diagonal=r===c;
-    if(center){
-      stages=[{label:'GOZNE · 14 × 14',current:cell(14,14),pos:'LA VEGA ↔ BAJO LA CAL · centro, diagonal y bisagra temporal'}];
-      return;
-    }
+    if(center){stages=[{label:'GOZNE · 14 × 14',current:cell(14,14),pos:'LA VEGA ↔ BAJO LA CAL · centro, diagonal y bisagra temporal'}];return;}
     stages=[
       {label:`GOLPE · ${side(r,c)}`,current:cell(r,c),pos:`${meta(r,c)} · el azar ha caído en la piedra`},
       {label:diagonal?'ESPEJO · EL MISMO PUNTO':`REFLEJO · ${side(c,r)}`,current:cell(c,r),pos:diagonal?`${coord(r,c)} · r = c · el punto se refleja sobre sí mismo`:`${meta(c,r)} · reflejo de ${coord(r,c)}`},
@@ -58,19 +52,16 @@
     $('#chance-next').disabled=stages.length===1;
   }
 
-  function roll(){hit={r:rand(27)+1,c:rand(27)+1,p:perspectives[rand(3)]};stage=0;buildStages();paint()}
+  function roll(){hit={r:rand(27)+1,c:rand(27)+1,p:perspectives[rand(3)]};stage=0;buildStages();paint();}
 
-  $('#chance-roll')?.addEventListener('click',()=>{playSlotFx();roll()});
-  $('#chance-prev')?.addEventListener('click',()=>{stage--;paint()});
-  $('#chance-next')?.addEventListener('click',()=>{stage++;paint()});
+  $('#chance-roll')?.addEventListener('click',()=>{playSlotFx();roll();});
+  $('#chance-prev')?.addEventListener('click',()=>{stage--;paint();});
+  $('#chance-next')?.addEventListener('click',()=>{stage++;paint();});
   roll();
 
   const baseMode=window.mode;
   if(typeof baseMode==='function'){
-    window.mode=function(id){
-      baseMode(id);
-      document.dispatchEvent(new CustomEvent('view:mode',{detail:{id}}));
-    };
+    window.mode=function(id){baseMode(id);document.dispatchEvent(new CustomEvent('view:mode',{detail:{id}}));};
   }
 
   const h=location.hash.slice(1);
