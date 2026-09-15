@@ -1,0 +1,33 @@
+name: Importar flash final
+on:
+  push:
+    paths:
+      - '.github/workflows/import-flash.yml'
+permissions:
+  contents: write
+jobs:
+  import-flash:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar MP4 final desde Drive
+        run: |
+          set -euo pipefail
+          mkdir -p video
+          curl -L --fail --retry 3 --retry-delay 2 \
+            'https://drive.usercontent.google.com/download?id=1VhRFQg3_bP0q_G6WrRf9_vUz4T-1E2z3&export=download&confirm=t' \
+            -o 'video/04 - Firework_recortado_0.3s.mp4'
+      - name: Verificar MP4
+        run: |
+          set -euo pipefail
+          test $(stat -c%s 'video/04 - Firework_recortado_0.3s.mp4') -gt 3500000
+          file 'video/04 - Firework_recortado_0.3s.mp4'
+      - name: Guardar flash en main y retirar importador
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 'video/04 - Firework_recortado_0.3s.mp4'
+          git rm '.github/workflows/import-flash.yml'
+          git commit -m 'Incorpora flash final de 9,70 s'
+          git push
