@@ -1,24 +1,45 @@
 # Manifiesto de revisión final · 15/09/2026
 
 ## 1 · La Granada del 27
-Se mantiene el master actualizado vigente. La matriz 27 × 27 permanece como libro profundo bajo los 27 poemas de superficie; **La Vega** conserva la coordenada central 14 × 14: «Late bajo la cal la acequia hundida.»
+Se mantiene el master actualizado vigente. La matriz 27 × 27 permanece como libro profundo bajo los 27 poemas de superficie; **La Vega** conserva la coordenada central 14 × 14: «Late bajo la cal la acequia hundida.» La revisión material incorpora la firma pública `flag` de forma mínima en cubierta y contracubierta y reserva la identificación civil para un colofón discreto.
 
 ## 2 · Paco Olmo de Males
-Se mantiene la edición canónica final revisada, con el índice reparado y sin reescritura sustantiva del corpus.
+Se mantiene la edición canónica final revisada, con el índice reparado y sin reescritura sustantiva del corpus. La firma pública visible pasa a ser `flag`; la identificación civil queda relegada al colofón y metadatos.
 
 ## 3 · La terraza del Miramar
-Canon 1.6. Se incorpora en el umbral del Acto III · **NACE LA REINA** el fragmento DK 22 B 53 de Heráclito aportado por el autor. La cita funciona como clave del paso del conflicto doméstico a la producción de posiciones, autoridad y soberanía; no como elogio de la violencia. No se altera la numeración de treinta escenas. El colofón queda fechado el 15 de septiembre de 2026. Depósito legal e ISBN permanecen pendientes de asignación.
+Canon 1.6. Se incorpora en el umbral del Acto III · **NACE LA REINA** el fragmento DK 22 B 53 de Heráclito. La cita funciona como clave del paso del conflicto doméstico a la producción de posiciones, autoridad y soberanía; no como elogio de la violencia. No se altera la numeración de treinta escenas. La maquetación A5 conserva la lógica dramatúrgica del documento y reduce la presencia autoral a `flag`.
 
 ## 4 · La poética del archivo
-El ensayo, contraensayo, coda y postdata se actualizan al título vigente de la novela e incorporan la lectura heraclítea de Miramar. Una adenda final sitúa la poética del archivo dentro de una categoría mayor: **Poética del límite**.
+El ensayo, contraensayo, coda y postdata se actualizan al título vigente de la novela e incorporan la lectura heraclítea de Miramar. Una adenda final sitúa la poética del archivo dentro de una categoría mayor: **Poética del límite**. La edición definitiva se normaliza a A5 con una jerarquía tipográfica más sobria.
 
 ## 5 · Poética del límite
-El dossier crítico final integra *La Vega*, Paco, Miramar, la matriz 27 × 27, la constelación comparatista y la reflexión sobre IA y dirección autoral.
+El dossier crítico final integra *La Vega*, Paco, Miramar, la matriz 27 × 27, la constelación comparatista y la reflexión sobre IA y dirección autoral. Su edición se unifica con el resto de la colección.
 
 > **La literatura comienza allí donde el sistema, aun funcionando con máxima precisión, descubre que la realidad contiene todavía algo que no cabe en él.**
 
-## 6 · Regla editorial
+## 6 · Identidad autoral
+La firma pública canónica es **flag**.
+
+`flag = fli`: ambos tienen el mismo valor, sin jerarquía. El trasfondo es «perdido sin ti» y su formulación íntima es «flag, perdido sin fli».
+
+La identidad civil debe poder encontrarse, pero no competir visualmente con la obra. Se conserva de forma discreta en `autor.html`, `AUTOR.txt`, colofones y metadatos pertinentes.
+
+## 7 · Regla editorial
 **No corregir la singularidad; corregir la sobreexplicación.** Cada pieza debe conservar autonomía antes del mecanismo que la relaciona con las demás.
 
-## 7 · Paquete
-Los nombres definitivos de Drive quedan por debajo de 24 caracteres. El ZIP maestro y sus hashes se documentan en [`FINAL_260915.md`](FINAL_260915.md).
+Regla complementaria:
+
+> **Todo aquello que la obra ya demuestra debe dejar de explicarse.**
+
+## 8 · Maquetación definitiva
+La colección adopta una gramática visual común sin uniformar mecánicamente las obras:
+
+- A5 cuando el master lo permite; Granada conserva su master con sangrado.
+- Tipografía editorial sobria y legible.
+- Jerarquías contenidas y espacio blanco suficiente.
+- Acento cromático mínimo.
+- `flag` siempre discreto y subordinado al título.
+- Ningún ornamento debe competir con el texto.
+
+## 9 · Paquete
+El paquete privado definitivo es `FINAL_FLAG_260915.zip`, documentado en [`FINAL_260915.md`](FINAL_260915.md). Se conserva exclusivamente en Google Drive y no se publica como archivo de GitHub.
