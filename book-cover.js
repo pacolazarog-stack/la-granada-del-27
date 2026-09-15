@@ -17,26 +17,13 @@
     page.scrollTop=0;
     page.innerHTML=`
       <div class="book-cover" aria-label="Portada de La Granada del 27. Un siglo después">
-        <div class="cover-top">
-          <span>GRANADA · 2027</span>
-          <span class="cover-axis">14 × 14</span>
-        </div>
-        <div class="cover-center">
-          <h1 class="cover-title"><span>LA GRANADA</span><span>DEL 27</span></h1>
-          <div class="cover-subtitle">UN SIGLO DESPUÉS</div>
-          <div class="cover-rule"></div>
-          <p class="cover-motto">Dos Granadas se miran.<br>Al fondo permanece la Vega.</p>
-        </div>
-        <div class="cover-bottom">
-          <div class="cover-author">Francisco Javier Lázaro Guil</div>
-          <div class="cover-hinge">LA VEGA · PARTIDA Y REGRESO</div>
-        </div>
+        <div class="cover-top"><span>GRANADA · 2027</span><span class="cover-axis">14 × 14</span></div>
+        <div class="cover-center"><h1 class="cover-title"><span>LA GRANADA</span><span>DEL 27</span></h1><div class="cover-subtitle">UN SIGLO DESPUÉS</div><div class="cover-rule"></div><p class="cover-motto">Dos Granadas se miran.<br>Al fondo permanece la Vega.</p></div>
+        <div class="cover-bottom"><div class="cover-author">Francisco Javier Lázaro Guil</div><div class="cover-hinge">LA VEGA · PARTIDA Y REGRESO</div></div>
       </div>`;
     progress.textContent=`PORTADA · ${items.length} PIEZAS`;
-    prev.disabled=true;
-    prev.textContent='← Anterior';
-    next.disabled=false;
-    next.textContent='Abrir libro →';
+    prev.disabled=true;prev.textContent='← Anterior';
+    next.disabled=false;next.textContent='Abrir libro →';
   }
 
   function renderBack(){
@@ -52,19 +39,14 @@
           <p>En el centro de simetría late una sola línea:</p>
           <p class="back-axis-line">«Late bajo la cal la acequia hundida.»</p>
           <p>Es el verso 14 de <strong>LA VEGA</strong>. De ese punto nace el movimiento del libro. <strong>BAJO LA CAL</strong> lo atraviesa, dos sonetos se abren en direcciones contrarias y la lectura vuelve finalmente al lugar del que partió: la Vega.</p>
-          <div class="back-questions">
-            <p>¿Qué ve de nosotros la Granada de 1927?</p>
-            <p>¿Qué Granada estamos dejando a quienes miren hacia 2127?</p>
-          </div>
+          <div class="back-questions"><p>¿Qué ve de nosotros la Granada de 1927?</p><p>¿Qué Granada estamos dejando a quienes miren hacia 2127?</p></div>
           <p class="back-final">La ciudad cambia.<br>La Vega permanece.</p>
           <div class="back-credit">Francisco Javier Lázaro Guil · 2027</div>
         </div>
       </div>`;
     progress.textContent=`CONTRAPORTADA · ${items.length} / ${items.length}`;
-    prev.disabled=false;
-    prev.textContent='← Volver a la portada';
-    next.disabled=true;
-    next.textContent='Libro cerrado';
+    prev.disabled=false;prev.textContent='← Libro';
+    next.disabled=false;next.textContent='Inicio →';
   }
 
   window.book=function(){
@@ -73,34 +55,23 @@
     page.className='page';
     baseBook();
     prev.textContent='← Anterior';
-    next.textContent=bi===items.length-1?'Cerrar →':'Siguiente →';
+    next.textContent=bi===items.length-1?'Contraportada →':'Siguiente →';
     next.disabled=false;
   };
 
   prev.onclick=()=>{
-    if(backCover){
-      backCover=false;
-      bi=0;
-    }else{
-      bi=Math.max(0,bi-1);
-    }
+    if(backCover){backCover=false;bi=items.length-1;}
+    else{bi=Math.max(0,bi-1);}
     window.book();
   };
 
   next.onclick=()=>{
-    if(backCover)return;
-    if(bi===items.length-1){
-      backCover=true;
-    }else{
-      bi=Math.min(items.length-1,bi+1);
-    }
+    if(backCover){location.href='index.html';return;}
+    if(bi===items.length-1){backCover=true;}
+    else{bi=Math.min(items.length-1,bi+1);}
     window.book();
   };
 
-  window.GRANADA_BOOK_COVER={
-    open:()=>{backCover=false;bi=0;window.book();},
-    close:()=>{backCover=true;window.book();}
-  };
-
+  window.GRANADA_BOOK_COVER={open:()=>{backCover=false;bi=0;window.book();},close:()=>{backCover=true;window.book();}};
   window.book();
 })();
