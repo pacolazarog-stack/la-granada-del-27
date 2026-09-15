@@ -17,6 +17,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Reconstruir paco-data.js
         run: |
+          wc -c paco-b64-01.txt paco-b64-02.txt paco-b64-03.txt paco-b64-04.txt paco-b64-05.txt paco-b64-06.txt
+          sha256sum paco-b64-01.txt paco-b64-02.txt paco-b64-03.txt paco-b64-04.txt paco-b64-05.txt paco-b64-06.txt
           cat paco-b64-01.txt paco-b64-02.txt paco-b64-03.txt paco-b64-04.txt paco-b64-05.txt paco-b64-06.txt > paco-data.js.gz.b64
           base64 -d paco-data.js.gz.b64 | gunzip > paco-data.js
           node <<'NODE'
@@ -43,5 +45,3 @@ jobs:
           git add paco-data.js
           git commit -m "Materializa Paco canónico para el lector web" || exit 0
           git push
-
-# relanzado tras completar los seis bloques canónicos
