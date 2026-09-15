@@ -9,6 +9,13 @@
   let backCover=false;
 
   if(items.length){items[0]={k:'cover',t:'LA GRANADA DEL 27',sub:'UN SIGLO DESPUÉS'};}
+  const emitState=state=>document.dispatchEvent(new CustomEvent('book:state',{detail:{state,page:bi,total:items.length,title:'La Granada del 27'}}));
+  const goStart=()=>{
+    if(window.BOOK_AUDIO_GATE&&typeof window.BOOK_AUDIO_GATE.requestExit==='function'){
+      if(!window.BOOK_AUDIO_GATE.requestExit())return;
+    }
+    location.href='index.html';
+  };
 
   function renderFront(){
     page.className='page cover-page';page.scrollTop=0;
@@ -17,6 +24,7 @@
     prev.hidden=false;next.hidden=false;
     prev.disabled=true;prev.textContent='← Anterior';
     next.disabled=false;next.textContent='Abrir libro →';
+    emitState('cover');
   }
 
   function renderBack(){
@@ -25,6 +33,7 @@
     progress.textContent=`CONTRAPORTADA · ${items.length} / ${items.length}`;
     prev.hidden=false;prev.disabled=false;prev.textContent='← Inicio';
     next.hidden=true;
+    emitState('back');
   }
 
   window.book=function(){
@@ -35,10 +44,11 @@
     prev.textContent='← Anterior';
     next.textContent=bi===items.length-1?'Contraportada →':'Siguiente →';
     next.disabled=false;
+    emitState('text');
   };
 
   prev.onclick=()=>{
-    if(backCover){location.href='index.html';return;}
+    if(backCover){goStart();return;}
     bi=Math.max(0,bi-1);window.book();
   };
   next.onclick=()=>{
