@@ -1,11 +1,35 @@
-# La Granada del 27 · Un siglo después
+# Libro · Poética del límite
 
-Poemario de Francisco Javier Lázaro Guil.
+Proyecto literario de **Francisco Javier Lázaro Guil**. El repositorio nació para **La Granada del 27 · Un siglo después** y mantiene su edición digital y sus validadores, pero desde el 15 de septiembre de 2026 documenta también el conjunto literario completo y sus masters canónicos.
 
-La obra se organiza en dos capas poéticas relacionadas pero no equivalentes:
+## Corpus
 
-- **LIBRO I · superficie**: 27 poemas visibles con arquitectura variable y autonomía literaria. Esta capa no está sometida a la matriz profunda. **LA VEGA** conserva excepcionalmente 27 endecasílabos y su verso 14 —«Late bajo la cal la acequia hundida.»— coincide con el centro 14 × 14.
-- **CUADERNO DE PIEDRA / matriz profunda**: estructura de **27 × 27 posiciones** para las lecturas horizontales, diagonales, radiales y ocultas. Aquí viven los acrósticos, mesósticos, telésticos y demás recorridos estructurales.
+1. **La Granada del 27 · Un siglo después** — poesía, ciudad, memoria y matriz profunda 27 × 27.
+2. **Las cuatro estaciones de Paco Olmo de Males** — novela compuesta, archivo, carnaval y mar.
+3. **La terraza del Miramar** — tragicomedia visual en treinta escenas; canon 1.6.
+4. **La poética del archivo** — ensayo, contraensayo, coda satírica y postdata.
+5. **Poética del límite** — dossier crítico final del conjunto.
+
+El inventario canónico, los enlaces a los masters, las huellas SHA-256 y el estado de cada obra están en [`CORPUS_FINAL.md`](CORPUS_FINAL.md). El ZIP maestro está registrado en [`FINAL_260915.md`](FINAL_260915.md).
+
+## Tesis crítica común
+
+> **La literatura comienza allí donde el sistema, aun funcionando con máxima precisión, descubre que la realidad contiene todavía algo que no cabe en él.**
+
+- El plano termina y la acequia continúa.
+- El expediente termina y la persona continúa.
+- La linde termina y la mirada continúa.
+- La cuadrícula termina y el poema continúa.
+- La generación termina y la autoría decide.
+
+La categoría superior es la **poética del límite**. El archivo, el plano, la linde, la matriz y la herramienta generativa no se presentan como males absolutos: organizan, defienden, relacionan y descubren. El problema aparece cuando la precisión aspira a convertirse en totalidad.
+
+## La Granada del 27 · Un siglo después
+
+La obra se organiza en dos capas relacionadas pero no equivalentes:
+
+- **LIBRO I · superficie**: 27 poemas visibles con autonomía literaria. **LA VEGA** conserva excepcionalmente 27 endecasílabos y su verso 14 —«Late bajo la cal la acequia hundida.»— coincide con el centro 14 × 14.
+- **CUADERNO DE PIEDRA / matriz profunda**: estructura de 27 × 27 posiciones para lecturas horizontales, diagonales, radiales y ocultas.
 
 El centro común del sistema es:
 
@@ -15,48 +39,41 @@ El estribillo palindrómico canónico es:
 
 > Granada sucede — sucede Granada.
 
-**BAJO LA CAL** actúa como eje transversal. Desde el cruce central nacen las lecturas radiales **HACIA LO ENTERRADO** y **HACIA LO ABIERTO**.
+Master definitivo de 15/09/2026: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
 
-## Edición canónica de imprenta
+La plataforma digital de Granada conserva sus validadores estructurales y la capa responsive para móvil. Página pública: https://pacolazarog-stack.github.io/la-granada-del-27/
 
-Versión vigente: **14 de septiembre de 2026 · MASTER DE IMPRENTA FINAL**.
+## Paco Olmo de Males
 
-- Formato: A5, 148 × 210 mm.
-- Sangrado: 3 mm.
-- Extensión: 84 páginas.
-- Edición integral: Libro I + Cuaderno de piedra + lecturas diagonales y radiales.
-- PDF canónico en Google Drive: https://drive.google.com/file/d/12wQoz7Oyyu15m3LGTUH2PChrkvq6Tbcd/view
-- SHA-256: `1a63ec961197ad4f03986da595f3ba6be96bf798c08aff66b6ce32f3b8a19af6`
+La novela contrapone dos regímenes de verdad: Julián reconstruye y Paco acredita. El expediente puede conservar casi todos los hechos y, sin embargo, no conservar el hecho de estar vivo. La oralidad, la copla, el carnaval y la mar impiden que el archivo se convierta en soberanía total.
 
-La edición vigente incorpora las revisiones ya fijadas de **GRAN VÍA**, **ALHAMBRA S. A.** y **UN SIGLO DESPUÉS**, sin alterar **LA VEGA** ni el centro 14 × 14.
+Master definitivo: https://drive.google.com/file/d/1KKYu0I-xQ8InOapuT_Etg3MgRORfVBtJ/view
 
-En **UN SIGLO DESPUÉS** se elimina el eco redundante «Bajo la avenida sigue pasando el agua.». El Libro I termina en el gesto humano «Su madre tira de él y se ríe.» antes del estribillo canónico.
+## La terraza del Miramar
 
-En el cierre impreso, la página de **REVELACIÓN** conserva únicamente «LA GRANADA DEL DOS SIETE / LA GRANADA DEL 27», la antigua guía final desaparece y la página 83 queda en blanco: **risa → estribillo → epílogo → silencio → contraportada**.
+Canon **1.6**. El Acto III · **NACE LA REINA** incorpora como umbral el fragmento **DK 22 B 53** de Heráclito:
 
-La revisión forense de imprenta del 14/09/2026 corrige el único desbordamiento material detectado: la cabecera de continuación de **CANCIÓN PARA QUIEN ACABA DE LLEGAR** en la página 42. El título queda íntegro y `· continuación` pasa a una segunda línea. El diff visual confirma que **solo cambia la página 42** respecto de la edición definitiva anterior. Se fija además el metadato de autor: **Francisco Javier Lázaro Guil**.
+> «El conflicto es el padre de todas las cosas, el rey de todas las cosas; a unos los muestra como dioses y a otros como hombres, a unos los hace esclavos y a otros libres.»
 
-## Texto crítico canónico
+La cita ilumina el *pólemos* como principio de diferenciación, no como elogio de la violencia. El conflicto produce posiciones y autoridad; los «diez minutos» del desenlace impiden que esa forma se vuelva absoluta.
 
-El estudio central del dossier queda fijado en [`DOSSIER_CRITICO_CANONICO.md`](DOSSIER_CRITICO_CANONICO.md): **«La ética de la metonimia. Materia, memoria y arquitectura subterránea en La Granada del 27 · Un siglo después»**.
+Master definitivo: https://drive.google.com/file/d/1Nl2RhEdDDOSgYVFQmjeupGCoZ2EVgdpv/view
 
-Tesis crítica de cierre:
+## Ensayo y dossier crítico
 
-> **En La Granada del 27, recordar no significa regresar. Significa reconocer qué continúa actuando bajo aquello que ha cambiado.**
+**La poética del archivo** conserva el ensayo, contraensayo, coda y postdata, ahora rematados por una adenda que sitúa el archivo dentro de la **poética del límite**.
 
-## Experiencia digital móvil
+**Poética del límite** reúne la crítica de *La Vega*, Paco, Miramar, la matriz 27 × 27, la constelación comparatista y la reflexión sobre inteligencia artificial y dirección autoral.
 
-La plataforma pública incluye una capa responsive específica en [`mobile.css`](mobile.css), pensada para **Android y pantallas de 320–780 px** sin modificar el contenido ni los recorridos de lectura.
+- Ensayo: https://drive.google.com/file/d/1fBC_i2A2NkMjL0sXcQ1wliVcAADVViUi/view
+- Dossier crítico: https://drive.google.com/file/d/1PZzS4Knzc3a2ssEhheIMBvVjkWDRzO7F/view
 
-- viewport dinámico mediante `100dvh` para convivir con la barra del navegador móvil;
-- áreas táctiles de al menos 44 px y navegación horizontal desplazable;
-- respeto de `safe-area-inset` y de la barra inferior del dispositivo;
-- páginas de **LIBRO** y lectores **VERTICAL / HORIZONTAL** adaptados a una sola columna sin recortes laterales;
-- **DIAGONAL** y **RADIAL** apilados en móvil, conservando el 14 × 14 y sus recorridos;
-- **AZAR** reformulado visualmente para lectura táctil estrecha;
-- cubierta, contracubierta y tipografía escalables entre 320 y 430 px;
-- tratamiento específico para Android en orientación horizontal y compatibilidad con `prefers-reduced-motion`.
+## Paquete definitivo
 
-Página pública: https://pacolazarog-stack.github.io/la-granada-del-27/
+El paquete `FINAL_260915.zip` contiene los masters PDF, los editables DOCX de Miramar, ensayo y dossier, manifiesto de revisión, archivo de lectura y hashes SHA-256.
+
+Drive: https://drive.google.com/file/d/1run5KdLa6PMchLNsXZ2GN5rak-SFxuB0/view
+
+Todos los nombres de archivo del paquete definitivo tienen menos de 24 caracteres, incluida la extensión.
 
 © 2026 Francisco Javier Lázaro Guil. Todos los derechos reservados.
