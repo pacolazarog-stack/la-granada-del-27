@@ -2,10 +2,19 @@
 
 Proyecto literario firmado públicamente por **flag**. El repositorio nació para **La Granada del 27 · Un siglo después** y conserva su edición digital y sus validadores; desde el 15 de septiembre de 2026 documenta también el conjunto literario completo y sus masters canónicos.
 
-La firma autoral se mantiene deliberadamente discreta. Su formulación mínima puede consultarse en [`autor.html`](autor.html):
+La firma autoral se mantiene deliberadamente discreta. El panel de [`autor.html`](autor.html) contiene el homenaje canónico a Fli, cuyo cierre es:
 
-> Flag quedó perdido sin Fli.  
-> Y estas palabras, sin ti.
+> Flic. Flac.  
+> Flip. Flap.  
+> Fli. Flag.
+>
+> Perdido sin ti.
+>
+> Sin más.
+>
+> Como estas palabras sin ti: igual.
+
+Cuando **Fli** y **Flag** aparecen en un mismo texto reciben tratamiento tipográfico equivalente. La edición no formula una equivalencia escrita entre ambos nombres. En la versión digital, pulsar `flag` abre un panel puramente visual y no modifica la música en curso; cerrarlo tampoco altera reproducción, posición, pista ni volumen.
 
 ## Corpus
 
