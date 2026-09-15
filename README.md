@@ -20,11 +20,15 @@ Cuando **Fli** y **Flag** aparecen en un mismo texto reciben tratamiento tipogr�
 
 1. **La Granada del 27 · Un siglo después** — poesía, ciudad, memoria y matriz profunda 27 × 27.
 2. **Las cuatro estaciones de Paco Olmo de Males** — novela compuesta, archivo, carnaval y mar.
-3. **La terraza del Miramar** — tragicomedia visual en treinta escenas; canon 1.6.
+3. **La terraza del Miramar** — tragicomedia multimedia en treinta escenas; canon 1.6.
 4. **La poética del archivo** — ensayo, contraensayo, coda satírica y postdata.
 5. **Poética del límite** — dossier crítico final del conjunto.
 
 El inventario canónico, los enlaces a los masters y las huellas SHA-256 están en [`CORPUS_FINAL.md`](CORPUS_FINAL.md). El paquete privado se documenta en [`FINAL_260915.md`](FINAL_260915.md) y **no forma parte del repositorio público**.
+
+## Experiencia sonora
+
+El volumen multimedia comienza con un preludio. Tras completarlo por primera vez, el lector elige entre **CON SONIDO** y **SIN SONIDO**. Con sonido permanecen activas las músicas de cada obra, sus codas y los contrapuntos de retorno. Sin sonido se desactiva todo el recorrido sonoro y también los bloqueos que dependen de él. Un control global permanece accesible en todas las páginas para cambiar esta preferencia en cualquier momento.
 
 ## Tesis crítica común
 
@@ -65,7 +69,7 @@ Master definitivo: https://drive.google.com/file/d/1KKYu0I-xQ8InOapuT_Etg3MgRORf
 
 ## La terraza del Miramar
 
-Canon **1.6**. El Acto III · **NACE LA REINA** incorpora como umbral el fragmento **DK 22 B 53** de Heráclito. La cita ilumina el *pólemos* como principio de diferenciación, no como elogio de la violencia. El conflicto produce posiciones y autoridad; los «diez minutos» del desenlace impiden que esa forma se vuelva absoluta.
+**Tragicomedia multimedia**, canon **1.6**. El Acto III · **NACE LA REINA** incorpora como umbral el fragmento **DK 22 B 53** de Heráclito. La cita ilumina el *pólemos* como principio de diferenciación, no como elogio de la violencia. El conflicto produce posiciones y autoridad; los «diez minutos» del desenlace impiden que esa forma se vuelva absoluta.
 
 Master definitivo: https://drive.google.com/file/d/1Nl2RhEdDDOSgYVFQmjeupGCoZ2EVgdpv/view
 
