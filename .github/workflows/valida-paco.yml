@@ -36,4 +36,5 @@ jobs:
           console.log(`Paco validado: ${data.pages.length} páginas lógicas; ${raw.length} caracteres JSON`);
           if(data.pages.length!==198) throw new Error(`Se esperaban 198 páginas lógicas y hay ${data.pages.length}`);
           if(!/Paco Olmo de Males/i.test(data.title||'')) throw new Error('Título inesperado');
+          console.log('VALIDACIÓN FINAL OK');
           NODE
