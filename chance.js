@@ -65,6 +65,14 @@
   $('#chance-next')?.addEventListener('click',()=>{stage++;paint()});
   roll();
 
+  const baseMode=window.mode;
+  if(typeof baseMode==='function'){
+    window.mode=function(id){
+      baseMode(id);
+      document.dispatchEvent(new CustomEvent('view:mode',{detail:{id}}));
+    };
+  }
+
   const h=location.hash.slice(1);
-  if(h==='chance'&&typeof mode==='function')mode('chance');
+  if(h==='chance'&&typeof window.mode==='function')window.mode('chance');
 })();
