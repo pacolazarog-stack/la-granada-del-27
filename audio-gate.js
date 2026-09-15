@@ -19,21 +19,58 @@
 
   const introSrc=document.body.dataset.audioSrc||'';
   const returnSources=[document.body.dataset.returnAudio1||'',document.body.dataset.returnAudio2||''].filter(Boolean);
+  const AWAY_KEY='volumeAwayFromHome';
+
+  const bookIdFromPath=path=>{
+    const name=(path.split('/').pop()||'').toLowerCase();
+    if(name==='granada.html')return'granada';
+    if(name==='paco.html')return'paco';
+    if(name==='miramar.html')return'miramar';
+    if(name==='ensayo.html')return'ensayo';
+    if(name==='final.html')return'final';
+    if(name==='autor.html')return'autor';
+    return name&&name!=='index.html'?name.replace(/\.html?$/,''):'site';
+  };
+
+  const referrerOrigin=()=>{
+    if(!document.referrer)return'';
+    try{
+      const u=new URL(document.referrer,location.href);
+      if(u.origin!==location.origin)return'';
+      const p=u.pathname.replace(/\/+$/,'');
+      const here=location.pathname.replace(/\/+$/,'');
+      if(p===here||/\/index\.html$/i.test(p))return'';
+      return bookIdFromPath(p)||'site';
+    }catch(_){return'';}
+  };
+
+  const getAwayOrigin=()=>{try{return sessionStorage.getItem(AWAY_KEY)||'';}catch(_){return'';}};
+  const setAwayOrigin=value=>{try{sessionStorage.setItem(AWAY_KEY,value||'site');}catch(_){}};
+  const clearAwayOrigin=()=>{try{sessionStorage.removeItem(AWAY_KEY);}catch(_){}};
+  const navigationType=()=>performance.getEntriesByType?.('navigation')?.[0]?.type||'';
 
   let readyOrigin='';
   try{readyOrigin=sessionStorage.getItem('volumeReturnReady')||'';}catch(_){}
-  if(pref.isEnabled()&&localStorage.getItem('volumeReturnPending')!=='1'&&readyOrigin&&returnSources.length){
-    localStorage.setItem('volumeReturnOrigin',readyOrigin);
-    localStorage.setItem('volumeReturnPending','1');
-    try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
+  const directReturnOrigin=referrerOrigin();
+  const backReturnOrigin=navigationType()==='back_forward'?getAwayOrigin():'';
+
+  if(pref.isEnabled()&&localStorage.getItem('volumeReturnPending')!=='1'&&returnSources.length){
+    const detected=readyOrigin||directReturnOrigin||backReturnOrigin;
+    if(detected){
+      localStorage.setItem('volumeReturnOrigin',detected);
+      localStorage.setItem('volumeReturnPending','1');
+      try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
+      clearAwayOrigin();
+    }
   }
 
   let origin=localStorage.getItem('volumeReturnOrigin')||'';
-  let pending=pref.isEnabled()&&localStorage.getItem('volumeReturnPending')==='1'&&origin&&returnSources.length;
-  if(pending){try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}}
+  let pending=pref.isEnabled()&&localStorage.getItem('volumeReturnPending')==='1'&&returnSources.length>0;
+  if(pending&&!origin){origin='site';localStorage.setItem('volumeReturnOrigin',origin);}
+  if(pending){try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}clearAwayOrigin();}
   let firstIntro=!pending&&!pref.introCompleted();
   let chosen=pending?returnSources[Math.floor(Math.random()*returnSources.length)]:introSrc;
-  let unlocked=false,started=false,choiceVisible=false;
+  let unlocked=false,started=false,choiceVisible=false,gestureRetryArmed=false;
   let audio=chosen?new Audio(chosen):null;
   if(audio){audio.preload='auto';audio.loop=false;audio.playsInline=true;audio.volume=.86;}
 
@@ -49,7 +86,7 @@
   start.insertAdjacentElement('afterend',choice);
 
   const fmt=s=>{if(!Number.isFinite(s)||s<0)return'--:--';const m=Math.floor(s/60),sec=Math.floor(s%60);return`${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;};
-  const sameOriginCard=a=>pending&&a.dataset.bookId===origin;
+  const sameOriginCard=a=>pending&&['granada','paco','miramar','ensayo'].includes(origin)&&a.dataset.bookId===origin;
 
   const lockCards=()=>{
     cards.forEach(a=>{
@@ -84,6 +121,7 @@
     if(audio){audio.pause();audio.currentTime=0;}
     pref.clearPendingAudio?.();
     try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
+    clearAwayOrigin();
     unlockCards('MODO SIN SONIDO · ACCESO ABIERTO');
   };
 
@@ -97,12 +135,27 @@
   withSound.addEventListener('click',soundMode);
   withoutSound.addEventListener('click',silentMode);
 
+  document.addEventListener('click',ev=>{
+    const a=ev.target.closest?.('a[href]');
+    if(!a||a.target==='_blank'||a.hasAttribute('download'))return;
+    if(a.classList.contains('is-locked')||a.getAttribute('aria-disabled')==='true')return;
+    try{
+      const u=new URL(a.href,location.href);
+      if(u.origin!==location.origin)return;
+      const here=location.pathname.replace(/\/+$/,'');
+      const there=u.pathname.replace(/\/+$/,'');
+      if(there===here||/\/index\.html$/i.test(there))return;
+      setAwayOrigin(a.dataset.bookId||bookIdFromPath(there)||'site');
+    }catch(_){}
+  },true);
+
   cards.forEach(a=>a.addEventListener('click',e=>{
     if(!pref.isEnabled())return;
     if(sameOriginCard(a)){
       localStorage.setItem('volumeResumeBook',origin);
       localStorage.removeItem('volumeReturnPending');localStorage.removeItem('volumeReturnOrigin');
       try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
+      setAwayOrigin(a.dataset.bookId||origin||'site');
       if(audio)audio.pause();return;
     }
     if(unlocked)return;
@@ -118,12 +171,30 @@
     started=false;start.hidden=false;start.disabled=false;start.textContent='REINTENTAR AUDIO';gate.classList.remove('is-playing');
     status.textContent=pending?'NO SE HA PODIDO CARGAR EL CONTRAPUNTO DE RETORNO':'NO SE HA PODIDO CARGAR EL UMBRAL SONORO';clock.textContent='';fill.style.width='0';
   };
+
+  const armGestureRetry=()=>{
+    if(gestureRetryArmed||!pending||!pref.isEnabled())return;
+    gestureRetryArmed=true;
+    const retry=()=>{
+      gestureRetryArmed=false;
+      document.removeEventListener('pointerdown',retry,true);
+      document.removeEventListener('keydown',retry,true);
+      begin();
+    };
+    document.addEventListener('pointerdown',retry,true);
+    document.addEventListener('keydown',retry,true);
+  };
+
   const begin=async()=>{
     if(!audio||!pref.isEnabled())return;
     try{
-      await audio.play();started=true;start.disabled=false;start.hidden=true;gate.classList.add('is-playing');
+      await audio.play();started=true;gestureRetryArmed=false;start.disabled=false;start.hidden=true;gate.classList.add('is-playing');
       status.textContent=pending?`RETORNO DESDE ${origin.toUpperCase()} · ESCUCHE UNA VERSIÓN COMPLETA`:'PRELUDIO SONORO EN CURSO · ACCESO BLOQUEADO';update();
-    }catch(_){started=false;start.disabled=false;start.hidden=false;start.textContent=pending?'INICIAR MÚSICA DE RETORNO':'INICIAR PRELUDIO';gate.classList.remove('is-playing');status.textContent=pending?'PULSE PARA INICIAR EL CONTRAPUNTO DE RETORNO':'EL NAVEGADOR REQUIERE UNA ACCIÓN PARA INICIAR EL SONIDO';}
+    }catch(_){
+      started=false;start.disabled=false;start.hidden=false;start.textContent=pending?'INICIAR MÚSICA DE RETORNO':'INICIAR PRELUDIO';gate.classList.remove('is-playing');
+      status.textContent=pending?'MÚSICA DE RETORNO PREPARADA · UN TOQUE EN CUALQUIER PUNTO LA INICIA':'EL NAVEGADOR REQUIERE UNA ACCIÓN PARA INICIAR EL SONIDO';
+      armGestureRetry();
+    }
   };
 
   if(audio){
@@ -147,6 +218,7 @@
       if(audio)audio.pause();
       pref.markIntroCompleted();pref.clearPendingAudio?.();pending=false;origin='';firstIntro=false;
       try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
+      clearAwayOrigin();
       unlockCards('MODO SIN SONIDO · ACCESO ABIERTO');
       return;
     }
@@ -154,20 +226,26 @@
   });
 
   addEventListener('pageshow',ev=>{
-    if(!ev.persisted||!pref.isEnabled())return;
+    if(!pref.isEnabled())return;
     let ready='';try{ready=sessionStorage.getItem('volumeReturnReady')||'';}catch(_){}
-    const storedPending=localStorage.getItem('volumeReturnPending')==='1'&&localStorage.getItem('volumeReturnOrigin');
-    if(!storedPending&&ready){
-      localStorage.setItem('volumeReturnOrigin',ready);
-      localStorage.setItem('volumeReturnPending','1');
+    const away=getAwayOrigin();
+    const storedPending=localStorage.getItem('volumeReturnPending')==='1';
+    if(ev.persisted&&(storedPending||ready||away)){
+      if(!storedPending){
+        const detected=ready||away||'site';
+        localStorage.setItem('volumeReturnOrigin',detected);
+        localStorage.setItem('volumeReturnPending','1');
+      }
       try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
+      clearAwayOrigin();
+      location.reload();
     }
-    if(storedPending||ready)location.reload();
   });
 
   if(!pref.isEnabled()){
     pref.markIntroCompleted();pref.clearPendingAudio?.();
     try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
+    clearAwayOrigin();
     unlockCards('MODO SIN SONIDO · ACCESO ABIERTO');
     return;
   }
@@ -178,6 +256,6 @@
   if(!chosen){unlockCards('ACCESO ABIERTO');return;}
 
   lockCards();
-  status.textContent=pending?`REGRESO DESDE ${origin.toUpperCase()} · PREPARANDO CONTRAPUNTO…`:'INICIANDO PRELUDIO SONORO…';
+  status.textContent=pending?`REGRESO DESDE ${origin.toUpperCase()} · PREPARANDO CONTRAPUNTO ALEATORIO…`:'INICIANDO PRELUDIO SONORO…';
   begin();
 })();
