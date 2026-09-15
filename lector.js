@@ -1,41 +1,34 @@
-(async()=>{
-  async function streamToText(stream){
-    const reader=stream.getReader();
-    const decoder=new TextDecoder('utf-8');
-    let out='';
-    for(;;){
-      const {value,done}=await reader.read();
-      if(done) break;
-      out+=decoder.decode(value,{stream:true});
-    }
-    out+=decoder.decode();
-    return out;
+(()=>{
+  function b64ToBytes(b64){
+    const clean=String(b64||'').replace(/\s+/g,'');
+    if(!clean) throw new Error('No hay datos de obra.');
+    let bin;
+    try{bin=atob(clean)}catch(e){throw new Error('Los datos de la obra no tienen una codificación válida.');}
+    const bytes=new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+    return bytes;
   }
 
-  async function decodeWork(){
-    const b64=(window.WORK_B64||'').replace(/\s+/g,'');
-    if(!b64) throw new Error('No hay datos de obra.');
-    let bin;
-    try{bin=atob(b64)}catch(e){throw new Error('Los datos de la obra no tienen una codificación válida.');}
-    const bytes=new Uint8Array(bin.length);
-    for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
-    if(typeof DecompressionStream==='undefined') throw new Error('Este navegador no admite la descompresión local necesaria.');
+  function decodeWork(){
+    const bytes=b64ToBytes(window.WORK_B64||'');
+    let raw;
     try{
-      const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
-      const raw=await streamToText(stream);
-      const data=JSON.parse(raw);
-      if(!Array.isArray(data.pages)) throw new Error('Formato de páginas inválido.');
-      while(data.pages.length && !String(data.pages[data.pages.length-1]??'').trim()) data.pages.pop();
-      return data;
+      if(!window.pako || typeof window.pako.ungzip!=='function') throw new Error('No está disponible el descompresor.');
+      raw=window.pako.ungzip(bytes,{to:'string'});
     }catch(e){
-      console.error('Error al abrir la obra:',e);
+      console.error('Error gzip:',e);
       throw new Error('No se han podido descomprimir los datos locales de la obra.');
     }
+    let data;
+    try{data=JSON.parse(raw)}catch(e){throw new Error('Los datos descomprimidos no forman una obra válida.');}
+    if(!Array.isArray(data.pages)) throw new Error('Formato de páginas inválido.');
+    while(data.pages.length && !String(data.pages[data.pages.length-1]??'').trim()) data.pages.pop();
+    return data;
   }
 
   const $=s=>document.querySelector(s);
   try{
-    const data=await decodeWork();
+    const data=decodeWork();
     let page=0;
     const text=$('#readerText'),cover=$('#readerCover'),article=$('#readerPage');
     const progress=$('#readerProgress'),jump=$('#readerJump');
@@ -46,7 +39,7 @@
     sub.textContent=data.subtitle||data.author||sub.textContent||'';
     jump.min=1;jump.max=Math.max(1,total);
 
-    function goStart(){location.href='index.html';}
+    const goStart=()=>{location.href='index.html';};
     function render(){
       page=Math.max(0,Math.min(total,page));
       if(page===0){
@@ -83,7 +76,7 @@
     $('#readerFull').onclick=()=>!document.fullscreenElement?document.documentElement.requestFullscreen?.():document.exitFullscreen?.();
     addEventListener('keydown',e=>{
       if(e.key==='ArrowLeft'&&page>0){page--;render();}
-      else if(e.key==='ArrowRight'&&page<total){page++;render();}
+      else if(e.key==='ArrowRight'){if(page===total)goStart();else if(page<total){page++;render();}}
       else if(e.key==='Home'){page=0;render();}
       else if(e.key==='End'){page=total;render();}
     });
