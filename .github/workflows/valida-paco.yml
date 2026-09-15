@@ -1,0 +1,39 @@
+name: Valida Paco web
+
+on:
+  push:
+    paths:
+      - 'paco-*.js'
+      - 'paco.html'
+      - '.github/workflows/valida-paco.yml'
+  workflow_dispatch:
+
+jobs:
+  valida:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Reconstruir y validar obra
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const zlib=require('zlib');
+          const files=['paco-01a.js','paco-01b.js','paco-02.js','paco-03.js','paco-04a.js','paco-04b.js','paco-05a.js','paco-05b.js','paco-06a.js','paco-06b.js','paco-07.js'];
+          let b64='';
+          for(const f of files){
+            const s=fs.readFileSync(f,'utf8');
+            const m=s.match(/\+'([^']*)'/);
+            if(!m) throw new Error(`Sin bloque base64 en ${f}`);
+            b64+=m[1];
+          }
+          const raw=zlib.gunzipSync(Buffer.from(b64,'base64')).toString('utf8');
+          const data=JSON.parse(raw);
+          if(!Array.isArray(data.pages)) throw new Error('No existe pages[]');
+          while(data.pages.length && !String(data.pages[data.pages.length-1]??'').trim()) data.pages.pop();
+          console.log(`Paco validado: ${data.pages.length} páginas lógicas; ${raw.length} caracteres JSON`);
+          if(data.pages.length!==198) throw new Error(`Se esperaban 198 páginas lógicas y hay ${data.pages.length}`);
+          if(!/Paco Olmo de Males/i.test(data.title||'')) throw new Error('Título inesperado');
+          NODE
