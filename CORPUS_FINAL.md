@@ -1,6 +1,6 @@
 # Corpus final · 15/09/2026
 
-Este repositorio conserva el mapa canónico del conjunto literario firmado públicamente por **flag** y enlaza sus masters definitivos. La identidad civil se mantiene disponible de forma discreta en [`autor.html`](autor.html), sin competir visualmente con las obras.
+Este repositorio conserva el mapa canónico del conjunto literario firmado públicamente por **flag** y enlaza sus masters definitivos.
 
 ## 01 · La Granada del 27 · Un siglo después
 
@@ -8,7 +8,7 @@ Poesía, memoria territorial y matriz profunda 27 × 27. La lectura de superfici
 
 - Master definitivo: `01_GRANADA27.pdf`
 - Drive: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
-- SHA-256: `b20de6e291132ae5f97c9cc3ff55cc8bf0fda3efd0d40f502a9a522e26dba8f9`
+- SHA-256: `694bed0978c703426350c05cdacac88cd3e9572ab1b5ee4d0f033f7e45a5a54d`
 
 ## 02 · Las cuatro estaciones de Paco Olmo de Males
 
@@ -16,21 +16,18 @@ Novela compuesta de estructura contrapuntística y componente menipeo-carnavales
 
 - Master definitivo: `02_PACO_OLMO.pdf`
 - Drive: https://drive.google.com/file/d/1KKYu0I-xQ8InOapuT_Etg3MgRORfVBtJ/view
-- SHA-256: `098f66dc1246231366981ef58131ba1bb20e6e64c4a8a35459c07daea0a28542`
+- SHA-256: `753da6cbf981ccbec4170ac9eac2f788f7f5fb78bc25b770cbd2e373e2192c48`
 
 ## 03 · La terraza del Miramar
 
 Tragicomedia visual en treinta escenas. Canon 1.6. El Acto III · **NACE LA REINA** incorpora como segundo umbral el fragmento DK 22 B 53 de Heráclito sobre el *pólemos*. La cita no funciona como elogio de la violencia: ilumina el conflicto como principio de diferenciación que produce posiciones, soberanía y, finalmente, la necesidad de limitar la propia forma creada por la fricción.
 
-> «El conflicto es el padre de todas las cosas, el rey de todas las cosas; a unos los muestra como dioses y a otros como hombres, a unos los hace esclavos y a otros libres.»  
-> — Heráclito · DK 22 B 53
-
 - PDF definitivo: `03_MIRAMAR.pdf`
 - Drive PDF: https://drive.google.com/file/d/1Nl2RhEdDDOSgYVFQmjeupGCoZ2EVgdpv/view
-- SHA-256 PDF: `89be2e9b48d6ad7c56ab6b5a827335d20d2a23df1d725f5043fedcaa6b5af64a`
+- SHA-256 PDF: `1a383b04a0f6ca6c6f026478c72af21ac78b76d30a9fcc94cd1020209f54458a`
 - DOCX definitivo: `03_MIRAMAR.docx`
 - Drive DOCX: https://docs.google.com/document/d/1aRXi4Ljb7Yb8C1lAXno5hcU8nBgwR5wz/edit
-- SHA-256 DOCX: `2269eb9d6cabbff37275711aafe8adf586bd0f206336c82384c1ae139567c524`
+- SHA-256 DOCX: `f20915e0a034ce8393d6f03277dbd6f1fe8dfb6467b1678fccd87278acad7f3e`
 
 ## 04 · La poética del archivo
 
@@ -38,10 +35,10 @@ Ensayo, contraensayo, coda satírica y postdata testamentaria. La revisión fina
 
 - PDF definitivo: `04_ENSAYO.pdf`
 - Drive PDF: https://drive.google.com/file/d/1fBC_i2A2NkMjL0sXcQ1wliVcAADVViUi/view
-- SHA-256 PDF: `df91a086c740a1587c448cb2c8288f9d7929f43ec2805b085b4bab9805d6b529`
+- SHA-256 PDF: `ff4396e50778625543c7eb3d1243f9799233091bce8a41e2158b12e11a224a0a`
 - DOCX definitivo: `04_ENSAYO.docx`
 - Drive DOCX: https://docs.google.com/document/d/1igdw-J7NQQntlXqDgQzbWD7SMiKZRaWd/edit
-- SHA-256 DOCX: `6e18a76e599f8968dadd2fcfd4c52e6a2bb4f6aaefa281c3b84e327ba8133ddb`
+- SHA-256 DOCX: `19a04e766115b50689a1fa460175a96d925f2cffd53c852a5bd38a7abb74a6ec`
 
 ## 05 · Poética del límite
 
@@ -49,14 +46,19 @@ Dossier crítico final del conjunto. Integra **La Vega**, Paco, Miramar, la matr
 
 - PDF: `05_LIMITE.pdf`
 - Drive PDF: https://drive.google.com/file/d/1PZzS4Knzc3a2ssEhheIMBvVjkWDRzO7F/view
-- SHA-256 PDF: `3ed59d50e97f30bb3e7ea89c931b28b1b3fd5377e2ba9bce71d18462b4b75d4d`
+- SHA-256 PDF: `c84e9818e7da833d7f4ccc730eff42023c22ed391b52756a0c45e451620d5106`
 - DOCX: `05_LIMITE.docx`
 - Drive DOCX: https://docs.google.com/document/d/119ToPIn2NsYONhwECMnkawYEzegICSHg/edit
-- SHA-256 DOCX: `b9c31196e8a476da99659970648f1f741f952578e2b67cc1d17371c3438631e3`
+- SHA-256 DOCX: `e27798d2b8b0e7abd4017d50f6ef287dffff9f49001fd505ca0c4ff0102fc9ce`
 
-## Identidad autoral
+## Firma
 
-La firma pública canónica es **flag**. `flag = fli`: ambos tienen el mismo valor. El trasfondo íntimo es «perdido sin ti», formulado como «flag, perdido sin fli». El nombre civil se conserva únicamente como dato identificativo discreto y no como elemento prominente de cubiertas o presentación.
+**flag**
+
+> Flag quedó perdido sin Fli.  
+> Y estas palabras, sin ti.
+
+Cuando Flag y Fli aparecen juntos reciben tratamiento tipográfico equivalente. No se añade explicación a esa formulación.
 
 ## Fórmula crítica rectora
 
@@ -70,6 +72,4 @@ La generación termina y la autoría decide.
 
 ## Edición definitiva
 
-La revisión de 15/09/2026 unifica la presentación editorial: A5 cuando el master lo permite, tipografía sobria, jerarquías contenidas, acento cromático mínimo y firma `flag` discreta. La obra conserva prioridad visual sobre la identidad autoral.
-
-Los archivos del paquete final usan nombres cortos y el paquete privado se documenta en [`FINAL_260915.md`](FINAL_260915.md).
+La revisión de 15/09/2026 unifica la presentación editorial: A5 cuando el master lo permite, tipografía sobria, jerarquías contenidas, acento cromático mínimo y firma `flag` discreta. La obra conserva prioridad visual sobre la firma.
