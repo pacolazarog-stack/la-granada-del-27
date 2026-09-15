@@ -10,12 +10,6 @@
 
   if(items.length){items[0]={k:'cover',t:'LA GRANADA DEL 27',sub:'UN SIGLO DESPUÉS'};}
   const emitState=state=>document.dispatchEvent(new CustomEvent('book:state',{detail:{state,page:bi,total:items.length,title:'La Granada del 27'}}));
-  const goStart=()=>{
-    if(window.BOOK_AUDIO_GATE&&typeof window.BOOK_AUDIO_GATE.requestExit==='function'){
-      if(!window.BOOK_AUDIO_GATE.requestExit())return;
-    }
-    location.href='index.html';
-  };
 
   function renderFront(){
     page.className='page cover-page';page.scrollTop=0;
@@ -31,8 +25,8 @@
     page.className='page back-cover-page';page.scrollTop=0;
     page.innerHTML=`<div class="book-back" aria-label="Contraportada de La Granada del 27. Un siglo después"><div class="back-copy"><div class="back-kicker">GRANADA · 2027</div><h2>Un siglo después,<br>Granada vuelve a mirarse.</h2><p>Este libro no vuelve a 1927 para reconstruirlo. Lo coloca frente a 2027. Entre ambas fechas se abre una puerta.</p><p>A través de ella, los poemas se miran, se cruzan y se responden. La lectura vertical encuentra su reflejo horizontal; las diagonales atraviesan el centro; otras voces permanecen escondidas en el principio, el interior y el final de los versos.</p><p>En el centro de simetría late una sola línea:</p><p class="back-axis-line">«Late bajo la cal la acequia hundida.»</p><p>Es el verso 14 de <strong>LA VEGA</strong>. De ese punto nace el movimiento del libro. <strong>BAJO LA CAL</strong> lo atraviesa, dos sonetos se abren en direcciones contrarias y la lectura vuelve finalmente al lugar del que partió: la Vega.</p><div class="back-questions"><p>¿Qué ve de nosotros la Granada de 1927?</p><p>¿Qué Granada estamos dejando a quienes miren hacia 2127?</p></div><p class="back-final">La ciudad cambia.<br>La Vega permanece.</p><div class="back-credit"><a href="autor.html" aria-label="Autor: flag">flag</a> · 2027</div></div></div>`;
     progress.textContent=`CONTRAPORTADA · ${items.length} / ${items.length}`;
-    prev.hidden=false;prev.disabled=false;prev.textContent='← Inicio';
-    next.hidden=true;
+    prev.hidden=false;prev.disabled=false;prev.textContent='← Última página';
+    next.hidden=false;next.disabled=false;next.textContent='AZAR · CODA →';
     emitState('back');
   }
 
@@ -48,10 +42,11 @@
   };
 
   prev.onclick=()=>{
-    if(backCover){goStart();return;}
+    if(backCover){backCover=false;bi=items.length-1;window.book();return;}
     bi=Math.max(0,bi-1);window.book();
   };
   next.onclick=()=>{
+    if(backCover){if(typeof window.mode==='function')window.mode('chance');return;}
     if(bi===items.length-1){backCover=true;window.book();return;}
     bi=Math.min(items.length-1,bi+1);window.book();
   };
