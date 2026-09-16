@@ -4,6 +4,7 @@
   if(!pref||!synth)return;
 
   let token=0,scheduled=0,speaking=false,voiceCache={male:null,female:null},voicesReady=false;
+  let lastChanceText='';
 
   const path=(location.pathname.split('/').pop()||'').toLowerCase();
   const bookId=document.body.dataset.bookId||(
@@ -49,6 +50,12 @@
   function currentTarget(){
     const modal=document.querySelector('.author-modal:not([hidden]) .author-modal-content');
     if(visible(modal))return modal;
+
+    /* En EL GOLPE DE AZAR la voz pertenece sólo al verso sorteado. */
+    const chanceView=document.querySelector('#chance');
+    const chanceVerse=document.querySelector('#chance-current');
+    if(visible(chanceView)&&visible(chanceVerse))return chanceVerse;
+
     const readerText=document.querySelector('#readerText');
     if(visible(readerText))return readerText;
     const readerCover=document.querySelector('#readerCover');
@@ -136,6 +143,11 @@
     const target=currentTarget();
     const text=cleanText(target);
     if(!text)return;
+
+    const isChance=target?.id==='chance-current';
+    if(isChance&&text===lastChanceText)return;
+    if(isChance)lastChanceText=text;
+
     stop();
     refreshVoices();
     const mine=++token;
@@ -173,9 +185,11 @@
     scheduled=setTimeout(speakCurrent,delay);
   }
 
-  document.addEventListener('volume:voicechange',ev=>{if(ev.detail?.enabled)schedule(70);else stop();});
+  document.addEventListener('volume:voicechange',ev=>{
+    if(ev.detail?.enabled){lastChanceText='';schedule(70);}else stop();
+  });
   document.addEventListener('book:state',()=>schedule(190));
-  document.addEventListener('view:mode',()=>schedule(210));
+  document.addEventListener('view:mode',()=>{lastChanceText='';schedule(210);});
   document.addEventListener('coda:complete',()=>schedule(170));
   document.addEventListener('author:open',()=>schedule(100));
   document.addEventListener('author:close',stop);
@@ -184,7 +198,14 @@
 
   const main=document.querySelector('main');
   if(main){
-    const observer=new MutationObserver(()=>schedule(280));
+    const observer=new MutationObserver(mutations=>{
+      const chance=document.querySelector('#chance-current');
+      if(chance&&mutations.some(m=>m.target===chance||chance.contains(m.target)||m.target.contains?.(chance))){
+        schedule(120);
+        return;
+      }
+      schedule(280);
+    });
     observer.observe(main,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['hidden','class']});
   }
 
