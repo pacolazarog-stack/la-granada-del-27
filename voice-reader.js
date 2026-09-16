@@ -4,7 +4,7 @@
   if(!pref||!synth)return;
 
   let token=0,scheduled=0,speaking=false,voiceCache={male:null,female:null};
-  let lastChanceText='',readerState='';
+  let lastChanceText='',readerState='',readerPage=0;
   const path=(location.pathname.split('/').pop()||'').toLowerCase();
   const bookId=document.body.dataset.bookId||(
     path.includes('paco')?'paco':path.includes('miramar')?'miramar':path.includes('granada')?'granada':path.includes('ensayo')?'ensayo':path.includes('fli')?'fli':path.includes('autor')?'autor':path.includes('final')?'final':'volume'
@@ -81,6 +81,18 @@
 
   function miramarLiterary(target){
     if(!target)return'';
+
+    /* Canon 1.7: la locución no se deriva ya de heurísticas tipográficas del DOM.
+       Usa el mapa extraído directamente del PDF canónico según su composición:
+       diálogo/texto pronunciado sí; títulos, personajes, acotaciones, indicaciones
+       y la CODA IMPRESA no. Las páginas sin texto pronunciado quedan en silencio. */
+    const canonicalPages=window.MIRAMAR_SPOKEN_PAGES;
+    const currentPage=Number(readerPage||window.BOOK_READER?.getPage?.()||0);
+    if(canonicalPages&&currentPage>0){
+      return normalizeText(typeof canonicalPages[currentPage]==='string'?canonicalPages[currentPage]:'');
+    }
+
+    /* Respaldo para una carga antigua en caché donde aún no exista el mapa 1.7. */
     const raw=String(target.textContent||'').replace(/\r/g,'').replace(/\u200b/g,'').replace(/\u00a0/g,' ');
     const out=[];
     for(const original of raw.split('\n')){
@@ -95,11 +107,8 @@
       if(speakerLabel.test(trimmed))continue;
 
       const lead=(line.match(/^( *)/)||['',''])[1].length;
-      /* En el original maquetado, las acotaciones llevan sangría mínima (1–2 espacios).
-         Los versos cantables llevan una sangría mayor y se conservan. */
       if(lead>0&&lead<=2)continue;
 
-      /* Encabezados técnicos o de personaje en versales, sin puntuación literaria final. */
       const letters=trimmed.replace(/[^A-ZÁÉÍÓÚÜÑ]/g,'');
       if(trimmed.length<90&&letters.length>=3&&trimmed===trimmed.toUpperCase()&&!/[.!?…»”]$/.test(trimmed))continue;
 
@@ -172,7 +181,7 @@
 
   function schedule(delay=240){clearTimeout(scheduled);if(!pref.isVoiceEnabled())return;scheduled=setTimeout(speakCurrent,delay);}
   document.addEventListener('volume:voicechange',ev=>{if(ev.detail?.enabled){lastChanceText='';schedule(70);}else stop();});
-  document.addEventListener('book:state',ev=>{readerState=ev.detail?.state||'';schedule(150);});
+  document.addEventListener('book:state',ev=>{readerState=ev.detail?.state||'';readerPage=Number(ev.detail?.page)||0;schedule(150);});
   document.addEventListener('view:mode',()=>{lastChanceText='';schedule(180);});
   document.addEventListener('author:open',()=>schedule(90));document.addEventListener('author:close',stop);
   addEventListener('hashchange',()=>schedule(190));addEventListener('pagehide',stop,{once:true});
