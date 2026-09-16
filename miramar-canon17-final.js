@@ -180,6 +180,47 @@ Y una posibilidad pequeña, si se repite, ocupa una silla entera.
 
 tum ta ka tum ta ah tum tum ta ka tum ta ah tum`;
 
-  window.MIRAMAR_SCENE_TITLES=Object.assign({},window.MIRAMAR_SCENE_TITLES,{1:'MIRAMAR COMUNIDAD',2:'OK',3:'EL CUERPO',4:'CLAC',5:'NADIE'});
-  window.MIRAMAR_CANON={version:'1.7+20260916e',pages:97,source:'LA_TERRAZA_DEL_MIRAMAR_CANON.pdf',validated:true};
+  /* Canon vivo · 16/09/2026: 06 · NACE EL CONFLICTO exacta. */
+  const scene6Index=d.pages.findIndex(p=>/^\s*(?:LA TERRAZA DEL MIRAMAR\n)?06\s*·\s*No es que mire\b/m.test(String(p||''))||/^\s*06\s*·\s*NACE EL CONFLICTO\b/m.test(String(p||'')));
+  if(scene6Index<0)throw new Error('No se localiza 06 · NACE EL CONFLICTO');
+  d.pages[scene6Index]=`06 · NACE EL CONFLICTO
+
+tum ta ka tum ta ah tum tum ta ka tum ta ah tum
+
+No es que mire. Es que puede.
+
+Si fuera un mirón, qué descanso. Tendríamos un enemigo, primer plano y alguien a quien silbar en el acto.
+
+Pero puede ser correcto. Simpatiquísimo. Casto.
+
+Puede tender hacia Motril con los párpados cerrados.
+
+No es que mire. Es que puede.
+
+Y yo, para sentirme no mirada, miro primero si está.
+
+No está. Me siento.
+
+CLAC.
+
+Me levanto. No está.
+
+CLAC.
+
+Vuelvo a mirar.
+
+No es que mire. Es que puede.
+
+Para poder estar a solas meto al vecino en mi cerebro.
+
+No me han quitado un metro. Me han añadido un cuidado.
+
+Mira. No mires. Mira. No mires.
+
+Yo quería ver el mar. Ahora compruebo el mundo.
+
+tan tum ta ah tan tum ta ah`;
+
+  window.MIRAMAR_SCENE_TITLES=Object.assign({},window.MIRAMAR_SCENE_TITLES,{1:'MIRAMAR COMUNIDAD',2:'OK',3:'EL CUERPO',4:'CLAC',5:'NADIE',6:'NACE EL CONFLICTO'});
+  window.MIRAMAR_CANON={version:'1.7+20260916f',pages:97,source:'LA_TERRAZA_DEL_MIRAMAR_CANON.pdf',validated:true};
 })();
