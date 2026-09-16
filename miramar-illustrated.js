@@ -6,9 +6,46 @@
   const cover=document.querySelector('#readerCover');
   if(!tools||!article||!text||document.body.dataset.bookId!=='miramar')return;
 
+  /* 30 escenografías extraídas sin regeneración del cuaderno canónico
+     LA_TERRAZA_DEL_MIRAMAR_30_IMAGENES_CANONICAS_20260905. */
+  const SCENE_IMAGES={
+    1:'https://gcdn.picsart.com/editing-temp/610fd0a1-2d4f-4a66-b6a2-3462f3f82ea3.jpeg',
+    2:'https://gcdn.picsart.com/editing-temp/1449ef24-9ca7-4b19-b371-4dbe7a5f5abb.jpeg',
+    3:'https://gcdn.picsart.com/editing-temp/39a8a79b-c3d1-4eb9-8921-0d0414f0ae51.jpeg',
+    4:'https://gcdn.picsart.com/editing-temp/cb8b1d80-6a71-4f41-94bc-6d6b68991d00.jpeg',
+    5:'https://gcdn.picsart.com/editing-temp/4107fb70-3aea-4e4d-824e-7e83fdf4ebcf.jpeg',
+    6:'https://gcdn.picsart.com/editing-temp/8f1fe7ed-1392-437a-8471-1a00e2268070.jpeg',
+    7:'https://gcdn.picsart.com/editing-temp/a50667d7-8938-4997-80b2-df6934f31f65.jpeg',
+    8:'https://gcdn.picsart.com/editing-temp/edb58897-ca18-4360-9306-2fc612c1112e.jpeg',
+    9:'https://gcdn.picsart.com/editing-temp/0265b767-9af7-416c-98d2-98fa658715e7.jpeg',
+    10:'https://gcdn.picsart.com/editing-temp/5519b5c5-7a6b-4e05-bec0-5ab1e38ed4a5.jpeg',
+    11:'https://gcdn.picsart.com/editing-temp/c35ba401-94c0-429c-965a-3ca4dcc7b3f7.jpeg',
+    12:'https://gcdn.picsart.com/editing-temp/0de49273-34dd-4a61-b5fd-121f22e03033.jpeg',
+    13:'https://gcdn.picsart.com/editing-temp/4bc18cef-8e74-4ccd-8b01-c9e05e3d1afd.jpeg',
+    14:'https://gcdn.picsart.com/editing-temp/33ea629c-b533-436f-b1d3-c63f7dea8c84.jpeg',
+    15:'https://gcdn.picsart.com/editing-temp/94cc7150-93ce-4bb8-b629-dcdd01d7990b.jpeg',
+    16:'https://gcdn.picsart.com/editing-temp/376884fa-7717-448c-8526-6e38f774051c.jpeg',
+    17:'https://gcdn.picsart.com/editing-temp/4e13ae66-c58d-4e8d-86a5-da3f234ed76b.jpeg',
+    18:'https://gcdn.picsart.com/editing-temp/a226cef7-be26-4170-a8d7-ff5effb01ab8.jpeg',
+    19:'https://gcdn.picsart.com/editing-temp/711ca3f8-7260-492a-8bef-4bb680c0be8d.jpeg',
+    20:'https://gcdn.picsart.com/editing-temp/73e72514-9a4d-4cd1-b3c6-e1ddb390d46e.jpeg',
+    21:'https://gcdn.picsart.com/editing-temp/f3891a43-5f61-4d85-bf5d-17cc7bc9bab8.jpeg',
+    22:'https://gcdn.picsart.com/editing-temp/5b5b1393-6ceb-4856-b080-de5064f953ba.jpeg',
+    23:'https://gcdn.picsart.com/editing-temp/281148b7-360b-4b72-8ade-cda19101541e.jpeg',
+    24:'https://gcdn.picsart.com/editing-temp/dcc0f6d5-c48d-4568-944a-1fa331f57581.jpeg',
+    25:'https://gcdn.picsart.com/editing-temp/7cbca70a-7742-4fb3-bda3-41ae74093e16.jpeg',
+    26:'https://gcdn.picsart.com/editing-temp/8f8bfae7-7342-48df-9c45-97e9aed1367f.jpeg',
+    27:'https://gcdn.picsart.com/editing-temp/02876fbb-5331-4279-b401-e68d568aa04e.jpeg',
+    28:'https://gcdn.picsart.com/editing-temp/282f729c-2cca-4273-a342-220f1deec611.jpeg',
+    29:'https://gcdn.picsart.com/editing-temp/53f68a36-701e-4bb6-affa-9628447845cc.jpeg',
+    30:'https://gcdn.picsart.com/editing-temp/402d0469-2e95-40a0-bb2f-fe89174f8988.jpeg'
+  };
+
   let mode='text';
   try{mode=sessionStorage.getItem(KEY)==='illustrated'?'illustrated':'text';}catch(_){}
   let lastState={state:'cover',scene:null};
+  let inheritedScene=null;
+  const preloaded=new Set();
 
   const switcher=document.createElement('div');
   switcher.className='miramar-mode-switch';
@@ -54,15 +91,24 @@
   figure.append(image,caption);
   article.appendChild(figure);
 
-  const spriteFor=scene=>Math.floor((scene-1)/10)+1;
-  const slotFor=scene=>(scene-1)%10;
-  const preload=new Set();
-  const preloadSprite=n=>{
-    if(n<1||n>3||preload.has(n))return;
-    preload.add(n);
-    const img=new Image();
-    img.src=`images/miramar-scenes-${n}.webp`;
-  };
+  function preloadScene(n){
+    const src=SCENE_IMAGES[n];
+    if(!src||preloaded.has(n))return;
+    preloaded.add(n);
+    const im=new Image();im.decoding='async';im.src=src;
+  }
+
+  function setSceneImage(scene){
+    if(!Number.isInteger(scene)||scene<1||scene>30||!SCENE_IMAGES[scene])return;
+    inheritedScene=scene;
+    image.style.backgroundImage=`url("${SCENE_IMAGES[scene]}")`;
+    image.style.backgroundSize='contain';
+    image.style.backgroundPosition='center';
+    image.style.backgroundRepeat='no-repeat';
+    image.setAttribute('aria-label',`Escenografía canónica de la escena ${String(scene).padStart(2,'0')}`);
+    caption.textContent=`ESCENA ${String(scene).padStart(2,'0')} · IMAGEN CANÓNICA`;
+    preloadScene(scene);preloadScene(scene+1);preloadScene(scene-1);
+  }
 
   function syncButtons(){
     document.body.dataset.miramarMode=mode;
@@ -81,24 +127,15 @@
 
   function render(){
     syncButtons();
-    const scene=Number(lastState.scene);
-    const valid=lastState.state==='text'&&Number.isInteger(scene)&&scene>=1&&scene<=30;
+    const incoming=Number(lastState.scene);
+    if(lastState.state==='text'&&Number.isInteger(incoming)&&incoming>=1&&incoming<=30)setSceneImage(incoming);
+    const valid=lastState.state==='text'&&Number.isInteger(inheritedScene)&&inheritedScene>=1&&inheritedScene<=30;
     const show=mode==='illustrated'&&valid;
     article.classList.toggle('miramar-illustrated-page',show);
     figure.hidden=!show;
-    if(!show)return;
-
-    const sprite=spriteFor(scene);
-    const slot=slotFor(scene);
-    const pos=slot===0?0:(slot===9?100:(slot/9)*100);
-    image.style.backgroundImage=`url("images/miramar-scenes-${sprite}.webp")`;
-    image.style.backgroundSize='100% 1000%';
-    image.style.backgroundPosition=`center ${pos}%`;
-    image.setAttribute('aria-label',`Escenografía canónica de la escena ${String(scene).padStart(2,'0')}`);
-    caption.textContent=`ESCENA ${String(scene).padStart(2,'0')} · IMAGEN CANÓNICA`;
-    preloadSprite(sprite);
-    if(slot>=7)preloadSprite(sprite+1);
-    if(slot<=2)preloadSprite(sprite-1);
+    /* Nunca vaciar la imagen en un pasaje intermedio: permanece la escena heredada
+       hasta que el lector comunique una escena nueva. */
+    if(show&&SCENE_IMAGES[inheritedScene])setSceneImage(inheritedScene);
   }
 
   function setMode(next){
@@ -113,8 +150,12 @@
   coverTextBtn?.addEventListener('click',()=>setMode('text'));
   coverIllBtn?.addEventListener('click',()=>setMode('illustrated'));
   document.addEventListener('book:state',ev=>{
-    lastState={state:ev.detail?.state||'',scene:ev.detail?.scene??null};
+    const state=ev.detail?.state||'';
+    const scene=ev.detail?.scene??null;
+    lastState={state,scene};
+    if(state==='text'&&Number.isInteger(Number(scene))&&Number(scene)>=1&&Number(scene)<=30)inheritedScene=Number(scene);
     render();
   });
   syncButtons();
+  preloadScene(1);preloadScene(2);
 })();
