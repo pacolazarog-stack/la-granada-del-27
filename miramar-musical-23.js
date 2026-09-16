@@ -130,21 +130,59 @@ Mira. Mira. ¿Quién mira a quién?
 
 bum ta bum ta ah
 
-bum ta bum ta ah`
+bum ta bum ta ah`,
+`26 · CÓMO SEGUIMOS
+
+bum ta bum ta ah
+
+tum ta ah tum
+
+¿Buscamos una solución que permita usar lo común sin convertir mi intimidad ni en tabú ni en ataúd?
+
+Tum ta ah tum.
+
+Voten.
+
+Pregunta perfecta, por cierto. Todos pueden decir sí porque no explica ni cómo, ni cuándo, ni dónde, ni aquí.
+
+Tum ta ah tum.
+
+Ya aprobamos sentido común. Ahora hay que localizarlo.
+
+Por primera vez no preguntamos quién gana.
+
+Preguntamos:
+
+¿cómo seguimos?
+
+¿Cómo seguimos?
+
+Tum ta ah tum.
+
+No hace falta entenderlo todo. Hace falta entrar juntos.
+
+Tum ta ah tum.
+
+¿Cómo seguimos?
+
+TUM TA AH TUM
+
+TUM TA AH TUM`
   ];
 
   if(window.WORK_DATA.pages.length===22)window.WORK_DATA.pages.push(...extra);
-  else if(window.WORK_DATA.pages.length<25){
+  else if(window.WORK_DATA.pages.length<26){
     const have=window.WORK_DATA.pages.length-22;
     window.WORK_DATA.pages.push(...extra.slice(Math.max(0,have)));
   }
 
-  window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · escenas 01–25';
+  window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · escenas 01–26';
   window.MIRAMAR_SCENE_TITLES={
     ...(window.MIRAMAR_SCENE_TITLES||{}),
     23:'ARCHIVO',
     24:'AUSENCIA',
-    25:'QUIÉN MIRA A QUIÉN'
+    25:'QUIÉN MIRA A QUIÉN',
+    26:'CÓMO SEGUIMOS'
   };
-  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-25',pages:25,validated:true};
+  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-26',pages:26,validated:true};
 })();
