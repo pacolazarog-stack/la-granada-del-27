@@ -1,0 +1,52 @@
+name: Materializar guiones de voz
+on:
+  push:
+    paths:
+      - '.github/workflows/materialize-voice-scripts.yml'
+permissions:
+  contents: write
+jobs:
+  scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extraer Paco y Miramar desde los datos publicados
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,re,base64,gzip,shutil
+          root=Path('.')
+          out=root/'voice-scripts'
+          if out.exists(): shutil.rmtree(out)
+          (out/'paco').mkdir(parents=True)
+          (out/'miramar').mkdir(parents=True)
+
+          s=(root/'paco-data.js').read_text(encoding='utf-8')
+          m=re.search(r'window\.WORK_DATA\s*=\s*(\{.*\})\s*;?\s*$',s,re.S)
+          if not m: raise SystemExit('No se pudo leer paco-data.js')
+          paco=json.loads(m.group(1))
+          for i,page in enumerate(paco['pages'],1):
+              (out/'paco'/f'{i:03d}.txt').write_text(str(page).replace('\r','').strip()+'\n',encoding='utf-8')
+          (out/'paco'/'manifest.json').write_text(json.dumps({'title':paco.get('title'),'subtitle':paco.get('subtitle'),'pages':len(paco['pages'])},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          b64=''
+          for name in ('miramar-01.js','miramar-02.js'):
+              t=(root/name).read_text(encoding='utf-8')
+              parts=re.findall(r"\+'([^']*)'",t)
+              if not parts: raise SystemExit(f'No se pudo leer {name}')
+              b64+=''.join(parts)
+          raw=gzip.decompress(base64.b64decode(b64)).decode('utf-8')
+          mir=json.loads(raw)
+          for i,page in enumerate(mir['pages'],1):
+              (out/'miramar'/f'{i:03d}.txt').write_text(str(page).replace('\r','').strip()+'\n',encoding='utf-8')
+          (out/'miramar'/'manifest.json').write_text(json.dumps({'title':mir.get('title'),'subtitle':mir.get('subtitle'),'pages':len(mir['pages'])},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: Guardar guiones y retirar flujo temporal
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add voice-scripts
+          git rm '.github/workflows/materialize-voice-scripts.yml'
+          git commit -m 'Materializa guiones de voz de Paco y Miramar'
+          git push
