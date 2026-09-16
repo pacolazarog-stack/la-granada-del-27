@@ -167,22 +167,26 @@ Tum ta ah tum.
 
 TUM TA AH TUM
 
-TUM TA AH TUM`
+TUM TA AH TUM`,
+`27 · UMBRAL
+
+mar ram`
   ];
 
   if(window.WORK_DATA.pages.length===22)window.WORK_DATA.pages.push(...extra);
-  else if(window.WORK_DATA.pages.length<26){
+  else if(window.WORK_DATA.pages.length<27){
     const have=window.WORK_DATA.pages.length-22;
     window.WORK_DATA.pages.push(...extra.slice(Math.max(0,have)));
   }
 
-  window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · escenas 01–26';
+  window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · escenas 01–27';
   window.MIRAMAR_SCENE_TITLES={
     ...(window.MIRAMAR_SCENE_TITLES||{}),
     23:'ARCHIVO',
     24:'AUSENCIA',
     25:'QUIÉN MIRA A QUIÉN',
-    26:'CÓMO SEGUIMOS'
+    26:'CÓMO SEGUIMOS',
+    27:'UMBRAL'
   };
-  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-26',pages:26,validated:true};
+  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-27',pages:27,validated:true};
 })();
