@@ -91,16 +91,13 @@
   figure.append(image,caption);
   article.appendChild(figure);
 
-  function sceneTitle(n){
-    return window.MIRAMAR_SCENE_TITLES?.[n]||'';
-  }
+  function sceneTitle(n){return window.MIRAMAR_SCENE_TITLES?.[n]||'';}
   function preloadScene(n){
     const src=SCENE_IMAGES[n];
     if(!src||preloaded.has(n))return;
     preloaded.add(n);
     const im=new Image();im.decoding='async';im.src=src;
   }
-
   function setSceneImage(scene){
     if(!Number.isInteger(scene)||scene<1||scene>30||!SCENE_IMAGES[scene])return;
     inheritedScene=scene;
@@ -113,7 +110,6 @@
     caption.textContent=title?`ESCENA ${String(scene).padStart(2,'0')} · ${title} · IMAGEN CANÓNICA`:`ESCENA ${String(scene).padStart(2,'0')} · IMAGEN CANÓNICA`;
     preloadScene(scene);preloadScene(scene+1);preloadScene(scene-1);
   }
-
   function syncButtons(){
     document.body.dataset.miramarMode=mode;
     const illustrated=mode==='illustrated';
@@ -128,7 +124,6 @@
       coverIllBtn.setAttribute('aria-pressed',String(illustrated));
     }
   }
-
   function render(){
     syncButtons();
     const incoming=Number(lastState.scene);
@@ -139,14 +134,12 @@
     figure.hidden=!show;
     if(show&&SCENE_IMAGES[inheritedScene])setSceneImage(inheritedScene);
   }
-
   function setMode(next){
     mode=next==='illustrated'?'illustrated':'text';
     try{sessionStorage.setItem(KEY,mode);}catch(_){}
     render();
     document.dispatchEvent(new CustomEvent('miramar:modechange',{detail:{mode}}));
   }
-
   textBtn.addEventListener('click',()=>setMode('text'));
   illBtn.addEventListener('click',()=>setMode('illustrated'));
   coverTextBtn?.addEventListener('click',()=>setMode('text'));
@@ -158,8 +151,7 @@
     if(state==='text'&&Number.isInteger(Number(scene))&&Number(scene)>=1&&Number(scene)<=30)inheritedScene=Number(scene);
     render();
   });
-  syncButtons();
-  preloadScene(1);preloadScene(2);
+  syncButtons();preloadScene(1);preloadScene(2);
 })();
 
 /* Maquetación escénica: convierte el volcado de texto del lector en una página
@@ -169,7 +161,6 @@
   const text=document.querySelector('#readerText');
   const progress=document.querySelector('#readerProgress');
   if(!text)return;
-
   const style=document.createElement('style');
   style.textContent=`
     #readerText.miramar-script{white-space:normal;overflow-wrap:normal;max-width:690px;margin:0 auto;font-size:clamp(14px,1.18vw,17px);line-height:1.46}
@@ -177,8 +168,7 @@
     .miramar-section-kicker{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#806f60;margin:0 0 .7rem;font-weight:700}
     .miramar-scene-no{font-size:.72rem;letter-spacing:.16em;color:#8a7564;margin-bottom:.3rem}
     .miramar-scene-title{font-size:clamp(24px,2.4vw,36px);line-height:1.06;letter-spacing:.035em;margin:0;font-weight:400;color:#241d18;text-transform:uppercase}
-    .miramar-script-body{display:block}
-    .miramar-script-line{margin:.31em 0;min-height:1em}
+    .miramar-script-body{display:block}.miramar-script-line{margin:.31em 0;min-height:1em}
     .miramar-script-line.rhythm{margin:.9em 0;color:#7c211d;font-size:.9em;font-style:italic;letter-spacing:.055em;word-spacing:.08em}
     .miramar-script-line.impact{margin:.72em 0;font-weight:700;letter-spacing:.09em;color:#33251f}
     .miramar-script-line.speaker{margin:1.1em 0 .25em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.82em;color:#6f5746}
@@ -187,12 +177,10 @@
     @media(max-width:760px){#readerText.miramar-script{font-size:14px}.miramar-scene-head{margin-bottom:1.2rem}.miramar-scene-title{font-size:24px}}
   `;
   document.head.appendChild(style);
-
   const sceneRE=/^(0[1-9]|[12]\d|30)\s*·\s*(.+)$/;
   const sectionRE=/^(I{1,3}|IV)\s*·\s*(.+)$/;
   const speakerRE=/^(FRANCISCA|VICENTE(?:\s*\/\s*MENSAJE)?|COMUNIDAD|PRESIDENCIA|PRESIDENTE|VECINA|VECINO|VOCES?|CORO|MENSAJE|WHATSAPP|CAROCA\s*\d+|MANIQU[IÍ](?:ES)?(?:\s*\d+)?)$/i;
   const rhythmWords=new Set(['mmm','mar','rrr','ah','tum','ta','tan','ka','pa','ra','du','ba','ts','tik','ya','clac','ram']);
-
   function isRhythm(line){
     const words=line.toLowerCase().replace(/[.,;:!?…"“”«»()]/g,' ').split(/\s+/).filter(Boolean);
     return words.length>0&&words.length<=18&&words.every(w=>rhythmWords.has(w));
@@ -201,15 +189,13 @@
     const letters=line.replace(/[^A-ZÁÉÍÓÚÜÑ]/g,'');
     return line.length<32&&letters.length>=2&&line===line.toUpperCase();
   }
-
-  function formatCurrent(sceneHint){
+  function formatCurrent(){
     if(text.hidden)return;
     const raw=String(text.textContent||'').replace(/\r/g,'');
     if(!raw.trim())return;
     const lines=raw.split('\n').map(s=>s.trim()).filter(Boolean);
     const sceneIndex=lines.findIndex(l=>sceneRE.test(l));
     if(sceneIndex<0){text.classList.remove('miramar-script');return;}
-
     let section='';
     for(let i=0;i<sceneIndex;i++){
       const m=lines[i].match(sectionRE);
@@ -218,18 +204,13 @@
     const sm=lines[sceneIndex].match(sceneRE);
     const scene=Number(sm[1]);
     const title=(window.MIRAMAR_SCENE_TITLES?.[scene]||sm[2]).trim();
-
-    text.replaceChildren();
-    text.classList.add('miramar-script');
-
-    const head=document.createElement('header');
-    head.className='miramar-scene-head';
+    text.replaceChildren();text.classList.add('miramar-script');
+    const head=document.createElement('header');head.className='miramar-scene-head';
     if(!section&&scene>=1&&scene<=9)section='I · DOMÉSTICA';
     if(section){const k=document.createElement('div');k.className='miramar-section-kicker';k.textContent=section;head.appendChild(k);}
     const no=document.createElement('div');no.className='miramar-scene-no';no.textContent=`ESCENA ${String(scene).padStart(2,'0')}`;
     const h=document.createElement('h2');h.className='miramar-scene-title';h.textContent=title;
     head.append(no,h);text.appendChild(head);
-
     const body=document.createElement('div');body.className='miramar-script-body';
     for(const line of lines.slice(sceneIndex+1)){
       if(sectionRE.test(line)||sceneRE.test(line))continue;
@@ -240,16 +221,9 @@
       body.appendChild(p);
     }
     text.appendChild(body);
-
     if(progress)progress.textContent=`ESCENA ${String(scene).padStart(2,'0')} · ${title}`;
     const cap=document.querySelector('#miramarIllustration .miramar-scene-caption');
     if(cap)cap.textContent=`ESCENA ${String(scene).padStart(2,'0')} · ${title} · IMAGEN CANÓNICA`;
   }
-
-  document.addEventListener('book:state',ev=>{
-    if(ev.detail?.state==='text')queueMicrotask(()=>formatCurrent(ev.detail?.scene));
-  });
-  document.addEventListener('miramar:modechange',()=>queueMicrotask(()=>{
-    const m=location.hash.match(/^#p(\d+)$/);formatCurrent(m?Number(m[1]):null);
-  }));
+  document.addEventListener('book:state',ev=>{if(ev.detail?.state==='text')queueMicrotask(formatCurrent);});
 })();
