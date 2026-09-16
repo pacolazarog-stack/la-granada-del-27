@@ -41,7 +41,8 @@
     const emitState=state=>document.dispatchEvent(new CustomEvent('book:state',{detail:{state,page,total,title:data.title||''}}));
     const goStart=()=>{
       if(window.BOOK_AUDIO_GATE&&typeof window.BOOK_AUDIO_GATE.requestExit==='function'){
-        if(!window.BOOK_AUDIO_GATE.requestExit())return;
+        window.BOOK_AUDIO_GATE.requestExit();
+        return;
       }
       location.href='index.html';
     };
