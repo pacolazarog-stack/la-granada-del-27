@@ -12,9 +12,16 @@
     btn.click();
     forcing=false;
   };
-  document.addEventListener('volume:soundchange',()=>setTimeout(forceIllustrated,0));
-  document.addEventListener('volume:voicechange',()=>setTimeout(forceIllustrated,0));
-  document.addEventListener('book:state',()=>setTimeout(forceIllustrated,0));
-  new MutationObserver(forceIllustrated).observe(document.documentElement,{attributes:true,attributeFilter:['data-media-mode']});
+  const schedule=()=>setTimeout(forceIllustrated,0);
+  document.addEventListener('volume:soundchange',schedule);
+  document.addEventListener('volume:voicechange',schedule);
+  document.addEventListener('book:state',schedule);
+  document.addEventListener('click',ev=>{
+    if(!isMusical())return;
+    const btn=ev.target.closest?.('.miramar-mode-btn,.miramar-cover-choice-btn');
+    if(btn&&/TEXTO|TEXTUAL/i.test((btn.textContent||'').trim()))schedule();
+  },true);
+  new MutationObserver(schedule).observe(document.documentElement,{attributes:true,attributeFilter:['data-media-mode']});
+  new MutationObserver(schedule).observe(document.body,{attributes:true,attributeFilter:['data-miramar-mode']});
   setTimeout(forceIllustrated,0);
 })();
