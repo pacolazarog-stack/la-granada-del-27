@@ -40,12 +40,12 @@
 
   const showExitState=()=>{
     playing=false;
-    flashBtn.disabled=true;
+    flashBtn.disabled=false;
     flashBtn.hidden=false;
     flashBtn.style.display='inline-block';
     flashBtn.textContent='& flash';
     flashBtn.classList.add('is-complete');
-    flashBtn.setAttribute('aria-label','Flash final completado');
+    flashBtn.setAttribute('aria-label','Flash final completado; salida disponible debajo');
     exitBtn.hidden=false;
     exitBtn.style.display='inline-block';
     const lock=document.querySelector('.final-lock');if(lock)lock.textContent='FLASH COMPLETADO · SALIDA ABIERTA';
@@ -80,7 +80,11 @@
   };
 
   const playFlash=async()=>{
-    if(playing||completed()||flashBtn.disabled)return;
+    if(completed()){
+      exitBtn.focus({preventScroll:true});
+      return;
+    }
+    if(playing||flashBtn.disabled)return;
     playing=true;
     flashBtn.classList.remove('is-complete');
     flashBtn.disabled=true;
