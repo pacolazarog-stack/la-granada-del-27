@@ -105,20 +105,62 @@ Todavía quiero tener razón.
 
 ta ka tum ta ka tum ah
 
-ta ka tum ta ka tum ah`
+ta ka tum ta ka tum ah`,
+`21 · INNOVAR
+
+tik ts tum ts ah
+
+tik ts tum ts ah
+
+Como no pudimos hablar, decidimos innovar.
+
+Es el método moderno: si el problema cabe en una frase, construimos un sistema.
+
+Primera: tender de espaldas.
+
+Parecía estar castigado.
+
+Segunda: tender agachado.
+
+Parecía un artificiero.
+
+Tercera: poner horario.
+
+Mi intimidad, por turnos. De seis y veinte a siete, puede usted ser usted mismo.
+
+Cuarta: mandar un mensaje.
+
+Ansiedad con preaviso. Antes temía que apareciera. Ahora sé cuándo va a venir.
+
+Qué descanso.
+
+tik ts tum ts ah
+
+No hemos hablado. Pero tenemos protocolo.
+
+No hemos resuelto nada. Pero ya se puede diagramar.
+
+Innovar. Innovar.
+
+Cuando falta conversación, siempre queda un PowerPoint imaginario.
+
+ka ka tum ts ta ah
+
+ka ka tum ts ta ah`
   ];
 
   if(window.WORK_DATA.pages.length===18)window.WORK_DATA.pages.push(...extra);
-  else if(window.WORK_DATA.pages.length<20){
+  else if(window.WORK_DATA.pages.length<21){
     const have=window.WORK_DATA.pages.length-18;
     window.WORK_DATA.pages.push(...extra.slice(Math.max(0,have)));
   }
 
-  window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · escenas 01–20';
+  window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · escenas 01–21';
   window.MIRAMAR_SCENE_TITLES={
     ...(window.MIRAMAR_SCENE_TITLES||{}),
     19:'GARANTE',
-    20:'MIRAMAR'
+    20:'MIRAMAR',
+    21:'INNOVAR'
   };
-  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-20',pages:20,validated:true};
+  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-21',pages:21,validated:true};
 })();
