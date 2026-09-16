@@ -1,0 +1,35 @@
+name: Actualizar reparto de voces
+on:
+  push:
+    paths:
+      - '.github/workflows/refresh-voice-v2.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Forzar voice-reader v2 en todas las páginas
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          changed=[]
+          for p in Path('.').glob('*.html'):
+              s=p.read_text(encoding='utf-8')
+              n=s.replace('voice-reader.js?v=20260916-voice1','voice-reader.js?v=20260916-voice2')
+              if n!=s:
+                  p.write_text(n,encoding='utf-8')
+                  changed.append(str(p))
+          print('\n'.join(changed))
+          PY
+      - name: Guardar y retirar actualizador
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '*.html'
+          git rm '.github/workflows/refresh-voice-v2.yml'
+          git commit -m 'Activa voces naturales con reparto masculino y femenino'
+          git push
