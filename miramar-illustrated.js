@@ -3,6 +3,7 @@
   const tools=document.querySelector('.reader-tools');
   const article=document.querySelector('#readerPage');
   const text=document.querySelector('#readerText');
+  const cover=document.querySelector('#readerCover');
   if(!tools||!article||!text||document.body.dataset.bookId!=='miramar')return;
 
   let mode='text';
@@ -22,6 +23,24 @@
   illBtn.setAttribute('aria-label','Lectura ilustrada');
   switcher.append(textBtn,illBtn);
   tools.prepend(switcher);
+
+  let coverTextBtn=null,coverIllBtn=null;
+  if(cover){
+    const chooser=document.createElement('div');
+    chooser.className='miramar-cover-choice';
+    chooser.setAttribute('role','group');
+    chooser.setAttribute('aria-label','Escoger modalidad de lectura de La terraza del Miramar');
+    const label=document.createElement('div');
+    label.className='miramar-cover-choice-label';
+    label.textContent='ESCOGE LA LECTURA';
+    coverTextBtn=document.createElement('button');
+    coverIllBtn=document.createElement('button');
+    [coverTextBtn,coverIllBtn].forEach(btn=>{btn.type='button';btn.className='miramar-cover-choice-btn';});
+    coverTextBtn.textContent='LECTURA TEXTUAL';
+    coverIllBtn.textContent='LECTURA ILUSTRADA';
+    chooser.append(label,coverTextBtn,coverIllBtn);
+    cover.appendChild(chooser);
+  }
 
   const figure=document.createElement('figure');
   figure.id='miramarIllustration';
@@ -52,6 +71,12 @@
     illBtn.classList.toggle('is-active',illustrated);
     textBtn.setAttribute('aria-pressed',String(!illustrated));
     illBtn.setAttribute('aria-pressed',String(illustrated));
+    if(coverTextBtn&&coverIllBtn){
+      coverTextBtn.classList.toggle('is-active',!illustrated);
+      coverIllBtn.classList.toggle('is-active',illustrated);
+      coverTextBtn.setAttribute('aria-pressed',String(!illustrated));
+      coverIllBtn.setAttribute('aria-pressed',String(illustrated));
+    }
   }
 
   function render(){
@@ -80,10 +105,13 @@
     mode=next==='illustrated'?'illustrated':'text';
     try{sessionStorage.setItem(KEY,mode);}catch(_){}
     render();
+    document.dispatchEvent(new CustomEvent('miramar:modechange',{detail:{mode}}));
   }
 
   textBtn.addEventListener('click',()=>setMode('text'));
   illBtn.addEventListener('click',()=>setMode('illustrated'));
+  coverTextBtn?.addEventListener('click',()=>setMode('text'));
+  coverIllBtn?.addEventListener('click',()=>setMode('illustrated'));
   document.addEventListener('book:state',ev=>{
     lastState={state:ev.detail?.state||'',scene:ev.detail?.scene??null};
     render();
