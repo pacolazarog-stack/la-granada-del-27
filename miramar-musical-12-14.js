@@ -138,21 +138,65 @@ Ahora sí: Estado.
 
 ka ta ka tum ta ah
 
-ka ta ka tum ta ah`
+ka ta ka tum ta ah`,
+`15 · ESTADO
+
+tum pa ra pa tum pa ra pa ah
+
+tum pa ra pa tum pa ra pa ah
+
+Donde no me protegió la cortesía, comparece el artículo.
+
+Considerando la vista, considerando la linde, considerando la costumbre, considerando que una tiene paciencia pero tampoco una eternidad.
+
+Que conste. Que conste.
+
+La toga ya habla.
+
+Tengo título. Tengo cuota. Tengo terraza.
+
+Tengo derecho a no tener que convertirme en perita de mi desayuno.
+
+tum pa ra pa ah tum
+
+Que conste. Que conste.
+
+Lo pequeño entra en toga.
+
+No pido imperio. Pido diez centímetros de sosiego.
+
+No pido vasallaje. Pido que mi bata no necesite jurisprudencia.
+
+Pero si para decirlo hace falta una fórmula, que venga la fórmula.
+
+Si hace falta un considerando, consideraremos.
+
+Y cuanto más me protegía, menos terraza quedaba.
+
+Qué ironía tan correcta: para que nadie me mirara me hice visible de lejos como una reina sitiada.
+
+Que conste. Que conste.
+
+Donde antes había una vecina comparece una institución.
+
+tan ta tum tan ta ah
+
+tan ta tum tan ta ah`
   ];
 
   if(window.WORK_DATA.pages.length===11)window.WORK_DATA.pages.push(...extra);
-  else if(window.WORK_DATA.pages.length<14){
+  else if(window.WORK_DATA.pages.length<15){
     const have=window.WORK_DATA.pages.length-11;
     window.WORK_DATA.pages.push(...extra.slice(Math.max(0,have)));
   }
 
-  window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · escenas 01–14';
+  window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · escenas 01–15';
   window.MIRAMAR_SCENE_TITLES={
     ...(window.MIRAMAR_SCENE_TITLES||{}),
     12:'DERECHO',
     13:'BANDERA',
-    14:'PROCLAMO'
+    14:'PROCLAMO',
+    15:'ESTADO'
   };
-  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-14',pages:14,validated:true};
+  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-15',pages:15,validated:true};
 })();
