@@ -4,7 +4,7 @@
   if(!window.WORK_DATA||!Array.isArray(window.WORK_DATA.pages))return;
 
   const extra=[
-`28 · ESCENA 28
+`28 · EH COMUNIDAD
 
 PAM! TUM! TA! CHA-CA! PUM! EH! AH! OH! PA-RA-PAM!
 
@@ -439,7 +439,7 @@ No. Mejor no. No vaya a quedar precedente.
 La linde quedó trazada, cada escritura en su sitio; pero cruzó, sin permiso, sin tocar puerta ni entrada, la mirada del vecino.
 
 tum ta ah tum tum... ta... ah... tum`,
-`30 · ESCENA 30
+`30 · FINAL
 
 tum ta ah tum tum ta ah tum
 
@@ -529,9 +529,9 @@ tum ta ah tum tum ta ah tum`
   window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · escenas 01–30';
   window.MIRAMAR_SCENE_TITLES={
     ...(window.MIRAMAR_SCENE_TITLES||{}),
-    28:'ESCENA 28',
+    28:'EH COMUNIDAD',
     29:'DIEZ MINUTOS',
-    30:'ESCENA 30'
+    30:'FINAL'
   };
   window.MIRAMAR_CANON={version:'musical-2026-09-16-01-30',pages:30,validated:true};
 })();
