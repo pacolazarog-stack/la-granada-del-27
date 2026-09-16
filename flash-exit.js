@@ -41,8 +41,11 @@
   const showExitState=()=>{
     playing=false;
     flashBtn.disabled=true;
-    flashBtn.hidden=true;
-    flashBtn.style.display='none';
+    flashBtn.hidden=false;
+    flashBtn.style.display='inline-block';
+    flashBtn.textContent='& flash';
+    flashBtn.classList.add('is-complete');
+    flashBtn.setAttribute('aria-label','Flash final completado');
     exitBtn.hidden=false;
     exitBtn.style.display='inline-block';
     const lock=document.querySelector('.final-lock');if(lock)lock.textContent='FLASH COMPLETADO · SALIDA ABIERTA';
@@ -64,17 +67,22 @@
     try{if(document.fullscreenElement)document.exitFullscreen();}catch(_){}
     hideOverlay();
     if(wasSoundOn)dispatchSound(true);
+    flashBtn.classList.remove('is-complete');
     flashBtn.disabled=false;
     flashBtn.hidden=false;
     flashBtn.style.display='inline-block';
     flashBtn.textContent='& flash · REINTENTAR';
+    flashBtn.setAttribute('aria-label','Reintentar el flash final obligatorio');
+    exitBtn.hidden=true;
+    exitBtn.style.display='none';
     msg.textContent='';
     const note=document.querySelector('.final-note');if(note)note.textContent='El flash no se ha podido reproducir. Debe completarse para cerrar el volumen.';
   };
 
   const playFlash=async()=>{
-    if(playing||completed())return;
+    if(playing||completed()||flashBtn.disabled)return;
     playing=true;
+    flashBtn.classList.remove('is-complete');
     flashBtn.disabled=true;
     flashBtn.textContent='FLASH EN CURSO…';
     try{window.speechSynthesis?.cancel?.();}catch(_){}
