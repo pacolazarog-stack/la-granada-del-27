@@ -1,0 +1,42 @@
+{
+  "work": "La terraza del Miramar",
+  "mode": "MUSICAL",
+  "version": "2026-09-08",
+  "path_pattern": "audio/miramar/{scene}.mp3",
+  "sources": {
+    "01-28,30": "LA_TERRAZA_DEL_MIRAMAR_30_ESCENAS_MASTER_CONTINUO_V2_20260907.mp3 / timecodes V2",
+    "29": "29_HE_COMUNIDAD_CANON_20260908.mp3"
+  },
+  "tracks": [
+    {"scene":1,"file":"01.mp3","title":"Primer WhatsApp","duration":68.836},
+    {"scene":2,"file":"02.mp3","title":"Dos letras y un desastre","duration":105.364},
+    {"scene":3,"file":"03.mp3","title":"El cuerpo en casa","duration":75.002},
+    {"scene":4,"file":"04.mp3","title":"CLAC","duration":56.138},
+    {"scene":5,"file":"05.mp3","title":"Donde antes no había escena","duration":163.888},
+    {"scene":6,"file":"06.mp3","title":"No es que mire","duration":105.482},
+    {"scene":7,"file":"07.mp3","title":"Primera incursión terrestre","duration":149.138},
+    {"scene":8,"file":"08.mp3","title":"Diecisiete con cuatro","duration":125.978},
+    {"scene":9,"file":"09.mp3","title":"La comunidad toma la palabra","duration":134.280},
+    {"scene":10,"file":"10.mp3","title":"Primera votación","duration":96.712},
+    {"scene":11,"file":"11.mp3","title":"Antiguo Testamento del bloque","duration":156.592},
+    {"scene":12,"file":"12.mp3","title":"Dos cosas ciertas","duration":156.290},
+    {"scene":13,"file":"13.mp3","title":"Ropa · frontera · muro","duration":96.170},
+    {"scene":14,"file":"14.mp3","title":"Nace el Estado · Toga · bandera · reina","duration":204.288},
+    {"scene":15,"file":"15.mp3","title":"Ganar una cárcel","duration":124.752},
+    {"scene":16,"file":"16.mp3","title":"El viento recurre","duration":78.288},
+    {"scene":17,"file":"17.mp3","title":"El sol da fe","duration":108.040},
+    {"scene":18,"file":"18.mp3","title":"Señoría la sábana","duration":110.486},
+    {"scene":19,"file":"19.mp3","title":"Informe del informe","duration":162.613},
+    {"scene":20,"file":"20.mp3","title":"El edificio es un ojo","duration":122.894},
+    {"scene":21,"file":"21.mp3","title":"Innovar para no hablar","duration":87.640},
+    {"scene":22,"file":"22.mp3","title":"El sistema perfecto","duration":104.530},
+    {"scene":23,"file":"23.mp3","title":"Junta de una sola persona","duration":88.738},
+    {"scene":24,"file":"24.mp3","title":"Catastro del cotilleo","duration":84.418},
+    {"scene":25,"file":"25.mp3","title":"Vicente puso una sábana","duration":99.640},
+    {"scene":26,"file":"26.mp3","title":"La ausencia también ocupa","duration":135.752},
+    {"scene":27,"file":"27.mp3","title":"No te miro. Pero me mides","duration":148.831},
+    {"scene":28,"file":"28.mp3","title":"¿Cómo seguimos?","duration":84.948},
+    {"scene":29,"file":"29.mp3","title":"¡HE! COMUNIDAD","duration":365.280},
+    {"scene":30,"file":"30.mp3","title":"Diez minutos","duration":196.680}
+  ]
+}
