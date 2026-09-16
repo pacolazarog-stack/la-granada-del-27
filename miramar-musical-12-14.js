@@ -181,22 +181,50 @@ Donde antes había una vecina comparece una institución.
 
 tan ta tum tan ta ah
 
-tan ta tum tan ta ah`
+tan ta tum tan ta ah`,
+`16 · EL VIENTO
+
+sha tum ta ah tum
+
+sha tum ta ah tum
+
+El viento no leyó el título, ni los estatutos ni los acuerdos. No paga una sola cuota, pero entra como propietario.
+
+Rectifica. Recurre. Pide cautelar. Amplía alegaciones sin abogado ni procurador.
+
+sha tum ta ah tum
+
+Yo mantengo la dicción aunque no vea ni el suelo.
+
+Medida cautelar, digo, con la sábana en el cuello.
+
+Interviene. No paga. No firma. No deja domicilio.
+
+Y cuando preguntas quién fue, el recurrente ya se ha ido.
+
+Qué falta le hace a toda junta un vecino como el viento: no tiene voto, no respeta turno, y hace exactamente lo mismo.
+
+La toga vuela. La bandera vuela. La dignidad hace lo que puede.
+
+sha ka tum ta ah
+
+sha ka tum ta ah`
   ];
 
   if(window.WORK_DATA.pages.length===11)window.WORK_DATA.pages.push(...extra);
-  else if(window.WORK_DATA.pages.length<15){
+  else if(window.WORK_DATA.pages.length<16){
     const have=window.WORK_DATA.pages.length-11;
     window.WORK_DATA.pages.push(...extra.slice(Math.max(0,have)));
   }
 
-  window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · escenas 01–15';
+  window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · escenas 01–16';
   window.MIRAMAR_SCENE_TITLES={
     ...(window.MIRAMAR_SCENE_TITLES||{}),
     12:'DERECHO',
     13:'BANDERA',
     14:'PROCLAMO',
-    15:'ESTADO'
+    15:'ESTADO',
+    16:'EL VIENTO'
   };
-  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-15',pages:15,validated:true};
+  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-16',pages:16,validated:true};
 })();
