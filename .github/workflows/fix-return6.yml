@@ -1,0 +1,95 @@
+name: Refuerzo retorno aleatorio
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-return6.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Hacer explícito todo regreso al volumen
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('section-audio.js')
+          s=p.read_text()
+          old="""  function markReturn(){
+    if(!bookId||!soundEnabled())return;
+    saveBookMusic();
+    localStorage.setItem('volumeReturnOrigin',bookId);
+    localStorage.setItem('volumeReturnPending','1');
+    try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
+  }
+"""
+          new="""  function markReturn(){
+    if(!bookId||!soundEnabled())return;
+    saveBookMusic();
+    localStorage.setItem('volumeReturnOrigin',bookId);
+    localStorage.setItem('volumeReturnPending','1');
+    try{sessionStorage.setItem('volumeReturnReady',bookId);}catch(_){}
+  }
+  function returnUrl(){
+    const u=new URL('index.html',location.href);
+    if(bookId&&soundEnabled()){
+      u.searchParams.set('return',bookId);
+      u.searchParams.set('rt',String(Date.now()));
+    }
+    return u.href;
+  }
+  function prepareReturnLink(a){
+    if(!a||!bookId||!soundEnabled())return;
+    try{
+      const u=new URL(a.href,location.href);
+      u.searchParams.set('return',bookId);
+      u.searchParams.set('rt',String(Date.now()));
+      a.href=u.href;
+    }catch(_){}
+  }
+"""
+          if old not in s: raise SystemExit('markReturn block not found')
+          s=s.replace(old,new,1)
+          old2="""    markReturn();
+  },true);
+
+  window.BOOK_AUDIO_GATE={
+"""
+          new2="""    markReturn();
+    prepareReturnLink(a);
+  },true);
+
+  window.BOOK_AUDIO_GATE={
+"""
+          if old2 not in s: raise SystemExit('click block not found')
+          s=s.replace(old2,new2,1)
+          old3="""      if(!hasCoda||exitUnlocked){markReturn();location.href='index.html';return true;}
+"""
+          new3="""      if(!hasCoda||exitUnlocked){markReturn();location.href=returnUrl();return true;}
+"""
+          if old3 not in s: raise SystemExit('requestExit branch not found')
+          s=s.replace(old3,new3,1)
+          p.write_text(s)
+
+          # Fuerza nuevas versiones de caché en todas las páginas HTML.
+          for h in Path('.').glob('*.html'):
+              t=h.read_text()
+              t=t.replace('voice-reader.js?v=20260916-voice2','voice-reader.js?v=20260916-voice3')
+              t=t.replace('voice-reader.js?v=20260916-voice1','voice-reader.js?v=20260916-voice3')
+              t=t.replace('section-audio.js?v=20260916-localcoda1','section-audio.js?v=20260916-return6')
+              t=t.replace('section-audio.js?v=20260916-flash1','section-audio.js?v=20260916-return6')
+              t=t.replace('section-audio.js?v=20260915-return3','section-audio.js?v=20260916-return6')
+              t=t.replace('audio-gate.js?v=20260916-return5','audio-gate.js?v=20260916-return6')
+              t=t.replace('return-bootstrap.js?v=20260916-return5','return-bootstrap.js?v=20260916-return6')
+              h.write_text(t)
+          PY
+      - name: Guardar y retirar parche temporal
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add section-audio.js '*.html'
+          git rm '.github/workflows/fix-return6.yml'
+          git commit -m 'Lee solo el verso en AZAR y refuerza el retorno aleatorio'
+          git push
