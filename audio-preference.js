@@ -179,8 +179,8 @@
       const start=document.createElement('button'),end=document.createElement('button');
       start.type=end.type='button';start.id='readerStart';end.id='readerEnd';
       start.className=end.className='reader-btn';start.textContent='⟪ Inicio';end.textContent='Final ⟫';
-      start.title='Ir al inicio del libro';end.title='Ir a la última página de la obra';
-      start.onclick=()=>document.dispatchEvent(new KeyboardEvent('keydown',{key:'Home',bubbles:true}));
+      start.title='Ir al inicio del libro sin contrapunto';end.title='Ir a la última página de la obra';
+      start.onclick=()=>document.dispatchEvent(new CustomEvent('book:restart-request'));
       end.onclick=()=>{
         const max=Number(jump?.max||0);
         if(max>0){jump.value=max;jump.dispatchEvent(new Event('change',{bubbles:true}));}
@@ -200,15 +200,27 @@
     }
   }
 
+  function placeBookMediaControls(){
+    const head=document.querySelector('.reader-head');
+    const title=document.querySelector('.reader-head .reader-title');
+    if(!head||!title||!wrap)return false;
+    head.classList.add('media-flanked');
+    wrap.classList.add('reader-title-media');
+    wrap.removeAttribute('style');
+    head.appendChild(wrap);
+    return true;
+  }
+
   const mount=()=>{
     if(!document.querySelector('#volumeMediaControls')){
       wrap=document.createElement('div');wrap.id='volumeMediaControls';
-      Object.assign(wrap.style,{position:'fixed',top:'12px',right:'58px',zIndex:'12000',display:'flex',gap:'8px',alignItems:'center',flexWrap:'nowrap'});
       soundBtn=document.createElement('button');soundBtn.id='volumeSoundToggle';soundBtn.type='button';soundBtn.setAttribute('aria-label','Modo musical');Object.assign(soundBtn.style,baseButtonStyle);soundBtn.addEventListener('click',selectMusical);
       voiceBtn=document.createElement('button');voiceBtn.id='volumeVoiceToggle';voiceBtn.type='button';voiceBtn.setAttribute('aria-label','Modo textual');Object.assign(voiceBtn.style,baseButtonStyle);voiceBtn.addEventListener('click',selectTextual);
-      wrap.append(soundBtn,voiceBtn);document.body.appendChild(wrap);
+      /* Orden semántico: TEXTUAL a la izquierda del título, MUSICAL a la derecha. */
+      wrap.append(voiceBtn,soundBtn);
+      document.body.appendChild(wrap);
+      if(!placeBookMediaControls())Object.assign(wrap.style,{position:'fixed',top:'12px',right:'58px',zIndex:'12000',display:'flex',gap:'8px',alignItems:'center',flexWrap:'nowrap'});
     }
-    /* Si una versión anterior dejó ambos modos activos, TEXTUAL tiene prioridad para evitar solapamientos. */
     if(isVoiceEnabled()&&isEnabled())localStorage.setItem(SOUND_KEY,'off');
     syncButtons();mountBookNavigation();
   };
