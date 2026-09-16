@@ -1,9 +1,9 @@
 (()=>{
   if(document.body.dataset.bookId!=='miramar')return;
 
-  /* Banda del canon musical actualmente cargado: escenas 01–14. */
+  /* Banda del canon musical actualmente cargado: escenas 01–26. */
   const AUDIO_SRC='https://gcdn.picsart.com/editing-temp/8d08dd1a-0908-49b3-8d6d-1c6ac3716eb7.mpeg';
-  const START=[0,68.836,174.200,249.202,305.340,469.228,574.710,723.848,849.826,984.106,1080.818,1237.410,1393.700,1489.870,1694.158];
+  const START=[0,68.836,174.200,249.202,305.340,469.228,574.710,723.848,849.826,984.106,1080.818,1237.410,1393.700,1489.870,1694.158,1818.910,1897.198,2005.238,2115.724,2278.337,2401.231,2488.871,2593.401,2682.139,2766.557,2866.197,3001.949];
   const TITLES=[
     'MIRAMAR COMUNIDAD',
     'OK',
@@ -18,7 +18,19 @@
     'SIEMPRE SE HA HECHO',
     'DERECHO',
     'BANDERA',
-    'PROCLAMO'
+    'PROCLAMO',
+    'ESTADO',
+    'EL VIENTO',
+    'EL SOL',
+    'CONFORME A DERECHO',
+    'GARANTE',
+    'MIRAMAR',
+    'INNOVAR',
+    'SILENCIO',
+    'ARCHIVO',
+    'AUSENCIA',
+    'QUIÉN MIRA A QUIÉN',
+    'CÓMO SEGUIMOS'
   ];
   const MAX_SCENE=TITLES.length;
 
