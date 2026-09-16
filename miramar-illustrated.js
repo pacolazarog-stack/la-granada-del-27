@@ -164,6 +164,7 @@
   const style=document.createElement('style');
   style.textContent=`
     #readerText.miramar-script{white-space:normal;overflow-wrap:normal;max-width:690px;margin:0 auto;font-size:clamp(14px,1.18vw,17px);line-height:1.46}
+    #readerText.miramar-script.miramar-musical-script{padding-top:2px}
     .miramar-scene-head{margin:0 0 1.65rem;padding:0 0 1rem;border-bottom:1px solid rgba(124,33,29,.24)}
     .miramar-section-kicker{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#806f60;margin:0 0 .7rem;font-weight:700}
     .miramar-scene-no{font-size:.72rem;letter-spacing:.16em;color:#8a7564;margin-bottom:.3rem}
@@ -195,7 +196,7 @@
     if(!raw.trim())return;
     const lines=raw.split('\n').map(s=>s.trim()).filter(Boolean);
     const sceneIndex=lines.findIndex(l=>sceneRE.test(l));
-    if(sceneIndex<0){text.classList.remove('miramar-script');return;}
+    if(sceneIndex<0){text.classList.remove('miramar-script','miramar-musical-script');return;}
     let section='';
     for(let i=0;i<sceneIndex;i++){
       const m=lines[i].match(sectionRE);
@@ -204,13 +205,16 @@
     const sm=lines[sceneIndex].match(sceneRE);
     const scene=Number(sm[1]);
     const title=(window.MIRAMAR_SCENE_TITLES?.[scene]||sm[2]).trim();
-    text.replaceChildren();text.classList.add('miramar-script');
-    const head=document.createElement('header');head.className='miramar-scene-head';
-    if(!section&&scene>=1&&scene<=9)section='I · DOMÉSTICA';
-    if(section){const k=document.createElement('div');k.className='miramar-section-kicker';k.textContent=section;head.appendChild(k);}
-    const no=document.createElement('div');no.className='miramar-scene-no';no.textContent=`ESCENA ${String(scene).padStart(2,'0')}`;
-    const h=document.createElement('h2');h.className='miramar-scene-title';h.textContent=title;
-    head.append(no,h);text.appendChild(head);
+    const musical=window.MIRAMAR_ACTIVE_CANON==='musical';
+    text.replaceChildren();text.classList.add('miramar-script');text.classList.toggle('miramar-musical-script',musical);
+    if(!musical){
+      const head=document.createElement('header');head.className='miramar-scene-head';
+      if(!section&&scene>=1&&scene<=9)section='I · DOMÉSTICA';
+      if(section){const k=document.createElement('div');k.className='miramar-section-kicker';k.textContent=section;head.appendChild(k);}
+      const no=document.createElement('div');no.className='miramar-scene-no';no.textContent=`ESCENA ${String(scene).padStart(2,'0')}`;
+      const h=document.createElement('h2');h.className='miramar-scene-title';h.textContent=title;
+      head.append(no,h);text.appendChild(head);
+    }
     const body=document.createElement('div');body.className='miramar-script-body';
     for(const line of lines.slice(sceneIndex+1)){
       if(sectionRE.test(line)||sceneRE.test(line))continue;
