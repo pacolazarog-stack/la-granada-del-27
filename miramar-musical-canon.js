@@ -204,12 +204,135 @@ Mira. No mires. Mira. No mires.
 
 Yo quería ver el mar. Ahora compruebo el mundo.
 
-tan tum ta ah tan tum ta ah`
+tan tum ta ah tan tum ta ah`,
+`07 · PRIMERA INCURSIÓN TERRESTRE
+
+tan tum ta ah
+
+tan tum ta ah
+
+La pinza.
+
+Una pinza.
+
+Plástico azul.
+
+Seis centímetros,
+
+siete con sombra.
+
+Ésa fue mi primera equivocación:
+
+medirla.
+
+Nunca midas
+
+lo que estás empezando a odiar.
+
+Seis centímetros.
+
+Un dato.
+
+Y donde hay un dato
+
+hay una carpeta esperando nacer.
+
+tan tum ta ah tum
+
+No es que mire.
+
+Es que puede.
+
+No es que invada.
+
+Es que cruza.
+
+No es que sea mucho.
+
+Es que ahora sé cuánto.
+
+Seis centímetros.
+
+Y desde la linde, diecisiete centímetros.
+
+Diecisiete con cuatro.
+
+Dieciocho con cuatro con sombra.
+
+Un borde.
+
+Una línea.
+
+Una mañana entera metida en una cifra.
+
+No es obsesión.
+
+Es precisión.
+
+Lo otro queda muy ordinario.
+
+Pinza azul.
+
+Dato azul.
+
+Prueba azul.
+
+Todavía es una pinza.
+
+Todavía.
+
+tum ta tum ta ah
+
+tum ta tum ta ah
+
+Primera incursión terrestre:
+
+una pinza de color.
+
+La devuelves y se acabó.
+
+Eso haría una persona equilibrada.
+
+Yo pensé:
+
+cruzó la linde.
+
+Diecisiete centímetros.
+
+Diecisiete con cuatro.
+
+Dieciocho con cuatro contando sombra.
+
+Yo contesté con absoluta serenidad.
+
+No contesté.
+
+Dejé el teléfono sobre la mesa.
+
+Me temblaban las manos.
+
+Luego sí.
+
+Serenísima.
+
+No es una guerra.
+
+No es una guerra.
+
+No es una guerra.
+
+Y, sin embargo,
+
+ya estoy contando territorio.
+
+tum ta ka tum ta ka ah
+
+tum ta ka tum ta ka ah`
   ];
 
   window.WORK_DATA={
     title:'La terraza del Miramar',
-    subtitle:'Tragicomedia multimedia · Canon musical · escenas 01–06',
+    subtitle:'Tragicomedia multimedia · Canon musical · escenas 01–07',
     author:'flag',
     pages
   };
@@ -219,9 +342,10 @@ tan tum ta ah tan tum ta ah`
     3:'EL CUERPO',
     4:'CLAC',
     5:'NADIE',
-    6:'NACE EL CONFLICTO'
+    6:'NACE EL CONFLICTO',
+    7:'PRIMERA INCURSIÓN TERRESTRE'
   };
-  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-06',pages:6,validated:true};
+  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-07',pages:7,validated:true};
 
   const m=location.hash.match(/^#p(\d+)$/);
   if(m&&Number(m[1])>pages.length)history.replaceState(null,'','#p1');
