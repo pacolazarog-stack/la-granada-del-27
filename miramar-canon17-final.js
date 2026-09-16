@@ -145,6 +145,41 @@ La intimidad tampoco siempre.
 
 clac tum ta ah tum tum ta ka ah tum`;
 
-  window.MIRAMAR_SCENE_TITLES=Object.assign({},window.MIRAMAR_SCENE_TITLES,{1:'MIRAMAR COMUNIDAD',2:'OK',3:'EL CUERPO',4:'CLAC'});
-  window.MIRAMAR_CANON={version:'1.7+20260916d',pages:97,source:'LA_TERRAZA_DEL_MIRAMAR_CANON.pdf',validated:true};
+  /* Canon vivo · 16/09/2026: 05 · NADIE exacta. */
+  const scene5Index=d.pages.findIndex(p=>/^\s*(?:LA TERRAZA DEL MIRAMAR\n)?05\s*·\s*Donde antes no había escena\b/m.test(String(p||''))||/^\s*05\s*·\s*NADIE\b/m.test(String(p||'')));
+  if(scene5Index<0)throw new Error('No se localiza 05 · NADIE');
+  d.pages[scene5Index]=`05 · NADIE
+
+tum ta ka ah tum tum ta ka ah tum
+
+Desde aquí se ve el mar. Desde allí se ve mi terraza.
+
+Ver el mar. Ver mi terraza.
+
+Parece el mismo verbo. No lo es.
+
+Antes no había nadie. Ésa es toda la cuestión.
+
+Nadie mide poco en un plano, pero cabe una pareja, un verano, una puerta abierta, un café sin estrategia.
+
+Una bata es una bata si una está sola en su casa.
+
+Si al otro lado hay un vecino, de pronto parece una causa.
+
+No digo que mire. No necesito que mire.
+
+Me basta con que pueda.
+
+Puede entrar. Puede quedarse. Puede tender mirando a Motril. Puede no mirarme nunca.
+
+No llegó Roma vencedora. Llegaron dos camisetas, un pantalón y una sábana secadora.
+
+No me quitaron terreno. Me añadieron una posibilidad.
+
+Y una posibilidad pequeña, si se repite, ocupa una silla entera.
+
+tum ta ka tum ta ah tum tum ta ka tum ta ah tum`;
+
+  window.MIRAMAR_SCENE_TITLES=Object.assign({},window.MIRAMAR_SCENE_TITLES,{1:'MIRAMAR COMUNIDAD',2:'OK',3:'EL CUERPO',4:'CLAC',5:'NADIE'});
+  window.MIRAMAR_CANON={version:'1.7+20260916e',pages:97,source:'LA_TERRAZA_DEL_MIRAMAR_CANON.pdf',validated:true};
 })();
