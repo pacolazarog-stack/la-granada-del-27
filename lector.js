@@ -36,28 +36,45 @@
     const isPaco=/Paco Olmo de Males/i.test(data.title||'');
     const isMiramar=/terraza del Miramar/i.test(data.title||'');
     const sceneHeading=/^\s*(0[1-9]|[12]\d|30)\s*·\s*\S+/m;
-    const isActDivider=raw=>/^\s*ACTO\s+[IVX]+\b/im.test(String(raw||''))&&!sceneHeading.test(String(raw||''));
-    const isInterlude=raw=>/\bINTERLUDIO\b[\s\S]*MIRAMAR\s*·\s*MARE\s+NOSTRUM\s*·\s*RAM/i.test(String(raw||''));
+
+    /* Miramar: la imagen escenográfica pertenece a la escena, no a la página.
+       Toda página sin encabezado de escena hereda la última escena ya abierta,
+       incluidos divisores de acto e interludios, hasta que aparezca la siguiente. */
     const miramarSceneAt=n=>{
       if(!isMiramar||n<1||n>total)return null;
-      const current=String(data.pages[n-1]||'');
-      if(isInterlude(current)||isActDivider(current))return null;
-      const own=current.match(sceneHeading);
-      if(own)return parseInt(own[1],10);
-      for(let i=n-2;i>=0;i--){
+      for(let i=n-1;i>=0;i--){
         const raw=String(data.pages[i]||'');
-        if(isInterlude(raw)||isActDivider(raw))return null;
         const m=raw.match(sceneHeading);
         if(m)return parseInt(m[1],10);
       }
       return null;
     };
+
     title.textContent=data.title||title.textContent||'';
     sub.textContent=data.subtitle||data.author||sub.textContent||'';
     jump.min=1;jump.max=Math.max(1,total);
 
     const emitState=state=>document.dispatchEvent(new CustomEvent('book:state',{detail:{state,page,total,title:data.title||'',scene:state==='text'?miramarSceneAt(page):null}}));
-    const goStart=()=>{
+
+    const clearReturnState=()=>{
+      localStorage.removeItem('volumeReturnPending');
+      localStorage.removeItem('volumeReturnOrigin');
+      localStorage.removeItem('volumeResumeBook');
+      const id=(document.body.dataset.bookId||'').trim();
+      if(id)localStorage.removeItem(`bookMusicState:${id}`);
+      try{sessionStorage.removeItem('volumeReturnReady');sessionStorage.removeItem('volumeReturnPlaybackDone');}catch(_){}
+      try{window.speechSynthesis?.cancel?.();}catch(_){}
+    };
+
+    const restartBook=()=>{
+      clearReturnState();
+      const u=new URL(location.href);
+      u.searchParams.set('restartBook',String(Date.now()));
+      u.hash='portada';
+      location.replace(u.href);
+    };
+
+    const goVolume=()=>{
       if(window.BOOK_AUDIO_GATE&&typeof window.BOOK_AUDIO_GATE.requestExit==='function'){
         window.BOOK_AUDIO_GATE.requestExit();
         return;
@@ -109,8 +126,19 @@
       text.replaceChildren();
       const wrap=document.createElement('div');
       wrap.style.cssText='min-height:65vh;display:grid;place-items:center;text-align:center;white-space:normal;padding:8vh 8vw;box-sizing:border-box';
-      wrap.innerHTML='<div><div style="font-size:11px;letter-spacing:.18em;margin-bottom:18px">CODA</div><div style="font-family:Georgia,serif;font-size:clamp(24px,4vw,44px);line-height:1.15;margin-bottom:22px">La obra termina.<br>La música continúa.</div><div style="max-width:620px;margin:auto;line-height:1.65;opacity:.78">La coda comienza en esta estancia, nunca en la contraportada. Al completar un ciclo se abrirá la salida al volumen total.</div></div>';
-      text.appendChild(wrap);
+      const inner=document.createElement('div');
+      inner.innerHTML='<div style="font-size:11px;letter-spacing:.18em;margin-bottom:18px">CODA</div><div style="font-family:Georgia,serif;font-size:clamp(24px,4vw,44px);line-height:1.15;margin-bottom:22px">La obra termina.<br>La música continúa.</div><div style="max-width:620px;margin:auto;line-height:1.65;opacity:.78">La coda comienza en esta estancia, nunca en la contraportada. Al completar un ciclo se abren dos salidas: volver limpiamente al inicio del libro o regresar al volumen total con su contrapunto.</div>';
+      if(codaReady){
+        const actions=document.createElement('div');
+        actions.className='reader-coda-actions';
+        actions.style.cssText='display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px';
+        const restart=document.createElement('button');
+        restart.type='button';restart.className='reader-btn';restart.textContent='⟪ Inicio del libro';restart.title='Reiniciar este libro sin bucle ni contrapunto de retorno';restart.onclick=restartBook;
+        const volume=document.createElement('button');
+        volume.type='button';volume.className='reader-btn';volume.textContent='Inicio del volumen →';volume.title='Volver al volumen total con contrapunto de retorno';volume.onclick=goVolume;
+        actions.append(restart,volume);inner.append(actions);
+      }
+      wrap.append(inner);text.appendChild(wrap);
     }
 
     function render(){
@@ -134,7 +162,7 @@
         article.classList.remove('cover-mode');showOnly('text');renderCodaPage();article.scrollTop=0;
         progress.textContent='CODA';jump.hidden=true;
         prev.disabled=false;prev.textContent='← Contraportada';
-        next.hidden=!codaReady;next.disabled=!codaReady;next.textContent='Volver al volumen total →';
+        next.hidden=!codaReady;next.disabled=!codaReady;next.textContent='Inicio del volumen →';
         history.replaceState(null,'','#coda');emitState('coda');return;
       }
       article.classList.remove('cover-mode');showOnly('text');
@@ -148,7 +176,7 @@
 
     prev.onclick=()=>{if(page>0){page--;render();}};
     next.onclick=()=>{
-      if(page===total+2){if(codaReady)goStart();return;}
+      if(page===total+2){if(codaReady)goVolume();return;}
       if(page<total+2){page++;render();}
     };
     jump.onchange=()=>{const n=parseInt(jump.value,10);if(Number.isFinite(n)){page=n;render();}};
@@ -156,12 +184,15 @@
     addEventListener('keydown',e=>{
       if(e.key==='ArrowLeft'&&page>0){page--;render();}
       else if(e.key==='ArrowRight'){
-        if(page===total+2){if(codaReady)goStart();}
+        if(page===total+2){if(codaReady)goVolume();}
         else if(page<total+2){page++;render();}
       }else if(e.key==='Home'){page=0;render();}
       else if(e.key==='End'){page=total+2;render();}
     });
+    document.addEventListener('book:restart-request',restartBook);
     document.addEventListener('coda:complete',()=>{codaReady=true;if(page===total+2)render();});
+    window.BOOK_READER={restart:restartBook,toVolume:goVolume,getPage:()=>page,getTotal:()=>total};
+
     if(location.hash==='#coda') page=total+2;
     else if(location.hash==='#contraportada') page=total+1;
     else {const m=location.hash.match(/^#p(\d+)$/);if(m)page=Math.max(1,Math.min(total,parseInt(m[1],10)||1));}
