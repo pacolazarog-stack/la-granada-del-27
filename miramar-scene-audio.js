@@ -1,9 +1,9 @@
 (()=>{
   if(document.body.dataset.bookId!=='miramar')return;
 
-  /* Banda del canon musical actualmente cargado: escenas 01–07. */
+  /* Banda del canon musical actualmente cargado: escenas 01–09. */
   const AUDIO_SRC='https://gcdn.picsart.com/editing-temp/8d08dd1a-0908-49b3-8d6d-1c6ac3716eb7.mpeg';
-  const START=[0,68.836,174.200,249.202,305.340,469.228,574.710,723.848];
+  const START=[0,68.836,174.200,249.202,305.340,469.228,574.710,723.848,849.826,984.106];
   const TITLES=[
     'MIRAMAR COMUNIDAD',
     'OK',
@@ -11,7 +11,9 @@
     'CLAC',
     'NADIE',
     'NACE EL CONFLICTO',
-    'PRIMERA INCURSIÓN TERRESTRE'
+    'PRIMERA INCURSIÓN TERRESTRE',
+    'TERRITORIO',
+    'MAYORÍA SIMPLE'
   ];
   const MAX_SCENE=TITLES.length;
 
