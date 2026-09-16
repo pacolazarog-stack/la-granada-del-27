@@ -1,0 +1,31 @@
+name: Importar segunda página de Fli
+on:
+  push:
+    paths:
+      - '.github/workflows/import-fli-page2.yml'
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar página visual verificada
+        run: |
+          set -euo pipefail
+          mkdir -p images
+          curl -L --fail --retry 3 --retry-delay 1 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-aba4-81f4-8a93-0f0a7a742911/raw?se=2026-09-16T01%3A18%3A16Z&sp=r&sv=2026-02-06&sr=b&scid=9fa461cf-64d7-5b0e-93b1-351ecaee7c32&skoid=8981e47a-681f-4a6a-b86c-73d6347614b7&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-15T19%3A07%3A14Z&ske=2026-09-16T19%3A07%3A14Z&sks=b&skv=2026-02-06&sig=Wr7wiVjhQlwh343kxmBW%2BMgR6uUy2QaZA26HzSt7WDc%3D' -o 'images/fli_pagina_2.png'
+      - name: Verificar imagen exacta
+        run: |
+          set -euo pipefail
+          test "$(stat -c%s 'images/fli_pagina_2.png')" = '2450144'
+          test "$(sha256sum 'images/fli_pagina_2.png' | awk '{print $1}')" = '97de129b07ba535a41dd6ccf14cabb09ef7aac828451b209bc818aaa1c11b913'
+      - name: Guardar imagen y retirar importador
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 'images/fli_pagina_2.png'
+          git rm '.github/workflows/import-fli-page2.yml'
+          git commit -m 'Añade segunda página visual al memorial de Fli'
+          git push
