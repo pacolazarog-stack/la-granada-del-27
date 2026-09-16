@@ -2,7 +2,10 @@
   const SOUND_KEY='volumeSoundMode';
   const VOICE_KEY='volumeVoiceMode';
   const INTRO_KEY='volumeIntroCompleted';
-  let soundBtn=null,voiceBtn=null,wrap=null;
+  const RETURN_DONE_KEY='volumeReturnPlaybackDone';
+  const RETURN_SOURCES=['audio/RETORNO_1.mp3','audio/RETORNO_2.mp3'];
+  const RETURN_BOOKS=new Set(['granada','paco','miramar','ensayo']);
+  let soundBtn=null,voiceBtn=null,wrap=null,returning=false,returnAudio=null,returnOverlay=null;
 
   const soundMode=()=>localStorage.getItem(SOUND_KEY)||'';
   const voiceMode=()=>localStorage.getItem(VOICE_KEY)||'';
@@ -96,6 +99,71 @@
     a.href=u.href;
   };
 
+  const ensureReturnOverlay=()=>{
+    if(returnOverlay)return returnOverlay;
+    returnOverlay=document.createElement('div');
+    returnOverlay.id='volumeReturnTransition';
+    Object.assign(returnOverlay.style,{
+      position:'fixed',inset:'0',zIndex:'50000',display:'none',placeItems:'center',
+      background:'rgba(10,9,8,.94)',color:'#f4ede5',textAlign:'center',padding:'24px'
+    });
+    returnOverlay.innerHTML='<div><div class="return-kicker" style="font:10px Georgia,serif;letter-spacing:.16em;color:#b9a58f;margin-bottom:14px">REGRESO AL VOLUMEN</div><div class="return-title" style="font:26px Georgia,serif;margin-bottom:18px">Contrapunto de retorno</div><div class="return-status" style="font:11px Georgia,serif;letter-spacing:.08em;color:#b7aa9d">PREPARANDO…</div><button type="button" class="return-retry" style="display:none;margin:20px auto 0;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:#211d19;color:#f4ede5;padding:10px 16px;font:11px Georgia,serif;letter-spacing:.08em;cursor:pointer">▶ REINTENTAR RETORNO</button></div>';
+    document.body.appendChild(returnOverlay);
+    return returnOverlay;
+  };
+
+  const finishReturn=()=>{
+    try{sessionStorage.setItem(RETURN_DONE_KEY,'1');}catch(_){}
+    clearPendingAudio();
+    const u=new URL('index.html',location.href);
+    u.searchParams.set('returnPlayed','1');
+    u.searchParams.set('rt',String(Date.now()));
+    location.href=u.href;
+  };
+
+  const playReturnTransition=origin=>{
+    if(returning||!isEnabled()||!RETURN_BOOKS.has(origin))return false;
+    returning=true;
+    clearPendingAudio();
+    try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
+    try{window.speechSynthesis?.cancel?.();}catch(_){}
+    document.dispatchEvent(new CustomEvent('volume:voicechange',{detail:{enabled:false,source:'return-transition'}}));
+    document.dispatchEvent(new CustomEvent('volume:soundchange',{detail:{enabled:false,source:'return-transition'}}));
+
+    const chosen=RETURN_SOURCES[Math.floor(Math.random()*RETURN_SOURCES.length)];
+    const n=chosen.includes('_1')?'1':'2';
+    const ov=ensureReturnOverlay();
+    const status=ov.querySelector('.return-status');
+    const retry=ov.querySelector('.return-retry');
+    ov.style.display='grid';
+    status.textContent=`RETORNO ${n} · EN CURSO`;
+    retry.style.display='none';
+
+    returnAudio=new Audio(chosen);
+    returnAudio.preload='auto';
+    returnAudio.playsInline=true;
+    returnAudio.volume=.9;
+    returnAudio.addEventListener('ended',finishReturn,{once:true});
+    returnAudio.addEventListener('error',()=>{
+      returning=false;
+      status.textContent='NO SE HA PODIDO INICIAR EL RETORNO';
+      retry.style.display='inline-flex';
+    },{once:true});
+    retry.onclick=()=>{
+      returning=false;
+      ov.style.display='none';
+      playReturnTransition(origin);
+    };
+
+    const p=returnAudio.play();
+    if(p&&typeof p.catch==='function')p.catch(()=>{
+      returning=false;
+      status.textContent='EL NAVEGADOR REQUIERE UNA PULSACIÓN';
+      retry.style.display='inline-flex';
+    });
+    return true;
+  };
+
   const mount=()=>{
     if(document.querySelector('#volumeMediaControls'))return;
     wrap=document.createElement('div');
@@ -122,20 +190,46 @@
     syncButtons();
   };
 
+  const installBookGateWrapper=()=>{
+    const gate=window.BOOK_AUDIO_GATE;
+    if(!gate||gate.__returnWrapped||typeof gate.requestExit!=='function')return;
+    const original=gate.requestExit.bind(gate);
+    gate.requestExit=()=>{
+      if(!isEnabled()||!RETURN_BOOKS.has(pageOrigin()))return original();
+      if(typeof gate.canExit==='function'&&!gate.canExit())return original();
+      return playReturnTransition(pageOrigin());
+    };
+    gate.__returnWrapped=true;
+  };
+
   document.addEventListener('click',ev=>{
-    if(ev.defaultPrevented)return;
     const a=ev.target.closest?.('a[href]');
     if(!a||a.target==='_blank'||a.hasAttribute('download'))return;
+    let u;
+    try{u=new URL(a.href,location.href);}catch(_){return;}
+    if(u.origin!==location.origin||!isHomeTarget(u))return;
+
+    const origin=pageOrigin();
+    const gate=window.BOOK_AUDIO_GATE;
+    if(isEnabled()&&RETURN_BOOKS.has(origin)){
+      if(gate&&typeof gate.canExit==='function'&&!gate.canExit())return;
+      if(document.body?.dataset?.codaSrc&&!gate)return;
+      ev.preventDefault();
+      ev.stopImmediatePropagation();
+      playReturnTransition(origin);
+      return;
+    }
     markExplicitReturn(a);
-  });
+  },true);
 
   window.VOLUME_AUDIO={
     mode:soundMode,isChosen,isEnabled,setEnabled,
     voiceMode,isVoiceChosen,isVoiceEnabled,setVoiceEnabled,
     introCompleted,markIntroCompleted,clearPendingAudio,syncButton:syncButtons,syncButtons,
-    markExplicitReturn
+    markExplicitReturn,playReturnTransition
   };
 
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});
-  else mount();
+  const ready=()=>{mount();setTimeout(installBookGateWrapper,0);};
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready,{once:true});
+  else ready();
 })();
