@@ -114,6 +114,37 @@ La monarquía termina donde empieza la pantufla.
 
 mmm tum ta ah tum clac tum ta ah tum`;
 
-  window.MIRAMAR_SCENE_TITLES=Object.assign({},window.MIRAMAR_SCENE_TITLES,{1:'MIRAMAR COMUNIDAD',2:'OK',3:'EL CUERPO'});
-  window.MIRAMAR_CANON={version:'1.7+20260916c',pages:97,source:'LA_TERRAZA_DEL_MIRAMAR_CANON.pdf',validated:true};
+  /* Canon vivo · 16/09/2026: 04 · CLAC exacta. */
+  const scene4Index=d.pages.findIndex(p=>/^\s*(?:LA TERRAZA DEL MIRAMAR\n)?04\s*·\s*CLAC\b/m.test(String(p||'')));
+  if(scene4Index<0)throw new Error('No se localiza 04 · CLAC');
+  d.pages[scene4Index]=`04 · CLAC
+
+clac tum ta ah tum clac tum ta ah tum
+
+¿Veis?
+
+No ha entrado nadie y ya he cambiado la espalda.
+
+De gelatina doméstica a estatua protocolaria.
+
+Antes yo tenía cuerpo. Ahora tengo una postura.
+
+Antes estaba sentada. Ahora estoy en comparecencia.
+
+CLAC.
+
+Pelvis centrada. Columna rígida. Sonrisa social.
+
+CLAC.
+
+La intimidad entra por la puerta y el cuerpo se pone corbata.
+
+Perdón. Eso no rimaba.
+
+La intimidad tampoco siempre.
+
+clac tum ta ah tum tum ta ka ah tum`;
+
+  window.MIRAMAR_SCENE_TITLES=Object.assign({},window.MIRAMAR_SCENE_TITLES,{1:'MIRAMAR COMUNIDAD',2:'OK',3:'EL CUERPO',4:'CLAC'});
+  window.MIRAMAR_CANON={version:'1.7+20260916d',pages:97,source:'LA_TERRAZA_DEL_MIRAMAR_CANON.pdf',validated:true};
 })();
