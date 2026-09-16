@@ -6,5 +6,58 @@
   const fixes=[[/\bm s\b/g,'más'],[/\bM s\b/g,'Más'],[/\bdetr s\b/g,'detrás'],[/\bc mo\b/g,'cómo'],[/\bo do\b/g,'oído'],[/\bNing n\b/g,'Ningún'],[/\bdespu s\b/g,'después'],[/\bl nea\b/g,'línea'],[/\bS lo\b/g,'Sólo'],[/\bl mite\b/g,'límite'],[/¿En qu\s+folio/g,'¿En qué folio'],[/¿Qu coeficiente/g,'¿Qué coeficiente'],[/¿Qui n/g,'¿Quién'],[/hasta aqu\s*,\s*m o;/g,'hasta aquí, mío;'],[/desde aqu\s*,\s*tuyo\./g,'desde aquí, tuyo.']];
   for(let i=63;i<=68;i++){let s=d.pages[i];for(const [re,to] of fixes)s=s.replace(re,to);d.pages[i]=s;}
   if(!d.pages[16].includes('01 · Primer WhatsApp')||!d.pages[69].includes('29 · ¡HE! COMUNIDAD')||!d.pages[85].includes('30 · Diez minutos'))throw new Error('Miramar Canon 1.7 desalineado');
-  window.MIRAMAR_CANON={version:'1.7',pages:97,source:'LA_TERRAZA_DEL_MIRAMAR_CANON.pdf',validated:true};
+
+  /* Canon vivo · 16/09/2026: 02 · OK exacta. */
+  const okIndex=d.pages.findIndex(p=>/^LA TERRAZA DEL MIRAMAR\n02\s*·/m.test(String(p||''))||/^\s*02\s*·\s*OK\b/m.test(String(p||'')));
+  if(okIndex<0)throw new Error('No se localiza 02 · OK');
+  d.pages[okIndex]=`02 · OK
+
+mmm tum ah tum tum ta ah tum
+
+Ok.
+
+O. K.
+
+Dos letras. Ni siquiera un punto.
+
+Una persona normal lee Ok y continúa con su vida.
+
+Yo también.
+
+Durante siete segundos.
+
+Siete segundos. Siete.
+
+Ok. Ok. Cuánto sitio dejan dos letras.
+
+tum ta ah tum tum ta ah tum
+
+No dice sí. No dice no. No dice nada que pueda agarrarse. Y, sin embargo, pesa.
+
+Ok amable. Ok seco. Ok de mañana hablamos. Ok de no pienso hablar mañana. Ok administrativo. Ok de ya veremos. Ok de tú sabrás. Ok de no pienso discutir.
+
+Buenas tardes. Mañana voy a tender.
+
+Buenas tardes. Qué forma tan educada de anunciar una catástrofe doméstica.
+
+De acuerdo. Hablamos.
+
+Ok.
+
+No hay tilde. No hay emoji. No hay perito del matiz.
+
+Yo no pregunto. Todavía.
+
+Miro la pantalla. La apago. La enciendo.
+
+Ok. Ok.
+
+Dos letras. Cuatro plantas. Veinte versiones.
+
+Lo que no dices lo pongo yo.
+
+tum ta ta ah tum tum ta ta ah tum`;
+
+  window.MIRAMAR_SCENE_TITLES=Object.assign({},window.MIRAMAR_SCENE_TITLES,{2:'OK'});
+  window.MIRAMAR_CANON={version:'1.7+20260916',pages:97,source:'LA_TERRAZA_DEL_MIRAMAR_CANON.pdf',validated:true};
 })();
