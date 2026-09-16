@@ -1,9 +1,9 @@
 (()=>{
   if(document.body.dataset.bookId!=='miramar')return;
 
-  /* Banda del canon musical actualmente cargado: escenas 01–11. */
+  /* Banda del canon musical actualmente cargado: escenas 01–14. */
   const AUDIO_SRC='https://gcdn.picsart.com/editing-temp/8d08dd1a-0908-49b3-8d6d-1c6ac3716eb7.mpeg';
-  const START=[0,68.836,174.200,249.202,305.340,469.228,574.710,723.848,849.826,984.106,1080.818,1237.410];
+  const START=[0,68.836,174.200,249.202,305.340,469.228,574.710,723.848,849.826,984.106,1080.818,1237.410,1393.700,1489.870,1694.158];
   const TITLES=[
     'MIRAMAR COMUNIDAD',
     'OK',
@@ -15,7 +15,10 @@
     'TERRITORIO',
     'MAYORÍA SIMPLE',
     'VOTEN',
-    'SIEMPRE SE HA HECHO'
+    'SIEMPRE SE HA HECHO',
+    'DERECHO',
+    'BANDERA',
+    'PROCLAMO'
   ];
   const MAX_SCENE=TITLES.length;
 
