@@ -51,7 +51,16 @@
     saveBookMusic();
     localStorage.setItem('volumeReturnOrigin',bookId);
     localStorage.setItem('volumeReturnPending','1');
-    try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}
+    try{sessionStorage.setItem('volumeReturnReady',bookId);}catch(_){}
+  }
+  function returnUrl(){
+    const u=new URL('index.html',location.href);
+    if(bookId&&soundEnabled()){u.searchParams.set('return',bookId);u.searchParams.set('rt',String(Date.now()));}
+    return u.href;
+  }
+  function prepareReturnLink(a){
+    if(!a||!bookId||!soundEnabled())return;
+    try{const u=new URL(a.href,location.href);u.searchParams.set('return',bookId);u.searchParams.set('rt',String(Date.now()));a.href=u.href;}catch(_){}
   }
 
   const exitButtons=()=>[...document.querySelectorAll('a[href="index.html"],a[href="./index.html"]')];
@@ -218,13 +227,14 @@
     const a=ev.target.closest?.('a[href="index.html"],a[href="./index.html"]');if(!a)return;
     if(soundEnabled()&&hasCoda&&!exitUnlocked){ev.preventDefault();ev.stopPropagation();lockedNotice();return;}
     markReturn();
+    prepareReturnLink(a);
   },true);
 
   window.BOOK_AUDIO_GATE={
     canExit:()=>!soundEnabled()||exitUnlocked,
     requestExit:()=>{
       if(!soundEnabled()){localStorage.removeItem('volumeReturnPending');localStorage.removeItem('volumeReturnOrigin');try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}location.href='index.html';return true;}
-      if(!hasCoda||exitUnlocked){markReturn();location.href='index.html';return true;}
+      if(!hasCoda||exitUnlocked){markReturn();location.href=returnUrl();return true;}
       lockedNotice();return false;
     },
     retryCoda:()=>{if(codaEntryActive()){if(coda.error){coda.src=codaSrc;coda.load();}return playCoda();}return false;},
