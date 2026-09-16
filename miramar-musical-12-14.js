@@ -208,23 +208,53 @@ La toga vuela. La bandera vuela. La dignidad hace lo que puede.
 
 sha ka tum ta ah
 
-sha ka tum ta ah`
+sha ka tum ta ah`,
+`17 · EL SOL
+
+mmm ta lum ta ah
+
+mmm ta lum ta ah
+
+Y luego llega el sol.
+
+El sol tampoco te mira. Entra. Alumbra. Transparenta. Y se marcha a su salida.
+
+A las seis y doce, informe: la sombra cruza la línea.
+
+Son las seis y cuarto. Tenemos tres minutos de anarquía.
+
+mmm ta lum ta ah
+
+No ha entrado nadie. No ha entrado la tela encima. No ha entrado nadie.
+
+Pero algo me ha cambiado la medida.
+
+El sol es buen notario: da fe con luz amarilla, lo ve todo, no firma nada y a las ocho se retira.
+
+La intimidad no son metros. También es hora, visibilidad, sombra, costumbre, presencia.
+
+Qué desgracia administrativa: la vida usa unidades que todavía no están homologadas.
+
+mmm ta lum ta ah
+
+tum pa ra pa ta ta tum`
   ];
 
   if(window.WORK_DATA.pages.length===11)window.WORK_DATA.pages.push(...extra);
-  else if(window.WORK_DATA.pages.length<16){
+  else if(window.WORK_DATA.pages.length<17){
     const have=window.WORK_DATA.pages.length-11;
     window.WORK_DATA.pages.push(...extra.slice(Math.max(0,have)));
   }
 
-  window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · escenas 01–16';
+  window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · escenas 01–17';
   window.MIRAMAR_SCENE_TITLES={
     ...(window.MIRAMAR_SCENE_TITLES||{}),
     12:'DERECHO',
     13:'BANDERA',
     14:'PROCLAMO',
     15:'ESTADO',
-    16:'EL VIENTO'
+    16:'EL VIENTO',
+    17:'EL SOL'
   };
-  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-16',pages:16,validated:true};
+  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-17',pages:17,validated:true};
 })();
