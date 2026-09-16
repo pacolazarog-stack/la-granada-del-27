@@ -45,21 +45,19 @@
     flashBtn.style.display='inline-block';
     flashBtn.textContent='& flash';
     flashBtn.classList.add('is-complete');
-    flashBtn.setAttribute('aria-label','Flash final completado; salida disponible debajo');
+    flashBtn.setAttribute('aria-label','Reproducir de nuevo el flash final');
     exitBtn.hidden=false;
     exitBtn.style.display='inline-block';
     const lock=document.querySelector('.final-lock');if(lock)lock.textContent='FLASH COMPLETADO · SALIDA ABIERTA';
-    const note=document.querySelector('.final-note');if(note)note.textContent='El flash se ha completado. El volumen puede cerrarse.';
-    setTimeout(()=>exitBtn.focus({preventScroll:true}),80);
+    const note=document.querySelector('.final-note');if(note)note.textContent='El flash se ha completado. Puede volver a reproducirse o cerrar el volumen.';
   };
 
   const finishFlash=async()=>{
-    if(completed())return;
-    setCompleted();
+    if(!completed())setCompleted();
     msg.textContent='';
     try{if(document.fullscreenElement)await document.exitFullscreen();}catch(_){}
     hideOverlay();
-    setTimeout(showExitState,260);
+    setTimeout(()=>{showExitState();flashBtn.focus({preventScroll:true});},260);
   };
 
   const failFlash=()=>{
@@ -67,26 +65,28 @@
     try{if(document.fullscreenElement)document.exitFullscreen();}catch(_){}
     hideOverlay();
     if(wasSoundOn)dispatchSound(true);
-    flashBtn.classList.remove('is-complete');
     flashBtn.disabled=false;
     flashBtn.hidden=false;
     flashBtn.style.display='inline-block';
+    msg.textContent='';
+
+    if(completed()){
+      showExitState();
+      const note=document.querySelector('.final-note');if(note)note.textContent='La repetición del flash no se ha podido iniciar. La salida sigue abierta.';
+      return;
+    }
+
+    flashBtn.classList.remove('is-complete');
     flashBtn.textContent='& flash · REINTENTAR';
     flashBtn.setAttribute('aria-label','Reintentar el flash final obligatorio');
     exitBtn.hidden=true;
     exitBtn.style.display='none';
-    msg.textContent='';
     const note=document.querySelector('.final-note');if(note)note.textContent='El flash no se ha podido reproducir. Debe completarse para cerrar el volumen.';
   };
 
   const playFlash=async()=>{
-    if(completed()){
-      exitBtn.focus({preventScroll:true});
-      return;
-    }
     if(playing||flashBtn.disabled)return;
     playing=true;
-    flashBtn.classList.remove('is-complete');
     flashBtn.disabled=true;
     flashBtn.textContent='FLASH EN CURSO…';
     try{window.speechSynthesis?.cancel?.();}catch(_){}
@@ -94,7 +94,7 @@
     if(wasSoundOn)dispatchSound(false);
     video.muted=!wasSoundOn;
     video.currentTime=0;
-    msg.textContent='FLASH FINAL · 9,70 s';
+    msg.textContent=completed()?'FLASH FINAL · REPETICIÓN · 9,70 s':'FLASH FINAL · 9,70 s';
     showOverlay();
     try{
       await video.play();
