@@ -327,12 +327,104 @@ ya estoy contando territorio.
 
 tum ta ka tum ta ka ah
 
-tum ta ka tum ta ka ah`
+tum ta ka tum ta ka ah`,
+`08 · TERRITORIO
+
+tan ta tum tan ta ah
+
+tan ta tum tan ta ah
+
+Tengo domicilio. Tengo lindes. Tengo vistas. Tengo escritura. Tengo referencia. Tengo cuota. Tengo terraza.
+
+Ergo, tengo reino.
+
+Un reino pequeño. Muy bien documentado.
+
+Aquí termina lo mío. Aquí empieza lo común. Aquí llega la sombra. Aquí no llega la paciencia.
+
+tan ta tum tan ta ah
+
+Territorio. Territorio.
+
+Todo reino necesita una línea que alguien discuta.
+
+Puedo medir el suelo. Puedo medir la cuerda. Puedo medir la pinza.
+
+No puedo medir el momento exacto en que una casa se convierte en frontera.
+
+Territorio. Territorio.
+
+La línea blanca no grita, pero obliga a escoger lado.
+
+Y cuanto más protejo el sitio, menos sitio me queda.
+
+Yo quería una terraza. Estoy construyendo un mapa.
+
+tum ka ta ka ah tum
+
+tum ka ta ka ah tum`,
+`09 · MAYORÍA SIMPLE
+
+tum pa tum pa ra tum pa ra pa
+
+tum pa tum pa ra tum pa ra pa
+
+Hasta ayer tenía vecinos. Ahora tengo Comunidad.
+
+Uno baja a tirar la basura siendo persona y vuelve convertido en mayoría simple.
+
+Mayoría simple. Mayoría simple.
+
+Una cabeza. Una cuota. Un criterio. Una carpeta.
+
+Título constitutivo. Norma primera. Elemento común. Uso tolerado. Orden del día.
+
+tum pa ra pa tum pa ra pa
+
+Nadie lo ha leído entero. Todos recuerdan justo el artículo que les conviene.
+
+Mayoría simple. Mayoría simple.
+
+La opinión se infla, se pone gafas, se sienta derecha.
+
+Yo decía: oye. Ahora digo: requiero.
+
+Yo decía: por favor. Ahora digo: a los efectos oportunos.
+
+No ha mejorado la convivencia. Pero el verbo tiene fuero.
+
+Tres cuerpos blancos ya parecen una institución.
+
+du ba tum ta ah
+
+du ba tum ta ah
+
+Nosotros.
+
+Hasta ahora decía yo. Yo veo. Yo mido. Yo protesto. Yo acredito.
+
+Nosotros.
+
+Qué palabra tan peligrosa. Una la dice dos veces y a la tercera ya necesita bandera.
+
+Nosotros. Nosotros. ¿Quién cabe dentro? ¿Quién se queda fuera?
+
+La palabra da calor. También hace sombra.
+
+Si digo nosotros, parece que hablo por todos.
+
+Si digo todos, alguien ya ha desaparecido.
+
+Yo quería que me entendieran. Ahora empiezo a hablar en nombre de una multitud.
+
+tum ts ta ts tum ah
+
+tum ts ta ts tum ah`
   ];
 
   window.WORK_DATA={
     title:'La terraza del Miramar',
-    subtitle:'Tragicomedia multimedia · Canon musical · escenas 01–07',
+    subtitle:'Tragicomedia multimedia · Canon musical · escenas 01–09',
     author:'flag',
     pages
   };
@@ -343,9 +435,11 @@ tum ta ka tum ta ka ah`
     4:'CLAC',
     5:'NADIE',
     6:'NACE EL CONFLICTO',
-    7:'PRIMERA INCURSIÓN TERRESTRE'
+    7:'PRIMERA INCURSIÓN TERRESTRE',
+    8:'TERRITORIO',
+    9:'MAYORÍA SIMPLE'
   };
-  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-07',pages:7,validated:true};
+  window.MIRAMAR_CANON={version:'musical-2026-09-16-01-09',pages:9,validated:true};
 
   const m=location.hash.match(/^#p(\d+)$/);
   if(m&&Number(m[1])>pages.length)history.replaceState(null,'','#p1');
