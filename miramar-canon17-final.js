@@ -87,6 +87,33 @@ Lo que no dices lo pongo yo.
 
 tum ta ta ah tum tum ta ta ah tum`;
 
-  window.MIRAMAR_SCENE_TITLES=Object.assign({},window.MIRAMAR_SCENE_TITLES,{1:'MIRAMAR COMUNIDAD',2:'OK'});
-  window.MIRAMAR_CANON={version:'1.7+20260916b',pages:97,source:'LA_TERRAZA_DEL_MIRAMAR_CANON.pdf',validated:true};
+  /* Canon vivo · 16/09/2026: 03 · EL CUERPO exacta. */
+  const scene3Index=d.pages.findIndex(p=>/^\s*(?:ACTO I[^\n]*\n)?03\s*·\s*El cuerpo en casa\b/m.test(String(p||''))||/^\s*03\s*·\s*EL CUERPO\b/m.test(String(p||'')));
+  if(scene3Index<0)throw new Error('No se localiza 03 · EL CUERPO');
+  d.pages[scene3Index]=`03 · EL CUERPO
+
+mmm tum ta ah tum mmm tum ta ah tum
+
+Una casa aprende el cuerpo antes que el cuerpo la casa.
+
+Una sabe dónde hundirse, dónde estirarse sin tasa.
+
+Aquí yo me sentaba mal. Que es como una se sienta en casa.
+
+Una pierna bajo el culo. La dignidad relajada.
+
+Abres tres veces la nevera por si a la cuarta hace magia.
+
+Hablas sola con un ficus y hasta el ficus te amenaza.
+
+No pongáis esa cara, niñas.
+
+Una puede ser muy reina y estar en bata en su casa.
+
+La monarquía termina donde empieza la pantufla.
+
+mmm tum ta ah tum clac tum ta ah tum`;
+
+  window.MIRAMAR_SCENE_TITLES=Object.assign({},window.MIRAMAR_SCENE_TITLES,{1:'MIRAMAR COMUNIDAD',2:'OK',3:'EL CUERPO'});
+  window.MIRAMAR_CANON={version:'1.7+20260916c',pages:97,source:'LA_TERRAZA_DEL_MIRAMAR_CANON.pdf',validated:true};
 })();
