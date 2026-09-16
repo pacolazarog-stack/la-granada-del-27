@@ -7,6 +7,35 @@
   for(let i=63;i<=68;i++){let s=d.pages[i];for(const [re,to] of fixes)s=s.replace(re,to);d.pages[i]=s;}
   if(!d.pages[16].includes('01 · Primer WhatsApp')||!d.pages[69].includes('29 · ¡HE! COMUNIDAD')||!d.pages[85].includes('30 · Diez minutos'))throw new Error('Miramar Canon 1.7 desalineado');
 
+  /* Canon vivo · 16/09/2026: 01 · MIRAMAR COMUNIDAD exacta. */
+  const scene1Index=d.pages.findIndex(p=>/^\s*(?:ACTO I[^\n]*\n)?01\s*·\s*Primer WhatsApp\b/m.test(String(p||''))||/^\s*01\s*·\s*MIRAMAR COMUNIDAD\b/m.test(String(p||'')));
+  if(scene1Index<0)throw new Error('No se localiza 01 · MIRAMAR COMUNIDAD');
+  d.pages[scene1Index]=`I · DOMÉSTICA
+
+01 · MIRAMAR COMUNIDAD
+
+mmm tum ah tum tum ta ah tum
+
+Miramar Comunidad. Propietarias. Definitivo. Definitivo BUENO.
+
+Cuarenta años de ladrillos y todavía no sabemos nombrarnos.
+
+Primero se crea el grupo. Después empieza el calvario.
+
+Buenos días. Grave.
+
+PDF. Extraordinario.
+
+Audio de cuatro minutos. Conflicto comunitario.
+
+Porque nadie manda un audio de cuatro minutos por paz. Si dura más de treinta segundos, hay antecedentes detrás.
+
+Tum ta ah tum.
+
+La mirada no nace con himno. Nace con una notificación.
+
+mmm tum ah tum tum ta ah tum`;
+
   /* Canon vivo · 16/09/2026: 02 · OK exacta. */
   const okIndex=d.pages.findIndex(p=>/^LA TERRAZA DEL MIRAMAR\n02\s*·/m.test(String(p||''))||/^\s*02\s*·\s*OK\b/m.test(String(p||'')));
   if(okIndex<0)throw new Error('No se localiza 02 · OK');
@@ -58,6 +87,6 @@ Lo que no dices lo pongo yo.
 
 tum ta ta ah tum tum ta ta ah tum`;
 
-  window.MIRAMAR_SCENE_TITLES=Object.assign({},window.MIRAMAR_SCENE_TITLES,{2:'OK'});
-  window.MIRAMAR_CANON={version:'1.7+20260916',pages:97,source:'LA_TERRAZA_DEL_MIRAMAR_CANON.pdf',validated:true};
+  window.MIRAMAR_SCENE_TITLES=Object.assign({},window.MIRAMAR_SCENE_TITLES,{1:'MIRAMAR COMUNIDAD',2:'OK'});
+  window.MIRAMAR_CANON={version:'1.7+20260916b',pages:97,source:'LA_TERRAZA_DEL_MIRAMAR_CANON.pdf',validated:true};
 })();
