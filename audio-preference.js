@@ -58,6 +58,44 @@
 
   const markIntroCompleted=()=>localStorage.setItem(INTRO_KEY,'1');
 
+  const pageOrigin=()=>{
+    const explicit=(document.body?.dataset?.bookId||'').trim().toLowerCase();
+    if(explicit)return explicit;
+    const name=(location.pathname.split('/').pop()||'').toLowerCase();
+    if(name==='granada.html')return'granada';
+    if(name==='paco.html')return'paco';
+    if(name==='miramar.html')return'miramar';
+    if(name==='ensayo.html')return'ensayo';
+    if(name==='autor.html')return'autor';
+    if(name==='fli.html')return'fli';
+    if(name==='final.html')return'final';
+    return'site';
+  };
+
+  const isHomeTarget=url=>{
+    const p=url.pathname.replace(/\/+$/,'');
+    const here=location.pathname.replace(/\/+$/,'');
+    if(p===here)return false;
+    return /\/index\.html$/i.test(p);
+  };
+
+  const markExplicitReturn=a=>{
+    if(!isEnabled())return;
+    let flashExit=false;
+    try{flashExit=sessionStorage.getItem('volumeFlashExitOnce')==='1';}catch(_){}
+    if(flashExit)return;
+    let u;
+    try{u=new URL(a.href,location.href);}catch(_){return;}
+    if(u.origin!==location.origin||!isHomeTarget(u))return;
+    const origin=pageOrigin();
+    localStorage.setItem('volumeReturnOrigin',origin);
+    localStorage.setItem('volumeReturnPending','1');
+    try{sessionStorage.setItem('volumeReturnReady',origin);}catch(_){}
+    u.searchParams.set('return',origin);
+    u.searchParams.set('rt',String(Date.now()));
+    a.href=u.href;
+  };
+
   const mount=()=>{
     if(document.querySelector('#volumeMediaControls'))return;
     wrap=document.createElement('div');
@@ -84,10 +122,18 @@
     syncButtons();
   };
 
+  document.addEventListener('click',ev=>{
+    if(ev.defaultPrevented)return;
+    const a=ev.target.closest?.('a[href]');
+    if(!a||a.target==='_blank'||a.hasAttribute('download'))return;
+    markExplicitReturn(a);
+  });
+
   window.VOLUME_AUDIO={
     mode:soundMode,isChosen,isEnabled,setEnabled,
     voiceMode,isVoiceChosen,isVoiceEnabled,setVoiceEnabled,
-    introCompleted,markIntroCompleted,clearPendingAudio,syncButton:syncButtons,syncButtons
+    introCompleted,markIntroCompleted,clearPendingAudio,syncButton:syncButtons,syncButtons,
+    markExplicitReturn
   };
 
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});
