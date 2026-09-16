@@ -1,0 +1,19 @@
+.miramar-mode-switch{display:flex;align-items:center;gap:4px;margin-right:7px;padding:3px;border:1px solid rgba(91,66,47,.25);border-radius:999px;background:rgba(255,255,255,.58)}
+.miramar-mode-btn{border:0;border-radius:999px;background:transparent;color:#725c49;padding:6px 9px;font:600 9px/1.05 Georgia,serif;letter-spacing:.09em;cursor:pointer;white-space:nowrap}
+.miramar-mode-btn:hover,.miramar-mode-btn:focus-visible{background:#efe5d8;color:#3d2d22;outline:none}
+.miramar-mode-btn.is-active{background:#2a211b;color:#f7f1e8;box-shadow:0 2px 8px rgba(30,20,14,.16)}
+.miramar-illustration{display:none;margin:0;background:#090c10;min-width:0;min-height:0;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;position:relative}
+.miramar-scene-image{width:min(100%,900px);aspect-ratio:4/3;background-repeat:no-repeat;background-color:#090c10;box-shadow:0 14px 42px rgba(0,0,0,.3)}
+.miramar-scene-caption{position:absolute;right:18px;bottom:10px;color:rgba(245,238,227,.66);font:9px/1.2 Georgia,serif;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 1px 3px #000}
+body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page{width:min(1500px,98vw);height:min(80vh,880px);padding:0;display:grid;grid-template-columns:minmax(300px,38fr) minmax(0,62fr);overflow:hidden;background:#f7f1e8}
+body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page .reader-text{display:block!important;min-width:0;height:100%;overflow:auto;box-sizing:border-box;padding:34px 36px;margin:0;background:#f7f1e8;white-space:pre-wrap}
+body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page .miramar-illustration{display:flex!important}
+@media(max-width:900px){
+  .miramar-mode-switch{margin-right:2px}
+  .miramar-mode-btn{padding:6px 7px;font-size:8px}
+  body[data-miramar-mode="illustrated"] .reader-stage{align-items:flex-start;overflow:auto}
+  body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page{width:min(96vw,760px);height:auto;min-height:100%;display:flex;flex-direction:column;overflow:visible}
+  body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page .miramar-illustration{order:0;width:100%;padding:10px;flex:0 0 auto}
+  body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page .reader-text{order:1;width:100%;height:auto;max-height:none;overflow:visible;padding:25px 20px 34px}
+  .miramar-scene-caption{right:14px;bottom:6px;font-size:8px}
+}

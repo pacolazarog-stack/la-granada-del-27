@@ -34,11 +34,29 @@
     const title=$('#readerWork'),sub=$('#readerSub');
     const total=data.pages.length;
     const isPaco=/Paco Olmo de Males/i.test(data.title||'');
+    const isMiramar=/terraza del Miramar/i.test(data.title||'');
+    const sceneHeading=/^\s*(0[1-9]|[12]\d|30)\s*·\s*\S+/m;
+    const isActDivider=raw=>/^\s*ACTO\s+[IVX]+\b/im.test(String(raw||''))&&!sceneHeading.test(String(raw||''));
+    const isInterlude=raw=>/\bINTERLUDIO\b[\s\S]*MIRAMAR\s*·\s*MARE\s+NOSTRUM\s*·\s*RAM/i.test(String(raw||''));
+    const miramarSceneAt=n=>{
+      if(!isMiramar||n<1||n>total)return null;
+      const current=String(data.pages[n-1]||'');
+      if(isInterlude(current)||isActDivider(current))return null;
+      const own=current.match(sceneHeading);
+      if(own)return parseInt(own[1],10);
+      for(let i=n-2;i>=0;i--){
+        const raw=String(data.pages[i]||'');
+        if(isInterlude(raw)||isActDivider(raw))return null;
+        const m=raw.match(sceneHeading);
+        if(m)return parseInt(m[1],10);
+      }
+      return null;
+    };
     title.textContent=data.title||title.textContent||'';
     sub.textContent=data.subtitle||data.author||sub.textContent||'';
     jump.min=1;jump.max=Math.max(1,total);
 
-    const emitState=state=>document.dispatchEvent(new CustomEvent('book:state',{detail:{state,page,total,title:data.title||''}}));
+    const emitState=state=>document.dispatchEvent(new CustomEvent('book:state',{detail:{state,page,total,title:data.title||'',scene:state==='text'?miramarSceneAt(page):null}}));
     const goStart=()=>{
       if(window.BOOK_AUDIO_GATE&&typeof window.BOOK_AUDIO_GATE.requestExit==='function'){
         window.BOOK_AUDIO_GATE.requestExit();
