@@ -99,21 +99,19 @@ El presente existe plenamente. Lo que no consigue es cancelar el pasado.
 
 Por eso la temporalidad del poemario no es exactamente circular. Es **estratigráfica**. Cada época se deposita sobre la anterior. El pasado puede dejar de verse y, sin embargo, continuar modificando aquello que ocurre encima.
 
-## 5. Dos libros superpuestos
+## 5. Del subsuelo al Atlas
 
-La propia arquitectura material del volumen reproduce esa operación.
+La arquitectura material del proyecto ha cambiado precisamente como resultado de su propia autocrítica.
 
-El lector encuentra primero **LIBRO I**, los veintisiete poemas de superficie. Después aparece el **CUADERNO DE PIEDRA**, formado a partir de una matriz profunda 27 × 27, seguido por diagonales y radiales que convergen en el 14 × 14.
+La edición literaria vigente ya no obliga al lector a atravesar la matriz 27 × 27, el antiguo **Cuaderno de piedra**, las diagonales o las radiales después de los veintisiete poemas. Ese aparato se conserva en un volumen autónomo: **Atlas de La Granada del 27 · Lecturas formales**.
 
-Resulta esencial distinguir ambas capas.
+La separación no niega la historia constructiva del libro. La hace legible. Los veintisiete poemas pueden sostenerse sin que el lector conozca el mecanismo y el laboratorio permanece disponible para quien quiera descender a él.
 
-Los poemas de superficie no son prisioneros de la cuadrícula. Poseen autonomía formal y literaria. *La Vega* constituye la excepción deliberada: sus veintisiete endecasílabos comparten con la estructura mineral el verso central.
+Además, la edición literaria se ha abierto hacia **LIBRO II · COSIENDO EUROPA**. El movimiento ya no es únicamente de superficie a subsuelo, sino de celda a cauce: Granada, Vega, agua, tierras, manos, fronteras y regreso.
 
-De ese modo, la matriz no debe entenderse como una jaula construida alrededor del poemario. Es **otro libro debajo del libro**.
+*La Vega* continúa ocupando una posición decisiva porque su verso «Late bajo la cal la acequia hundida» funciona ahora también como transición entre ambos libros, sin necesidad de explicar la matriz que históricamente lo sostuvo.
 
-El procedimiento recuerda directamente a la geología imaginaria de Granada que desarrolla la obra: bajo la avenida permanece la acequia; bajo los poemas visibles permanece otra organización verbal.
-
-La estructura deja así de ser mero virtuosismo combinatorio. Se convierte en **semántica materializada**.
+La estructura cumple así su función cuando deja de reclamar soberanía sobre la lectura.
 
 ## 6. La lírica después del monumento
 
@@ -156,9 +154,9 @@ La operación fundamental del poemario es otra: **excavar sin inmovilizar**.
 
 *La Granada del 27* no practica la autopsia de una ciudad muerta. Practica **la arqueología de una ciudad viva**: levanta las capas del presente y descubre que debajo permanece aquello que no terminó de desaparecer.
 
-La matriz y el agua realizan finalmente la misma operación mediante materias distintas. Una pertenece al lenguaje. La otra, a la tierra.
+El Atlas y el agua conservan ahora funciones distintas. El primero documenta una arquitectura verbal que ya no gobierna la lectura principal; la segunda atraviesa la edición literaria y la abre hacia *Cosiendo Europa*.
 
-Ambas permanecen ocultas bajo una superficie inmediatamente legible. Ambas pueden ser descubiertas sin que lo visible deje de existir. Ambas demuestran que la continuidad no significa repetición idéntica.
+La continuidad no exige repetición idéntica: el proyecto puede conservar su subsuelo sin obligar al lector a vivir dentro de él.
 
 ## 8. Prueba adversarial: cuando la virtud puede convertirse en coartada
 
@@ -166,7 +164,7 @@ Toda poética consistente debe soportar la inversión de sus propias virtudes.
 
 La primera sospecha afecta a la arquitectura. Una matriz 27 × 27, acompañada de diagonales, radiales, recorridos digitales y lecturas ocultas, puede convertirse en una forma de narcisismo estructural si el lector necesita conocer el mecanismo para que el poema funcione. El criterio de defensa no puede consistir en exhibir todavía más ingeniería. Debe ser exactamente el contrario: **la arquitectura nunca debe exigir ser comprendida para que el poema exista literariamente**.
 
-Por ello, el orden de acceso es decisivo. Primero se lee la superficie. Después, si se desea, se descubre el subsuelo. La matriz no es una cerradura cuya combinación permita entender los poemas; es una segunda profundidad que modifica retrospectivamente una lectura ya suficiente.
+Por ello, el orden de acceso es decisivo y ya ha producido una consecuencia editorial concreta. Primero se lee la obra literaria. El subsuelo formal, si se desea, se consulta después en el Atlas. La matriz no es una cerradura cuya combinación permita entender los poemas, y ya no ocupa físicamente la secuencia literaria principal.
 
 La segunda sospecha afecta a la dimensión urbana y política. Acequia, hormigón, turismo, pantallas, garajes, pérdida de la Vega y transformación de la ciudad pertenecen a un repertorio contemporáneo susceptible de volverse tópico. La obra pierde fuerza cuando explica la degradación y la recupera cuando la hace visible. Un código en una pantalla, un torno, un tubo que corta tierra húmeda o barro entrando en un garaje poseen mayor capacidad crítica que cualquier formulación doctrinal.
 
