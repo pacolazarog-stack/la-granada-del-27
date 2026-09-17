@@ -1,3 +1,7 @@
+if(document.body?.dataset?.bookId==='miramar'&&window.MIRAMAR_ACTIVE_CANON==='musical'&&!window.__MIRAMAR_MUSICAL_FRONTMATTER_LOADED__){
+  document.write('<script src="miramar-musical-frontmatter.js?v=20260917-front2"><\/script>');
+}
+
 (()=>{
   if(document.body.dataset.bookId!=='miramar')return;
 
