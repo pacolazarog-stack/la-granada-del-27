@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#15120f">
+  <meta name="author" content="flag">
+  <title>Atlas de La Granada del 27 · Lecturas formales</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reading-structure.css?v=32a60d2">
+  <link rel="stylesheet" href="diagonal-reader.css">
+  <link rel="stylesheet" href="radial-heart.css?v=20260914c">
+  <link rel="stylesheet" href="mobile.css?v=20260914">
+  <link rel="stylesheet" href="mobile-fix.css?v=20260914c">
+  <style>
+    .brand{color:inherit;text-decoration:none}.home-link{display:inline-flex;align-items:center;text-decoration:none}
+    .atlas-note{position:fixed;right:20px;bottom:18px;z-index:20;font-size:.72rem;letter-spacing:.08em;opacity:.55}
+  </style>
+  <script src="matrix-core.js"></script>
+  <script src="matrix-1.js"></script>
+  <script src="matrix-2.js"></script>
+  <script src="matrix-3.js"></script>
+  <script src="matrix-secret.js"></script>
+  <script src="matrix-mesostic.js"></script>
+  <script src="laboratorio/bajo-la-cal-nucleo.js"></script>
+  <script src="laboratorio/piedra-matriz.js"></script>
+  <script src="laboratorio/mesosticos-piedra-redisenados.js"></script>
+  <script src="stone-mesostic.js"></script>
+  <script src="matrix-la-vega.js"></script>
+  <script src="laboratorio/granada-1927-libre.js"></script>
+  <script src="laboratorio/el-rinconcillo-libre.js"></script>
+  <script src="laboratorio/don-manuel-libre.js"></script>
+  <script src="laboratorio/federico-libre.js"></script>
+  <script src="laboratorio/hermenegildo-libre.js"></script>
+  <script src="laboratorio/manuel-angeles-libre.js"></script>
+  <script src="laboratorio/los-titeres-libre.js"></script>
+  <script src="laboratorio/la-puerta-del-vino-libre.js"></script>
+  <script src="laboratorio/antes-de-saberlo-libre.js"></script>
+  <script src="laboratorio/agosto-libre.js"></script>
+  <script src="laboratorio/el-barranco-libre.js"></script>
+  <script src="laboratorio/la-ciudad-callo-libre.js"></script>
+  <script src="laboratorio/la-casa-cerrada-densidad.js"></script>
+  <script src="laboratorio/gran-via-densidad.js"></script>
+  <script src="laboratorio/alhambra-sa-libre.js"></script>
+  <script src="laboratorio/habitacion-con-turistas-libre.js"></script>
+  <script src="laboratorio/cien-anos-libre.js"></script>
+  <script src="laboratorio/granada-2027-libre.js"></script>
+  <script src="laboratorio/el-nuevo-rinconcillo-libre.js"></script>
+  <script src="laboratorio/gallo-vuelve-a-cantar-libre.js"></script>
+  <script src="laboratorio/los-otros-libre.js"></script>
+  <script src="laboratorio/las-que-faltaban-libre.js"></script>
+  <script src="laboratorio/cancion-para-quien-acaba-de-llegar-libre.js"></script>
+  <script src="laboratorio/la-ciudad-que-todavia-puede-ser-libre.js"></script>
+  <script src="laboratorio/que-vuelva-a-ocurrir-libre.js"></script>
+  <script src="laboratorio/un-siglo-despues-libre.js"></script>
+  <script src="laboratorio/palindromo-tres-juntas.js"></script>
+  <script src="surface-poems.js"></script>
+</head>
+<body data-book-id="granada-atlas">
+<div id="app">
+  <header>
+    <a href="granada.html" class="brand"><strong>ATLAS DE LA GRANADA DEL 27</strong><small>Lecturas formales</small></a>
+    <nav>
+      <a class="mode home-link" href="granada.html">LIBRO</a>
+      <button class="mode" data-mode="verticalreader">VERTICAL</button>
+      <button class="mode active" data-mode="horizontal">HORIZONTAL</button>
+      <button class="mode" data-mode="diagonal">DIAGONAL</button>
+      <button class="mode" data-mode="radial">RADIAL</button>
+      <button class="mode" data-mode="chance">AZAR</button>
+    </nav>
+    <div><button class="btn" id="full">⛶</button></div>
+  </header>
+  <main>
+    <section id="bookview" class="view hidden"><div class="stage"><article class="page" id="page"></article></div><div class="nav"><button class="btn" id="bp">← Anterior</button><div class="progress" id="prog"></div><button class="btn" id="bn">Siguiente →</button></div></section>
+    <section id="verticalreader" class="view reader hidden"><button class="move prev" id="vp">‹</button><button class="move next" id="vn">›</button><article class="sheet"><div class="eyebrow" id="vi"></div><h2 id="vt"></h2><div id="vl"></div></article></section>
+    <section id="horizontal" class="view reader"><button class="move prev" id="hrp">‹</button><button class="move next" id="hrn">›</button><article class="sheet"><div class="eyebrow" id="hi"></div><h2 id="ht"></h2><div id="hl"></div></article></section>
+    <section id="diagonal" class="view hidden"><div class="rad"><div class="branch" id="dl"><div class="btitle">I · DIAGONAL CENTRAL ↘</div></div><div class="branch" id="dr"><div class="btitle">II · DIAGONAL CENTRAL ↗</div></div></div></section>
+    <section id="radial" class="view hidden"><div class="rad"><div class="branch" id="rl"><div class="btitle">I · HACIA LO ENTERRADO</div></div><div class="branch" id="rr"><div class="btitle">II · HACIA LO ABIERTO</div></div></div></section>
+    <section id="chance" class="view hidden"><div class="chance-nav"><button class="btn" id="chance-roll">Golpe de azar</button><span id="chance-seed"></span></div><div class="chance-wrap"><button class="btn chance-arrow" id="chance-prev">‹</button><div class="chance-center"><div class="chance-title">EL GOLPE DE AZAR</div><div class="chance-stage-label" id="chance-stage-label"></div><div class="chance-current" id="chance-current"></div><div class="chance-pos" id="chance-pos"></div></div><button class="btn chance-arrow" id="chance-next">›</button></div></section>
+  </main>
+  <div class="atlas-note">ATLAS · FUERA DEL CUERPO LITERARIO</div>
+</div>
+<script src="site.js"></script>
+<script src="app.js"></script>
+<script src="reading-structure.js"></script>
+<script src="diagonal-reader.js"></script>
+<script src="radial-heart.js?v=20260914d"></script>
+<script src="chance.js?v=20260915-subtle1"></script>
+<script src="vertical-stone.js?v=20260914b"></script>
+<script>if(!location.hash){history.replaceState(null,'','#horizontal');if(typeof mode==='function')mode('horizontal');}</script>
+</body>
+</html>
