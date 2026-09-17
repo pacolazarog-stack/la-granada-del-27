@@ -1,6 +1,6 @@
-# Corpus final · actualización textual 17/09/2026
+# Corpus final · actualización 17/09/2026
 
-Este repositorio conserva el mapa canónico del conjunto literario firmado públicamente por **flag**. La revisión del 17 de septiembre de 2026 actualiza el canon textual de la primera obra sin alterar los demás masters del conjunto.
+Este repositorio conserva el mapa canónico del conjunto literario firmado públicamente por **flag**. La revisión del 17 de septiembre de 2026 actualiza tanto el canon textual como el master binario de la primera obra sin alterar los demás masters del conjunto.
 
 ## 01 · La Granada del 27 · Un siglo después · Cosiendo Europa
 
@@ -17,9 +17,12 @@ La matriz 27 × 27, las lecturas horizontales, verticales, diagonales, radiales 
 
 - Canon textual vigente: [`TEXTO_CANONICO_2026-09-17.md`](TEXTO_CANONICO_2026-09-17.md)
 - Texto completo segmentado: [`texto-canonico/`](texto-canonico/)
-- El master PDF del 15/09/2026 y su SHA-256 quedan como **versión histórica anterior** a esta revisión textual; no deben presentarse como master literario vigente.
-- Drive histórico 15/09/2026: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
-- SHA-256 histórico: `694bed0978c703426350c05cdacac88cd3e9572ab1b5ee4d0f033f7e45a5a54d`
+- Master PDF vigente: `LA_GRANADA_DEL_27_UN_SIGLO_DESPUES_COSIENDO_EUROPA_MASTER_2026-09-17.pdf`
+- Páginas: **91**
+- Drive: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
+- SHA-256: `f9c595a24b85647bfafd5143df7b8b8949990bbe597f55dfd67124f7495d8472`
+
+El antiguo master de 112 páginas de 15/09/2026 queda como versión histórica y ha sido sustituido en el enlace canónico de Drive.
 
 Regla de canon:
 
@@ -104,4 +107,4 @@ La generación termina y la autoría decide.
 
 ## Estado editorial
 
-La revisión textual de **17/09/2026** separa definitivamente la obra literaria del laboratorio formal. Para *La Granada del 27 · Un siglo después · Cosiendo Europa*, el texto rector es el canon Markdown enlazado arriba. La edición impresa se compone con una sola cubierta exterior, dos portadillas internas —Libro I y Libro II— y una sola contraportada general al final.
+La revisión de **17/09/2026** separa definitivamente la obra literaria del laboratorio formal y deposita el nuevo master binario de 91 páginas. Para *La Granada del 27 · Un siglo después · Cosiendo Europa*, el texto rector es el canon Markdown enlazado arriba y el master vigente es el PDF identificado por la huella SHA-256 registrada en este documento y en `SHA256_FINAL.txt`.
