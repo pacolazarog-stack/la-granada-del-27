@@ -1,6 +1,6 @@
 # Libro · Poética del límite
 
-Proyecto literario firmado públicamente por **flag**. El repositorio nació para **La Granada del 27 · Un siglo después** y conserva su edición digital y sus validadores; desde el 15 de septiembre de 2026 documenta también el conjunto literario completo y sus masters canónicos.
+Proyecto literario firmado públicamente por **flag**. El repositorio nació para **La Granada del 27 · Un siglo después** y conserva su edición digital, su laboratorio formal y sus validadores; desde el 17 de septiembre de 2026 fija además la edición literaria ampliada **La Granada del 27 · Un siglo después · Cosiendo Europa**.
 
 La firma autoral se mantiene deliberadamente discreta. El panel de [`autor.html`](autor.html) contiene el homenaje canónico a Fli, cuyo cierre es:
 
@@ -18,13 +18,13 @@ Cuando **Fli** y **Flag** aparecen en un mismo texto reciben tratamiento tipogr�
 
 ## Corpus
 
-1. **La Granada del 27 · Un siglo después** — poesía, ciudad, memoria y matriz profunda 27 × 27.
+1. **La Granada del 27 · Un siglo después · Cosiendo Europa** — poesía, ciudad, memoria, territorio y agua. La edición literaria reúne dos libros internos y separa el aparato formal en un Atlas independiente.
 2. **Las cuatro estaciones de Paco Olmo de Males** — novela compuesta, archivo, carnaval y mar.
 3. **La terraza del Miramar** — tragicomedia multimedia en treinta escenas; canon 1.6.
 4. **La poética del archivo** — ensayo, contraensayo, coda satírica y postdata.
 5. **Poética del límite** — dossier crítico final del conjunto.
 
-El inventario canónico, los enlaces a los masters y las huellas SHA-256 están en [`CORPUS_FINAL.md`](CORPUS_FINAL.md). El paquete privado se documenta en [`FINAL_260915.md`](FINAL_260915.md) y **no forma parte del repositorio público**.
+El inventario canónico está en [`CORPUS_FINAL.md`](CORPUS_FINAL.md). El **texto literario vigente** de la primera obra se fija en [`TEXTO_CANONICO_2026-09-17.md`](TEXTO_CANONICO_2026-09-17.md) y en la carpeta [`texto-canonico/`](texto-canonico/).
 
 ## Experiencia sonora
 
@@ -40,24 +40,25 @@ El volumen multimedia comienza con un preludio. Tras completarlo por primera vez
 - La cuadrícula termina y el poema continúa.
 - La generación termina y la autoría decide.
 
-La categoría superior es la **poética del límite**. El archivo, el plano, la linde, la matriz y la herramienta generativa organizan, defienden, relacionan y descubren; el problema aparece cuando la precisión aspira a convertirse en totalidad.
+La categoría superior es la **poética del límite**. El archivo, el plano, la linde, la matriz y la herramienta generativa pueden organizar, defender, relacionar y descubrir; el problema aparece cuando la precisión aspira a convertirse en totalidad.
 
-## La Granada del 27 · Un siglo después
+## La Granada del 27 · Un siglo después · Cosiendo Europa
 
-La obra se organiza en dos capas relacionadas pero no equivalentes:
+La **edición literaria** ya no se organiza como demostración de la matriz. Su secuencia canónica es:
 
-- **LIBRO I · superficie**: 27 poemas visibles con autonomía literaria. **LA VEGA** conserva excepcionalmente 27 endecasílabos y su verso 14 —«Late bajo la cal la acequia hundida.»— coincide con el centro 14 × 14.
-- **CUADERNO DE PIEDRA / matriz profunda**: estructura de 27 × 27 posiciones para lecturas horizontales, diagonales, radiales y ocultas.
+- **LIBRO I · LA GRANADA DEL 27**: prólogo, 27 poemas y epílogo.
+- transición: «Late bajo la cal la acequia hundida.»
+- **LIBRO II · COSIENDO EUROPA**: Prólogo + I · Bajo la avenida + II · Tierras que beben + III · Manos + IV · Costuras + V · El agua regresa.
+- **TODAVÍA**: cierre literario absoluto.
+- **Contraportada general**: única, al final del volumen.
 
-Centro común del sistema:
+El aparato de matriz 27 × 27, horizontales, verticales, diagonales, radiales y demás lecturas formales se conserva como **Atlas de La Granada del 27 · Lecturas formales**, separado de la lectura literaria principal.
 
-> Late bajo la cal la acequia hundida.
+Regla editorial:
 
-Estribillo palindrómico canónico:
+> **Nada entra porque cuadre. Solo entra si vive.**
 
-> Granada sucede — sucede Granada.
-
-Master definitivo de 15/09/2026: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
+El sitio digital puede seguir conservando herramientas y recorridos experimentales del laboratorio; esos recorridos no sustituyen el canon textual de 17/09/2026.
 
 Página pública: https://pacolazarog-stack.github.io/la-granada-del-27/
 
@@ -77,15 +78,15 @@ Master definitivo: https://drive.google.com/file/d/1Nl2RhEdDDOSgYVFQmjeupGCoZ2EV
 
 **La poética del archivo** conserva el ensayo, contraensayo, coda y postdata, rematados por una adenda que sitúa el archivo dentro de la **poética del límite**.
 
-**Poética del límite** reúne la crítica de *La Vega*, Paco, Miramar, la matriz 27 × 27, la constelación comparatista y la reflexión sobre inteligencia artificial y dirección autoral.
+**Poética del límite** reúne la crítica de *La Vega*, Paco, Miramar, el laboratorio formal, la constelación comparatista y la reflexión sobre inteligencia artificial y dirección autoral. El mapa crítico y las calificaciones pertenecen a este ámbito, no a la edición literaria.
 
 - Ensayo: https://drive.google.com/file/d/1fBC_i2A2NkMjL0sXcQ1wliVcAADVViUi/view
 - Dossier crítico: https://drive.google.com/file/d/1PZzS4Knzc3a2ssEhheIMBvVjkWDRzO7F/view
 
-## Edición definitiva · 15/09/2026
+## Edición textual · 17/09/2026
 
-La maquetación común prioriza A5, jerarquía tipográfica sobria, firma `flag` discreta y mínima interferencia explicativa. Granada conserva su master a sangre; Paco mantiene su cuerpo canónico A5; Miramar, el ensayo y el dossier se han revisado para una presentación editorial coherente.
+Para **La Granada del 27 · Un siglo después · Cosiendo Europa**, el canon textual actual es el Markdown del repositorio. El antiguo PDF de 112 páginas de 15/09/2026 queda como versión histórica anterior a la separación del Atlas y a la integración de *Cosiendo Europa*.
 
-El paquete privado **`FINAL_FLAG_260915.zip`** contiene los masters PDF, los editables DOCX, `AUTOR.txt`, manifiesto, archivo de lectura y hashes SHA-256. Se conserva **sólo en Google Drive para almacenamiento y descarga controlada**; no se publica ni se sube a GitHub.
+La edición física vigente se concibe con **una cubierta exterior, dos portadillas internas y una sola contraportada general**. No se introduce aparato crítico ni explicación matricial dentro del volumen literario.
 
 © 2026 flag. Todos los derechos reservados.
