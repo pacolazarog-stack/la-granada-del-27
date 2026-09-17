@@ -4,8 +4,11 @@ on:
   push:
     paths:
       - 'paco-data.js'
-      - 'miramar-data.js'
-      - 'ensayo-data.js'
+      - 'paco.html'
+      - 'miramar.html'
+      - 'miramar-canon17-*.js'
+      - 'ensayo.html'
+      - 'ensayo-01.js'
       - '.github/workflows/materializa-lectores.yml'
   workflow_dispatch:
 
@@ -17,34 +20,34 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Verificar fuentes directas de los lectores
+      - name: Verificar fuentes canónicas de los lectores
         run: |
           node <<'NODE'
           const fs=require('fs');
           const vm=require('vm');
 
-          function readWork(file){
-            const src=fs.readFileSync(file,'utf8');
-            const ctx={window:{}};
-            vm.createContext(ctx);
-            vm.runInContext(src,ctx,{timeout:5000,filename:file});
-            const data=ctx.window.WORK_DATA;
-            if(!data||!Array.isArray(data.pages)||!data.pages.length){
-              throw new Error(`${file}: WORK_DATA.pages inválido`);
-            }
-            while(data.pages.length&&!String(data.pages.at(-1)??'').trim()) data.pages.pop();
-            console.log(`${file}: ${data.pages.length} páginas · ${data.title||'sin título'}`);
-            return data;
-          }
-
-          const paco=readWork('paco-data.js');
-          const miramar=readWork('miramar-data.js');
-          const ensayo=readWork('ensayo-data.js');
-
+          const pacoSrc=fs.readFileSync('paco-data.js','utf8');
+          const ctx={window:{}};
+          vm.createContext(ctx);
+          vm.runInContext(pacoSrc,ctx,{timeout:5000,filename:'paco-data.js'});
+          const paco=ctx.window.WORK_DATA;
+          if(!paco||!Array.isArray(paco.pages)) throw new Error('Paco: WORK_DATA inválido');
+          while(paco.pages.length&&!String(paco.pages.at(-1)??'').trim()) paco.pages.pop();
           if(paco.pages.length!==210) throw new Error(`Paco: esperadas 210 páginas; hay ${paco.pages.length}`);
           if(!paco.pages.join('\n').includes('LOS NOMBRES DE PACO')) throw new Error('Paco: falta Los nombres de Paco');
-          if(!/terraza del Miramar/i.test(miramar.title||'')) throw new Error('Miramar: título inesperado');
-          if(!/poética del archivo/i.test(ensayo.title||'')) throw new Error('Ensayo: título inesperado');
 
-          console.log('LECTORES MATERIALIZADOS OK');
+          const miramarHtml=fs.readFileSync('miramar.html','utf8');
+          for(const file of ['miramar-canon17-init.js','miramar-canon17-final.js','lector.js']){
+            if(!miramarHtml.includes(file)) throw new Error(`Miramar: falta ${file} en el lector`);
+            if(!fs.existsSync(file)) throw new Error(`Miramar: no existe ${file}`);
+          }
+
+          const ensayoHtml=fs.readFileSync('ensayo.html','utf8');
+          if(!ensayoHtml.includes('ensayo-01.js')) throw new Error('Ensayo: ensayo.html no carga ensayo-01.js');
+          if(!fs.existsSync('ensayo-01.js')) throw new Error('Ensayo: no existe ensayo-01.js');
+
+          console.log('Paco: 210 páginas · canon directo');
+          console.log('Miramar: canon 1.7 cargado por módulos');
+          console.log('Ensayo: fuente ensayo-01.js cargada');
+          console.log('LECTORES CANÓNICOS OK');
           NODE
