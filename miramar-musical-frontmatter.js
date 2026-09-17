@@ -2,6 +2,7 @@
   if(document.body?.dataset?.bookId!=='miramar')return;
   if(window.MIRAMAR_ACTIVE_CANON!=='musical')return;
   if(!window.WORK_DATA||!Array.isArray(window.WORK_DATA.pages))return;
+  window.__MIRAMAR_MUSICAL_FRONTMATTER_LOADED__=true;
 
   const MARKERS=['@@MUSICAL_PORTADA@@','@@MUSICAL_CREDITOS@@','@@MUSICAL_ESCENAS@@'];
   const already=MARKERS.every((m,i)=>String(window.WORK_DATA.pages[i]||'').trim()===m);
