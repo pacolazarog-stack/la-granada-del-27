@@ -2,7 +2,7 @@
 
 **LA GRANADA DEL 27 · UN SIGLO DESPUÉS · COSIENDO EUROPA**  
 **flag**  
-Canon textual y master vigente: **17 de septiembre de 2026 · edición de autor**
+Canon textual vigente: **17 de septiembre de 2026** · salidas públicas actualizadas: **18 de septiembre de 2026**
 
 ## Texto rector
 
@@ -77,20 +77,15 @@ Y su consecuencia editorial:
 
 > **La arquitectura formal alcanza su sentido cuando deja de verse. El lector no debería recordar cómo estaba construido el sistema. Debería recordar el agua.**
 
-## Master binario vigente
+## Masters públicos vigentes
 
-La edición de autor vigente tiene **91 páginas**, incluida la contraportada general.
+El texto literario no cambia respecto del canon del 17/09/2026. El 18/09/2026 se fijan dos salidas públicas equivalentes, ambas de **91 páginas**:
 
-- Archivo: `LA_GRANADA_DEL_27_UN_SIGLO_DESPUES_COSIENDO_EUROPA_MASTER_2026-09-17.pdf`
-- Drive: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
-- Páginas: **91**.
-- Tamaño depositado: **1.838.875 bytes**.
-- SHA-256: `f9c595a24b85647bfafd5143df7b8b8949990bbe597f55dfd67124f7495d8472`.
+- **flag**: `01_LA_GRANADA_DEL_27_COSIENDO_EUROPA_FLAG_2026-09-18.pdf` · https://drive.google.com/file/d/1AQxm9UEb5Io82gabDxaNk7ZGvMIVPfs5/view · SHA-256 `32e85a4d6806f63ee4c73781812ad7e7c6ae33db85adda785adf37968c56975d`.
+- **anónima**: `01_LA_GRANADA_DEL_27_COSIENDO_EUROPA_ANONIMO_2026-09-18.pdf` · https://drive.google.com/file/d/1ml4ezfhHblHjgiowb6yy90QvhX2hJ69_/view · SHA-256 `e42cb187def42fec44afb9c73043845d21f8917642f480c7b17a65cb8306f53e`.
 
-El PDF ha sido comprobado visualmente en los puntos de cierre y articulación: cubierta general, transición «Late bajo la cal la acequia hundida.», portadilla de **LIBRO II · COSIENDO EUROPA**, página final **TODAVÍA** y contraportada general.
+## Autoría pública
 
-El enlace de Drive conserva el mismo `fileId` que el master anterior para no romper referencias; su contenido binario y nombre corresponden ya a esta edición de 17/09/2026.
+La firma visible preferente es **flag**. La misma edición puede circular sin firma. La identidad civil se reserva a registro, derechos y documentación privada.
 
-## Firma
-
-La firma pública continúa siendo **flag**, con presencia discreta y subordinada a la obra.
+> **Recuperar el nombre para poder renunciar a ponerlo.**
