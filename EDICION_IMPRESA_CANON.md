@@ -1,68 +1,88 @@
 # Edición impresa canónica
 
-**La Granada del 27 · Un siglo después**  
+**LA GRANADA DEL 27 · UN SIGLO DESPUÉS · COSIENDO EUROPA**  
 **flag**  
-Canon vigente: **15 de septiembre de 2026 · edición definitiva de colección**
+Canon textual vigente: **17 de septiembre de 2026 · edición de autor**
 
-## Especificación física
+## Texto rector
 
-- Formato de corte: A5, 148 × 210 mm.
-- Sangrado: 3 mm.
-- Caja PDF: aproximadamente 154 × 216 mm, correspondiente al A5 más sangrado.
-- PDF canónico actual: **112 páginas**.
-- Master en Google Drive: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
-- SHA-256 del master binario actualmente depositado: `694bed0978c703426350c05cdacac88cd3e9572ab1b5ee4d0f033f7e45a5a54d`.
-- Firma visible y metadato principal: `flag`.
+El texto literario vigente se conserva en:
 
-## Identidad editorial
+- [`TEXTO_CANONICO_2026-09-17.md`](TEXTO_CANONICO_2026-09-17.md) — índice y reglas de lectura.
+- [`texto-canonico/`](texto-canonico/) — cuerpo textual completo segmentado.
 
-La obra precede visualmente a la firma. `flag` aparece de manera mínima en cubierta y contracubierta; no actúa como reclamo ni compite con el título. La página autoral canónica queda fijada así:
+El antiguo master de **112 páginas** del 15/09/2026 queda como versión histórica. No debe utilizarse para reconstruir la secuencia literaria vigente porque todavía integraba el aparato formal dentro del volumen y era anterior a **Cosiendo Europa**.
 
-> Fli era un espejo fiel y deformante, capaz de absorber la hipocresía, la crueldad, la estupidez y toda la mierda humana, exagerarla hasta hacerla comprensible y devolverla convertida en risa.
->
-> Esa deformación era mi cura: mostraba la herida, mostraba el ridículo, lo compartía y, por un instante, lo hacía soportable.
->
-> Era el loco que decía la verdad para que los demás pudiéramos seguir viviendo con ella.
->
-> Flic. Flac.  
-> Flip. Flap.  
-> Fli. Flag.
->
-> Perdido sin ti.
->
-> Sin más.
->
-> Como estas palabras sin ti: igual.
+## Arquitectura editorial vigente
 
-Cuando **Fli** y **Flag** aparecen en un mismo texto reciben tratamiento tipográfico equivalente. No se formula una ecuación ni una explicación de su relación.
+La edición impresa es **un único volumen** con dos libros autónomos:
 
-## Arquitectura
+### LIBRO I · LA GRANADA DEL 27
 
-- **LIBRO I · superficie**: 27 poemas literariamente autónomos; no están sometidos a la matriz profunda, salvo la coincidencia excepcional de **LA VEGA** con el centro 14 × 14.
-- **CUADERNO DE PIEDRA**: matriz 27 × 27 y lecturas horizontales, diagonales, radiales, acrósticas, mesósticas y telésticas.
-- Verso central: `Late bajo la cal la acequia hundida.`
-- Estribillo palindrómico: `Granada sucede — sucede Granada.`
+- Prólogo · **ANTES DE CONTAR**.
+- 27 poemas canónicos, sin reescritura.
+- **GRANADA QUEDA** como epílogo.
+- Transición mínima al Libro II:
 
-La matriz actúa como subsuelo y no como requisito de lectura. La edición impresa no debe convertir el mecanismo en explicación obligatoria.
+> Late bajo la cal la acequia hundida.
+
+### LIBRO II · COSIENDO EUROPA
+
+- Portadilla interior propia.
+- Prólogo.
+- I · **BAJO LA AVENIDA**.
+- II · **TIERRAS QUE BEBEN**.
+- III · **MANOS**.
+- IV · **COSTURAS**.
+- V · **EL AGUA REGRESA**.
+- **TODAVÍA** es el cierre literario absoluto.
+
+No se añade epílogo, comentario crítico ni explicación después de **TODAVÍA**.
+
+## Cubierta y contraportada
+
+- Una sola **cubierta exterior general** para todo el volumen.
+- **Cosiendo Europa** lleva portadilla interior, no cubierta ni contraportada independientes.
+- Una sola **contraportada general**, situada al final del volumen.
+- La contraportada termina deliberadamente con:
+
+> Pero debajo,  
+> todavía pasa el agua.
+
+## Atlas y laboratorio formal
+
+La matriz 27 × 27, las lecturas horizontales, verticales, diagonales, radiales, acrósticas, mesósticas y telésticas, así como **Las dos loas**, quedan fuera de la edición literaria principal.
+
+Se conservan en un volumen independiente:
+
+**ATLAS DE LA GRANADA DEL 27 · LECTURAS FORMALES**
+
+El Atlas documenta el laboratorio y las posibilidades de lectura. No es requisito previo ni posterior para comprender el libro literario.
 
 ## Reglas editoriales de cierre
 
-1. Los poemas de superficie deben sostenerse sin necesidad de comprender la matriz.
-2. No se reintroduce una guía explicativa final que resuelva aquello que el libro ya demuestra.
-3. El cierre preserva el movimiento **risa → estribillo → epílogo → silencio → contraportada**.
-4. El verso central continúa funcionando como retorno material y estructural.
-5. No se modifica **LA VEGA**, ninguna lectura de piedra ni el centro 14 × 14.
-6. La sustitución del texto autoral pertenece exclusivamente a la presentación editorial y no altera el corpus poético.
+1. Los 27 poemas del Libro I se conservan íntegros.
+2. *Cosiendo Europa* se conserva íntegro desde su prólogo hasta **TODAVÍA**.
+3. No se incorpora al libro el mapa crítico, las notas, las calificaciones ni la genealogía comparatista.
+4. No se reintroducen matrices ni explicaciones sobre el mecanismo formal en la secuencia de lectura.
+5. La transición entre Libro I y Libro II debe sentirse, no explicarse.
+6. La numeración del volumen es continua.
+7. La obra termina literariamente en «todavía pasa el agua»; la contraportada exterior puede repetir ese motivo como cierre material.
 
 La regla rectora es:
 
-> **Todo aquello que la obra ya demuestra debe dejar de explicarse.**
+> **Nada entra porque cuadre. Solo entra si vive.**
 
-## Cierre material
+Y su consecuencia editorial:
 
-- **Página 111**: página autoral con el homenaje canónico a Fli, sin glosa explicativa.
-- **Página 112**: contraportada; mantiene el retorno al verso central y la firma `flag` en posición discreta.
+> **La arquitectura formal alcanza su sentido cuando deja de verse. El lector no debería recordar cómo estaba construido el sistema. Debería recordar el agua.**
 
-## Estado de sincronización
+## Estado material
 
-La especificación editorial y la edición digital ya incorporan este texto. El SHA-256 indicado arriba corresponde al PDF binario depositado antes de esta sustitución puntual de la página autoral; por tanto, ese PDF debe regenerarse antes de una nueva salida a imprenta si se quiere que el binario refleje exactamente el canon aquí descrito. El corpus de poemas no cambia.
+La edición de autor compuesta en esta revisión tiene **91 páginas digitales**, incluida la contraportada general. Esa cifra describe la maqueta actual y no sustituye por sí sola a un master binario depositado y fechado.
+
+En esta actualización de GitHub se fija **el canon textual**, no se reemplaza el antiguo PDF de Drive. Antes de una nueva salida a imprenta debe depositarse el nuevo master binario y registrar su SHA-256.
+
+## Firma
+
+La firma pública continúa siendo **flag**, con presencia discreta y subordinada a la obra.
