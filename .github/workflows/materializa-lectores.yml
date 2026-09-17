@@ -1,63 +1,50 @@
-name: Materializa lectores
+name: Verifica lectores materializados
 
 on:
   push:
     paths:
+      - 'paco-data.js'
+      - 'miramar-data.js'
+      - 'ensayo-data.js'
       - '.github/workflows/materializa-lectores.yml'
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  build:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-      - name: Convertir datos comprimidos en datos locales estables
+          node-version: '24'
+      - name: Verificar fuentes directas de los lectores
         run: |
           node <<'NODE'
-          const fs = require('fs');
-          const zlib = require('zlib');
+          const fs=require('fs');
+          const vm=require('vm');
 
-          function extractParts(files) {
-            let b64 = '';
-            for (const file of files) {
-              const src = fs.readFileSync(file, 'utf8');
-              const matches = [...src.matchAll(/\+\s*'([^']*)'/g)];
-              if (!matches.length) throw new Error(`No se encontró fragmento base64 en ${file}`);
-              for (const m of matches) b64 += m[1];
+          function readWork(file){
+            const src=fs.readFileSync(file,'utf8');
+            const ctx={window:{}};
+            vm.createContext(ctx);
+            vm.runInContext(src,ctx,{timeout:5000,filename:file});
+            const data=ctx.window.WORK_DATA;
+            if(!data||!Array.isArray(data.pages)||!data.pages.length){
+              throw new Error(`${file}: WORK_DATA.pages inválido`);
             }
-            return b64.replace(/\s+/g, '');
+            while(data.pages.length&&!String(data.pages.at(-1)??'').trim()) data.pages.pop();
+            console.log(`${file}: ${data.pages.length} páginas · ${data.title||'sin título'}`);
+            return data;
           }
 
-          function build(out, files) {
-            const b64 = extractParts(files);
-            const compressed = Buffer.from(b64, 'base64');
-            const raw = zlib.gunzipSync(compressed).toString('utf8');
-            const data = JSON.parse(raw);
-            if (!Array.isArray(data.pages)) throw new Error(`${out}: no contiene pages[]`);
-            while (data.pages.length && !String(data.pages[data.pages.length - 1] ?? '').trim()) data.pages.pop();
-            fs.writeFileSync(out, `window.WORK_DATA=${JSON.stringify(data)};\n`, 'utf8');
-            console.log(`${out}: ${data.pages.length} páginas, ${raw.length} caracteres`);
-          }
+          const paco=readWork('paco-data.js');
+          const miramar=readWork('miramar-data.js');
+          const ensayo=readWork('ensayo-data.js');
 
-          // Paco se conserva desde 18/09/2026 como fuente canónica directa en paco-data.js.
-          // Los bloques comprimidos anteriores quedan como material histórico y no deben sobrescribirlo.
-          build('miramar-data.js', ['miramar-01.js','miramar-02.js']);
-          build('ensayo-data.js', ['ensayo-01.js']);
+          if(paco.pages.length!==210) throw new Error(`Paco: esperadas 210 páginas; hay ${paco.pages.length}`);
+          if(!paco.pages.join('\n').includes('LOS NOMBRES DE PACO')) throw new Error('Paco: falta Los nombres de Paco');
+          if(!/terraza del Miramar/i.test(miramar.title||'')) throw new Error('Miramar: título inesperado');
+          if(!/poética del archivo/i.test(ensayo.title||'')) throw new Error('Ensayo: título inesperado');
+
+          console.log('LECTORES MATERIALIZADOS OK');
           NODE
-      - name: Publicar datos materializados
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add miramar-data.js ensayo-data.js
-          if git diff --cached --quiet; then
-            echo "Sin cambios"
-          else
-            git commit -m "Materializa datos estables para los lectores web"
-            git push
-          fi
