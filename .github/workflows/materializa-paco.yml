@@ -1,74 +1,24 @@
-name: Materializa Paco web
+name: Verifica Paco canónico
 
 on:
   push:
     paths:
-      - 'paco-b64-*.txt'
+      - 'paco-data.js'
+      - 'paco.html'
+      - 'paco-canon/**'
       - '.github/workflows/materializa-paco.yml'
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  materializa:
+  verifica:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Reconstruir paco-data.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verificar fuente canónica directa
         run: |
-          python <<'PY'
-          import base64, gzip, pathlib, string
-
-          files=[pathlib.Path(f'paco-b64-{i:02d}.txt') for i in range(1,7)]
-          parts=[p.read_text(encoding='utf-8') for p in files]
-          for p,s in zip(files,parts):
-              print(f'{p}: {len(s)} caracteres')
-
-          raw=''.join(parts)
-          allowed=set(string.ascii_letters+string.digits+'+/=')
-          bad=[(i,c,ord(c)) for i,c in enumerate(raw) if c not in allowed and not c.isspace()]
-          print('Caracteres no base64:', bad[:20], 'total=', len(bad))
-
-          clean=''.join(c for c in raw if c in allowed)
-          print('Longitud base64 limpia:', len(clean), 'mod4=', len(clean)%4)
-
-          def decode(candidate):
-              packed=base64.b64decode(candidate, validate=True)
-              return gzip.decompress(packed).decode('utf-8')
-
-          try:
-              src=decode(clean)
-          except Exception as first_error:
-              print('Decodificación directa falló:', repr(first_error))
-              # Si quedó exactamente un carácter base64 de más, localizarlo por prueba
-              # dentro del bloque 05, que es el único con longitud anómala.
-              offsets=[]
-              acc=0
-              for s in parts:
-                  offsets.append(acc)
-                  acc+=len(s)
-              start=offsets[4]
-              end=start+len(parts[4])
-              found=None
-              for i in range(start,end):
-                  candidate=clean[:i]+clean[i+1:]
-                  if len(candidate)%4:
-                      continue
-                  try:
-                      src=decode(candidate)
-                      found=(i,clean[i])
-                      clean=candidate
-                      break
-                  except Exception:
-                      pass
-              if found is None:
-                  raise
-              print('Carácter extra localizado y eliminado:', found)
-
-          pathlib.Path('paco-data.js').write_text(src, encoding='utf-8')
-          print('paco-data.js reconstruido:', len(src), 'caracteres')
-          PY
           node <<'NODE'
           const fs=require('fs');
           const vm=require('vm');
@@ -77,23 +27,13 @@ jobs:
           vm.createContext(context);
           vm.runInContext(src,context,{timeout:5000});
           const data=context.window.WORK_DATA;
-          if(!data || !Array.isArray(data.pages)) throw new Error('WORK_DATA inválido');
-          while(data.pages.length && !String(data.pages[data.pages.length-1]||'').trim()) data.pages.pop();
-          if(data.pages.length!==198) throw new Error(`Se esperaban 198 páginas y hay ${data.pages.length}`);
+          if(!data||!Array.isArray(data.pages)) throw new Error('WORK_DATA inválido');
+          while(data.pages.length&&!String(data.pages[data.pages.length-1]||'').trim()) data.pages.pop();
+          if(data.pages.length!==210) throw new Error(`Se esperaban 210 páginas canónicas y hay ${data.pages.length}`);
           const all=data.pages.join('\n');
-          for(const marker of ['LA LLAVE','Paco, Repaco, metido en un saco','intentó archivar la mar','Que se registren solas']){
+          for(const marker of ['LOS NOMBRES DE PACO','Copa apareció durante una partida de cartas.','Poco después llegó Copix','Siguió tirando de la red.','CARNAVAL DE SUPERPACO','intentó archivar la mar','Que se registren solas']){
             if(!all.includes(marker)) throw new Error(`Falta marcador canónico: ${marker}`);
           }
-          console.log(`Paco OK: ${data.pages.length} páginas; ${src.length} caracteres JS`);
+          if(/Francisco Javier Lázaro Guil/i.test(all)) throw new Error('La edición web pública contiene el nombre civil completo');
+          console.log(`Paco canónico OK: ${data.pages.length} páginas`);
           NODE
-      - name: Publicar dato estable
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add paco-data.js
-          if git diff --cached --quiet; then
-            echo "Sin cambios"
-          else
-            git commit -m "Materializa Paco canónico para el lector web"
-            git push
-          fi
