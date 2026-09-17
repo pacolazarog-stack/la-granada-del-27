@@ -1,9 +1,10 @@
-import {loadScripts,scriptsFromIndexThrough} from './validation-loader.mjs';
+import {loadScripts,scriptsFromHtmlThrough} from './validation-loader.mjs';
 
 globalThis.window=globalThis;
 
-/* Valida el mismo ensamblaje y el mismo orden que publica index.html. */
-loadScripts(scriptsFromIndexThrough('surface-poems.js'));
+/* La superficie formal y su relación con la piedra se validan en atlas.html.
+   La edición literaria principal permanece deliberadamente separada. */
+loadScripts(scriptsFromHtmlThrough('atlas.html','surface-poems.js'));
 
 const poems=globalThis.GRANADA_SURFACE_POEMS;
 const stone=globalThis.GRANADA_STONE_ROWS;
@@ -28,6 +29,7 @@ if(globalThis.GRANADA_STONE_ACROSTIC?.H14?.word!=='VEINTISIETE') throw new Error
 if(globalThis.GRANADA_STONE_TELESTIC?.P14?.word!=='VEINTISIETE') throw new Error('PIEDRA: Loa II perdió el centro');
 
 console.log(JSON.stringify({
+  assembly:'atlas.html',
   surface:{count:poems.length,lengths:poems.map(p=>p.verses.length),center:poems[13].verses[13],laVegaVerse20:poems[13].verses[19],final:poems[26].verses.at(-1),mirrorPairs:13},
   stone:{rows:stone.length,columns:stone[0].verses.length,center:stone[13].verses[13],h14:'BAJO LA CAL',mesostics:meso.total,loaI:globalThis.GRANADA_STONE_ACROSTIC.H14.word,loaII:globalThis.GRANADA_STONE_TELESTIC.P14.word},
   joint:'superficie ↔ piedra = 14×14'
