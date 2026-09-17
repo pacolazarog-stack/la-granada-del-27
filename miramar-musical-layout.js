@@ -4,9 +4,6 @@
   const MODE_KEY='miramarCanonMode';
   const activeCanon=()=>window.MIRAMAR_ACTIVE_CANON||localStorage.getItem(MODE_KEY)||'';
 
-  /* La elección MUSICAL/TEXTUAL del encabezado manda también sobre el canon.
-     Esto evita que una preferencia textual antigua deje cargadas las páginas
-     preliminares de la edición impresa mientras la interfaz muestra MUSICAL. */
   function resolvedMode(){
     const voice=localStorage.getItem('volumeVoiceMode');
     const sound=localStorage.getItem('volumeSoundMode');
@@ -22,9 +19,6 @@
     if(current===wanted)return false;
     localStorage.setItem(MODE_KEY,wanted);
     window.MIRAMAR_ACTIVE_CANON=wanted;
-
-    /* Si venimos del canon impreso al musical, la lectura debe comenzar en
-       la escena 01, no conservar un número de página de los preliminares. */
     if(wanted==='musical')history.replaceState(null,'','#p1');
     location.reload();
     return true;
@@ -34,9 +28,6 @@
 
   const isMusical=()=>activeCanon()==='musical';
 
-  /* Aquí ya debe estar cargado el corpus correcto. No se recortan escenas:
-     el canon musical conserva íntegramente 01–30. Las páginas preliminares
-     de la edición impresa pertenecen sólo al canon textual. */
   if(window.WORK_DATA&&Array.isArray(window.WORK_DATA.pages)){
     if(isMusical()){
       window.MIRAMAR_MUSICAL_DATA={...window.WORK_DATA,pages:[...window.WORK_DATA.pages]};
@@ -50,24 +41,137 @@
   function applyLabels(){
     const musical=isMusical();
     const sub=document.querySelector('#readerSub');
-    if(sub)sub.textContent=musical?'Tragicomedia multimedia · Canon musical':'Tragicomedia visual · Canon 1.7';
+    if(sub)sub.textContent=musical?'Tragicomedia multimedia · Canon musical · escenas 01–30':'Tragicomedia visual · Canon 1.7';
     const badge=document.querySelector('#readerCover .cover-badge');
     if(badge)badge.textContent=musical?'CANON MUSICAL':'30 ESCENAS';
   }
   applyLabels();
 
-  /* En MUSICAL no se muestra ningún vestigio editorial de la edición impresa:
-     ni numeración de página, ni título/número de escena, ni pies de imagen. */
+  /* CANON MUSICAL: una sola maqueta homogénea para las 30 escenas.
+     Izquierda: texto limpio sobre marfil. Derecha: imagen escenográfica.
+     No se muestran título/número de escena, número de página, acotaciones,
+     etiquetas de personaje ni pies editoriales. */
   const cleanStyle=document.createElement('style');
   cleanStyle.id='miramar-musical-clean-style';
   cleanStyle.textContent=`
     html[data-media-mode="musical"] #readerProgress,
     html[data-media-mode="musical"] #readerJump,
     html[data-media-mode="musical"] .miramar-scene-caption{display:none!important}
-    html[data-media-mode="musical"] #readerText.miramar-musical-clean{white-space:normal!important}
-    html[data-media-mode="musical"] #readerText.miramar-musical-clean .miramar-script-body{display:block}
-    html[data-media-mode="musical"] #readerText.miramar-musical-clean .miramar-script-line{margin:.31em 0;min-height:1em}
-    html[data-media-mode="musical"] #readerText.miramar-musical-clean .miramar-script-line.rhythm{margin:.9em 0;font-style:italic;letter-spacing:.045em;word-spacing:.06em}
+
+    html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page{
+      width:min(1600px,99vw)!important;
+      height:min(80vh,900px)!important;
+      min-height:0!important;
+      aspect-ratio:auto!important;
+      padding:0!important;
+      display:grid!important;
+      grid-template-columns:minmax(0,1fr) minmax(0,2fr)!important;
+      grid-template-rows:1fr!important;
+      overflow:hidden!important;
+      transform:none!important;
+      background:#f7f1e8!important;
+      box-shadow:0 18px 48px rgba(0,0,0,.34)!important;
+    }
+
+    html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page .reader-text{
+      grid-column:1!important;
+      grid-row:1!important;
+      width:100%!important;
+      height:100%!important;
+      min-width:0!important;
+      max-height:none!important;
+      overflow:auto!important;
+      box-sizing:border-box!important;
+      padding:28px 30px 34px 32px!important;
+      margin:0!important;
+      background:#f7f1e8!important;
+      color:#211b17!important;
+      scrollbar-width:thin;
+      scrollbar-color:#8f877d transparent;
+    }
+
+    html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page .miramar-illustration{
+      grid-column:2!important;
+      grid-row:1!important;
+      width:100%!important;
+      height:100%!important;
+      min-width:0!important;
+      min-height:0!important;
+      padding:0!important;
+      margin:0!important;
+      display:flex!important;
+      background:#090c10!important;
+      overflow:hidden!important;
+    }
+
+    html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page .miramar-scene-image{
+      width:100%!important;
+      height:100%!important;
+      max-width:none!important;
+      aspect-ratio:auto!important;
+      background-size:contain!important;
+      background-position:center!important;
+      background-repeat:no-repeat!important;
+      background-color:#090c10!important;
+      box-shadow:none!important;
+    }
+
+    html[data-media-mode="musical"] #readerText.miramar-musical-clean{
+      white-space:normal!important;
+      max-width:none!important;
+      padding-top:0!important;
+      font-family:Georgia,'Times New Roman',serif!important;
+      font-size:clamp(12px,.86vw,15px)!important;
+      line-height:1.42!important;
+      font-weight:400!important;
+      letter-spacing:0!important;
+      color:#211b17!important;
+    }
+    html[data-media-mode="musical"] #readerText.miramar-musical-clean .miramar-script-body{display:block!important}
+    html[data-media-mode="musical"] #readerText.miramar-musical-clean .miramar-script-line{
+      margin:.48em 0!important;
+      min-height:0!important;
+      color:#211b17!important;
+      font:inherit!important;
+    }
+    html[data-media-mode="musical"] #readerText.miramar-musical-clean .miramar-script-line.rhythm{
+      margin:.72em 0!important;
+      color:#7c211d!important;
+      font-style:italic!important;
+      font-size:.96em!important;
+      letter-spacing:.025em!important;
+      word-spacing:.035em!important;
+    }
+
+    @media(max-width:900px){
+      html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page{
+        width:min(96vw,760px)!important;
+        height:auto!important;
+        min-height:100%!important;
+        display:flex!important;
+        flex-direction:column!important;
+        overflow:visible!important;
+      }
+      html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page .miramar-illustration{
+        order:0!important;
+        width:100%!important;
+        height:min(62vw,520px)!important;
+        min-height:320px!important;
+        flex:none!important;
+      }
+      html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page .reader-text{
+        order:1!important;
+        width:100%!important;
+        height:auto!important;
+        overflow:visible!important;
+        flex:none!important;
+        padding:22px 20px 30px!important;
+      }
+      html[data-media-mode="musical"] #readerText.miramar-musical-clean{
+        font-size:14px!important;
+        line-height:1.42!important;
+      }
+    }
   `;
   document.head.appendChild(cleanStyle);
 
@@ -85,6 +189,16 @@
     return words.length>0&&words.length<=28&&words.every(w=>rhythmWords.has(w));
   }
 
+  function stripInlineDirections(block){
+    return String(block||'')
+      .replace(/\([^()\n]*\)/g,' ')
+      .replace(/\[[^\[\]\n]*\]/g,' ')
+      .replace(/\{[^{}\n]*\}/g,' ')
+      .replace(/[ \t]{2,}/g,' ')
+      .replace(/\s+([,.;:!?])/g,'$1')
+      .trim();
+  }
+
   function cleanBlocks(raw){
     const blocks=String(raw||'').replace(/\r/g,'').split(/\n\s*\n/).map(s=>s.trim()).filter(Boolean);
     const sceneIndex=blocks.findIndex(b=>sceneRE.test(b));
@@ -94,7 +208,8 @@
       if(!block||sceneRE.test(block)||sectionRE.test(block)||pageRE.test(block)||directionRE.test(block)||speakerOnlyRE.test(block))continue;
       const pref=block.match(speakerPrefixRE);
       if(pref)block=pref[1].trim();
-      if(!block)continue;
+      block=stripInlineDirections(block);
+      if(!block||sceneRE.test(block)||sectionRE.test(block)||pageRE.test(block)||directionRE.test(block))continue;
       out.push(block);
     }
     return out;
@@ -126,8 +241,6 @@
     if(cap)cap.textContent='';
   }
 
-  /* Se captura el texto bruto antes de que otros formateadores lo transformen.
-     Después, en la misma vuelta, esta limpieza es la última que se aplica. */
   document.addEventListener('book:state',ev=>{
     if(!isMusical()||ev.detail?.state!=='text')return;
     const text=document.querySelector('#readerText');
@@ -135,9 +248,6 @@
     queueMicrotask(()=>renderCleanMusical(raw));
   });
 
-  /* Cada cambio de modo actualiza primero la clave de canon y después recarga,
-     para que miramar-musical-canon.js construya el corpus adecuado antes de
-     que lector.js cuente páginas. */
   let reloadPending=false;
   const reloadForCanonChange=()=>{
     const next=resolvedMode();
@@ -151,7 +261,6 @@
   document.addEventListener('volume:soundchange',reloadForCanonChange);
   document.addEventListener('volume:voicechange',reloadForCanonChange);
 
-  /* En musical, la lectura es necesariamente ilustrada. */
   const illustratedButton=()=>[...document.querySelectorAll('.miramar-mode-btn')].find(b=>(b.textContent||'').trim()==='ILUSTRADA');
   let forcing=false;
   const forceIllustrated=()=>{
