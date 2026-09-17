@@ -27,6 +27,7 @@
   if(syncCanonBeforeReader())return;
 
   const isMusical=()=>activeCanon()==='musical';
+  const isTextual=()=>activeCanon()==='textual';
 
   if(window.WORK_DATA&&Array.isArray(window.WORK_DATA.pages)){
     if(isMusical()){
@@ -47,10 +48,8 @@
   }
   applyLabels();
 
-  /* CANON MUSICAL: una sola maqueta homogénea para las 30 escenas.
-     Izquierda: texto limpio sobre marfil. Derecha: imagen escenográfica.
-     No se muestran título/número de escena, número de página, acotaciones,
-     etiquetas de personaje ni pies editoriales. */
+  /* MUSICAL: texto limpio + imagen escenográfica.
+     TEXTUAL: exclusivamente canon textual A5, sin imágenes aparejadas. */
   const cleanStyle=document.createElement('style');
   cleanStyle.id='miramar-musical-clean-style';
   cleanStyle.textContent=`
@@ -143,6 +142,35 @@
       word-spacing:.035em!important;
     }
 
+    /* TEXTUAL: una sola página A5 vertical, sólo texto canónico. */
+    html[data-media-mode="textual"] body[data-book-id="miramar"] #miramarIllustration,
+    html[data-media-mode="textual"] body[data-book-id="miramar"] .miramar-mode-switch,
+    html[data-media-mode="textual"] body[data-book-id="miramar"] .miramar-cover-choice,
+    html[data-miramar-canon="textual"] body[data-book-id="miramar"] #miramarIllustration,
+    html[data-miramar-canon="textual"] body[data-book-id="miramar"] .miramar-mode-switch,
+    html[data-miramar-canon="textual"] body[data-book-id="miramar"] .miramar-cover-choice{
+      display:none!important;
+    }
+    html[data-media-mode="textual"] body[data-book-id="miramar"] .reader-page:not(.cover-mode),
+    html[data-miramar-canon="textual"] body[data-book-id="miramar"] .reader-page:not(.cover-mode){
+      width:min(92vw,620px,calc((100vh - 148px) * 148 / 210))!important;
+      height:min(calc(100vh - 148px),880px,calc(92vw * 210 / 148))!important;
+      aspect-ratio:148/210!important;
+      display:block!important;
+      overflow:auto!important;
+      padding:42px 48px!important;
+      background:var(--paper)!important;
+      color:var(--ink)!important;
+      box-shadow:0 18px 42px #0008!important;
+    }
+    html[data-media-mode="textual"] body[data-book-id="miramar"] #readerText,
+    html[data-miramar-canon="textual"] body[data-book-id="miramar"] #readerText{
+      width:100%!important;
+      max-width:none!important;
+      margin:0!important;
+      background:transparent!important;
+    }
+
     @media(max-width:900px){
       html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page{
         width:min(96vw,760px)!important;
@@ -171,9 +199,38 @@
         font-size:14px!important;
         line-height:1.42!important;
       }
+      html[data-media-mode="textual"] body[data-book-id="miramar"] .reader-page:not(.cover-mode),
+      html[data-miramar-canon="textual"] body[data-book-id="miramar"] .reader-page:not(.cover-mode){
+        width:min(94vw,560px)!important;
+        height:min(calc(100vh - 130px),calc(94vw * 210 / 148))!important;
+        padding:28px 24px!important;
+      }
     }
   `;
   document.head.appendChild(cleanStyle);
+
+  function enforceTextualA5(){
+    if(!isTextual())return;
+    const page=document.querySelector('#readerPage');
+    const figure=document.querySelector('#miramarIllustration');
+    const switcher=document.querySelector('.miramar-mode-switch');
+    const chooser=document.querySelector('.miramar-cover-choice');
+    page?.classList.remove('miramar-illustrated-page','miramar-domestica-musical');
+    if(page)delete page.dataset.domesticaScene;
+    if(figure)figure.hidden=true;
+    if(switcher)switcher.hidden=true;
+    if(chooser)chooser.hidden=true;
+    document.body.dataset.miramarMode='text';
+    try{sessionStorage.setItem('miramarReaderMode','text');}catch(_){}
+  }
+
+  function releaseTextualLock(){
+    if(isTextual())return;
+    const switcher=document.querySelector('.miramar-mode-switch');
+    const chooser=document.querySelector('.miramar-cover-choice');
+    if(switcher)switcher.hidden=false;
+    if(chooser)chooser.hidden=false;
+  }
 
   const sceneRE=/^(?:ESCENA\s*)?(0?[1-9]|[12]\d|30)\s*[·.:-]\s*.+$/i;
   const sectionRE=/^(?:ACTO\s+)?(?:I{1,3}|IV)\s*[·.:-]\s*.+$/i;
@@ -242,11 +299,13 @@
   }
 
   document.addEventListener('book:state',ev=>{
+    if(isTextual())queueMicrotask(enforceTextualA5);
     if(!isMusical()||ev.detail?.state!=='text')return;
     const text=document.querySelector('#readerText');
     const raw=String(text?.textContent||'');
     queueMicrotask(()=>renderCleanMusical(raw));
   });
+  document.addEventListener('miramar:modechange',()=>queueMicrotask(()=>isTextual()?enforceTextualA5():releaseTextualLock()));
 
   let reloadPending=false;
   const reloadForCanonChange=()=>{
@@ -272,14 +331,14 @@
     btn.click();
     forcing=false;
   };
-  const schedule=()=>setTimeout(forceIllustrated,0);
+  const schedule=()=>setTimeout(()=>isMusical()?forceIllustrated():enforceTextualA5(),0);
   document.addEventListener('book:state',schedule);
   document.addEventListener('click',ev=>{
     if(!isMusical())return;
     const btn=ev.target.closest?.('.miramar-mode-btn,.miramar-cover-choice-btn');
     if(btn&&/TEXTO|TEXTUAL/i.test((btn.textContent||'').trim()))schedule();
   },true);
-  new MutationObserver(schedule).observe(document.documentElement,{attributes:true,attributeFilter:['data-media-mode']});
+  new MutationObserver(schedule).observe(document.documentElement,{attributes:true,attributeFilter:['data-media-mode','data-miramar-canon']});
   new MutationObserver(schedule).observe(document.body,{attributes:true,attributeFilter:['data-miramar-mode']});
-  setTimeout(forceIllustrated,0);
+  setTimeout(schedule,0);
 })();
