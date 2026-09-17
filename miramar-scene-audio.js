@@ -1,5 +1,10 @@
+if(document.body?.dataset?.bookId==='miramar'&&!window.__MIRAMAR_TEXTUAL_OPTIONS_LOADED__){
+  window.__MIRAMAR_TEXTUAL_OPTIONS_LOADED__=true;
+  document.write('<script src="miramar-textual-options.js?v=20260917-textvoice1"><\/script>');
+}
 if(document.body?.dataset?.bookId==='miramar'&&window.MIRAMAR_ACTIVE_CANON==='musical'&&!window.__MIRAMAR_MUSICAL_FRONTMATTER_LOADED__){
-  document.write('<script src="miramar-musical-frontmatter.js?v=20260917-front2"><\/script>');
+  window.__MIRAMAR_MUSICAL_FRONTMATTER_LOADED__=true;
+  document.write('<script src="miramar-musical-frontmatter.js?v=20260917-front3"><\/script>');
 }
 
 (()=>{
