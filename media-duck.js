@@ -46,6 +46,24 @@
   window.VOLUME_MEDIA_DUCK={tracked,duck,restore};
 })();
 
+/* Miramar: "Francisco Javier Lázaro Guil" se presenta y se locuta siempre como "flag". */
+(()=>{
+  if(document.body?.dataset?.bookId!=='miramar')return;
+  const re=/Francisco Javier L[aá]zaro Guil/gi;
+  const clean=v=>{
+    if(v&&typeof v==='object')Object.keys(v).forEach(k=>{if(typeof v[k]==='string')v[k]=v[k].replace(re,'flag');});
+    return v;
+  };
+  let spoken=clean(window.MIRAMAR_SPOKEN_PAGES);
+  try{
+    Object.defineProperty(window,'MIRAMAR_SPOKEN_PAGES',{
+      configurable:true,
+      get(){return spoken;},
+      set(v){spoken=clean(v);}
+    });
+  }catch(_){/* Si no puede redefinirse, la sustitución visual sigue activa. */}
+})();
+
 /* Miramar: estos módulos deben ejecutarse antes de lector.js.
    Se cargan aquí porque media-duck.js ya ocupa esa posición estable en miramar.html. */
 (()=>{
