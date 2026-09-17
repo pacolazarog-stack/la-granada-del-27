@@ -67,14 +67,14 @@ Regla editorial:
 
 > **Nada entra porque cuadre. Solo entra si vive.**
 
-### Master vigente · 17/09/2026
+### Salidas públicas vigentes · 18/09/2026
 
-- Archivo: `LA_GRANADA_DEL_27_UN_SIGLO_DESPUES_COSIENDO_EUROPA_MASTER_2026-09-17.pdf`
-- Drive: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
-- Páginas: **91**
-- SHA-256: `f9c595a24b85647bfafd5143df7b8b8949990bbe597f55dfd67124f7495d8472`
+El texto canónico continúa siendo el fijado el 17/09/2026; cambian únicamente las salidas públicas:
 
-El antiguo PDF de 112 páginas del 15/09/2026 queda como versión histórica y ya no ocupa el enlace canónico de Drive.
+- **flag**: `01_LA_GRANADA_DEL_27_COSIENDO_EUROPA_FLAG_2026-09-18.pdf` · https://drive.google.com/file/d/1AQxm9UEb5Io82gabDxaNk7ZGvMIVPfs5/view · **91 páginas** · SHA-256 `32e85a4d6806f63ee4c73781812ad7e7c6ae33db85adda785adf37968c56975d`.
+- **anónima**: `01_LA_GRANADA_DEL_27_COSIENDO_EUROPA_ANONIMO_2026-09-18.pdf` · https://drive.google.com/file/d/1ml4ezfhHblHjgiowb6yy90QvhX2hJ69_/view · **91 páginas** · SHA-256 `e42cb187def42fec44afb9c73043845d21f8917642f480c7b17a65cb8306f53e`.
+
+El master de trabajo del 17/09/2026 y los PDFs anteriores quedan como antecedentes históricos.
 
 Página pública: https://pacolazarog-stack.github.io/la-granada-del-27/
 
@@ -122,7 +122,8 @@ El PDF y DOCX de Drive del 15/09/2026 quedan como masters históricos hasta que 
 
 **Poética del límite** reúne la crítica de *La Vega*, Paco, Miramar, el laboratorio formal, la constelación comparatista y la reflexión sobre inteligencia artificial y dirección autoral. El mapa crítico y las calificaciones pertenecen a este ámbito, no a la edición literaria.
 
-- Dossier crítico: https://drive.google.com/file/d/1PZzS4Knzc3a2ssEhheIMBvVjkWDRzO7F/view
+- Edición **flag**: https://drive.google.com/file/d/1OYqxo08vH-E6Thc6OtTxHj4KnVFunY4W/view
+- Edición **anónima**: https://drive.google.com/file/d/1TWMFpYBY9HQALU408T20ZzZmzJdf08QE/view
 
 ## Edición pública · 18/09/2026
 
