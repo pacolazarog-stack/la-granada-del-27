@@ -2,7 +2,7 @@
 
 **LA GRANADA DEL 27 · UN SIGLO DESPUÉS · COSIENDO EUROPA**  
 **flag**  
-Canon textual vigente: **17 de septiembre de 2026 · edición de autor**
+Canon textual y master vigente: **17 de septiembre de 2026 · edición de autor**
 
 ## Texto rector
 
@@ -11,7 +11,7 @@ El texto literario vigente se conserva en:
 - [`TEXTO_CANONICO_2026-09-17.md`](TEXTO_CANONICO_2026-09-17.md) — índice y reglas de lectura.
 - [`texto-canonico/`](texto-canonico/) — cuerpo textual completo segmentado.
 
-El antiguo master de **112 páginas** del 15/09/2026 queda como versión histórica. No debe utilizarse para reconstruir la secuencia literaria vigente porque todavía integraba el aparato formal dentro del volumen y era anterior a **Cosiendo Europa**.
+El antiguo master de **112 páginas** del 15/09/2026 queda como versión histórica y ha sido sustituido en el enlace canónico de Drive por la edición actual.
 
 ## Arquitectura editorial vigente
 
@@ -77,11 +77,19 @@ Y su consecuencia editorial:
 
 > **La arquitectura formal alcanza su sentido cuando deja de verse. El lector no debería recordar cómo estaba construido el sistema. Debería recordar el agua.**
 
-## Estado material
+## Master binario vigente
 
-La edición de autor compuesta en esta revisión tiene **91 páginas digitales**, incluida la contraportada general. Esa cifra describe la maqueta actual y no sustituye por sí sola a un master binario depositado y fechado.
+La edición de autor vigente tiene **91 páginas**, incluida la contraportada general.
 
-En esta actualización de GitHub se fija **el canon textual**, no se reemplaza el antiguo PDF de Drive. Antes de una nueva salida a imprenta debe depositarse el nuevo master binario y registrar su SHA-256.
+- Archivo: `LA_GRANADA_DEL_27_UN_SIGLO_DESPUES_COSIENDO_EUROPA_MASTER_2026-09-17.pdf`
+- Drive: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
+- Páginas: **91**.
+- Tamaño depositado: **1.838.875 bytes**.
+- SHA-256: `f9c595a24b85647bfafd5143df7b8b8949990bbe597f55dfd67124f7495d8472`.
+
+El PDF ha sido comprobado visualmente en los puntos de cierre y articulación: cubierta general, transición «Late bajo la cal la acequia hundida.», portadilla de **LIBRO II · COSIENDO EUROPA**, página final **TODAVÍA** y contraportada general.
+
+El enlace de Drive conserva el mismo `fileId` que el master anterior para no romper referencias; su contenido binario y nombre corresponden ya a esta edición de 17/09/2026.
 
 ## Firma
 
