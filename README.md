@@ -1,6 +1,6 @@
 # Libro · Poética del límite
 
-Proyecto literario firmado públicamente por **flag**. El repositorio nació para **La Granada del 27 · Un siglo después** y conserva su edición digital, su laboratorio formal y sus validadores; desde el 17 de septiembre de 2026 fija además la edición literaria ampliada **La Granada del 27 · Un siglo después · Cosiendo Europa**.
+Proyecto literario publicado con firma pública **flag** o, cuando la edición lo requiera, **sin firma**. El repositorio nació para **La Granada del 27 · Un siglo después** y conserva su edición digital, su laboratorio formal y sus validadores; desde el 17 de septiembre de 2026 fija además la edición literaria ampliada **La Granada del 27 · Un siglo después · Cosiendo Europa**.
 
 La firma autoral se mantiene deliberadamente discreta. El panel de [`autor.html`](autor.html) contiene el homenaje canónico a Fli, cuyo cierre es:
 
@@ -16,10 +16,19 @@ La firma autoral se mantiene deliberadamente discreta. El panel de [`autor.html`
 
 Cuando **Fli** y **Flag** aparecen en un mismo texto reciben tratamiento tipográfico equivalente. La edición no formula una equivalencia escrita entre ambos nombres. En la versión digital, pulsar `flag` abre un panel puramente visual y no modifica la música en curso; cerrarlo tampoco altera reproducción, posición, pista ni volumen.
 
+
+## Política de autoría pública · 18/09/2026
+
+La identidad civil queda reservada al registro, los derechos, los contratos y la documentación privada. No forma parte de las portadas ni de los metadatos públicos del corpus. La salida pública preferente es **flag**; existe una variante editorial equivalente **anónima**.
+
+> **Recuperar el nombre para poder renunciar a ponerlo.**
+
+Esta política no altera el contenido literario: cuando «Fli» o «Flag» pertenecen al texto, permanecen como texto.
+
 ## Corpus
 
 1. **La Granada del 27 · Un siglo después · Cosiendo Europa** — poesía, ciudad, memoria, territorio y agua. La edición literaria reúne dos libros internos y separa el aparato formal en un Atlas independiente.
-2. **Las cuatro estaciones de Paco Olmo de Males** — novela compuesta, archivo, carnaval y mar.
+2. **Las cuatro estaciones de Paco Olmo de Males** — novela compuesta, archivo, nombres, carnaval y mar. Entre «39 · LA HISTORIA» y «CARNAVAL DE SUPERPACO» se integra, sin numeración propia, **Los nombres de Paco**.
 3. **La terraza del Miramar** — tragicomedia multimedia en treinta escenas; canon 1.6.
 4. **La poética del archivo** — ensayo, contraensayo, coda satírica y postdata; revisión integral 17/09/2026.
 5. **Poética del límite** — dossier crítico final del conjunto.
@@ -73,13 +82,20 @@ Página pública: https://pacolazarog-stack.github.io/la-granada-del-27/
 
 La novela contrapone dos regímenes de verdad: Julián reconstruye y Paco acredita. El expediente puede conservar casi todos los hechos y, sin embargo, no conservar el hecho de estar vivo. La oralidad, la copla, el carnaval y la mar impiden que el archivo se convierta en soberanía total.
 
-Master definitivo: https://drive.google.com/file/d/1KKYu0I-xQ8InOapuT_Etg3MgRORfVBtJ/view
+Secuencia canónica: **39 · LA HISTORIA → LOS NOMBRES DE PACO → CARNAVAL DE SUPERPACO**. «Los nombres de Paco» es una pieza bisagra autónoma y no numerada; no altera la numeración 40–64.
+
+- Texto canónico de la pieza: [`paco-canon/LOS_NOMBRES_DE_PACO.md`](paco-canon/LOS_NOMBRES_DE_PACO.md)
+- Edición **flag** integrada: https://drive.google.com/file/d/10cMVaMSCqWCSpceRzr6L2pAPqp31avgZ/view · 211 páginas · SHA-256 `7f954bbbfcd498ecacc8d85a1cd473b152d8aee9f1ae73a01b5115536675efbc`.
+- Edición **anónima** integrada: https://drive.google.com/file/d/1V8ZL2dkUqOwYTU_aHcN4243G_aJv28Up/view · SHA-256 `fc4d49ae461652d53ec47b70df8b7b81986b4e14fd3fc3a318ccd883dee3daed`.
+- Lector web canónico: **210 páginas lógicas**.
 
 ## La terraza del Miramar
 
 **Tragicomedia multimedia**, canon **1.6**. El Acto III · **NACE LA REINA** incorpora como umbral el fragmento **DK 22 B 53** de Heráclito. La cita ilumina el *pólemos* como principio de diferenciación, no como elogio de la violencia. El conflicto produce posiciones y autoridad; los «diez minutos» del desenlace impiden que esa forma se vuelva absoluta.
 
-Master definitivo: https://drive.google.com/file/d/1Nl2RhEdDDOSgYVFQmjeupGCoZ2EVgdpv/view
+Salidas públicas vigentes:
+- **flag**: https://drive.google.com/file/d/1MfUB2I0ATyaxiBXe2zT-ME-Nx2U0WMl1/view
+- **anónima**: https://drive.google.com/file/d/1eUOjbQeS3dGzYYFrDJto7l20Tj4BJkvU/view
 
 ## La poética del archivo
 
@@ -108,8 +124,16 @@ El PDF y DOCX de Drive del 15/09/2026 quedan como masters históricos hasta que 
 
 - Dossier crítico: https://drive.google.com/file/d/1PZzS4Knzc3a2ssEhheIMBvVjkWDRzO7F/view
 
-## Edición de autor · 17/09/2026
+## Edición pública · 18/09/2026
 
 Para **La Granada del 27 · Un siglo después · Cosiendo Europa**, texto y master binario están sincronizados. La edición física vigente se concibe con **una cubierta exterior, dos portadillas internas y una sola contraportada general**. No se introduce aparato crítico ni explicación matricial dentro del volumen literario.
 
-© 2026 flag. Todos los derechos reservados.
+© 2026 flag. Existe también una edición pública sin firma. Todos los derechos reservados.
+
+
+## Paquetes públicos · 18/09/2026
+
+- **flag**: https://drive.google.com/file/d/1rQK-nLLSEARPrkaEXwRy392HX4qC63ba/view
+- **anónimo**: https://drive.google.com/file/d/1V0F_BVgEaHUG_ul4ZsTl004vqyEfkLcb/view
+- **flag + anonimato**: https://drive.google.com/file/d/1e1vB2magHYX2IFDV8NunbjJw6vlGjEyl/view
+- Criterio: [`PUBLICACION_FLAG_ANONIMATO.md`](PUBLICACION_FLAG_ANONIMATO.md)
