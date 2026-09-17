@@ -3,13 +3,29 @@
 
   /* Este módulo ya no crea ni sustituye el corpus musical.
      El canon se construye antes, en miramar-musical-canon.js y sus suplementos.
-     Aquí sólo se conserva una copia del corpus activo, se actualiza la interfaz
-     y se fuerza la lectura ilustrada cuando el canon musical está activo. */
+     Aquí se aplica la selección vigente del corpus, se conserva una copia activa,
+     se actualiza la interfaz y se fuerza la lectura ilustrada en musical. */
   const activeCanon=()=>window.MIRAMAR_ACTIVE_CANON||localStorage.getItem('miramarCanonMode')||'';
   const isMusical=()=>activeCanon()==='musical'||document.documentElement.dataset.mediaMode==='musical';
 
   if(window.WORK_DATA&&Array.isArray(window.WORK_DATA.pages)){
     if(isMusical()){
+      /* Versión musical vigente: se quitan de la lectura las 16 primeras páginas.
+         Los textos fuente permanecen intactos en sus módulos para poder revertirlos. */
+      if(window.WORK_DATA.pages.length>=30){
+        window.WORK_DATA={
+          ...window.WORK_DATA,
+          subtitle:'Tragicomedia multimedia · Canon musical · escenas 17–30',
+          pages:[...window.WORK_DATA.pages].slice(16)
+        };
+        window.MIRAMAR_CANON={
+          version:'musical-2026-09-17-17-30',
+          pages:window.WORK_DATA.pages.length,
+          validated:true
+        };
+        const m=location.hash.match(/^#p(\d+)$/);
+        if(m&&Number(m[1])>window.WORK_DATA.pages.length)history.replaceState(null,'','#p1');
+      }
       window.MIRAMAR_MUSICAL_DATA={...window.WORK_DATA,pages:[...window.WORK_DATA.pages]};
       document.documentElement.dataset.miramarCanon='musical';
     }else{
