@@ -1,22 +1,22 @@
 (()=>{
   if(document.body?.dataset?.bookId!=='miramar')return;
-  if(window.MIRAMAR_ACTIVE_CANON!=='musical')return;
+  const isMusical=()=>window.MIRAMAR_ACTIVE_CANON==='musical';
   if(!window.WORK_DATA||!Array.isArray(window.WORK_DATA.pages))return;
   window.__MIRAMAR_MUSICAL_FRONTMATTER_LOADED__=true;
 
   const MARKERS=['@@MUSICAL_PORTADA@@','@@MUSICAL_CREDITOS@@','@@MUSICAL_ESCENAS@@'];
-  const already=MARKERS.every((m,i)=>String(window.WORK_DATA.pages[i]||'').trim()===m);
-  if(!already&&window.WORK_DATA.pages.length>=30){
-    window.WORK_DATA.pages.unshift(...MARKERS);
+  if(isMusical()){
+    const already=MARKERS.every((m,i)=>String(window.WORK_DATA.pages[i]||'').trim()===m);
+    if(!already&&window.WORK_DATA.pages.length>=30)window.WORK_DATA.pages.unshift(...MARKERS);
+    window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · 30 escenas';
+    window.MIRAMAR_CANON={
+      ...(window.MIRAMAR_CANON||{}),
+      version:'musical-2026-09-17-frontmatter-01-30',
+      pages:window.WORK_DATA.pages.length,
+      scenes:30,
+      validated:true
+    };
   }
-  window.WORK_DATA.subtitle='Tragicomedia multimedia · Canon musical · 30 escenas';
-  window.MIRAMAR_CANON={
-    ...(window.MIRAMAR_CANON||{}),
-    version:'musical-2026-09-17-frontmatter-01-30',
-    pages:window.WORK_DATA.pages.length,
-    scenes:30,
-    validated:true
-  };
 
   const SCENES=[
     '01 · MIRAMAR COMUNIDAD','02 · OK','03 · EL CUERPO','04 · CLAC','05 · NADIE',
@@ -33,13 +33,8 @@
     html[data-media-mode="musical"] .reader-page.miramar-musical-frontmatter-page{
       width:min(620px,92vw,calc((100vh - 148px) * 148 / 210))!important;
       height:min(calc(100vh - 148px),880px,calc(92vw * 210 / 148))!important;
-      aspect-ratio:148/210!important;
-      display:block!important;
-      overflow:auto!important;
-      padding:0!important;
-      background:#f4eee4!important;
-      color:#211d19!important;
-      box-shadow:0 18px 42px #0008!important;
+      aspect-ratio:148/210!important;display:block!important;overflow:auto!important;padding:0!important;
+      background:#f4eee4!important;color:#211d19!important;box-shadow:0 18px 42px #0008!important;
     }
     html[data-media-mode="musical"] .reader-page.miramar-musical-frontmatter-page #readerText{
       width:100%!important;height:100%!important;max-width:none!important;margin:0!important;padding:0!important;
@@ -53,7 +48,7 @@
     .miramar-musical-front.cover h1 span{display:block;font-size:.62em;margin-top:.22em}
     .miramar-musical-front.cover .subtitle{margin:34px auto 28px;padding:9px 13px;background:#17242bd9;border-radius:4px;font-size:13px;letter-spacing:.2em;font-weight:700}
     .miramar-musical-front.cover .tag{font-size:15px;line-height:1.5;font-style:italic;margin:0 auto 36px}
-    .miramar-flag-btn{display:inline-block;border:1px solid currentColor;border-radius:999px;padding:7px 16px;color:inherit;text-decoration:none;font-size:11px;letter-spacing:.18em;font-weight:700;background:transparent}
+    .miramar-flag-btn{display:inline-block;border:1px solid currentColor;border-radius:999px;padding:7px 16px;color:inherit;text-decoration:none;font-size:11px;letter-spacing:.12em;font-weight:400;background:transparent;text-transform:none!important}
     .miramar-musical-front.credits h2,.miramar-musical-front.scenes h2{font-size:27px;font-weight:400;letter-spacing:.04em;margin:0 0 26px;padding-bottom:13px;border-bottom:1px solid #b9aa98}
     .miramar-credit-row{margin:0 0 24px;font-size:14px;line-height:1.55}
     .miramar-credit-label{display:block;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#806f60;font-weight:700;margin-bottom:7px}
@@ -70,10 +65,7 @@
 
   function flagButton(){
     const a=document.createElement('a');
-    a.href='autor.html';
-    a.className='miramar-flag-btn';
-    a.textContent='FLAG';
-    a.setAttribute('aria-label','FLAG');
+    a.href='autor.html';a.className='miramar-flag-btn';a.textContent='flag';a.setAttribute('aria-label','flag');
     return a;
   }
 
@@ -85,8 +77,7 @@
     page.classList.remove('miramar-illustrated-page','miramar-domestica-musical');
     page.classList.add('miramar-musical-frontmatter-page');
     if(figure)figure.hidden=true;
-    text.replaceChildren();
-    text.className='reader-text';
+    text.replaceChildren();text.className='reader-text';
 
     const wrap=document.createElement('div');
     if(marker===MARKERS[0]){
@@ -125,41 +116,49 @@
 
   function replaceAuthorName(root){
     if(!root)return;
-    const re=/Francisco Javier Lázaro Guil/g;
+    const re=/Francisco Javier L[aá]zaro Guil/gi;
     const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
     const nodes=[];
-    while(walker.nextNode())if(re.test(walker.currentNode.nodeValue||''))nodes.push(walker.currentNode);
+    while(walker.nextNode()){
+      re.lastIndex=0;
+      if(re.test(walker.currentNode.nodeValue||''))nodes.push(walker.currentNode);
+    }
     nodes.forEach(node=>{
-      const value=node.nodeValue||'';
-      const frag=document.createDocumentFragment();
-      let last=0;
+      const value=node.nodeValue||'';const frag=document.createDocumentFragment();let last=0;
       value.replace(re,(m,offset)=>{
         if(offset>last)frag.appendChild(document.createTextNode(value.slice(last,offset)));
-        frag.appendChild(flagButton());
-        last=offset+m.length;
-        return m;
+        frag.appendChild(flagButton());last=offset+m.length;return m;
       });
       if(last<value.length)frag.appendChild(document.createTextNode(value.slice(last)));
       node.parentNode?.replaceChild(frag,node);
     });
   }
 
+  function normalizeExistingFlag(root){
+    root?.querySelectorAll?.('.miramar-flag-btn,.cover-author').forEach(a=>{a.textContent='flag';a.setAttribute('aria-label','flag');});
+  }
+
   document.addEventListener('book:state',ev=>{
-    if(window.MIRAMAR_ACTIVE_CANON!=='musical')return;
     const text=document.querySelector('#readerText');
     const page=document.querySelector('#readerPage');
     if(ev.detail?.state!=='text'){
-      page?.classList.remove('miramar-musical-frontmatter-page');
+      if(!isMusical())page?.classList.remove('miramar-musical-frontmatter-page');
+      setTimeout(()=>{normalizeExistingFlag(document);replaceAuthorName(document.querySelector('#readerCover'));replaceAuthorName(document.querySelector('#readerBack'));},0);
       return;
     }
     const raw=String(text?.textContent||'').trim();
-    const marker=MARKERS.includes(raw)?raw:null;
+    const marker=isMusical()&&MARKERS.includes(raw)?raw:null;
     setTimeout(()=>{
-      if(marker)renderFront(marker);
-      else{
-        page?.classList.remove('miramar-musical-frontmatter-page');
-        replaceAuthorName(text);
-      }
+      if(marker)renderFront(marker);else page?.classList.remove('miramar-musical-frontmatter-page');
+      replaceAuthorName(text);normalizeExistingFlag(document);
     },0);
   });
+
+  const observer=new MutationObserver(()=>{
+    const text=document.querySelector('#readerText');
+    replaceAuthorName(text);normalizeExistingFlag(document);
+  });
+  const textRoot=document.querySelector('#readerText');
+  if(textRoot)observer.observe(textRoot,{childList:true,subtree:true,characterData:true});
+  setTimeout(()=>{replaceAuthorName(textRoot);normalizeExistingFlag(document);},0);
 })();
