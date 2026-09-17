@@ -1,6 +1,6 @@
-# Corpus final · actualización 17/09/2026
+# Corpus final · actualización 18/09/2026
 
-Este repositorio conserva el mapa canónico del conjunto literario firmado públicamente por **flag**. La revisión del 17 de septiembre de 2026 actualiza el canon textual de **La Granada del 27 · Un siglo después · Cosiendo Europa** y de **La poética del archivo** sin alterar los demás masters del conjunto.
+Este repositorio conserva el mapa canónico del conjunto literario con dos salidas públicas equivalentes: firma **flag** o **anonimato**. La revisión del 17 de septiembre de 2026 actualiza el canon textual de **La Granada del 27 · Un siglo después · Cosiendo Europa** y de **La poética del archivo** sin alterar los demás masters del conjunto.
 
 ## 01 · La Granada del 27 · Un siglo después · Cosiendo Europa
 
@@ -30,22 +30,29 @@ Regla de canon:
 
 ## 02 · Las cuatro estaciones de Paco Olmo de Males
 
-Novela compuesta de estructura contrapuntística y componente menipeo-carnavalesco. Julián reconstruye; Paco acredita. El archivo, la copla, el carnaval y la mar someten a prueba la fantasía de que una vida pueda quedar agotada por sus documentos.
+Novela compuesta de estructura contrapuntística y componente menipeo-carnavalesco. Julián reconstruye; Paco acredita. El archivo, la oralidad, los nombres, la copla, el carnaval y la mar someten a prueba la fantasía de que una vida pueda quedar agotada por sus documentos o por una identidad única.
 
-- Master definitivo: `02_PACO_OLMO.pdf`
-- Drive: https://drive.google.com/file/d/1KKYu0I-xQ8InOapuT_Etg3MgRORfVBtJ/view
-- SHA-256: `753da6cbf981ccbec4170ac9eac2f788f7f5fb78bc25b770cbd2e373e2192c48`
+La integración canónica del 18/09/2026 incorpora **Los nombres de Paco** como pieza bisagra autónoma y **no numerada**:
+
+> **39 · DEAMBULAR · LA HISTORIA → LOS NOMBRES DE PACO → CARNAVAL DE SUPERPACO**
+
+La inserción no altera la numeración 40–64. En el cuento aparecen, entre otros, Paco, Paquillo, Pacorro, Curro, Pancho, Copa, Copix, Farruco y Superpaco; el mito deja de pertenecer por completo al hombre que lo originó.
+
+- Texto canónico: [`paco-canon/LOS_NOMBRES_DE_PACO.md`](paco-canon/LOS_NOMBRES_DE_PACO.md)
+- Web: **210 páginas lógicas**.
+- PDF público **flag**: `02_LAS_CUATRO_ESTACIONES_DE_PACO_OLMO_DE_MALES_FLAG_2026-09-18.pdf` · 211 páginas · https://drive.google.com/file/d/10cMVaMSCqWCSpceRzr6L2pAPqp31avgZ/view
+- SHA-256 **flag**: `7f954bbbfcd498ecacc8d85a1cd473b152d8aee9f1ae73a01b5115536675efbc`
+- PDF público **anónimo**: `02_LAS_CUATRO_ESTACIONES_DE_PACO_OLMO_DE_MALES_ANONIMO_2026-09-18.pdf` · https://drive.google.com/file/d/1V8ZL2dkUqOwYTU_aHcN4243G_aJv28Up/view
+- SHA-256 **anónimo**: `fc4d49ae461652d53ec47b70df8b7b81986b4e14fd3fc3a318ccd883dee3daed`
 
 ## 03 · La terraza del Miramar
 
 Tragicomedia multimedia en treinta escenas. Canon 1.6. El Acto III · **NACE LA REINA** incorpora como segundo umbral el fragmento DK 22 B 53 de Heráclito sobre el *pólemos*. La cita no funciona como elogio de la violencia: ilumina el conflicto como principio de diferenciación que produce posiciones, soberanía y, finalmente, la necesidad de limitar la propia forma creada por la fricción.
 
-- PDF definitivo: `03_MIRAMAR.pdf`
-- Drive PDF: https://drive.google.com/file/d/1Nl2RhEdDDOSgYVFQmjeupGCoZ2EVgdpv/view
-- SHA-256 PDF: `1a383b04a0f6ca6c6f026478c72af21ac78b76d30a9fcc94cd1020209f54458a`
-- DOCX definitivo: `03_MIRAMAR.docx`
-- Drive DOCX: https://docs.google.com/document/d/1aRXi4Ljb7Yb8C1lAXno5hcU8nBgwR5wz/edit
-- SHA-256 DOCX: `f20915e0a034ce8393d6f03277dbd6f1fe8dfb6467b1678fccd87278acad7f3e`
+- PDF **flag**: https://drive.google.com/file/d/1MfUB2I0ATyaxiBXe2zT-ME-Nx2U0WMl1/view · SHA-256 `250e3d42d8ab4d90159333d63ac36b2eda14677c86388f4ae2eee1fffad4f8be`
+- PDF **anónimo**: https://drive.google.com/file/d/1eUOjbQeS3dGzYYFrDJto7l20Tj4BJkvU/view · SHA-256 `6c693b5a64b4a895a457398be4c04ccea6daba9152947a0e4ec32eab26e44631`
+- DOCX **flag**: https://docs.google.com/document/d/1_XehTbg4C3N1RdYKFGqjoZ-ZCYpQCQCL/edit · SHA-256 `d6a1c0947484481a43fa782a4da1c5baa75a278bfbddae9d062b22d08f7d8d57`
+- DOCX **anónimo**: https://docs.google.com/document/d/1a6iGikS7p-IezbtW2Y7ftdH8-pNIF9cc/edit · SHA-256 `1dbbc1d0dd19dbdff4b6175503ffd793dcd453ac011a7c99c0f733dd7c74ccfb`
 
 ## 04 · La poética del archivo
 
@@ -88,18 +95,22 @@ Los masters de Drive fechados el 15/09/2026 quedan como **versiones históricas*
 
 Dossier crítico final del conjunto. Integra **La Vega**, Paco, Miramar, el laboratorio formal, la constelación comparatista y la reflexión sobre inteligencia artificial, herramienta y dirección autoral. El mapa crítico y las calificaciones pertenecen al dossier y **no** al texto literario de *La Granada del 27 · Un siglo después · Cosiendo Europa*.
 
-- PDF: `05_LIMITE.pdf`
-- Drive PDF: https://drive.google.com/file/d/1PZzS4Knzc3a2ssEhheIMBvVjkWDRzO7F/view
-- SHA-256 PDF: `c84e9818e7da833d7f4ccc730eff42023c22ed391b52756a0c45e451620d5106`
-- DOCX: `05_LIMITE.docx`
-- Drive DOCX: https://docs.google.com/document/d/119ToPIn2NsYONhwECMnkawYEzegICSHg/edit
-- SHA-256 DOCX: `e27798d2b8b0e7abd4017d50f6ef287dffff9f49001fd505ca0c4ff0102fc9ce`
+- PDF público **flag**: https://drive.google.com/file/d/1OYqxo08vH-E6Thc6OtTxHj4KnVFunY4W/view · SHA-256 `48a9a41263c9ff1a4f612fba73dedd2e4ebb73605a10d56f2e5604d02c47a515`
+- PDF público **anónimo**: https://drive.google.com/file/d/1TWMFpYBY9HQALU408T20ZzZmzJdf08QE/view · SHA-256 `dc262b0b3a1f62d1af3a8a5e54b11849a339e42127c488be013a639ecaa0179b`
+- El DOCX anterior se conserva como fuente histórica de trabajo.
 
 ## Experiencia sonora digital
 
 La edición multimedia abre con un preludio. Al completarlo por primera vez el lector elige entre **CON SONIDO** y **SIN SONIDO**. Con sonido se mantienen activas las músicas de cada obra, las codas y los contrapuntos aleatorios de retorno; sin sonido se desactivan todos esos elementos y los bloqueos que dependen de ellos. Un control global permanece visible en todas las páginas y permite cambiar de modo en cualquier momento.
 
-## Firma
+## Autoría pública
+
+La identidad civil se reserva al ámbito legal y privado. La obra pública adopta dos salidas equivalentes:
+
+- **flag**, firma elegida y preferente;
+- **sin firma**, cuando la obra deba sostenerse sin presencia autoral visible.
+
+> **Recuperar el nombre para poder renunciar a ponerlo.**
 
 **flag**
 
@@ -133,4 +144,4 @@ El mapa termina y el agua continúa.
 
 ## Estado editorial
 
-La revisión de **17/09/2026** separa definitivamente la obra literaria de Granada del laboratorio formal y actualiza también **La poética del archivo** para que su crítica responda al estado real del proyecto. El PDF de Granada está sincronizado con su canon textual; el ensayo posee ya canon digital actualizado, mientras sus PDF/DOCX impresos siguen marcados como históricos hasta su próxima regeneración.
+La revisión de **18/09/2026** separa definitivamente la obra literaria de Granada del laboratorio formal y actualiza también **La poética del archivo** para que su crítica responda al estado real del proyecto. El PDF de Granada está sincronizado con su canon textual; el ensayo posee ya canon digital actualizado, mientras sus PDF/DOCX impresos siguen marcados como históricos hasta su próxima regeneración.
