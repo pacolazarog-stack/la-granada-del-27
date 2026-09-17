@@ -1,61 +1,49 @@
-# Manifiesto de revisión final · 15/09/2026
+# Manifiesto de revisión final · 18/09/2026
 
-## 1 · La Granada del 27
-Se mantiene el master actualizado vigente. La matriz 27 × 27 permanece como libro profundo bajo los 27 poemas de superficie; **La Vega** conserva la coordenada central 14 × 14: «Late bajo la cal la acequia hundida.» La revisión material incorpora la firma pública `flag` de forma mínima.
+## 1 · La Granada del 27 · Un siglo después · Cosiendo Europa
+Se mantiene intacto el canon literario fijado el 17/09/2026: primero la celda; después el agua. El aparato formal permanece en el Atlas y no vuelve a ocupar el cuerpo literario. El 18/09/2026 se fijan dos salidas públicas equivalentes: **flag** y **anónima**.
 
-## 2 · Paco Olmo de Males
-Se mantiene la edición canónica final revisada, con el índice reparado y sin reescritura sustantiva del corpus. La firma pública visible es `flag`; el cierre autoral permanece mínimo.
+## 2 · Las cuatro estaciones de Paco Olmo de Males
+Se integra **Los nombres de Paco** como pieza bisagra autónoma y no numerada:
+
+> **39 · LA HISTORIA → LOS NOMBRES DE PACO → CARNAVAL DE SUPERPACO**
+
+No se renumeran las piezas 40–64. La función de la nueva pieza no es añadir un catálogo de apodos, sino mostrar el paso del hombre a los nombres funcionales y de éstos a una leyenda colectiva que ya no le pertenece. Jacinta conserva agencia propia; Copa, Copix, Farruco y Superpaco son estratos de identidad y transmisión oral. El cierre del cuento permanece en el puerto, tirando de la red.
 
 ## 3 · La terraza del Miramar
-Canon 1.6. Se incorpora en el umbral del Acto III · **NACE LA REINA** el fragmento DK 22 B 53 de Heráclito. La cita funciona como clave del paso del conflicto doméstico a la producción de posiciones, autoridad y soberanía; no como elogio de la violencia. No se altera la numeración de treinta escenas. La maquetación A5 conserva la lógica dramatúrgica del documento y reduce la presencia autoral a `flag`.
+Se mantiene el canon dramatúrgico vigente. La actualización pública afecta a la autoría visible: existe salida **flag** y salida **anónima**. Las apariciones de «Flag» o «Fli» que pertenezcan al texto literario no se eliminan por razones de anonimato editorial.
 
 ## 4 · La poética del archivo
-El ensayo, contraensayo, coda y postdata se actualizan al título vigente de la novela e incorporan la lectura heraclítea de Miramar. Una adenda final sitúa la poética del archivo dentro de una categoría mayor: **Poética del límite**. La edición definitiva se normaliza a A5 con una jerarquía tipográfica más sobria.
+Permanece la revisión digital del 17/09/2026: la autocrítica sólo tiene valor cuando modifica algo. Los antiguos PDF/DOCX se conservan como históricos hasta una nueva regeneración impresa.
 
 ## 5 · Poética del límite
-El dossier crítico final integra *La Vega*, Paco, Miramar, la matriz 27 × 27, la constelación comparatista y la reflexión sobre IA y dirección autoral. Su edición se unifica con el resto de la colección.
+El dossier conserva su función crítica y queda disponible también en variantes públicas **flag** y **anónima**.
 
 > **La literatura comienza allí donde el sistema, aun funcionando con máxima precisión, descubre que la realidad contiene todavía algo que no cabe en él.**
 
-## 6 · Firma
-La firma pública canónica es **flag**.
+## 6 · Autoría
+La identidad civil pertenece al ámbito legal, registral y privado. No es necesaria en portadas ni metadatos públicos.
 
-> Fli era un espejo fiel y deformante, capaz de absorber la hipocresía, la crueldad, la estupidez y toda la mierda humana, exagerarla hasta hacerla comprensible y devolverla convertida en risa.
->
-> Esa deformación era mi cura: mostraba la herida, mostraba el ridículo, lo compartía y, por un instante, lo hacía soportable.
->
-> Era el loco que decía la verdad para que los demás pudiéramos seguir viviendo con ella.
->
-> Flic. Flac.  
-> Flip. Flap.  
-> Fli. Flag.
->
-> Perdido sin ti.
->
-> Sin más.
->
-> Como estas palabras sin ti: igual.
+La edición pública admite dos estados equivalentes:
+1. **flag** — firma elegida;
+2. **sin firma** — anonimato elegido.
 
-Cuando **Fli** y **Flag** aparecen en un mismo texto reciben tratamiento tipográfico equivalente. No se añade etiqueta, ecuación ni explicación a estas líneas.
+> **Recuperar el nombre para poder renunciar a ponerlo.**
 
-En la edición digital, pulsar `flag` abre únicamente el panel autoral: la música que esté sonando conserva reproducción, posición, pista y volumen. Cerrar el panel tampoco modifica el audio.
+El anonimato ya no significa pérdida de identidad. Significa que la obra puede sostenerse sin reclamarla públicamente.
 
-## 7 · Regla editorial
-**No corregir la singularidad; corregir la sobreexplicación.** Cada pieza debe conservar autonomía antes del mecanismo que la relaciona con las demás.
+## 7 · Fli / Flag
+Fli conserva su función memorial y escénica. Cuando **Fli** y **Flag** aparecen en un mismo texto reciben tratamiento tipográfico equivalente. No se escribe una ecuación entre ambos nombres. Abrir o cerrar el panel de `flag` no altera el audio.
 
-Regla complementaria:
+## 8 · Regla editorial
+**No corregir la singularidad; corregir la sobreexplicación.** Cada pieza debe conservar vida propia aunque se retire el mecanismo que la relaciona con las demás.
 
 > **Todo aquello que la obra ya demuestra debe dejar de explicarse.**
 
-## 8 · Maquetación definitiva
-La colección adopta una gramática visual común sin uniformar mecánicamente las obras:
+## 9 · Paquetes públicos
+El 18/09/2026 quedan fijados tres paquetes de distribución en Google Drive:
+- **FLAG**: https://drive.google.com/file/d/1rQK-nLLSEARPrkaEXwRy392HX4qC63ba/view
+- **ANÓNIMO**: https://drive.google.com/file/d/1V0F_BVgEaHUG_ul4ZsTl004vqyEfkLcb/view
+- **FLAG + ANONIMATO**: https://drive.google.com/file/d/1e1vB2magHYX2IFDV8NunbjJw6vlGjEyl/view
 
-- A5 cuando el master lo permite; Granada conserva su master con sangrado.
-- Tipografía editorial sobria y legible.
-- Jerarquías contenidas y espacio blanco suficiente.
-- Acento cromático mínimo.
-- `flag` siempre discreto y subordinado al título.
-- Ningún ornamento debe competir con el texto.
-
-## 9 · Paquete
-El paquete privado definitivo es `FINAL_FLAG_260915.zip`, documentado en [`FINAL_260915.md`](FINAL_260915.md). Se conserva exclusivamente en Google Drive y no se publica como archivo de GitHub.
+Los binarios pesados permanecen en Drive. GitHub conserva el canon textual, los hashes, los enlaces, la web y los validadores.
