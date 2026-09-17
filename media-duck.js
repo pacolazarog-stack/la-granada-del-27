@@ -45,3 +45,18 @@
 
   window.VOLUME_MEDIA_DUCK={tracked,duck,restore};
 })();
+
+/* Miramar: estos módulos deben ejecutarse antes de lector.js.
+   Se cargan aquí porque media-duck.js ya ocupa esa posición estable en miramar.html. */
+(()=>{
+  if(document.body?.dataset?.bookId!=='miramar')return;
+  const load=(src)=>{
+    if(document.readyState==='loading'){
+      document.write(`<script src="${src}"><\/script>`);
+      return;
+    }
+    const s=document.createElement('script');s.src=src;s.async=false;document.head.appendChild(s);
+  };
+  load('miramar-musical-frontmatter.js?v=20260917-frontmatter3');
+  load('miramar-textual-voice-toggle.js?v=20260917-textvoice1');
+})();
