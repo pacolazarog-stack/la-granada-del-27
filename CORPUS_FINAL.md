@@ -1,14 +1,29 @@
-# Corpus final · 15/09/2026
+# Corpus final · actualización textual 17/09/2026
 
-Este repositorio conserva el mapa canónico del conjunto literario firmado públicamente por **flag** y enlaza sus masters definitivos.
+Este repositorio conserva el mapa canónico del conjunto literario firmado públicamente por **flag**. La revisión del 17 de septiembre de 2026 actualiza el canon textual de la primera obra sin alterar los demás masters del conjunto.
 
-## 01 · La Granada del 27 · Un siglo después
+## 01 · La Granada del 27 · Un siglo después · Cosiendo Europa
 
-Poesía, memoria territorial y matriz profunda 27 × 27. La lectura de superficie mantiene autonomía literaria; el centro 14 × 14 coincide con **La Vega** y con el verso «Late bajo la cal la acequia hundida.»
+La edición literaria vigente es un único volumen con dos libros autónomos:
 
-- Master definitivo: `01_GRANADA27.pdf`
-- Drive: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
-- SHA-256: `694bed0978c703426350c05cdacac88cd3e9572ab1b5ee4d0f033f7e45a5a54d`
+- **LIBRO I · LA GRANADA DEL 27**: prólogo, 27 poemas canónicos y epílogo. Los poemas permanecen intactos.
+- **LIBRO II · COSIENDO EUROPA**: prólogo y cinco partes —I · Bajo la avenida; II · Tierras que beben; III · Manos; IV · Costuras; V · El agua regresa—. **TODAVÍA** es el cierre literario.
+
+La transición entre ambos libros queda reducida al verso:
+
+> Late bajo la cal la acequia hundida.
+
+La matriz 27 × 27, las lecturas horizontales, verticales, diagonales, radiales y demás aparato formal **no forman parte de la secuencia de lectura de la edición literaria**. Se conservan como volumen independiente en el **Atlas de La Granada del 27 · Lecturas formales**.
+
+- Canon textual vigente: [`TEXTO_CANONICO_2026-09-17.md`](TEXTO_CANONICO_2026-09-17.md)
+- Texto completo segmentado: [`texto-canonico/`](texto-canonico/)
+- El master PDF del 15/09/2026 y su SHA-256 quedan como **versión histórica anterior** a esta revisión textual; no deben presentarse como master literario vigente.
+- Drive histórico 15/09/2026: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
+- SHA-256 histórico: `694bed0978c703426350c05cdacac88cd3e9572ab1b5ee4d0f033f7e45a5a54d`
+
+Regla de canon:
+
+> **Nada entra porque cuadre. Solo entra si vive.**
 
 ## 02 · Las cuatro estaciones de Paco Olmo de Males
 
@@ -42,7 +57,7 @@ Ensayo, contraensayo, coda satírica y postdata testamentaria. La revisión fina
 
 ## 05 · Poética del límite
 
-Dossier crítico final del conjunto. Integra **La Vega**, Paco, Miramar, la matriz 27 × 27, la constelación comparatista y la reflexión sobre inteligencia artificial, herramienta y dirección autoral.
+Dossier crítico final del conjunto. Integra **La Vega**, Paco, Miramar, la matriz 27 × 27, la constelación comparatista y la reflexión sobre inteligencia artificial, herramienta y dirección autoral. El mapa crítico y las calificaciones pertenecen al dossier y **no** al texto literario de *La Granada del 27 · Un siglo después · Cosiendo Europa*.
 
 - PDF: `05_LIMITE.pdf`
 - Drive PDF: https://drive.google.com/file/d/1PZzS4Knzc3a2ssEhheIMBvVjkWDRzO7F/view
@@ -87,6 +102,6 @@ La linde termina y la mirada continúa.
 La cuadrícula termina y el poema continúa.  
 La generación termina y la autoría decide.
 
-## Edición definitiva
+## Estado editorial
 
-La revisión de 15/09/2026 unifica la presentación editorial: A5 cuando el master lo permite, tipografía sobria, jerarquías contenidas, acento cromático mínimo y firma `flag` discreta. La obra conserva prioridad visual sobre la firma.
+La revisión textual de **17/09/2026** separa definitivamente la obra literaria del laboratorio formal. Para *La Granada del 27 · Un siglo después · Cosiendo Europa*, el texto rector es el canon Markdown enlazado arriba. La edición impresa se compone con una sola cubierta exterior, dos portadillas internas —Libro I y Libro II— y una sola contraportada general al final.
