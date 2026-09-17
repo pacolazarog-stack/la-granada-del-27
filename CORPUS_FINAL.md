@@ -17,12 +17,11 @@ La matriz 27 × 27, las lecturas horizontales, verticales, diagonales, radiales 
 
 - Canon textual vigente: [`TEXTO_CANONICO_2026-09-17.md`](TEXTO_CANONICO_2026-09-17.md)
 - Texto completo segmentado: [`texto-canonico/`](texto-canonico/)
-- Master PDF vigente: `LA_GRANADA_DEL_27_UN_SIGLO_DESPUES_COSIENDO_EUROPA_MASTER_2026-09-17.pdf`
-- Páginas: **91**
-- Drive: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
-- SHA-256: `f9c595a24b85647bfafd5143df7b8b8949990bbe597f55dfd67124f7495d8472`
+- Texto canónico vigente: 17/09/2026.
+- Salida pública **flag**: https://drive.google.com/file/d/1AQxm9UEb5Io82gabDxaNk7ZGvMIVPfs5/view · **91 páginas** · SHA-256 `32e85a4d6806f63ee4c73781812ad7e7c6ae33db85adda785adf37968c56975d`
+- Salida pública **anónima**: https://drive.google.com/file/d/1ml4ezfhHblHjgiowb6yy90QvhX2hJ69_/view · **91 páginas** · SHA-256 `e42cb187def42fec44afb9c73043845d21f8917642f480c7b17a65cb8306f53e`
 
-El antiguo master de 112 páginas de 15/09/2026 queda como versión histórica y ha sido sustituido en el enlace canónico de Drive.
+Los masters anteriores quedan como antecedentes históricos.
 
 Regla de canon:
 
