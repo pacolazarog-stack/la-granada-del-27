@@ -13,6 +13,10 @@
     9:'https://d2jqrm6oza8nb6.cloudfront.net/datasets/4ee6b771-0a9b-42a9-9626-80643c204edd.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYjNjYTc0MjJkYWMxM2QwZSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTc2ODg2Nn0.Rfym_bnUdzvmDwiqD_dmwmXqfCVFU4WU-PvVrxnU9Qk'
   };
 
+  /* Las fuentes 01–09 son las láminas canónicas completas (imagen + texto).
+     En la web sólo se muestra su mitad escenográfica en la columna visual derecha. */
+  const DOMESTICA_CROP={1:206,2:227,3:203,4:207,5:208,6:208,7:234,8:213,9:229};
+
   const page=document.querySelector('#readerPage');
   const figure=document.querySelector('#miramarIllustration');
   const image=document.querySelector('#miramarIllustration .miramar-scene-image');
@@ -25,22 +29,37 @@
   const style=document.createElement('style');
   style.id='miramar-musical-domestica-style';
   style.textContent=`
+    /* DOMÉSTICA 01–09: texto canónico a la izquierda (1/3), escenografía a la derecha (2/3). */
     html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page.miramar-domestica-musical{
-      width:min(94vw,calc(82vh * .7070707),820px)!important;
-      height:auto!important;
+      width:min(1600px,99vw)!important;
+      height:min(80vh,900px)!important;
       min-height:0!important;
-      aspect-ratio:210/297;
+      aspect-ratio:auto!important;
       padding:0!important;
       display:grid!important;
-      grid-template-columns:1fr!important;
-      grid-template-rows:1fr 1fr!important;
+      grid-template-columns:minmax(0,1fr) minmax(0,2fr)!important;
+      grid-template-rows:1fr!important;
       overflow:hidden!important;
       transform:none!important;
       background:#f7f1e8!important;
       box-shadow:0 18px 48px rgba(0,0,0,.34);
     }
-    html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical .miramar-illustration{
+    html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical .reader-text{
       grid-column:1!important;
+      grid-row:1!important;
+      width:100%!important;
+      height:100%!important;
+      min-width:0!important;
+      max-height:none!important;
+      overflow:auto!important;
+      box-sizing:border-box!important;
+      padding:30px 28px 34px 32px!important;
+      margin:0!important;
+      background:#f7f1e8!important;
+      color:#211b17!important;
+    }
+    html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical .miramar-illustration{
+      grid-column:2!important;
       grid-row:1!important;
       width:100%!important;
       height:100%!important;
@@ -57,39 +76,26 @@
       height:100%!important;
       max-width:none!important;
       aspect-ratio:auto!important;
-      background-size:100% auto!important;
       background-position:top center!important;
       background-repeat:no-repeat!important;
+      background-color:#090c10!important;
       box-shadow:none!important;
     }
     html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical .miramar-scene-caption{display:none!important}
-    html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical .reader-text{
-      grid-column:1!important;
-      grid-row:2!important;
-      width:100%!important;
-      height:100%!important;
-      max-height:none!important;
-      overflow:hidden!important;
-      box-sizing:border-box!important;
-      padding:17px 26px 15px!important;
-      margin:0!important;
-      background:#f7f1e8!important;
-      color:#211b17!important;
-    }
     html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical #readerText.miramar-script.miramar-musical-script{
       max-width:none!important;
       padding-top:0!important;
-      font-size:clamp(8.2px,.74vw,10.8px)!important;
-      line-height:1.24!important;
+      font-size:clamp(11px,.82vw,14px)!important;
+      line-height:1.31!important;
       font-family:Georgia,'Times New Roman',serif!important;
     }
     html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical .miramar-script-line{
-      margin:.13em 0!important;
+      margin:.18em 0!important;
       min-height:0!important;
       color:#211b17!important;
     }
     html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical .miramar-script-line.rhythm{
-      margin:.42em 0!important;
+      margin:.5em 0!important;
       color:#211b17!important;
       font-size:.94em!important;
       font-style:italic!important;
@@ -97,39 +103,44 @@
       word-spacing:.04em!important;
     }
     html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical .miramar-script-line.impact{
-      margin:.38em 0!important;
+      margin:.42em 0!important;
       color:#211b17!important;
       letter-spacing:.04em!important;
     }
-    html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical[data-domestica-scene="7"] #readerText.miramar-script{
-      font-size:clamp(7.1px,.63vw,9.3px)!important;
-      line-height:1.17!important;
+    html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical[data-domestica-scene="7"] #readerText.miramar-script,
+    html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical[data-domestica-scene="9"] #readerText.miramar-script{
+      font-size:clamp(10px,.72vw,12.5px)!important;
+      line-height:1.24!important;
     }
     html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical[data-domestica-scene="7"] .miramar-script-body{
-      column-count:2;
-      column-gap:24px;
-      column-rule:1px solid rgba(44,35,29,.16);
-    }
-    html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical[data-domestica-scene="9"] #readerText.miramar-script{
-      font-size:clamp(7.6px,.67vw,9.7px)!important;
-      line-height:1.19!important;
+      column-count:1!important;
+      column-gap:0!important;
+      column-rule:0!important;
     }
     @media(max-width:900px){
       html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-illustrated-page.miramar-domestica-musical{
-        width:min(96vw,calc(84vh * .7070707))!important;
+        width:min(96vw,760px)!important;
         height:auto!important;
-        display:grid!important;
-        grid-template-columns:1fr!important;
-        grid-template-rows:1fr 1fr!important;
-        overflow:hidden!important;
+        min-height:100%!important;
+        display:flex!important;
+        flex-direction:column!important;
+        overflow:visible!important;
       }
-      html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical .miramar-illustration,
-      html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical .reader-text{
+      html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical .miramar-illustration{
+        order:0!important;
         width:100%!important;
-        height:100%!important;
+        height:min(62vw,520px)!important;
+        min-height:320px!important;
         flex:none!important;
       }
-      html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical .reader-text{padding:12px 17px 10px!important}
+      html[data-media-mode="musical"] body[data-miramar-mode="illustrated"] .reader-page.miramar-domestica-musical .reader-text{
+        order:1!important;
+        width:100%!important;
+        height:auto!important;
+        overflow:visible!important;
+        flex:none!important;
+        padding:22px 18px 30px!important;
+      }
     }
   `;
   document.head.appendChild(style);
@@ -149,7 +160,7 @@
     page.classList.add('miramar-domestica-musical');
     page.dataset.domesticaScene=String(currentScene);
     image.style.backgroundImage=`url("${DOMESTICA_IMAGES[currentScene]}")`;
-    image.style.backgroundSize='100% auto';
+    image.style.backgroundSize=`auto ${DOMESTICA_CROP[currentScene]||208}%`;
     image.style.backgroundPosition='top center';
     image.style.backgroundRepeat='no-repeat';
   }
