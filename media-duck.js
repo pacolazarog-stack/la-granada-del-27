@@ -75,6 +75,6 @@
     }
     const s=document.createElement('script');s.src=src;s.async=false;document.head.appendChild(s);
   };
-  load('miramar-musical-frontmatter.js?v=20260917-frontmatter3');
+  load('miramar-musical-frontmatter.js?v=20260917-frontmatter4');
   load('miramar-textual-voice-toggle.js?v=20260917-textvoice1');
 })();
