@@ -58,6 +58,15 @@ Regla editorial:
 
 > **Nada entra porque cuadre. Solo entra si vive.**
 
+### Master vigente · 17/09/2026
+
+- Archivo: `LA_GRANADA_DEL_27_UN_SIGLO_DESPUES_COSIENDO_EUROPA_MASTER_2026-09-17.pdf`
+- Drive: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
+- Páginas: **91**
+- SHA-256: `f9c595a24b85647bfafd5143df7b8b8949990bbe597f55dfd67124f7495d8472`
+
+El antiguo PDF de 112 páginas del 15/09/2026 queda como versión histórica y ya no ocupa el enlace canónico de Drive.
+
 El sitio digital puede seguir conservando herramientas y recorridos experimentales del laboratorio; esos recorridos no sustituyen el canon textual de 17/09/2026.
 
 Página pública: https://pacolazarog-stack.github.io/la-granada-del-27/
@@ -83,10 +92,8 @@ Master definitivo: https://drive.google.com/file/d/1Nl2RhEdDDOSgYVFQmjeupGCoZ2EV
 - Ensayo: https://drive.google.com/file/d/1fBC_i2A2NkMjL0sXcQ1wliVcAADVViUi/view
 - Dossier crítico: https://drive.google.com/file/d/1PZzS4Knzc3a2ssEhheIMBvVjkWDRzO7F/view
 
-## Edición textual · 17/09/2026
+## Edición de autor · 17/09/2026
 
-Para **La Granada del 27 · Un siglo después · Cosiendo Europa**, el canon textual actual es el Markdown del repositorio. El antiguo PDF de 112 páginas de 15/09/2026 queda como versión histórica anterior a la separación del Atlas y a la integración de *Cosiendo Europa*.
-
-La edición física vigente se concibe con **una cubierta exterior, dos portadillas internas y una sola contraportada general**. No se introduce aparato crítico ni explicación matricial dentro del volumen literario.
+Para **La Granada del 27 · Un siglo después · Cosiendo Europa**, texto y master binario están sincronizados. La edición física vigente se concibe con **una cubierta exterior, dos portadillas internas y una sola contraportada general**. No se introduce aparato crítico ni explicación matricial dentro del volumen literario.
 
 © 2026 flag. Todos los derechos reservados.
