@@ -1,31 +1,44 @@
 (()=>{
   if(document.body?.dataset?.bookId!=='miramar')return;
 
-  /* Este módulo ya no crea ni sustituye el corpus musical.
-     El canon se construye antes, en miramar-musical-canon.js y sus suplementos.
-     Aquí se aplica la selección vigente del corpus, se conserva una copia activa,
-     se actualiza la interfaz y se fuerza la lectura ilustrada en musical. */
-  const activeCanon=()=>window.MIRAMAR_ACTIVE_CANON||localStorage.getItem('miramarCanonMode')||'';
-  const isMusical=()=>activeCanon()==='musical'||document.documentElement.dataset.mediaMode==='musical';
+  const MODE_KEY='miramarCanonMode';
+  const activeCanon=()=>window.MIRAMAR_ACTIVE_CANON||localStorage.getItem(MODE_KEY)||'';
 
+  /* La elección MUSICAL/TEXTUAL del encabezado manda también sobre el canon.
+     Esto evita que una preferencia textual antigua deje cargadas las páginas
+     preliminares de la edición impresa mientras la interfaz muestra MUSICAL. */
+  function resolvedMode(){
+    const voice=localStorage.getItem('volumeVoiceMode');
+    const sound=localStorage.getItem('volumeSoundMode');
+    if(voice==='on')return'textual';
+    if(sound!=='off')return'musical';
+    const stored=localStorage.getItem(MODE_KEY);
+    return stored==='musical'||stored==='textual'?stored:'textual';
+  }
+
+  function syncCanonBeforeReader(){
+    const wanted=resolvedMode();
+    const current=activeCanon();
+    if(current===wanted)return false;
+    localStorage.setItem(MODE_KEY,wanted);
+    window.MIRAMAR_ACTIVE_CANON=wanted;
+
+    /* Si venimos del canon impreso al musical, la lectura debe comenzar en
+       la escena 01, no conservar un número de página de los preliminares. */
+    if(wanted==='musical')history.replaceState(null,'','#p1');
+    location.reload();
+    return true;
+  }
+
+  if(syncCanonBeforeReader())return;
+
+  const isMusical=()=>activeCanon()==='musical';
+
+  /* Aquí ya debe estar cargado el corpus correcto. No se recortan escenas:
+     el canon musical conserva íntegramente 01–30. Las páginas preliminares
+     de la edición impresa pertenecen sólo al canon textual. */
   if(window.WORK_DATA&&Array.isArray(window.WORK_DATA.pages)){
     if(isMusical()){
-      /* Versión musical vigente: se quitan de la lectura las 16 primeras páginas.
-         Los textos fuente permanecen intactos en sus módulos para poder revertirlos. */
-      if(window.WORK_DATA.pages.length>=30){
-        window.WORK_DATA={
-          ...window.WORK_DATA,
-          subtitle:'Tragicomedia multimedia · Canon musical · escenas 17–30',
-          pages:[...window.WORK_DATA.pages].slice(16)
-        };
-        window.MIRAMAR_CANON={
-          version:'musical-2026-09-17-17-30',
-          pages:window.WORK_DATA.pages.length,
-          validated:true
-        };
-        const m=location.hash.match(/^#p(\d+)$/);
-        if(m&&Number(m[1])>window.WORK_DATA.pages.length)history.replaceState(null,'','#p1');
-      }
       window.MIRAMAR_MUSICAL_DATA={...window.WORK_DATA,pages:[...window.WORK_DATA.pages]};
       document.documentElement.dataset.miramarCanon='musical';
     }else{
@@ -43,10 +56,15 @@
   }
   applyLabels();
 
-  /* El cambio de canon se resuelve recargando: así cada cadena de scripts
-     reconstruye su corpus completo antes de que lector.js calcule páginas. */
+  /* Cada cambio de modo actualiza primero la clave de canon y después recarga,
+     para que miramar-musical-canon.js construya el corpus adecuado antes de
+     que lector.js cuente páginas. */
   let reloadPending=false;
   const reloadForCanonChange=()=>{
+    const next=resolvedMode();
+    localStorage.setItem(MODE_KEY,next);
+    window.MIRAMAR_ACTIVE_CANON=next;
+    if(next==='musical')history.replaceState(null,'','#p1');
     if(reloadPending)return;
     reloadPending=true;
     setTimeout(()=>location.reload(),30);
