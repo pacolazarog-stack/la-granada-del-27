@@ -3,6 +3,13 @@ name: Validate languages
 on:
   push:
     paths:
+      - 'paco-pages-en-a.js'
+      - 'paco-pages-fr-a.js'
+      - 'paco-pages-it-a.js'
+      - 'paco-pages-de-a.js'
+      - 'paco-pages-b.js'
+      - 'paco-data.js'
+      - 'lector.js'
       - 'language-cosiendo-europa-c.js'
       - 'language-cosiendo-europa-d.js'
       - 'language-cosiendo-europa-e.js'
