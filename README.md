@@ -175,7 +175,7 @@ La capa semántica conserva cinco trazas de 27 nodos: **POEMA · AGUA · ARTISTA
 - CENTRO: `Late bajo la cal la acequia hundida.`
 - Z: verso proyectado por la profundidad `z` sobre la traza POEMA.
 
-El verso Z recibe además una **recompensa azarosa entre las 24 lenguas oficiales de la UE**. La probabilidad se pondera por **musicalidad 50 % · semántica 20 % · semiótica 15 % · afinidad 10 % · extrañeza productiva 5 %**, con una compensación exploratoria para lenguas menos visitadas. Cuando el navegador dispone de Translator API, la traducción real se usa para refinar la musicalidad; Speech Synthesis permite escuchar la lengua seleccionada. En ausencia de traducción disponible, se conserva el verso español y la selección lingüística funciona como capa sonora.
+El verso Z recibe además una **recompensa azarosa entre 27 lenguas**: las **24 lenguas oficiales de la UE** más **catalán, gallego y euskera**. Como el español ya forma parte de las 24 oficiales, el sistema contiene **cuatro lenguas españolas en total: español, catalán, gallego y euskera**. La probabilidad se pondera por **musicalidad 50 % · semántica 20 % · semiótica 15 % · afinidad 10 % · extrañeza productiva 5 %**, con una compensación exploratoria para lenguas menos visitadas. Cuando el navegador dispone de Translator API, la traducción real se usa para refinar la musicalidad; Speech Synthesis permite escuchar la lengua seleccionada. En ausencia de traducción disponible, se conserva el verso español y la selección lingüística funciona como capa sonora.
 
 Principio rector: **«El azar no traduce el verso: busca en qué lengua puede volver a sonar.»**
 
