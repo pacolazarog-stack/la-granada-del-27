@@ -368,3 +368,29 @@ La coda conserva la fórmula:
 **«¿Y la mar? —Que se registre sola.»**
 
 La resolución final queda igualmente traducida y mantiene el cierre firme: **sin anexos**.
+
+
+## 23. La poética del archivo · versión literaria multilingüe completa
+
+Queda completada la versión literaria revisada **EN · FR · IT · DE** de **La poética del archivo**, integrada como ensayo final de **Poética del límite**.
+
+Cobertura final del lector: **23 páginas** en español canónico más cuatro versiones literarias.
+
+La cobertura comprende íntegramente:
+
+- **ENSAYO CRÍTICO**, con los nueve apartados desde **I · LA GRANADA DEL 27: DE LA CELDA AL AGUA** hasta **IX · EL ATLAS: CONSERVAR EL MECANISMO SIN OBLIGAR A MIRARLO**;
+- **CODA · CONTRA EL BUROFAX A LA REALIDAD**;
+- **CONTRAENSAYO · LA POÉTICA DEL BUROFAX Y EL TEMBLOR**;
+- **CODA SATÍRICA · SIN VASELINA**;
+- **POSTDATA · LA ÚNICA PUERTA**;
+- **ADENDA FINAL · POÉTICA DEL LÍMITE**.
+
+Criterio de traducción: conservar la precisión conceptual del ensayo sin endurecer su respiración literaria; mantener las recurrencias materiales —archivo, expediente, matriz, linde, mapa, agua, acequia, mirada— y preservar el humor de las secciones satíricas sin explicar el chiste. **Acequia** permanece como término cultural cuando su sustitución borraría la continuidad material del corpus.
+
+Las traducciones literarias por página tienen prioridad sobre la Translator API del navegador. La traducción automática queda únicamente como sistema de reserva para otras superficies todavía no fijadas literariamente.
+
+La **ADENDA FINAL** conserva en las cuatro lenguas la estructura paralela del cierre:
+
+**el plano termina y la acequia continúa; el expediente termina y la persona continúa; la linde termina y la mirada continúa; la cuadrícula termina y el poema continúa; el mapa termina y el agua continúa.**
+
+El ensayo queda así cerrado en **ES · EN · FR · IT · DE** sin alterar el español canónico.
