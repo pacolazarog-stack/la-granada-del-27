@@ -394,3 +394,35 @@ La **ADENDA FINAL** conserva en las cuatro lenguas la estructura paralela del ci
 **el plano termina y la acequia continúa; el expediente termina y la persona continúa; la linde termina y la mirada continúa; la cuadrícula termina y el poema continúa; el mapa termina y el agua continúa.**
 
 El ensayo queda así cerrado en **ES · EN · FR · IT · DE** sin alterar el español canónico.
+
+
+## 24. La terraza del Miramar · versión literaria multilingüe completa
+
+Queda completada la versión literaria revisada **EN · FR · IT · DE** de **La terraza del Miramar**, sin alterar el español canónico.
+
+Cobertura final del lector: **97 páginas canónicas** en español más cuatro versiones literarias.
+
+La cobertura comprende íntegramente:
+
+- preliminares editoriales, dispositivo, figuras, espacio e índice;
+- las **30 escenas**;
+- el interludio poético **MIRAMAR · MARE NOSTRUM · RAM**;
+- **29 · ¡HE! COMUNIDAD**, incluida la Tarasca humana y la convocatoria participativa del público;
+- **30 · Diez minutos**, con el segundo «Ok», el retorno de la sábana a tela y la coda impresa;
+- el **Cuaderno de creación**, el mapa de las treinta escenas, los cinco signos y el colofón.
+
+Criterio de traducción dramática:
+
+1. preservar la respiración escénica, la comicidad burocrática y el desplazamiento de DOMÉSTICA → COMUNIDAD → REINA → DESARME;
+2. traducir las acotaciones con precisión funcional, sin convertirlas en prosa explicativa;
+3. conservar la oralidad de Francisca y el contraste con la economía verbal de Vicente;
+4. traducir las carocas priorizando golpe oral, función coral y ritmo sobre una reproducción métrica rígida;
+5. mantener como materia sonora no sustituible **MAR · RAM · Amar · Mirar · Miramar · Mira mar · Mar mira · Mira más** dentro del interludio, y traducir el campo semántico que las rodea;
+6. conservar **Mare nostrum** y **Tarasca** como núcleos culturales del dispositivo;
+7. preservar la economía exacta del segundo **«Ok»** y su inversión dramática respecto al primero.
+
+Las cinco capas `miramar-pages-a.js` a `miramar-pages-e.js` tienen prioridad sobre la Translator API del navegador. La traducción automática queda únicamente como cobertura de reserva para superficies auxiliares no fijadas literariamente.
+
+El cierre conserva en las cuatro lenguas la misma operación: **la drag permanece; desaparece la defensa, no Francisca**.
+
+La obra queda así cerrada en **ES · EN · FR · IT · DE** en su lector canónico de 97 páginas.
