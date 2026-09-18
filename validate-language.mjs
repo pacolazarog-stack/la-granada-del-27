@@ -20,7 +20,7 @@ for(const lang of ['en','fr','it','de']){
 
 
 /* Primera versión literaria completa de LIBRO I · 1927 */
-for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js','language-granada-2027-a.js','language-granada-2027-b.js','language-granada-2027-c.js','language-cosiendo-europa-a.js','language-cosiendo-europa-b.js']){
+for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js','language-granada-2027-a.js','language-granada-2027-b.js','language-granada-2027-c.js','language-cosiendo-europa-a.js','language-cosiendo-europa-b.js','language-cosiendo-europa-c.js','language-cosiendo-europa-d.js','language-cosiendo-europa-e.js']){
   new Function(fs.readFileSync(file,'utf8'));
   vm.runInContext(fs.readFileSync(file,'utf8'),sandbox,{filename:file});
 }
@@ -68,8 +68,44 @@ for(const line of uniqueAguaTierras){
   for(const lang of ['en','fr','it','de'])assert(literary[line][lang],'falta '+lang+' en Cosiendo Europa I-II para: '+line);
 }
 
+
+
+const sourceManosCosturas=fs.readFileSync('texto-canonico/04_LIBRO_II_MANOS_COSTURAS.md','utf8')
+  .replace(/\r/g,'')
+  .split('\n')
+  .map(cleanLine)
+  .filter(Boolean);
+const uniqueManosCosturas=[...new Set(sourceManosCosturas)];
+for(const line of uniqueManosCosturas){
+  assert(literary[line],'falta traducción literaria Cosiendo Europa III-IV para: '+line);
+  for(const lang of ['en','fr','it','de'])assert(literary[line][lang],'falta '+lang+' en Cosiendo Europa III-IV para: '+line);
+}
+
+const sourceRegreso=fs.readFileSync('texto-canonico/05_LIBRO_II_REGRESO.md','utf8')
+  .replace(/\r/g,'')
+  .split('\n')
+  .map(cleanLine)
+  .filter(Boolean);
+const uniqueRegreso=[...new Set(sourceRegreso)];
+for(const line of uniqueRegreso){
+  assert(literary[line],'falta traducción literaria Cosiendo Europa V para: '+line);
+  for(const lang of ['en','fr','it','de'])assert(literary[line][lang],'falta '+lang+' en Cosiendo Europa V para: '+line);
+}
+
+const sourceBack=fs.readFileSync('texto-canonico/06_CONTRAPORTADA.md','utf8')
+  .replace(/\r/g,'')
+  .split('\n')
+  .map(cleanLine)
+  .filter(Boolean)
+  .filter(line=>line!=='flag');
+const uniqueBack=[...new Set(sourceBack)];
+for(const line of uniqueBack){
+  assert(literary[line],'falta traducción literaria de contraportada para: '+line);
+  for(const lang of ['en','fr','it','de'])assert(literary[line][lang],'falta '+lang+' en contraportada para: '+line);
+}
+
 const granadaHtml=fs.readFileSync('granada.html','utf8');
-for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js','language-granada-2027-a.js','language-granada-2027-b.js','language-granada-2027-c.js','language-cosiendo-europa-a.js','language-cosiendo-europa-b.js'])
+for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js','language-granada-2027-a.js','language-granada-2027-b.js','language-granada-2027-c.js','language-cosiendo-europa-a.js','language-cosiendo-europa-b.js','language-cosiendo-europa-c.js','language-cosiendo-europa-d.js','language-cosiendo-europa-e.js'])
   assert(granadaHtml.includes(file),'granada.html no carga '+file);
 
 const sys=fs.readFileSync('language-system.js','utf8');
@@ -105,3 +141,6 @@ console.log('OK · texto dinámico + voz siguen el idioma seleccionado');
 console.log(`OK · Granada 1927: ${unique1927.length} unidades literarias × 4 lenguas revisadas`);
 console.log(`OK · Granada 2027 + epílogo: ${unique2027.length} unidades literarias × 4 lenguas revisadas`);
 console.log(`OK · Cosiendo Europa I-II: ${uniqueAguaTierras.length} unidades literarias × 4 lenguas revisadas`);
+console.log(`OK · Cosiendo Europa III-IV: ${uniqueManosCosturas.length} unidades literarias × 4 lenguas revisadas`);
+console.log(`OK · Cosiendo Europa V: ${uniqueRegreso.length} unidades literarias × 4 lenguas revisadas`);
+console.log(`OK · Contraportada: ${uniqueBack.length} unidades literarias × 4 lenguas revisadas`);
