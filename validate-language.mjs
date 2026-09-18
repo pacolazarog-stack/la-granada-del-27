@@ -113,17 +113,17 @@ for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','la
 /* Paco Olmo · bloque literario inicial */
 const pacoSandbox={window:{}};
 vm.createContext(pacoSandbox);
-for(const file of ['paco-pages-en-a.js','paco-pages-fr-a.js','paco-pages-it-a.js','paco-pages-de-a.js','paco-pages-b.js','paco-pages-en-b.js','paco-pages-fr-b.js','paco-pages-it-b.js','paco-pages-de-b.js','paco-pages-c.js','paco-pages-primavera-d.js','paco-pages-primavera-e.js','paco-pages-verano-a.js','paco-pages-verano-b.js','paco-pages-verano-c.js','paco-pages-verano-d.js','paco-pages-verano-e.js']){
+for(const file of ['paco-pages-en-a.js','paco-pages-fr-a.js','paco-pages-it-a.js','paco-pages-de-a.js','paco-pages-b.js','paco-pages-en-b.js','paco-pages-fr-b.js','paco-pages-it-b.js','paco-pages-de-b.js','paco-pages-c.js','paco-pages-primavera-d.js','paco-pages-primavera-e.js','paco-pages-verano-a.js','paco-pages-verano-b.js','paco-pages-verano-c.js','paco-pages-verano-d.js','paco-pages-verano-e.js','paco-pages-otono-a.js','paco-pages-otono-b.js']){
   new Function(fs.readFileSync(file,'utf8'));
   vm.runInContext(fs.readFileSync(file,'utf8'),pacoSandbox,{filename:file});
 }
 const pacoTranslations=pacoSandbox.window.WORK_PAGE_TRANSLATIONS;
 for(const lang of ['en','fr','it','de']){
   assert(Array.isArray(pacoTranslations?.[lang]),'falta array Paco '+lang);
-  for(let i=0;i<=74;i++) assert(typeof pacoTranslations[lang][i]==='string'&&pacoTranslations[lang][i].trim(),'falta Paco página '+(i+1)+' en '+lang);
+  for(let i=0;i<=94;i++) assert(typeof pacoTranslations[lang][i]==='string'&&pacoTranslations[lang][i].trim(),'falta Paco página '+(i+1)+' en '+lang);
 }
 const pacoHtml=fs.readFileSync('paco.html','utf8');
-for(const file of ['paco-pages-en-a.js','paco-pages-fr-a.js','paco-pages-it-a.js','paco-pages-de-a.js','paco-pages-b.js','paco-pages-en-b.js','paco-pages-fr-b.js','paco-pages-it-b.js','paco-pages-de-b.js','paco-pages-c.js','paco-pages-primavera-d.js','paco-pages-primavera-e.js','paco-pages-verano-a.js','paco-pages-verano-b.js','paco-pages-verano-c.js','paco-pages-verano-d.js','paco-pages-verano-e.js'])
+for(const file of ['paco-pages-en-a.js','paco-pages-fr-a.js','paco-pages-it-a.js','paco-pages-de-a.js','paco-pages-b.js','paco-pages-en-b.js','paco-pages-fr-b.js','paco-pages-it-b.js','paco-pages-de-b.js','paco-pages-c.js','paco-pages-primavera-d.js','paco-pages-primavera-e.js','paco-pages-verano-a.js','paco-pages-verano-b.js','paco-pages-verano-c.js','paco-pages-verano-d.js','paco-pages-verano-e.js','paco-pages-otono-a.js','paco-pages-otono-b.js'])
   assert(pacoHtml.includes(file),'paco.html no carga '+file);
 const lector=fs.readFileSync('lector.js','utf8');
 assert(lector.includes('WORK_PAGE_TRANSLATIONS'),'lector.js debe priorizar traducciones literarias por página');
@@ -165,4 +165,4 @@ console.log(`OK · Cosiendo Europa I-II: ${uniqueAguaTierras.length} unidades li
 console.log(`OK · Cosiendo Europa III-IV: ${uniqueManosCosturas.length} unidades literarias × 4 lenguas revisadas`);
 console.log(`OK · Cosiendo Europa V: ${uniqueRegreso.length} unidades literarias × 4 lenguas revisadas`);
 console.log(`OK · Contraportada: ${uniqueBack.length} unidades literarias × 4 lenguas revisadas`);
-console.log('OK · Paco Olmo: páginas 1–75 × EN/FR/IT/DE en versión literaria; VERANO cerrado');
+console.log('OK · Paco Olmo: páginas 1–95 × EN/FR/IT/DE en versión literaria; OTOÑO en curso');
