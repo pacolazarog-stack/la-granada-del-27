@@ -33,6 +33,8 @@ const SCENES=[
 ['DIEZ MINUTOS','Volver al mar. Estar.']
 ];
 
+const HORIZONTAL_SCENES={1:'assets/miramar-corporal/scenes/scene-01.webp',2:'assets/miramar-corporal/scenes/scene-02.webp',3:'assets/miramar-corporal/scenes/scene-03.webp',4:'assets/miramar-corporal/scenes/scene-04.webp',5:'assets/miramar-corporal/scenes/scene-05.webp',6:'assets/miramar-corporal/scenes/scene-06.webp',7:'assets/miramar-corporal/scenes/scene-07.webp',8:'assets/miramar-corporal/scenes/scene-08.webp',9:'assets/miramar-corporal/scenes/scene-09.webp',10:'assets/miramar-corporal/scenes/scene-10.webp'};
+
 const KNOWN_DURATION={
 1:154.440,2:172.584,3:169.920,4:105.624,5:193.584,6:169.944,7:142.440,8:68.832,
 9:132.024,10:172.032,11:133.224,12:92.040,13:128.400,14:138.744,15:212.424
@@ -64,9 +66,22 @@ const trackUrl=n=>'audio/corporal/'+pad(n)+'.mp3';
 const fmt=s=>{if(!Number.isFinite(s)||s<0)return'--:--';const m=Math.floor(s/60);const q=Math.floor(s%60);return String(m).padStart(2,'0')+':'+String(q).padStart(2,'0');};
 
 function atlasPosition(n){
-  const i=n-1,col=i%5,row=Math.floor(i/5);
-  const xs=[0,25,50,75,100],ys=[0,20,40,60,80,100];
-  poster.style.backgroundPosition=xs[col]+'% '+ys[row]+'%';
+  const i=n-1;
+  if(HORIZONTAL_SCENES[n]){
+    poster.style.backgroundImage='url("'+HORIZONTAL_SCENES[n]+'")';
+    poster.style.backgroundSize='cover';
+    poster.style.backgroundPosition='center';
+    poster.style.backgroundRepeat='no-repeat';
+    poster.dataset.surface='horizontal';
+  }else{
+    const col=i%5,row=Math.floor(i/5);
+    const xs=[0,25,50,75,100],ys=[0,20,40,60,80,100];
+    poster.style.backgroundImage='url("assets/miramar-corporal-atlas.jpg")';
+    poster.style.backgroundSize='500% 600%';
+    poster.style.backgroundPosition=xs[col]+'% '+ys[row]+'%';
+    poster.style.backgroundRepeat='no-repeat';
+    poster.dataset.surface='atlas';
+  }
   poster.setAttribute('aria-label','Escena '+pad(n)+' · '+SCENES[i][0]+' · contacto canónico de 40 fotogramas');
 }
 function clearTimers(){if(timer){clearTimeout(timer);timer=0;}if(monitor){clearInterval(monitor);monitor=0;}}
