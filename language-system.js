@@ -29,7 +29,7 @@
 
   function shouldSkip(node){
     const p=node.parentElement;if(!p)return true;
-    if(p.closest('[data-lang-ui],script,style,noscript,code,pre[data-lang-skip],svg,a.author,a.cover-author,[data-author],[data-fli]'))return true;
+    if(p.closest('[data-lang-ui],script,style,noscript,code,pre[data-lang-skip],svg,a.author,a.cover-author,[data-author],[data-fli],#chance-language,[data-random-language]'))return true;
     const t=clean(node.nodeValue);
     return !t||t==='flag'||t==='fli'||/^[\d\s·×↔→←↑↓()[\],.:;/%+-]+$/.test(t);
   }
