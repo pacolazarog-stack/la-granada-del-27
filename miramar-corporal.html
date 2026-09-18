@@ -7,21 +7,19 @@
 <meta name="author" content="Flag">
 <title>La terraza del Miramar · Versión corporal</title>
 <link rel="stylesheet" href="miramar-corporal.css?v=20260918-corporal1">
-</head>
+<link rel="stylesheet" href="miramar-versions.css?v=20260918-nav1"></head>
 <body>
-<header class="corporal-head">
-  <nav class="version-nav" aria-label="Versiones de La terraza del Miramar">
-  <a class="pill" href="miramar-danza.html">DANZA</a>
-  <a class="pill primary" href="miramar-corporal.html" aria-current="page">CORPORAL</a>
-  <a class="pill" href="miramar.html?canon=musical" onclick="localStorage.setItem('miramarCanonMode','musical');localStorage.setItem('volumeSoundMode','on');localStorage.setItem('volumeVoiceMode','off')">MUSICAL</a>
-  <a class="pill" href="miramar.html?canon=textual" onclick="localStorage.setItem('miramarCanonMode','textual');localStorage.setItem('volumeSoundMode','off');localStorage.setItem('volumeVoiceMode','off')">TEXTUAL</a>
-</nav>
-  <div class="corporal-brand">
+<header class="corporal-head miramar-head-with-versions">
+  <div class="miramar-head-spacer" aria-hidden="true"></div><div class="corporal-brand">
     <strong>LA TERRAZA DEL MIRAMAR</strong>
     <small>Versión corporal · teatro gestual y de objetos</small>
   </div>
-  <div class="corporal-motto">USO REAL · DEFORMACIÓN · SIGNIFICADO NUEVO</div>
-</header>
+  <div class="corporal-motto">USO REAL · DEFORMACIÓN · SIGNIFICADO NUEVO</div><nav class="miramar-version-nav" aria-label="Versiones de La terraza del Miramar">
+<a class="miramar-version-btn" href="miramar-danza.html">DANZA</a>
+<a class="miramar-version-btn is-active" href="miramar-corporal.html" aria-current="page">CORPORAL</a>
+<a class="miramar-version-btn" href="miramar.html?canon=musical" data-miramar-version="musical" onclick="localStorage.setItem('miramarCanonMode','musical');localStorage.setItem('volumeSoundMode','on');localStorage.setItem('volumeVoiceMode','off')">MUSICAL</a>
+<a class="miramar-version-btn" href="miramar.html?canon=textual" data-miramar-version="textual" onclick="localStorage.setItem('miramarCanonMode','textual');localStorage.setItem('volumeSoundMode','off');localStorage.setItem('volumeVoiceMode','off')">TEXTUAL</a>
+</nav></header>
 
 <main class="corporal-stage" id="stage" aria-live="polite">
   <section class="card intertitle is-visible" id="intertitle">
