@@ -150,12 +150,12 @@ Queda fijado un **único PDF maestro de Poética del límite** que integra las c
 4. **La poética del archivo**
 5. **Poética del límite**
 
-El volumen incorpora **cubierta general, índice actualizado, cinco portadillas internas, marcadores PDF y contraportada general**. Las portadillas no sustituyen las cubiertas internas originales: funcionan como umbrales de sección dentro del volumen conjunto.
+El volumen incorpora **cubierta general con tipografía Unicode embebida y acentos corregidos, índice actualizado, cinco portadillas internas, marcadores PDF y contraportada general**. Las portadillas no sustituyen las cubiertas internas originales: funcionan como umbrales de sección dentro del volumen conjunto.
 
 - Archivo: `POETICA_DEL_LIMITE_VOLUMEN_INTEGRAL_FLAG_CANON_2026-09-18.pdf`
 - Drive: https://drive.google.com/file/d/1AQzYblBgnVR29xZqchlYy2hNjvuvdFyy/view
 - Páginas: **460**
 - Formato: **A5**
-- SHA-256: `e46b69ed95e095996dc0638470278f8d8d6381a0bbc2b4faeb2699a35f0bde2c`
+- SHA-256: `ef7dea6fbe8ad2ffdc0085e3e372a735332066bad5b4833d6aba751aea665526`
 
 La secuencia de acceso del PDF queda: cubierta general → índice → I · Granada → II · Paco → III · Miramar → IV · Poética del archivo → V · Poética del límite → contraportada general.
