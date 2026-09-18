@@ -1,11 +1,13 @@
 # Música · versión danza
 
-Añadir aquí los MP3 definitivos con nombres de dos cifras:
+La música de DANZA queda separada de la partitura de la versión CORPORAL.
 
-16.mp3
-17.mp3
-…
-30.mp3
+## Estado
 
-El reproductor de `miramar-danza.html` los detecta automáticamente.
-Para 01–15, si en el futuro se suben versiones específicas a esta carpeta, tendrán prioridad sobre `audio/corporal/`.
+- 01–15: `01.mp3` … `15.mp3` incorporadas.
+- Estas quince pistas preservan el juego sonoro anterior como material propio de DANZA.
+- 16–30: pendientes `16.mp3` … `30.mp3`.
+- El reproductor `miramar-danza.js` busca **exclusivamente** en `audio/danza/`.
+- No existe fallback a `audio/corporal/`.
+
+Así, cualquier futura revisión de la versión corporal no altera la versión danza.
