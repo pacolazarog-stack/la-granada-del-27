@@ -1,0 +1,113 @@
+/* Navegación común de versiones de La terraza del Miramar · 18/09/2026 */
+.miramar-version-nav{
+  grid-area:versions;
+  width:min(560px,calc(100vw - 32px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+  align-items:center;
+  justify-items:stretch;
+}
+.miramar-version-btn{
+  min-width:0;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 10px;
+  border:1px solid rgba(244,237,229,.34);
+  border-radius:999px;
+  background:rgba(22,19,16,.76);
+  color:#f4ede5;
+  text-decoration:none;
+  font:700 10px/1 Arial,Helvetica,sans-serif;
+  letter-spacing:.085em;
+  text-align:center;
+  white-space:nowrap;
+  box-shadow:none;
+  opacity:.88;
+}
+.miramar-version-btn:hover{
+  opacity:1;
+  border-color:rgba(244,237,229,.72);
+}
+.miramar-version-btn.is-active,
+.miramar-version-btn[aria-current="page"]{
+  background:#f4ede5;
+  color:#211d19;
+  border-color:#f4ede5;
+  opacity:1;
+}
+.miramar-version-btn:focus-visible{
+  outline:2px solid #fff;
+  outline-offset:2px;
+}
+
+/* Lector textual/musical: título perfectamente centrado y navegación en una fila inferior. */
+.reader-head.miramar-head-with-versions,
+.reader-head.miramar-head-with-versions.media-flanked{
+  grid-template-columns:minmax(76px,1fr) auto minmax(76px,1fr)!important;
+  grid-template-areas:
+    "home title tools"
+    "versions versions versions"!important;
+  row-gap:8px!important;
+}
+.reader-head.miramar-head-with-versions .reader-home{grid-area:home!important;justify-self:start}
+.reader-head.miramar-head-with-versions .reader-title{grid-area:title!important;justify-self:center}
+.reader-head.miramar-head-with-versions .reader-tools{grid-area:tools!important;justify-self:end}
+.reader-head.miramar-head-with-versions .miramar-version-nav{grid-area:versions!important}
+.reader-head.miramar-head-with-versions #volumeMediaControls{display:none!important}
+
+/* Danza y corporal: misma arquitectura, misma posición y mismas dimensiones. */
+.danza-head.miramar-head-with-versions,
+.corporal-head.miramar-head-with-versions{
+  min-height:104px;
+  grid-template-columns:minmax(120px,1fr) auto minmax(120px,1fr)!important;
+  grid-template-areas:
+    "left brand right"
+    "versions versions versions"!important;
+  row-gap:8px;
+}
+.danza-head.miramar-head-with-versions .miramar-head-spacer,
+.corporal-head.miramar-head-with-versions .miramar-head-spacer{grid-area:left}
+.danza-head.miramar-head-with-versions .danza-brand{grid-area:brand;justify-self:center;text-align:center}
+.corporal-head.miramar-head-with-versions .corporal-brand{grid-area:brand;justify-self:center;text-align:center}
+.danza-head.miramar-head-with-versions .danza-phase{grid-area:right;justify-self:end}
+.corporal-head.miramar-head-with-versions .corporal-motto{grid-area:right;justify-self:end}
+.danza-head.miramar-head-with-versions .miramar-version-nav,
+.corporal-head.miramar-head-with-versions .miramar-version-nav{grid-area:versions}
+
+/* Neutraliza reglas antiguas que deformaban la fila de botones. */
+.danza-nav,.version-nav{display:contents!important}
+
+@media(max-width:760px){
+  .miramar-version-nav{
+    width:min(100%,480px);
+    gap:5px;
+  }
+  .miramar-version-btn{
+    height:31px;
+    padding:0 5px;
+    font-size:8px;
+    letter-spacing:.055em;
+  }
+  .reader-head.miramar-head-with-versions,
+  .reader-head.miramar-head-with-versions.media-flanked{
+    grid-template-columns:auto minmax(0,1fr) auto!important;
+    grid-template-areas:
+      "home title tools"
+      "versions versions versions"!important;
+  }
+  .danza-head.miramar-head-with-versions,
+  .corporal-head.miramar-head-with-versions{
+    min-height:96px;
+    grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important;
+    grid-template-areas:
+      "left brand right"
+      "versions versions versions"!important;
+    padding:8px 9px;
+  }
+  .danza-head.miramar-head-with-versions .danza-phase,
+  .corporal-head.miramar-head-with-versions .corporal-motto{display:none}
+}
