@@ -3,6 +3,7 @@ name: Validate languages
 on:
   push:
     paths:
+      - 'paco-pages-invierno-a.js'
       - 'paco-pages-superpaco-a.js'
       - 'paco-pages-superpaco-b.js'
       - 'paco-pages-nombres.js'
