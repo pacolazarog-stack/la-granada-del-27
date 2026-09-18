@@ -23,3 +23,14 @@ Los masters públicos de Granada, Paco, Miramar y Poética del límite, junto co
 - Índice de Paco actualizado.
 - Workflows de Paco actualizados a 210 páginas.
 - El materializador general deja de reconstruir Paco desde fuentes comprimidas históricas.
+
+
+## Volumen integral
+- Generado un único PDF A5 de **460 páginas**.
+- Integradas cinco portadillas internas homogéneas.
+- Añadida una única contraportada general.
+- Actualizado el índice interno a páginas **3 / 95 / 307 / 406 / 450**.
+- Añadidos marcadores PDF para las cinco partes y la contraportada.
+- Master: `POETICA_DEL_LIMITE_VOLUMEN_INTEGRAL_FLAG_CANON_2026-09-18.pdf`.
+- Drive: https://drive.google.com/file/d/1AQzYblBgnVR29xZqchlYy2hNjvuvdFyy/view
+- SHA-256: `e46b69ed95e095996dc0638470278f8d8d6381a0bbc2b4faeb2699a35f0bde2c`.
