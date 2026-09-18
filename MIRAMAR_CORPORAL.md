@@ -12,31 +12,34 @@ Nueva superficie independiente del lector canónico de **La terraza del Miramar*
 - Después de la escena 30: FIN + créditos.
 - Autoría visible: **Flag**.
 
-## Música
+## Música corporal
 
-Estado de esta versión al 18/09/2026:
+Corrección canónica de 18/09/2026: la versión corporal **no utiliza el máster de la versión musical**.
 
-- Escenas 01–15: música incorporada mediante los quince primeros segmentos del máster sonoro actualmente publicado por el proyecto.
-- Escenas 16–30: preparadas para incorporación progresiva.
+Las músicas corporales son los quince archivos independientes suministrados como `1.mp3` … `15.mp3`, normalizados en el repositorio como:
 
-Para incorporar una música pendiente no es necesario modificar el reproductor. Basta añadir:
+`audio/corporal/01.mp3`
+…
+`audio/corporal/15.mp3`
+
+El contacto visual de cada escena permanece en pantalla durante la duración completa de su archivo musical. Al finalizar el audio: **oscuro → anuncio tipográfico → escena siguiente**.
+
+Las escenas 16–30 quedan preparadas exactamente con la misma convención:
 
 `audio/corporal/16.mp3`
 …
 `audio/corporal/30.mp3`
 
-La página comprueba automáticamente la existencia del archivo correspondiente. Si existe, lo reproduce y al terminar ejecuta el oscuro y el anuncio de la escena siguiente. Si todavía no existe, muestra **MÚSICA PENDIENTE · AVANCE MANUAL**.
+No es necesario volver a modificar el reproductor al añadirlas.
 
 ## Navegación
 
-La versión se abre desde el botón **CORPORAL** añadido a `miramar.html`.
+La versión se abre desde el botón **CORPORAL** de `miramar.html`.
 
-Entrada directa:
-
-`miramar-corporal.html`
+Entrada directa: `miramar-corporal.html`
 
 ## Sistema visual
 
 **Uso real · deformación · significado nuevo.**
 
-El atlas `assets/miramar-corporal-atlas.jpg` contiene los 30 contactos canónicos en orden 01→30 (5 columnas × 6 filas). El reproductor utiliza el atlas como sprite sin alterar las imágenes fuente.
+El atlas `assets/miramar-corporal-atlas.jpg` contiene los 30 contactos canónicos en orden 01→30 (5 columnas × 6 filas).

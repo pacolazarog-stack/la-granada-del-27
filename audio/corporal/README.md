@@ -1,27 +1,13 @@
 # Música · versión corporal
 
-Carpeta reservada para las músicas individuales de la versión corporal.
+Esta carpeta contiene **exclusivamente** la música de la versión corporal de *La terraza del Miramar*.
 
-## Ya incorporado
-Las escenas 01–15 se reproducen actualmente desde el máster consolidado y sus marcas temporales fijadas en `miramar-corporal.js`.
+No debe enlazarse aquí el máster ni los cortes de la versión musical.
 
-## Incorporación directa 16–30
-Subir archivos con estos nombres exactos:
+## Corpus actual
 
-- 16.mp3
-- 17.mp3
-- 18.mp3
-- 19.mp3
-- 20.mp3
-- 21.mp3
-- 22.mp3
-- 23.mp3
-- 24.mp3
-- 25.mp3
-- 26.mp3
-- 27.mp3
-- 28.mp3
-- 29.mp3
-- 30.mp3
+Escenas 01–15: archivos corporales independientes `01.mp3` … `15.mp3`.
 
-No hace falta modificar HTML ni JavaScript: el lector corporal detecta cada archivo al abrir la escena.
+Escenas 16–30: reservadas para los futuros archivos `16.mp3` … `30.mp3`.
+
+El reproductor `miramar-corporal.js` busca siempre el archivo individual correspondiente a la escena. Cuando se añadan las quince músicas restantes no habrá que modificar el código.

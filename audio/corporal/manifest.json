@@ -1,0 +1,112 @@
+{
+  "version": "corporal",
+  "canonical_date": "2026-09-18",
+  "note": "Músicas 01–15 de la versión corporal. No corresponden al máster de la versión musical.",
+  "tracks": [
+    {
+      "scene": 1,
+      "file": "01.mp3",
+      "duration_seconds": 154.4,
+      "bytes": 3526959,
+      "sha256": "318c177593a57b30c169208a97276a5c0a7639c9bdce031d3fadebba6fef7336"
+    },
+    {
+      "scene": 2,
+      "file": "02.mp3",
+      "duration_seconds": 172.56,
+      "bytes": 4255535,
+      "sha256": "f04f7662d4525d5ed68d4189b4a44a1cbefde358c4866b51eb11caed85bb339e"
+    },
+    {
+      "scene": 3,
+      "file": "03.mp3",
+      "duration_seconds": 169.88,
+      "bytes": 3930489,
+      "sha256": "eaa003897d8b3c108e7076d4eced4d85976dc66aabcfe49d380477696751556b"
+    },
+    {
+      "scene": 4,
+      "file": "04.mp3",
+      "duration_seconds": 105.6,
+      "bytes": 2767252,
+      "sha256": "89e8c98de2abfd2732d6a3019b3938568f80edb290c56f9b93f2c30cc4785e73"
+    },
+    {
+      "scene": 5,
+      "file": "05.mp3",
+      "duration_seconds": 193.56,
+      "bytes": 4261039,
+      "sha256": "7ba3d0b8d67dfcdfacdaa0fdb33b8db3d767b86e64bc2ee5008e469c0fdc971c"
+    },
+    {
+      "scene": 6,
+      "file": "06.mp3",
+      "duration_seconds": 169.92,
+      "bytes": 3710321,
+      "sha256": "f14e5a72f16cecdd74514d8ab6161e79c3180364b03bb9446f5fca978a58f3c0"
+    },
+    {
+      "scene": 7,
+      "file": "07.mp3",
+      "duration_seconds": 142.4,
+      "bytes": 3312356,
+      "sha256": "f2aa5e8f6689b7ab45aac3acd85cdca43a7b43f05e165aca06c6da9950187095"
+    },
+    {
+      "scene": 8,
+      "file": "08.mp3",
+      "duration_seconds": 68.8,
+      "bytes": 1558083,
+      "sha256": "068e0b3a103dbfbed2d0b5c4b0e9236d5d788849343b4df0b9d3ddc149aa524c"
+    },
+    {
+      "scene": 9,
+      "file": "09.mp3",
+      "duration_seconds": 132,
+      "bytes": 3250783,
+      "sha256": "491de87df908bf8ee07a339caa43ebcc6582dafb104e790aa7fe0b248dd28232"
+    },
+    {
+      "scene": 10,
+      "file": "10.mp3",
+      "duration_seconds": 172,
+      "bytes": 4209951,
+      "sha256": "8a8d0d128f9e27bf2f74cbb3a2f44e4df4611fb13f6dce0ebb77f5436c9823e1"
+    },
+    {
+      "scene": 11,
+      "file": "11.mp3",
+      "duration_seconds": 133.2,
+      "bytes": 3161706,
+      "sha256": "bb8603f786aaef2600a5b747adf39a3c2d19581e0b67232d508cf4525b21a197"
+    },
+    {
+      "scene": 12,
+      "file": "12.mp3",
+      "duration_seconds": 92,
+      "bytes": 2303888,
+      "sha256": "bed788cb70b423cf32bc8bfdc18420c79b83951741aa0898c97423b5117cfb33"
+    },
+    {
+      "scene": 13,
+      "file": "13.mp3",
+      "duration_seconds": 128.36,
+      "bytes": 2959031,
+      "sha256": "a34dc85adbe00b5310341c91144b6a02387e1e5420a1748e50830244687843f7"
+    },
+    {
+      "scene": 14,
+      "file": "14.mp3",
+      "duration_seconds": 138.72,
+      "bytes": 3175067,
+      "sha256": "4d8f76f5680bbfe4d485792a320f6fc5cea98de864895a4868cbbedcd9134bc0"
+    },
+    {
+      "scene": 15,
+      "file": "15.mp3",
+      "duration_seconds": 212.4,
+      "bytes": 4782186,
+      "sha256": "d01fe5d2bb9b3cdcb6345058c1ee29f321f1066f1308107672fee7164c8131cb"
+    }
+  ]
+}
