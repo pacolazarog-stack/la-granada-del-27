@@ -1,0 +1,31 @@
+name: Validate Atlas cube
+
+on:
+  push:
+    paths:
+      - 'atlas.html'
+      - 'cube-canon.js'
+      - 'atlas-cube.js'
+      - 'chance.js'
+      - 'style.css'
+      - 'validate-cube.mjs'
+      - '.github/workflows/validate-cube.yml'
+  pull_request:
+    paths:
+      - 'atlas.html'
+      - 'cube-canon.js'
+      - 'atlas-cube.js'
+      - 'chance.js'
+      - 'style.css'
+      - 'validate-cube.mjs'
+      - '.github/workflows/validate-cube.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node validate-cube.mjs
