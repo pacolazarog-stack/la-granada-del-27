@@ -346,5 +346,35 @@ window.POETICA_LANGUAGE_PACKS={
     "fr": "LANGUE EN ATTENTE",
     "it": "LINGUA IN ATTESA",
     "de": "SPRACHE AUSSTEHEND"
+  },
+  "Poética del límite · Volumen multimedia": {
+    "en": "Poetics of the Limit · Multimedia Volume",
+    "fr": "Poétique de la limite · Volume multimédia",
+    "it": "Poetica del limite · Volume multimediale",
+    "de": "Poetik der Grenze · Multimedia-Band"
+  },
+  "Atlas de La Granada del 27 · Lecturas formales": {
+    "en": "Atlas of The Granada of ’27 · Formal Readings",
+    "fr": "Atlas de La Grenade de 27 · Lectures formelles",
+    "it": "Atlante de La Granada del ’27 · Letture formali",
+    "de": "Atlas des Granada von 1927 · Formale Lektüren"
+  },
+  "La poética del archivo · revisión 17/09/2026": {
+    "en": "The Poetics of the Archive · revision 17/09/2026",
+    "fr": "La Poétique de l’archive · révision 17/09/2026",
+    "it": "La poetica dell’archivio · revisione 17/09/2026",
+    "de": "Die Poetik des Archivs · Revision 17.09.2026"
+  },
+  "Final del volumen · Poética del límite": {
+    "en": "End of the Volume · Poetics of the Limit",
+    "fr": "Fin du volume · Poétique de la limite",
+    "it": "Fine del volume · Poetica del limite",
+    "de": "Ende des Bandes · Poetik der Grenze"
+  },
+  "Friedhelm Erwin Grube Groth · in memoriam": {
+    "en": "Friedhelm Erwin Grube Groth · in memoriam",
+    "fr": "Friedhelm Erwin Grube Groth · in memoriam",
+    "it": "Friedhelm Erwin Grube Groth · in memoriam",
+    "de": "Friedhelm Erwin Grube Groth · in memoriam"
   }
 };
