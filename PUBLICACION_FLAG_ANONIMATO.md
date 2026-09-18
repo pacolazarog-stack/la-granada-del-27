@@ -18,3 +18,14 @@ La identidad civil se reserva al registro, los derechos, contratos y documentaci
 El anonimato editorial no borra palabras que pertenezcan a la propia obra. Si «Fli» o «Flag» aparecen como materia literaria, memorial o dramática, permanecen.
 
 Los binarios de publicación continúan en Drive. GitHub conserva textos canónicos, páginas web, manifiestos, hashes, enlaces y validadores.
+
+
+## Volumen integral FLAG
+
+El master integral vigente reúne todo el corpus en un único PDF A5 con cubierta, índice, cinco portadillas, marcadores y contraportada general.
+
+- https://drive.google.com/file/d/1AQzYblBgnVR29xZqchlYy2hNjvuvdFyy/view
+- **460 páginas**
+- SHA-256: `e46b69ed95e095996dc0638470278f8d8d6381a0bbc2b4faeb2699a35f0bde2c`
+
+La variante anónima integral queda pendiente de materialización específica; las ediciones anónimas individuales continúan vigentes.
