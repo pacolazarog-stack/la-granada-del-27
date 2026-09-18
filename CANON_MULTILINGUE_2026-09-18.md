@@ -238,3 +238,27 @@ Criterio literario:
 
 Se traduce también el separador siguiente:
 **CARNAVAL DE SUPERPACO / CARNIVAL OF SUPERPACO / CARNAVAL DE SUPERPACO / CARNEVALE DI SUPERPACO / KARNEVAL DES SUPERPACO**.
+
+
+## 17. Paco Olmo · CARNAVAL DE SUPERPACO cerrado
+
+Queda completada la versión literaria revisada **EN · FR · IT · DE** de todo el bloque **CARNAVAL DE SUPERPACO**, desde **40 · SUPERPACO** hasta **46 · SUPERPACO**, y se traduce también el separador **INVIERNO · NO SABER**.
+
+Cobertura acumulada del lector: **páginas 1–150**.
+
+Incluye:
+
+- **40 · De cómo nació Paco Bultaco y nadie quiso reconocer la paternidad**;
+- **41 · Paco, Repaco, metido en un saco**;
+- **42 · Quintillas, coplas y otras formas de difamación métrica**;
+- **43 · Romancero de Paco Bultaco**;
+- **44 · Milagros de Superpaco**;
+- **45 · SUPERPACO · Pasodoble administrativo para banda, sello y caja**;
+- **46 · Otros fueron a la guerra. Superpaco fue al Registro**;
+- separador **INVIERNO · NO SABER**.
+
+Criterio de traducción: preservar la comicidad oral y burocrática antes que una literalidad rígida en las piezas métricas. Los nombres propios y motes —Paco, Repaco, Bultaco, Paquillo, Pacorro, Pacorra, Paquirrín, Superpaco— permanecen sin naturalizar. El juego «Paco Olmo de Males / Pa colmo de males» se conserva fonéticamente en español y se vuelve legible por contexto en cada lengua.
+
+Las coplas, quintillas, romance y pasodoble se traducen como piezas cantables y rítmicas, procurando mantener golpe cómico, repetición, oralidad y función dramática, sin forzar equivalencias métricas que destruyan la naturalidad de la lengua de llegada.
+
+El cierre conserva la inversión fundamental: Paco aprende a defenderse de la Administración, del banco, del seguro y del expediente, pero **nunca aprende a defenderse de una rima**.
