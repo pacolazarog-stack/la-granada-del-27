@@ -20,7 +20,7 @@ for(const lang of ['en','fr','it','de']){
 
 
 /* Primera versión literaria completa de LIBRO I · 1927 */
-for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js']){
+for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js','language-granada-2027-a.js','language-granada-2027-b.js','language-granada-2027-c.js']){
   new Function(fs.readFileSync(file,'utf8'));
   vm.runInContext(fs.readFileSync(file,'utf8'),sandbox,{filename:file});
 }
@@ -42,8 +42,21 @@ for(const line of unique1927){
   assert(literary[line],'falta traducción literaria para: '+line);
   for(const lang of ['en','fr','it','de'])assert(literary[line][lang],'falta '+lang+' para: '+line);
 }
+
+
+const source2027=fs.readFileSync('texto-canonico/02_LIBRO_I_2027.md','utf8')
+  .replace(/\r/g,'')
+  .split('\n')
+  .map(cleanLine)
+  .filter(Boolean);
+const unique2027=[...new Set(source2027)];
+for(const line of unique2027){
+  assert(literary[line],'falta traducción literaria Libro I 2027 para: '+line);
+  for(const lang of ['en','fr','it','de'])assert(literary[line][lang],'falta '+lang+' en Libro I 2027 para: '+line);
+}
+
 const granadaHtml=fs.readFileSync('granada.html','utf8');
-for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js'])
+for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js','language-granada-2027-a.js','language-granada-2027-b.js','language-granada-2027-c.js'])
   assert(granadaHtml.includes(file),'granada.html no carga '+file);
 
 const sys=fs.readFileSync('language-system.js','utf8');
@@ -77,3 +90,4 @@ console.log('OK · elección inicial durante preludio obligatorio');
 console.log('OK · cambio de idioma permanente en 9 superficies principales');
 console.log('OK · texto dinámico + voz siguen el idioma seleccionado');
 console.log(`OK · Granada 1927: ${unique1927.length} unidades literarias × 4 lenguas revisadas`);
+console.log(`OK · Granada 2027 + epílogo: ${unique2027.length} unidades literarias × 4 lenguas revisadas`);
