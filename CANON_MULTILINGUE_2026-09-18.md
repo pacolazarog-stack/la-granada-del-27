@@ -321,3 +321,22 @@ Criterio de continuidad: tener razón y tener derecho no resuelven por sí solos
 En **NADIE SABE**, algunas fechas se pierden, algunos recuerdos divergen y algunas preguntas ya no tienen destinatario. La incertidumbre no funciona como misterio pendiente de solución, sino como parte de la experiencia.
 
 En Paco, la baja del servicio conserva la comicidad burocrática: la relación contractual reconoce la cuenta bancaria y desconoce al titular, y el expediente amenaza con reproducirse incluso cuando su objeto era terminar otro expediente.
+
+
+## 21. Paco Olmo · INVIERNO avanza hasta la posteridad
+
+Se amplía la versión literaria revisada **EN · FR · IT · DE** de **INVIERNO · NO SABER**.
+
+Cobertura acumulada del lector: **páginas 1–192**.
+
+Quedan ya traducidos en este tramo:
+
+- **58 · PACO · De cómo Paco quiso jubilarse y le pidieron antecedentes de sí mismo**;
+- **59 · PACO · Del testamento de las carpetas**;
+- **60 · PACO · De cómo Superpaco asistió a su propia posteridad**.
+
+Criterio de continuidad: la jubilación introduce el tiempo cuando deja de estar en trámite. Paco recibe por fin aquello que llevaba media vida reclamando —tiempo— y descubre que no estaba seguro de haberlo pedido.
+
+El **testamento de las carpetas** lleva la lógica del archivo hasta la muerte, pero preserva un límite decisivo: la fotografía cuyo reverso permanece en blanco no debe completarse con datos probables, porque convertir la incertidumbre en una certeza falsa sería traicionar precisamente lo que el documento conserva.
+
+En **la posteridad de Superpaco**, la tradición oral termina de emanciparse de su protagonista. Paco presencia la fabricación de su propio mito y, por primera vez, no abre expediente para corregirlo. La conclusión queda intacta: **la posteridad puede comenzar antes de que uno tenga la cortesía de morirse**.
