@@ -27,8 +27,9 @@ assert(C.center===14,'centro debe ser 14');
 assert(C.envelopes===13,'debe haber 13 envolventes alrededor del centro');
 assert(C.index27.length===27,'INDICE_27 debe tener 27 países');
 assert(C.poemRoute.length===27,'RUTA_POEMA_27 debe tener 27 pasos');
-assert(C.languages.length===24,'deben existir las 24 lenguas oficiales de la UE');
-assert(new Set(C.languages.map(x=>x.code)).size===24,'los códigos lingüísticos deben ser únicos');
+assert(C.languages.length===27,'deben existir 27 lenguas: 24 oficiales de la UE + catalán, gallego y euskera');
+assert(new Set(C.languages.map(x=>x.code)).size===27,'los códigos lingüísticos deben ser únicos');
+for(const code of ['es','ca','gl','eu'])assert(C.languages.some(x=>x.code===code),'deben estar las cuatro lenguas españolas: '+code);
 assert(Math.abs(Object.values(C.weights).reduce((a,b)=>a+b,0)-1)<1e-9,'los pesos deben sumar 1');
 
 const p13=C.poemPoint(13),p14=C.poemPoint(14),p15=C.poemPoint(15);
@@ -53,10 +54,10 @@ assert(atlas.includes('chance-language'),'AZAR debe incluir recompensa lingüís
 
 const chance=fs.readFileSync('chance.js','utf8');
 for(const token of ["key:'X'","key:'Y'","key:'CENTRO'","key:'Z'"])assert(chance.includes(token),'AZAR⁴ debe contener '+token);
-assert(chance.includes('chooseLanguageReward'),'AZAR debe usar recompensa de 24 lenguas');
+assert(chance.includes('chooseLanguageReward'),'AZAR debe usar recompensa lingüística ponderada');
 assert(chance.includes('musicalidad 50 %'),'la musicalidad debe ser el factor principal');
 
 console.log('OK · CUBO 27³ · 19.683 posiciones');
 console.log('OK · centro 14·14·14 · 13 envolventes · espejo (y,x,28-z)');
-console.log('OK · 5 trazas · POEMA exacta · 24 lenguas');
+console.log('OK · 5 trazas · POEMA exacta · 27 lenguas (24 UE + ca/gl/eu)');
 console.log('OK · AZAR⁴ = X + Y + CENTRO + Z');
