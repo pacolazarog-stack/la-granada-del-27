@@ -83,3 +83,16 @@ El idioma de lectura y la lengua azarosa son dos sistemas distintos.
 Y, para AZAR:
 
 > **El azar no traduce el verso: busca en qué lengua puede volver a sonar.**
+
+
+## 9. Estado de traducción literaria revisada
+
+Queda completada la primera versión literaria revisada **EN · FR · IT · DE** de toda la superficie textual canónica de:
+
+- **LIBRO I · LA GRANADA DEL 27**: 1927, 2027 y epílogo.
+- **LIBRO II · COSIENDO EUROPA**: prólogo, I · BAJO LA AVENIDA, II · TIERRAS QUE BEBEN, III · MANOS, IV · COSTURAS, V · EL AGUA REGRESA.
+- **Contraportada general**.
+
+Estas versiones tienen prioridad sobre la traducción integral automática. La Translator API queda sólo como cobertura de reserva para superficies todavía no traducidas literariamente.
+
+Regla editorial: conservar cuando sea necesario términos culturales sin equivalencia suficiente —por ejemplo **acequia**, **Vega**, **cortijo**, **tertulia**— y traducir el contexto que permite comprenderlos sin borrar su singularidad.
