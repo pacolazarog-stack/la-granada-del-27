@@ -116,9 +116,21 @@
       text.classList.add('paco-structured');text.append(head,body);
     }
 
-    function renderWorkPage(raw){
-      if(isPaco) renderPacoPage(raw);
-      else {text.classList.remove('paco-structured');text.textContent=raw||'';}
+    function translatedWorkPage(raw,index){
+      const lang=window.POETICA_LANGUAGE?.current?.()||localStorage.getItem('poeticaLanguage')||'es';
+      const translated=window.WORK_PAGE_TRANSLATIONS?.[lang]?.[index];
+      if(lang!=='es'&&typeof translated==='string'){
+        text.setAttribute('data-lang-skip','1');
+        return translated;
+      }
+      text.removeAttribute('data-lang-skip');
+      return raw;
+    }
+
+    function renderWorkPage(raw,index){
+      const chosen=translatedWorkPage(raw,index);
+      if(isPaco) renderPacoPage(chosen);
+      else {text.classList.remove('paco-structured');text.textContent=chosen||'';}
     }
 
     function renderCodaPage(){
@@ -166,7 +178,7 @@
         history.replaceState(null,'','#coda');emitState('coda');return;
       }
       article.classList.remove('cover-mode');showOnly('text');
-      renderWorkPage(data.pages[page-1]||'');article.scrollTop=0;
+      renderWorkPage(data.pages[page-1]||'',page-1);article.scrollTop=0;
       progress.textContent=`${page} / ${total}`;
       jump.hidden=false;jump.value=page;
       prev.disabled=false;prev.textContent=page===1?'← Portada':'← Anterior';
@@ -190,6 +202,7 @@
       else if(e.key==='End'){page=total+2;render();}
     });
     document.addEventListener('book:restart-request',restartBook);
+    document.addEventListener('volume:languagechange',()=>{if(page>=1&&page<=total)render();});
     document.addEventListener('coda:complete',()=>{codaReady=true;if(page===total+2)render();});
     window.BOOK_READER={restart:restartBook,toVolume:goVolume,getPage:()=>page,getTotal:()=>total};
 
