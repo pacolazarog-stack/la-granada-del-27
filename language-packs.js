@@ -376,5 +376,101 @@ window.POETICA_LANGUAGE_PACKS={
     "fr": "Friedhelm Erwin Grube Groth · in memoriam",
     "it": "Friedhelm Erwin Grube Groth · in memoriam",
     "de": "Friedhelm Erwin Grube Groth · in memoriam"
+  },
+  "Deambular, nombres, cuentos, milagros y desventuras": {
+    "en": "Wandering, names, tales, miracles and misadventures",
+    "fr": "Errance, noms, contes, miracles et mésaventures",
+    "it": "Vagabondare, nomi, racconti, miracoli e disavventure",
+    "de": "Umherstreifen, Namen, Geschichten, Wunder und Missgeschicke"
+  },
+  "ARCHIVO · 2026": {
+    "en": "ARCHIVE · 2026",
+    "fr": "ARCHIVE · 2026",
+    "it": "ARCHIVIO · 2026",
+    "de": "ARCHIV · 2026"
+  },
+  "4 ESTACIONES": {
+    "en": "4 SEASONS",
+    "fr": "4 SAISONS",
+    "it": "4 STAGIONI",
+    "de": "4 JAHRESZEITEN"
+  },
+  "LAS CUATRO": {
+    "en": "THE FOUR",
+    "fr": "LES QUATRE",
+    "it": "LE QUATTRO",
+    "de": "DIE VIER"
+  },
+  "ESTACIONES": {
+    "en": "SEASONS",
+    "fr": "SAISONS",
+    "it": "STAGIONI",
+    "de": "JAHRESZEITEN"
+  },
+  "DE PACO OLMO DE MALES": {
+    "en": "OF PACO OLMO DE MALES",
+    "fr": "DE PACO OLMO DE MALES",
+    "it": "DI PACO OLMO DE MALES",
+    "de": "DES PACO OLMO DE MALES"
+  },
+  "DEAMBULAR · NOMBRES · CUENTOS · MILAGROS · DESVENTURAS": {
+    "en": "WANDERING · NAMES · TALES · MIRACLES · MISADVENTURES",
+    "fr": "ERRANCE · NOMS · CONTES · MIRACLES · MÉSAVENTURES",
+    "it": "VAGABONDARE · NOMI · RACCONTI · MIRACOLI · DISAVVENTURE",
+    "de": "UMHERSTREIFEN · NAMEN · GESCHICHTEN · WUNDER · MISSGESCHICKE"
+  },
+  "Julián recordaba. Paco alegaba.": {
+    "en": "Julián remembered. Paco submitted evidence.",
+    "fr": "Julián se souvenait. Paco produisait des pièces.",
+    "it": "Julián ricordava. Paco produceva prove.",
+    "de": "Julián erinnerte sich. Paco legte Belege vor."
+  },
+  "Nunca quedó acreditado que fueran dos personas distintas.": {
+    "en": "It was never established that they were two different people.",
+    "fr": "Il n’a jamais été établi qu’ils fussent deux personnes différentes.",
+    "it": "Non fu mai accertato che fossero due persone diverse.",
+    "de": "Es wurde nie festgestellt, dass sie zwei verschiedene Personen waren."
+  },
+  "ARCHIVO · NOMBRES · CARNAVAL · MAR": {
+    "en": "ARCHIVE · NAMES · CARNIVAL · SEA",
+    "fr": "ARCHIVE · NOMS · CARNAVAL · MER",
+    "it": "ARCHIVIO · NOMI · CARNEVALE · MARE",
+    "de": "ARCHIV · NAMEN · KARNEVAL · MEER"
+  },
+  "CONTRAPORTADA · II": {
+    "en": "BACK COVER · II",
+    "fr": "QUATRIÈME DE COUVERTURE · II",
+    "it": "QUARTA DI COPERTINA · II",
+    "de": "RÜCKSEITE · II"
+  },
+  "PACO OLMO": {
+    "en": "PACO OLMO",
+    "fr": "PACO OLMO",
+    "it": "PACO OLMO",
+    "de": "PACO OLMO"
+  },
+  "DE MALES": {
+    "en": "DE MALES",
+    "fr": "DE MALES",
+    "it": "DE MALES",
+    "de": "DE MALES"
+  },
+  "Entre deambulares, nombres, cuentos, milagros y desventuras, una vida intenta acreditarse.": {
+    "en": "Through wandering, names, tales, miracles and misadventures, a life tries to prove itself.",
+    "fr": "Entre errances, noms, contes, miracles et mésaventures, une vie tente de s’accréditer.",
+    "it": "Tra vagabondaggi, nomi, racconti, miracoli e disavventure, una vita cerca di accreditarsi.",
+    "de": "Zwischen Umherstreifen, Namen, Geschichten, Wundern und Missgeschicken versucht ein Leben, sich zu belegen."
+  },
+  "La comedia del expediente y la melancolía de la memoria se cruzan con el carnaval y el mar.": {
+    "en": "The comedy of the case file and the melancholy of memory cross paths with carnival and the sea.",
+    "fr": "La comédie du dossier et la mélancolie de la mémoire croisent le carnaval et la mer.",
+    "it": "La commedia del fascicolo e la malinconia della memoria incrociano il carnevale e il mare.",
+    "de": "Die Komödie der Akte und die Melancholie der Erinnerung kreuzen sich mit Karneval und Meer."
+  },
+  "El expediente termina. La persona continúa.": {
+    "en": "The case file ends. The person continues.",
+    "fr": "Le dossier se termine. La personne continue.",
+    "it": "Il fascicolo finisce. La persona continua.",
+    "de": "Die Akte endet. Der Mensch geht weiter."
   }
 };
