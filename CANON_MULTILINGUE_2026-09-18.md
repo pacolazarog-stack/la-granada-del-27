@@ -197,3 +197,23 @@ Quedan ya traducidos en este bloque:
 - inicio de **34 · DEAMBULAR · DOS CASAS**.
 
 Criterio de otoño: desplazar el conflicto desde el archivo exterior hacia la narración de uno mismo. La pregunta ya no es sólo qué ocurrió, sino qué versión se elige, ante quién y para qué. Inés no funciona como correctora moral ni como prueba de evolución de Julián: conserva autonomía, errores propios, humor y resistencia a convertirse en personaje funcional de su relato.
+
+
+## 15. Paco Olmo · OTOÑO cerrado
+
+Queda completada la versión literaria revisada **EN · FR · IT · DE** de todo el bloque **OTOÑO · EXPLICARSE**, hasta **39 · DEAMBULAR · LA HISTORIA**.
+
+Cobertura acumulada del lector: **páginas 1–120**.
+
+El cierre de OTOÑO incluye:
+
+- final de **34 · DEAMBULAR · DOS CASAS**;
+- **35 · DEAMBULAR · YO NO SOY ELLA**;
+- **36 · DEAMBULAR · REGRESO**;
+- **37 · DEAMBULAR · PRUEBAS**;
+- **38 · PACO · Del día en que ganó y comprendió que aquello era peor**;
+- **39 · DEAMBULAR · LA HISTORIA**.
+
+Criterio de cierre: la prueba documental deja de ser garantía de sentido. Puede corregir hechos concretos, pero no fijar por sí sola lo que esos hechos significaron mientras ocurrían. La escritura se vuelve el último riesgo del archivo: convertir personas reales en funciones de una narración sobre Julián. Por eso el bloque termina desplazando el foco desde la explicación hacia la presencia ordinaria: «Es un tomate. Empieza por ahí».
+
+**LOS NOMBRES DE PACO** comienza después de este cierre como pieza autónoma no numerada, antes de **CARNAVAL DE SUPERPACO**.
