@@ -3,6 +3,10 @@ name: Validate languages
 on:
   push:
     paths:
+      - 'paco-pages-en-b.js'
+      - 'paco-pages-fr-b.js'
+      - 'paco-pages-it-b.js'
+      - 'paco-pages-de-b.js'
       - 'paco-pages-en-a.js'
       - 'paco-pages-fr-a.js'
       - 'paco-pages-it-a.js'
