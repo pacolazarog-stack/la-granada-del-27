@@ -10,7 +10,12 @@
 </head>
 <body>
 <header class="corporal-head">
-  <a class="pill" href="miramar.html">← MIRAMAR</a>
+  <nav class="version-nav" aria-label="Versiones de La terraza del Miramar">
+  <a class="pill" href="miramar-danza.html">DANZA</a>
+  <a class="pill primary" href="miramar-corporal.html" aria-current="page">CORPORAL</a>
+  <a class="pill" href="miramar.html?canon=musical" onclick="localStorage.setItem('miramarCanonMode','musical');localStorage.setItem('volumeSoundMode','on');localStorage.setItem('volumeVoiceMode','off')">MUSICAL</a>
+  <a class="pill" href="miramar.html?canon=textual" onclick="localStorage.setItem('miramarCanonMode','textual');localStorage.setItem('volumeSoundMode','off');localStorage.setItem('volumeVoiceMode','off')">TEXTUAL</a>
+</nav>
   <div class="corporal-brand">
     <strong>LA TERRAZA DEL MIRAMAR</strong>
     <small>Versión corporal · teatro gestual y de objetos</small>
