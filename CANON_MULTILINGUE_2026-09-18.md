@@ -96,3 +96,28 @@ Queda completada la primera versión literaria revisada **EN · FR · IT · DE**
 Estas versiones tienen prioridad sobre la traducción integral automática. La Translator API queda sólo como cobertura de reserva para superficies todavía no traducidas literariamente.
 
 Regla editorial: conservar cuando sea necesario términos culturales sin equivalencia suficiente —por ejemplo **acequia**, **Vega**, **cortijo**, **tertulia**— y traducir el contexto que permite comprenderlos sin borrar su singularidad.
+
+
+## 10. Paco Olmo · inicio de la versión literaria multilingüe
+
+Se inicia la traducción literaria revisada de **Las cuatro estaciones de Paco Olmo de Males** con un sistema específico de páginas canónicas que tiene prioridad sobre la traducción automática.
+
+Queda completado en **EN · FR · IT · DE** el primer bloque:
+
+- portada textual;
+- índice completo;
+- **PRIMAVERA · HUIR**;
+- **1 · DEAMBULAR · LA LLAVE**;
+- **2 · PACO · Del niño que dio la respuesta correcta por el procedimiento equivocado**;
+- **3 · DEAMBULAR · LA PROVINCIA**.
+
+La traducción de Paco debe preservar, por este orden:
+
+1. oralidad y respiración;
+2. humor burocrático;
+3. contraste térmico entre Julián y Paco;
+4. nombres propios y mutaciones del nombre;
+5. ironía sin explicar el chiste;
+6. literalidad documental cuando su rigidez es precisamente el efecto cómico.
+
+La edición digital puede cambiar de lengua sin cambiar de página. El lector vuelve a renderizar la página actual con su versión literaria correspondiente y mantiene el punto de lectura.
