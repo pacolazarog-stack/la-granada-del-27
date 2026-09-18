@@ -262,3 +262,23 @@ Criterio de traducción: preservar la comicidad oral y burocrática antes que un
 Las coplas, quintillas, romance y pasodoble se traducen como piezas cantables y rítmicas, procurando mantener golpe cómico, repetición, oralidad y función dramática, sin forzar equivalencias métricas que destruyan la naturalidad de la lengua de llegada.
 
 El cierre conserva la inversión fundamental: Paco aprende a defenderse de la Administración, del banco, del seguro y del expediente, pero **nunca aprende a defenderse de una rima**.
+
+
+## 18. Paco Olmo · INVIERNO en curso
+
+Se inicia **INVIERNO · NO SABER** con versión literaria revisada **EN · FR · IT · DE**.
+
+Cobertura acumulada del lector: **páginas 1–162**.
+
+Quedan ya traducidos:
+
+- **47 · DEAMBULAR · LOS CUATRO MONTONES**;
+- **48 · PACO · De los inventarios y otras formas de la esperanza**;
+- **49 · DEAMBULAR · LA CARTA**;
+- **50 · PACO · De cómo Paco se hizo escritor para descansar de los expedientes**.
+
+Criterio de invierno: el archivo ya no intenta demostrar únicamente qué ocurrió, sino decidir qué merece permanecer. Aparece por primera vez una categoría plenamente admitida de incertidumbre —**NO SÉ**— que no debe resolverse ni convertirse en defecto provisional.
+
+En Paco, el inventario deja de ser dominio y empieza a rozar la memoria, la pérdida y la presencia de quienes ya no están. El dedal abre una categoría decisiva: **OBJETOS CUYA ÚNICA FUNCIÓN ES DEMOSTRAR QUE ALGUIEN ESTUVO AQUÍ**.
+
+El paso a la literatura conserva la comicidad del expediente, pero también debe dejar aparecer, antes de la maquinaria, el instante sensorial autónomo: la naranja, la luz, los dedos, la ventana. El riesgo posterior es precisamente que Paco vuelva a convertir esa libertad en sistema.
