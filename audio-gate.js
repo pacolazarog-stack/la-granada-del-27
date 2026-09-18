@@ -83,7 +83,8 @@
   if(pending){try{sessionStorage.removeItem('volumeReturnReady');}catch(_){}clearAwayOrigin();}
   let firstIntro=!pending&&!pref.introCompleted();
   let chosen=pending?returnSources[Math.floor(Math.random()*returnSources.length)]:introSrc;
-  let unlocked=false,started=false,choiceVisible=false,gestureRetryArmed=false;
+  let unlocked=false,started=false,choiceVisible=false,gestureRetryArmed=false,deferredUnlock='';
+  const languageReady=()=>!window.POETICA_LANGUAGE||window.POETICA_LANGUAGE.isChosen();
   let audio=chosen?new Audio(chosen):null;
   if(audio){audio.preload='auto';audio.loop=false;audio.playsInline=true;audio.volume=.86;}
 
@@ -112,6 +113,14 @@
   };
 
   const unlockCards=(message='ACCESO ABIERTO')=>{
+    if(!languageReady()){
+      deferredUnlock=message;
+      status.textContent='ELIJA UNA LENGUA PARA CONTINUAR · LA MÚSICA YA HA SIDO COMPLETADA';
+      clock.textContent='IDIOMA PENDIENTE';
+      fill.style.width='100%';
+      return;
+    }
+    deferredUnlock='';
     unlocked=true;
     cards.forEach(a=>{a.classList.remove('is-locked');a.removeAttribute('aria-disabled');a.removeAttribute('tabindex');});
     root.classList.remove('audio-locked');gate.classList.add('is-open');
@@ -224,6 +233,15 @@
     audio.addEventListener('error',markMissing);
   }
   start.addEventListener('click',()=>{if(audio&&(audio.ended||!started))audio.currentTime=0;begin();});
+
+  document.addEventListener('volume:languagechange',()=>{
+    if(audio&&!started&&!audio.ended&&pref.isEnabled())begin();
+    if(deferredUnlock&&languageReady()){
+      const msg=deferredUnlock;
+      deferredUnlock='';
+      unlockCards(msg);
+    }
+  });
 
   document.addEventListener('volume:soundchange',ev=>{
     const enabled=Boolean(ev.detail?.enabled);
