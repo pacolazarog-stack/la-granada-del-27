@@ -217,3 +217,24 @@ El cierre de OTOÑO incluye:
 Criterio de cierre: la prueba documental deja de ser garantía de sentido. Puede corregir hechos concretos, pero no fijar por sí sola lo que esos hechos significaron mientras ocurrían. La escritura se vuelve el último riesgo del archivo: convertir personas reales en funciones de una narración sobre Julián. Por eso el bloque termina desplazando el foco desde la explicación hacia la presencia ordinaria: «Es un tomate. Empieza por ahí».
 
 **LOS NOMBRES DE PACO** comienza después de este cierre como pieza autónoma no numerada, antes de **CARNAVAL DE SUPERPACO**.
+
+
+## 16. Paco Olmo · LOS NOMBRES DE PACO cerrado
+
+Queda completada la versión literaria revisada **EN · FR · IT · DE** de la pieza autónoma **LOS NOMBRES DE PACO**, manteniendo intacta la cadena nominal y su función narrativa:
+
+**Francisco → Francisquillo / Fran / Frasco → Paco → Paquillo / Paquito / Pacorro → Curro → Pancho → Copa → Copix → Farruco → Superpaco**.
+
+Cobertura acumulada del lector: **páginas 1–133**.
+
+La traducción conserva como nombres propios las variantes castellanas, sin naturalizarlas ni sustituirlas por equivalentes locales, porque el mecanismo de la pieza depende precisamente de que un mismo cuerpo vaya siendo renombrado por los demás.
+
+Criterio literario:
+- preservar oralidad, ridículo, deriva popular y ternura;
+- no convertir la pieza en demostración teórica sobre la identidad;
+- conservar la autonomía de Jacinta y su salida a Motril;
+- mantener que la historia de Pancho se emancipa de Paco y acaba circulando sin necesitarlo;
+- conservar el final en el puerto, donde varios hombres responden al nombre «Paco» y el protagonista deja de necesitar saber cuál de todos es él.
+
+Se traduce también el separador siguiente:
+**CARNAVAL DE SUPERPACO / CARNIVAL OF SUPERPACO / CARNAVAL DE SUPERPACO / CARNEVALE DI SUPERPACO / KARNEVAL DES SUPERPACO**.
