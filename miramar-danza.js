@@ -125,7 +125,7 @@ async function prepareAudio(n){
 }
 function showScene(n){
  stopAudio();mode='scene';scene=Math.max(1,Math.min(30,n));showOnly(sceneCard);atlasPosition(scene);renderPlant(scene);
- sceneImage.setAttribute('aria-label','Imagen canónica de la escena '+pad(scene));
+ sceneHero.setAttribute('aria-label','Imagen de la escena '+pad(scene)+' extraída de la hoja de contacto canónica de danza');
  sceneNumber.textContent=pad(scene)+' / 30';sceneTitle.textContent=SCENES[scene-1];phaseLabel.textContent=phaseFor(scene);
  sceneStatus.textContent='ESCENA '+pad(scene)+' / 30';audioStatus.textContent='COMPROBANDO MÚSICA '+pad(scene);clock.textContent='--:--';controls();prepareAudio(scene);
 }
