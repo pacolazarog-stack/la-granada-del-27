@@ -16,7 +16,7 @@ let mode='opening',scene=0,audioKind='none',muted=false,plantVisible=true,monito
 const pad=n=>String(n).padStart(2,'0');
 const fmt=s=>{if(!Number.isFinite(s)||s<0)return'--:--';const m=Math.floor(s/60),q=Math.floor(s%60);return String(m).padStart(2,'0')+':'+String(q).padStart(2,'0')};
 const phaseFor=n=>PHASES.find(x=>n>=x[0]&&n<=x[1])[2];
-const danceTrack=n=>'audio/danza/'+pad(n)+'.mp3',corporalTrack=n=>'audio/corporal/'+pad(n)+'.mp3';
+const danceTrack=n=>'audio/danza/'+pad(n)+'.mp3';
 function showOnly(el){[opening,sceneCard,credits].forEach(x=>{x.hidden=true;x.classList.remove('is-visible')});el.hidden=false;requestAnimationFrame(()=>el.classList.add('is-visible'))}
 function stopAudio(){if(monitor){clearInterval(monitor);monitor=0}audio.onended=null;audio.onerror=null;audio.pause();audio.removeAttribute('src');audio.load();audioKind='none'}
 async function exists(url){try{const r=await fetch(url,{method:'HEAD',cache:'no-store'});return r.ok}catch(_){return false}}
@@ -37,8 +37,7 @@ function controls(){
  if(mode==='opening'){play.disabled=false;play.textContent='COMENZAR'}else if(mode==='credits'){play.disabled=false;play.textContent='REINICIAR'}else if(mode==='scene'&&audioKind==='file'){play.disabled=false;play.textContent=audio.paused?'REANUDAR':'PAUSA'}else{play.disabled=true;play.textContent=audioKind==='pending'?'MÚSICA PENDIENTE':'—'}
 }
 async function prepareAudio(n){
- stopAudio();audio.muted=muted;let url=danceTrack(n),ok=await exists(url);
- if(!ok&&n<=15){url=corporalTrack(n);ok=await exists(url)}
+ stopAudio();audio.muted=muted;const url=danceTrack(n),ok=await exists(url);
  if(mode!=='scene'||scene!==n)return;
  if(!ok){audioKind='pending';audioStatus.textContent='MÚSICA '+pad(n)+' · PENDIENTE · AVANCE MANUAL';clock.textContent='--:--';controls();return}
  audioKind='file';audio.src=url;audio.currentTime=0;audioStatus.textContent='MÚSICA '+pad(n)+' · INCORPORADA';
@@ -62,7 +61,7 @@ function prevScene(){if(mode==='scene'&&scene>1)showScene(scene-1)}
 function togglePlay(){if(mode==='opening'){showScene(1);return}if(mode==='credits'){reset();return}if(mode!=='scene'||audioKind!=='file')return;if(audio.paused)audio.play().catch(()=>{});else audio.pause();controls()}
 function toggleSound(){muted=!muted;audio.muted=muted;controls()}
 function togglePlant(){plantVisible=!plantVisible;plantPanel.classList.toggle('is-hidden',!plantVisible);controls()}
-function reset(){stopAudio();mode='opening';scene=0;showOnly(opening);phaseLabel.textContent='I · DOMÉSTICA';sceneStatus.textContent='OBRA';audioStatus.textContent='15 músicas incorporadas · 16–30 preparadas';clock.textContent='--:--';controls()}
+function reset(){stopAudio();mode='opening';scene=0;showOnly(opening);phaseLabel.textContent='I · DOMÉSTICA';sceneStatus.textContent='OBRA';audioStatus.textContent='15 pistas DANZA incorporadas · 16–30 pendientes';clock.textContent='--:--';controls()}
 play.addEventListener('click',togglePlay);next.addEventListener('click',nextScene);prev.addEventListener('click',prevScene);sound.addEventListener('click',toggleSound);plantBtn.addEventListener('click',togglePlant);audio.addEventListener('play',controls);audio.addEventListener('pause',controls);
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();nextScene()}if(e.key==='ArrowLeft'){e.preventDefault();prevScene()}if(e.code==='Space'){e.preventDefault();togglePlay()}if(e.key.toLowerCase()==='p')togglePlant()});
 const hm=location.hash.match(/^#scene-(\d{1,2})$/);if(hm)showScene(Number(hm[1]));else reset();
