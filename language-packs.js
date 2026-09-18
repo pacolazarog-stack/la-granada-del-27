@@ -244,5 +244,107 @@ window.POETICA_LANGUAGE_PACKS={
     "fr": "VERTICAL",
     "it": "VERTICALE",
     "de": "VERTIKAL"
+  },
+  "Cuatro formas de medir": {
+    "en": "Four ways of measuring",
+    "fr": "Quatre façons de mesurer",
+    "it": "Quattro modi di misurare",
+    "de": "Vier Arten zu messen"
+  },
+  "lo que no cabe": {
+    "en": "what does not fit",
+    "fr": "ce qui ne tient pas",
+    "it": "ciò che non ci sta",
+    "de": "was nicht hineinpasst"
+  },
+  "INICIANDO PRELUDIO SONORO…": {
+    "en": "STARTING SONIC PRELUDE…",
+    "fr": "DÉMARRAGE DU PRÉLUDE SONORE…",
+    "it": "AVVIO DEL PRELUDIO SONORO…",
+    "de": "KLANGVORSPIEL WIRD GESTARTET…"
+  },
+  "INICIAR PRELUDIO": {
+    "en": "START PRELUDE",
+    "fr": "DÉMARRER LE PRÉLUDE",
+    "it": "AVVIA IL PRELUDIO",
+    "de": "VORSPIEL STARTEN"
+  },
+  "Tras escuchar por primera vez el preludio podrá elegir el recorrido sonoro y, de forma independiente, la lectura en voz. Sonido y voz pueden combinarse libremente o desactivarse por separado; ambos controles permanecen disponibles durante todo el volumen.": {
+    "en": "After hearing the prelude for the first time, you may choose the sonic route and, independently, spoken reading. Sound and voice can be combined freely or switched off separately; both controls remain available throughout the volume.",
+    "fr": "Après avoir écouté le prélude une première fois, vous pourrez choisir le parcours sonore et, indépendamment, la lecture à voix haute. Son et voix peuvent être combinés librement ou désactivés séparément ; les deux commandes restent disponibles dans tout le volume.",
+    "it": "Dopo aver ascoltato per la prima volta il preludio, potrai scegliere il percorso sonoro e, indipendentemente, la lettura vocale. Suono e voce possono essere combinati liberamente o disattivati separatamente; entrambi i controlli restano disponibili in tutto il volume.",
+    "de": "Nach dem ersten vollständigen Vorspiel können Sie den Klangweg und unabhängig davon die gesprochene Lesung wählen. Klang und Stimme lassen sich frei kombinieren oder getrennt abschalten; beide Bedienelemente bleiben im gesamten Band verfügbar."
+  },
+  "ELIJA CÓMO CONTINUAR EL VOLUMEN": {
+    "en": "CHOOSE HOW TO CONTINUE THE VOLUME",
+    "fr": "CHOISISSEZ COMMENT POURSUIVRE LE VOLUME",
+    "it": "SCEGLI COME CONTINUARE IL VOLUME",
+    "de": "WÄHLEN SIE, WIE DER BAND FORTGESETZT WIRD"
+  },
+  "🔊 CON SONIDO": {
+    "en": "🔊 WITH SOUND",
+    "fr": "🔊 AVEC SON",
+    "it": "🔊 CON SUONO",
+    "de": "🔊 MIT KLANG"
+  },
+  "🔇 SIN SONIDO": {
+    "en": "🔇 WITHOUT SOUND",
+    "fr": "🔇 SANS SON",
+    "it": "🔇 SENZA SUONO",
+    "de": "🔇 OHNE KLANG"
+  },
+  "🗣 CON VOZ": {
+    "en": "🗣 WITH VOICE",
+    "fr": "🗣 AVEC VOIX",
+    "it": "🗣 CON VOCE",
+    "de": "🗣 MIT STIMME"
+  },
+  "🤐 SIN VOZ": {
+    "en": "🤐 WITHOUT VOICE",
+    "fr": "🤐 SANS VOIX",
+    "it": "🤐 SENZA VOCE",
+    "de": "🤐 OHNE STIMME"
+  },
+  "ACCESO ABIERTO": {
+    "en": "ACCESS OPEN",
+    "fr": "ACCÈS OUVERT",
+    "it": "ACCESSO APERTO",
+    "de": "ZUGANG OFFEN"
+  },
+  "CON SONIDO · ACCESO ABIERTO": {
+    "en": "WITH SOUND · ACCESS OPEN",
+    "fr": "AVEC SON · ACCÈS OUVERT",
+    "it": "CON SUONO · ACCESSO APERTO",
+    "de": "MIT KLANG · ZUGANG OFFEN"
+  },
+  "MODO SIN SONIDO · ACCESO ABIERTO": {
+    "en": "SILENT MODE · ACCESS OPEN",
+    "fr": "MODE SANS SON · ACCÈS OUVERT",
+    "it": "MODALITÀ SENZA SUONO · ACCESSO APERTO",
+    "de": "OHNE KLANG · ZUGANG OFFEN"
+  },
+  "PRELUDIO SONORO EN CURSO · ACCESO BLOQUEADO": {
+    "en": "SONIC PRELUDE PLAYING · ACCESS LOCKED",
+    "fr": "PRÉLUDE SONORE EN COURS · ACCÈS VERROUILLÉ",
+    "it": "PRELUDIO SONORO IN CORSO · ACCESSO BLOCCATO",
+    "de": "KLANGVORSPIEL LÄUFT · ZUGANG GESPERRT"
+  },
+  "EL NAVEGADOR REQUIERE UNA ACCIÓN PARA INICIAR EL SONIDO": {
+    "en": "THE BROWSER REQUIRES AN ACTION TO START SOUND",
+    "fr": "LE NAVIGATEUR DEMANDE UNE ACTION POUR DÉMARRER LE SON",
+    "it": "IL BROWSER RICHIEDE UN'AZIONE PER AVVIARE IL SUONO",
+    "de": "DER BROWSER BENÖTIGT EINE AKTION, UM DEN KLANG ZU STARTEN"
+  },
+  "ELIJA UNA LENGUA PARA CONTINUAR · LA MÚSICA YA HA SIDO COMPLETADA": {
+    "en": "CHOOSE A LANGUAGE TO CONTINUE · THE MUSIC HAS COMPLETED",
+    "fr": "CHOISISSEZ UNE LANGUE POUR CONTINUER · LA MUSIQUE EST TERMINÉE",
+    "it": "SCEGLI UNA LINGUA PER CONTINUARE · LA MUSICA È TERMINATA",
+    "de": "WÄHLEN SIE EINE SPRACHE · DIE MUSIK IST BEENDET"
+  },
+  "IDIOMA PENDIENTE": {
+    "en": "LANGUAGE PENDING",
+    "fr": "LANGUE EN ATTENTE",
+    "it": "LINGUA IN ATTESA",
+    "de": "SPRACHE AUSSTEHEND"
   }
 };
