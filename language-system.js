@@ -2,11 +2,11 @@
 (()=>{
   const KEY='poeticaLanguage';
   const LANGS=[
-    {code:'es',tag:'es-ES',label:'ESPAÑOL',short:'ES'},
     {code:'en',tag:'en-GB',label:'ENGLISH',short:'EN'},
     {code:'fr',tag:'fr-FR',label:'FRANÇAIS',short:'FR'},
     {code:'it',tag:'it-IT',label:'ITALIANO',short:'IT'},
-    {code:'de',tag:'de-DE',label:'DEUTSCH',short:'DE'}
+    {code:'de',tag:'de-DE',label:'DEUTSCH',short:'DE'},
+    {code:'es',tag:'es-ES',label:'ESPAÑOL',short:'ES'}
   ];
   const byCode=Object.fromEntries(LANGS.map(function(x){return [x.code,x];}));
   const PACK=window.POETICA_LANGUAGE_PACKS||{};
@@ -122,6 +122,6 @@
   });
   observer.observe(document.body,{childList:true,subtree:true});
 
-  window.POETICA_LANGUAGE={languages:LANGS,isChosen:isChosen,current:function(){return active;},setLanguage:setLanguage,apply:apply,canonical:'es',minimum:['es','en','fr','it','de']};
+  window.POETICA_LANGUAGE={languages:LANGS,isChosen:isChosen,current:function(){return active;},setLanguage:setLanguage,apply:apply,canonical:'es',minimum:['en','fr','it','de','es']};
   apply(document.body);
 })();
