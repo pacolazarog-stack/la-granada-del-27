@@ -138,3 +138,24 @@ Para **La Granada del 27 · Un siglo después · Cosiendo Europa**, texto y mast
 - **anónimo**: https://drive.google.com/file/d/1V0F_BVgEaHUG_ul4ZsTl004vqyEfkLcb/view
 - **flag + anonimato**: https://drive.google.com/file/d/1e1vB2magHYX2IFDV8NunbjJw6vlGjEyl/view
 - Criterio: [`PUBLICACION_FLAG_ANONIMATO.md`](PUBLICACION_FLAG_ANONIMATO.md)
+
+
+## Volumen integral · 18/09/2026
+
+Queda fijado un **único PDF maestro de Poética del límite** que integra las cinco piezas del corpus en una sola arquitectura editorial:
+
+1. **La Granada del 27 · Un siglo después · Cosiendo Europa**
+2. **Las cuatro estaciones de Paco Olmo de Males**
+3. **La terraza del Miramar**
+4. **La poética del archivo**
+5. **Poética del límite**
+
+El volumen incorpora **cubierta general, índice actualizado, cinco portadillas internas, marcadores PDF y contraportada general**. Las portadillas no sustituyen las cubiertas internas originales: funcionan como umbrales de sección dentro del volumen conjunto.
+
+- Archivo: `POETICA_DEL_LIMITE_VOLUMEN_INTEGRAL_FLAG_CANON_2026-09-18.pdf`
+- Drive: https://drive.google.com/file/d/1AQzYblBgnVR29xZqchlYy2hNjvuvdFyy/view
+- Páginas: **460**
+- Formato: **A5**
+- SHA-256: `e46b69ed95e095996dc0638470278f8d8d6381a0bbc2b4faeb2699a35f0bde2c`
+
+La secuencia de acceso del PDF queda: cubierta general → índice → I · Granada → II · Paco → III · Miramar → IV · Poética del archivo → V · Poética del límite → contraportada general.
