@@ -49,9 +49,9 @@ El poemario no queda subordinado al cubo. El cubo pertenece al laboratorio Atlas
 
 ## 7. Modelo XLSX materializado
 
-Se ha generado un libro técnico complementario: `ATLAS_AZAR_MODELO_CANONICO_27x27x27_2026-09-18.xlsx`.
+Se ha generado un libro técnico complementario actualizado: `ATLAS_AZAR_MODELO_CANONICO_27_LENGUAS_2026-09-18.xlsx`.
 
-Drive: https://docs.google.com/spreadsheets/d/1G7NAtMc0kSeoCFONPRpXoWDLOOCRyPJ3/edit
+La versión anterior de 24 lenguas queda como referencia histórica; la versión activa incorpora el campo de 27 lenguas.
 
 Hojas: `DASHBOARD`, `INDICE_27`, `RUTA_POEMA_27`, `NAVEGADOR_CUBO`, `ENVOLVENTES_13`, `TRAZAS_5`, `LENGUAS_27`, `AZAR_4`, `CONTROL`.
 
