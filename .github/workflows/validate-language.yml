@@ -3,6 +3,10 @@ name: Validate languages
 on:
   push:
     paths:
+      - 'language-granada-1927-a.js'
+      - 'language-granada-1927-b.js'
+      - 'language-granada-1927-c.js'
+      - 'texto-canonico/01_LIBRO_I_1927.md'
       - 'language-packs.js'
       - 'language-system.js'
       - 'audio-gate.js'
@@ -20,6 +24,10 @@ on:
       - '.github/workflows/validate-language.yml'
   pull_request:
     paths:
+      - 'language-granada-1927-a.js'
+      - 'language-granada-1927-b.js'
+      - 'language-granada-1927-c.js'
+      - 'texto-canonico/01_LIBRO_I_1927.md'
       - 'language-packs.js'
       - 'language-system.js'
       - 'audio-gate.js'
