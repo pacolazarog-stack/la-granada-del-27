@@ -2,10 +2,8 @@ name: Import Miramar corporal audio 01-15
 on:
   push:
     branches: [main]
-
 permissions:
   contents: write
-
 jobs:
   import:
     if: github.event.head_commit.message == 'Stage corporal audio import'
@@ -14,98 +12,98 @@ jobs:
       - uses: actions/checkout@v4
       - name: Download 01
         env:
-          URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-2d20-81f4-bae7-84389a257565/raw?se=2026-09-18T05%3A27%3A33Z&sp=r&sv=2026-02-06&sr=b&scid=2209a325-8b87-5bf9-83d9-83fe4433b373&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-18T05%3A17%3A58Z&ske=2026-09-19T05%3A17%3A58Z&sks=b&skv=2026-02-06&sig=XJvIqNVAYBRqkwfbAvwzaDP8QHaw0rwrtlyHLfoMhNY%3D'
+          URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-94a8-81f4-83ec-0ba7869577c3/raw?se=2026-09-18T05%3A35%3A51Z&sp=r&sv=2026-02-06&sr=b&scid=8fe27ee6-f1e0-5706-970b-e78afe533569&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A04%3A30Z&ske=2026-09-18T18%3A04%3A30Z&sks=b&skv=2026-02-06&sig=aMlvQR9jbiEzy2H9THxTqogfsnOitI7OdKu5qqrlXFQ%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/01.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/01.mp3
           echo '318c177593a57b30c169208a97276a5c0a7639c9bdce031d3fadebba6fef7336  audio/corporal/01.mp3' | sha256sum -c -
       - name: Download 02
         env:
-          URL: 'https://sdmntprdenmarkeast.oaiusercontent.com/files/00000000-7dcc-8210-b616-a51376a784f9/raw?se=2026-09-18T05%3A29%3A50Z&sp=r&sv=2026-02-06&sr=b&scid=0175577f-b650-537b-8b60-fc0b50023c7f&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A04%3A30Z&ske=2026-09-18T18%3A04%3A30Z&sks=b&skv=2026-02-06&sig=XzmLOFrWpdpX9i4bREfEpw2YUs4sbWRBdYxgFGhLIKs%3D'
+          URL: 'https://sdmntprukwest.oaiusercontent.com/files/00000000-8800-8243-b09f-16fd83f0e657/raw?se=2026-09-18T05%3A35%3A53Z&sp=r&sv=2026-02-06&sr=b&scid=13ec2414-d7dd-54dc-8af4-08d7f1b62d0a&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-18T05%3A17%3A52Z&ske=2026-09-19T05%3A17%3A52Z&sks=b&skv=2026-02-06&sig=0B9x1GKUDPs/6tWtVHvGjQjw9nn15ORh1pQAzqVfQgc%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/02.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/02.mp3
           echo 'f04f7662d4525d5ed68d4189b4a44a1cbefde358c4866b51eb11caed85bb339e  audio/corporal/02.mp3' | sha256sum -c -
       - name: Download 03
         env:
-          URL: 'https://sdmntprdenmarkeast.oaiusercontent.com/files/00000000-83b4-8210-89a3-fa62387a4bf7/raw?se=2026-09-18T05%3A29%3A53Z&sp=r&sv=2026-02-06&sr=b&scid=8377d3e5-99a1-5438-88fb-8f30955dfb06&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-18T04%3A23%3A07Z&ske=2026-09-19T04%3A23%3A07Z&sks=b&skv=2026-02-06&sig=zSgG7O79zB8MQukMSnxuDi3ZiLyZxDmoSQ2N32yfz8I%3D'
+          URL: 'https://sdmntpritalynorth.oaiusercontent.com/files/00000000-b8b4-8246-91db-53e50412cda8/raw?se=2026-09-18T05%3A35%3A56Z&sp=r&sv=2026-02-06&sr=b&scid=072ec971-7a38-52db-b232-2d5b1f5476d0&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A17%3A55Z&ske=2026-09-18T18%3A17%3A55Z&sks=b&skv=2026-02-06&sig=bW%2BFErTiymiDEZNk/FaBznlcRhvzQ89si6zaszxmEHE%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/03.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/03.mp3
           echo 'eaa003897d8b3c108e7076d4eced4d85976dc66aabcfe49d380477696751556b  audio/corporal/03.mp3' | sha256sum -c -
       - name: Download 04
         env:
-          URL: 'https://sdmntprpolandcentral.oaiusercontent.com/files/00000000-d824-820a-b89e-76db061ce911/raw?se=2026-09-18T05%3A29%3A55Z&sp=r&sv=2026-02-06&sr=b&scid=f05423b3-85bb-5939-a4dc-08183637a169&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A22%3A04Z&ske=2026-09-18T18%3A22%3A04Z&sks=b&skv=2026-02-06&sig=oVUOTCSAFYgbUGMUWTcK/HWryzA%2BBgR012DpT1YiIwo%3D'
+          URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-33f4-81f4-80ed-f3bd607b52b6/raw?se=2026-09-18T05%3A35%3A58Z&sp=r&sv=2026-02-06&sr=b&scid=c4dbf0f1-92ac-5c92-8e7b-ef9f10c60d8d&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-18T02%3A05%3A10Z&ske=2026-09-19T02%3A05%3A10Z&sks=b&skv=2026-02-06&sig=tw0fL6yQMMBpq/TCvINsGed9kuBQ7UUuMGSYdQ6MQv0%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/04.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/04.mp3
           echo '89e8c98de2abfd2732d6a3019b3938568f80edb290c56f9b93f2c30cc4785e73  audio/corporal/04.mp3' | sha256sum -c -
       - name: Download 05
         env:
-          URL: 'https://sdmntpritalynorth.oaiusercontent.com/files/00000000-22e4-8246-9b32-efffb721ac96/raw?se=2026-09-18T05%3A29%3A57Z&sp=r&sv=2026-02-06&sr=b&scid=46fd61d1-e8c2-5697-a433-9ef2a1358c5f&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-18T04%3A18%3A49Z&ske=2026-09-19T04%3A18%3A49Z&sks=b&skv=2026-02-06&sig=JdMF21hkwqYnLhFWljGNZBSjPvfUHLI764igYOrNswY%3D'
+          URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-d83c-81f4-9d2c-c66933fd1eb0/raw?se=2026-09-18T05%3A36%3A00Z&sp=r&sv=2026-02-06&sr=b&scid=8b8ba90e-90f2-5ef4-badb-8130d32584ff&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A02%3A04Z&ske=2026-09-18T18%3A02%3A04Z&sks=b&skv=2026-02-06&sig=7j7MLw2mdgEdunfl6vRvxuYIUlfNLg54CoDiVsoQuyY%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/05.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/05.mp3
           echo '7ba3d0b8d67dfcdfacdaa0fdb33b8db3d767b86e64bc2ee5008e469c0fdc971c  audio/corporal/05.mp3' | sha256sum -c -
       - name: Download 06
         env:
-          URL: 'https://sdmntprdenmarkeast.oaiusercontent.com/files/00000000-0adc-8210-a2c7-9eaf8c9372fe/raw?se=2026-09-18T05%3A30%3A00Z&sp=r&sv=2026-02-06&sr=b&scid=cf0dc79b-1e23-53ec-a18c-baa5079b37f5&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T23%3A52%3A20Z&ske=2026-09-18T23%3A52%3A20Z&sks=b&skv=2026-02-06&sig=qKtXkSCOh02gIgNSiz15%2Bca2d239j3PJoWtyliiHNss%3D'
+          URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-80ec-81f4-8b80-5e83c8a999fb/raw?se=2026-09-18T05%3A36%3A02Z&sp=r&sv=2026-02-06&sr=b&scid=59f878d3-2715-5604-aa75-4b57b9612008&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-18T04%3A13%3A22Z&ske=2026-09-19T04%3A13%3A22Z&sks=b&skv=2026-02-06&sig=Lg2EsQJZVG5oplk8ZUsSkJ2%2BRfSRdY1sT%2BtwPzDoHX4%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/06.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/06.mp3
           echo 'f14e5a72f16cecdd74514d8ab6161e79c3180364b03bb9446f5fca978a58f3c0  audio/corporal/06.mp3' | sha256sum -c -
       - name: Download 07
         env:
-          URL: 'https://sdmntprdenmarkeast.oaiusercontent.com/files/00000000-e85c-8210-bc60-4957bb5ed2a8/raw?se=2026-09-18T05%3A30%3A02Z&sp=r&sv=2026-02-06&sr=b&scid=35a65792-4ded-5d41-a718-cb41744a8b19&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-18T05%3A17%3A52Z&ske=2026-09-19T05%3A17%3A52Z&sks=b&skv=2026-02-06&sig=XQJajlKaCZGG3Pg4vL96kGsKen2yztSF8a/Fu3CqyMU%3D'
+          URL: 'https://sdmntprdenmarkeast.oaiusercontent.com/files/00000000-b6ec-8210-98d1-08f354048aa1/raw?se=2026-09-18T05%3A36%3A04Z&sp=r&sv=2026-02-06&sr=b&scid=2989dac2-ba12-5dd5-8629-bb76b4f8451d&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A18%3A00Z&ske=2026-09-18T18%3A18%3A00Z&sks=b&skv=2026-02-06&sig=yS4XKNZP666fi7rZFu6Fkxu07Opx2R%2Ba6pA3NSwso5Q%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/07.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/07.mp3
           echo 'f2aa5e8f6689b7ab45aac3acd85cdca43a7b43f05e165aca06c6da9950187095  audio/corporal/07.mp3' | sha256sum -c -
       - name: Download 08
         env:
-          URL: 'https://sdmntprpolandcentral.oaiusercontent.com/files/00000000-2a94-820a-801c-4d7661cb7202/raw?se=2026-09-18T05%3A30%3A04Z&sp=r&sv=2026-02-06&sr=b&scid=64584728-5879-5501-a414-233e87deb8e0&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A13%3A54Z&ske=2026-09-18T18%3A13%3A54Z&sks=b&skv=2026-02-06&sig=sMbL/Oe%2BzwYjHQL69su3LOdCFP5hbbA54aIAz6pTAPQ%3D'
+          URL: 'https://sdmntpritalynorth.oaiusercontent.com/files/00000000-af5c-8246-8a70-4a29c587c66e/raw?se=2026-09-18T05%3A36%3A06Z&sp=r&sv=2026-02-06&sr=b&scid=510ae156-83f1-5d74-bac8-0e365e1c09de&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A15%3A25Z&ske=2026-09-18T18%3A15%3A25Z&sks=b&skv=2026-02-06&sig=v2iU418Oe4UyEq56F%2BMREMtziJ96qWEtOmc9Um6Jp5c%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/08.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/08.mp3
           echo '068e0b3a103dbfbed2d0b5c4b0e9236d5d788849343b4df0b9d3ddc149aa524c  audio/corporal/08.mp3' | sha256sum -c -
       - name: Download 09
         env:
-          URL: 'https://sdmntprdenmarkeast.oaiusercontent.com/files/00000000-cd70-8210-81a8-76b086a86504/raw?se=2026-09-18T05%3A30%3A18Z&sp=r&sv=2026-02-06&sr=b&scid=a2708c6e-2f34-51aa-adc7-913c8c966caa&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A13%3A55Z&ske=2026-09-18T18%3A13%3A55Z&sks=b&skv=2026-02-06&sig=LsgryAGExprVlk3hp1fX2vXh4k%2B1drk2XmmtEYVUeJI%3D'
+          URL: 'https://sdmntprukwest.oaiusercontent.com/files/00000000-3ee8-8243-af20-28ddf3323fd4/raw?se=2026-09-18T05%3A36%3A09Z&sp=r&sv=2026-02-06&sr=b&scid=dc711975-69d2-590d-ae52-2276fa1c4bc0&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A07%3A03Z&ske=2026-09-18T18%3A07%3A03Z&sks=b&skv=2026-02-06&sig=ktXDkd6KDDRrr2LgPmnsJijagkcttLW%2BwRe5AST1yVY%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/09.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/09.mp3
           echo '491de87df908bf8ee07a339caa43ebcc6582dafb104e790aa7fe0b248dd28232  audio/corporal/09.mp3' | sha256sum -c -
       - name: Download 10
         env:
-          URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-fd9c-81f4-8339-1f8eee0b47b9/raw?se=2026-09-18T05%3A30%3A21Z&sp=r&sv=2026-02-06&sr=b&scid=1a930321-63ad-578b-a1bf-ae1aa09bbaf9&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A06%3A37Z&ske=2026-09-18T18%3A06%3A37Z&sks=b&skv=2026-02-06&sig=/9EizczKOMP04UCqknqCzWO/G4EZR7JVom3YiQ4vhbE%3D'
+          URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-70d0-81f4-919c-306bcfee5f09/raw?se=2026-09-18T05%3A36%3A11Z&sp=r&sv=2026-02-06&sr=b&scid=f5a80ae9-0364-56da-a3b9-5125ffa47c93&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-18T04%3A53%3A05Z&ske=2026-09-19T04%3A53%3A05Z&sks=b&skv=2026-02-06&sig=5JaoFbK3tROSK54tjewY/zikHkXFC99zKyiS3UwpwFQ%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/10.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/10.mp3
           echo '8a8d0d128f9e27bf2f74cbb3a2f44e4df4611fb13f6dce0ebb77f5436c9823e1  audio/corporal/10.mp3' | sha256sum -c -
       - name: Download 11
         env:
-          URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-1134-81f4-9e2a-f6f8593af7bb/raw?se=2026-09-18T05%3A30%3A23Z&sp=r&sv=2026-02-06&sr=b&scid=c83cbd6b-8641-502c-9273-a7dd1213f3e2&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-18T02%3A07%3A31Z&ske=2026-09-19T02%3A07%3A31Z&sks=b&skv=2026-02-06&sig=p31rlhqYIJy8OXJqdw4tzf/Eshqba3xfSstFbN5NVzQ%3D'
+          URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-6944-81f4-a4b8-22ba3ab5acc1/raw?se=2026-09-18T05%3A36%3A14Z&sp=r&sv=2026-02-06&sr=b&scid=b3d0ec75-f552-59bd-bace-534a5b626c6b&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A18%3A00Z&ske=2026-09-18T18%3A18%3A00Z&sks=b&skv=2026-02-06&sig=ij5l8aqkKI/Ek2dG%2B%2BNruxMJQn0vA9mr/58gQ5P%2BHJg%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/11.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/11.mp3
           echo 'bb8603f786aaef2600a5b747adf39a3c2d19581e0b67232d508cf4525b21a197  audio/corporal/11.mp3' | sha256sum -c -
       - name: Download 12
         env:
-          URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-c668-81f4-b823-eebd3a309718/raw?se=2026-09-18T05%3A30%3A25Z&sp=r&sv=2026-02-06&sr=b&scid=efe9d8c3-be2e-5f19-9220-d4c061e0f390&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-18T04%3A18%3A49Z&ske=2026-09-19T04%3A18%3A49Z&sks=b&skv=2026-02-06&sig=dK2LkKBa3TS9/WtkNg4TLpfxxx%2Bo4WP%2BlZsHNY6DNxc%3D'
+          URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-ead0-81f4-a7f6-c691906d7a49/raw?se=2026-09-18T05%3A36%3A18Z&sp=r&sv=2026-02-06&sr=b&scid=d052879a-882c-5d5a-900d-5be94847b338&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-18T04%3A13%3A22Z&ske=2026-09-19T04%3A13%3A22Z&sks=b&skv=2026-02-06&sig=/l93DADMDEy%2BxDF5erY1%2B2G850DlE70DASf3YdFyrnw%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/12.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/12.mp3
           echo 'bed788cb70b423cf32bc8bfdc18420c79b83951741aa0898c97423b5117cfb33  audio/corporal/12.mp3' | sha256sum -c -
       - name: Download 13
         env:
-          URL: 'https://sdmntpritalynorth.oaiusercontent.com/files/00000000-2b9c-8246-82d3-5d44708d3c66/raw?se=2026-09-18T05%3A30%3A28Z&sp=r&sv=2026-02-06&sr=b&scid=0f00ad66-da06-51cf-b2dd-37e02192be38&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A15%3A49Z&ske=2026-09-18T18%3A15%3A49Z&sks=b&skv=2026-02-06&sig=RlnvMJULgR4pmxlK4Zx0yACZeuOqXD9NKf6txFB0oa8%3D'
+          URL: 'https://sdmntprdenmarkeast.oaiusercontent.com/files/00000000-ee94-8210-8461-191b71ea3704/raw?se=2026-09-18T05%3A36%3A20Z&sp=r&sv=2026-02-06&sr=b&scid=37f5ef27-2781-5111-9765-66411aa01a6a&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T23%3A52%3A20Z&ske=2026-09-18T23%3A52%3A20Z&sks=b&skv=2026-02-06&sig=klhbOpMvh2PrYfZPh3P8TdhX8%2BgJvSKL%2BoCswbXmsxc%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/13.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/13.mp3
           echo 'a34dc85adbe00b5310341c91144b6a02387e1e5420a1748e50830244687843f7  audio/corporal/13.mp3' | sha256sum -c -
       - name: Download 14
         env:
-          URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-ea70-81f4-bc8b-c8bc904e6df9/raw?se=2026-09-18T05%3A30%3A31Z&sp=r&sv=2026-02-06&sr=b&scid=4fbc7a49-3526-51cc-ac7a-06058d266123&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A06%3A55Z&ske=2026-09-18T18%3A06%3A55Z&sks=b&skv=2026-02-06&sig=dP61U1aR/LcBmjDIVehCQco5h%2BrbI6oXCScdfXPGEyE%3D'
+          URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-7b60-81f4-a146-a267cc91d91b/raw?se=2026-09-18T05%3A36%3A22Z&sp=r&sv=2026-02-06&sr=b&scid=b86a5ad6-2686-5498-96c6-6548988eef72&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-18T03%3A35%3A20Z&ske=2026-09-19T03%3A35%3A20Z&sks=b&skv=2026-02-06&sig=bA7rrqzOdo%2BThHAkHUDoVM9FJHJWe7TBi0xfYr/Ps4I%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/14.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/14.mp3
           echo '4d8f76f5680bbfe4d485792a320f6fc5cea98de864895a4868cbbedcd9134bc0  audio/corporal/14.mp3' | sha256sum -c -
       - name: Download 15
         env:
-          URL: 'https://sdmntprdenmarkeast.oaiusercontent.com/files/00000000-5a58-8210-a761-3ea3ef6671b3/raw?se=2026-09-18T05%3A30%3A33Z&sp=r&sv=2026-02-06&sr=b&scid=3a3032d3-bea6-53f3-aa43-a645e6558a33&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-18T05%3A17%3A52Z&ske=2026-09-19T05%3A17%3A52Z&sks=b&skv=2026-02-06&sig=9eYpSXd2fWOA3FPJz930nbj613oW6AokaHMc4KJiIog%3D'
+          URL: 'https://sdmntprdenmarkeast.oaiusercontent.com/files/00000000-3374-8210-b887-a2f093932d8d/raw?se=2026-09-18T05%3A36%3A24Z&sp=r&sv=2026-02-06&sr=b&scid=c6cff008-479e-579a-9397-0981e6193ebb&skoid=c30e7ce7-1f51-4051-a377-288cdba21c02&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-17T18%3A17%3A55Z&ske=2026-09-18T18%3A17%3A55Z&sks=b&skv=2026-02-06&sig=Q%2BhQhv380KnApNvU2OzJfhLKaXe14K5PZqCaF65ZI4E%3D'
         run: |
-          curl -fL --retry 3 --retry-delay 2 "$URL" -o audio/corporal/15.mp3
+          curl -fL --retry 2 "$URL" -o audio/corporal/15.mp3
           echo 'd01fe5d2bb9b3cdcb6345058c1ee29f321f1066f1308107672fee7164c8131cb  audio/corporal/15.mp3' | sha256sum -c -
       - name: Commit corporal audio
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add audio/corporal/01.mp3 audio/corporal/02.mp3 audio/corporal/03.mp3 audio/corporal/04.mp3 audio/corporal/05.mp3 audio/corporal/06.mp3 audio/corporal/07.mp3 audio/corporal/08.mp3 audio/corporal/09.mp3 audio/corporal/10.mp3 audio/corporal/11.mp3 audio/corporal/12.mp3 audio/corporal/13.mp3 audio/corporal/14.mp3 audio/corporal/15.mp3
+          git add audio/corporal/*.mp3
           git commit -m "Import corporal audio 01-15"
           git push
