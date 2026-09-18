@@ -144,3 +144,24 @@ El mapa termina y el agua continúa.
 ## Estado editorial
 
 La revisión de **18/09/2026** separa definitivamente la obra literaria de Granada del laboratorio formal y actualiza también **La poética del archivo** para que su crítica responda al estado real del proyecto. El PDF de Granada está sincronizado con su canon textual; el ensayo posee ya canon digital actualizado, mientras sus PDF/DOCX impresos siguen marcados como históricos hasta su próxima regeneración.
+
+
+## Volumen integral canónico
+
+El 18/09/2026 queda materializada la arquitectura editorial completa de **Poética del límite** en un único PDF A5 de **460 páginas**.
+
+Orden:
+
+> I · La Granada del 27 · Un siglo después · Cosiendo Europa  
+> II · Las cuatro estaciones de Paco Olmo de Males  
+> III · La terraza del Miramar  
+> IV · La poética del archivo  
+> V · Poética del límite
+
+El master incorpora cubierta general, índice con paginación actualizada, cinco portadillas tipográficamente homogéneas, marcadores navegables y una única contraportada general.
+
+- `POETICA_DEL_LIMITE_VOLUMEN_INTEGRAL_FLAG_CANON_2026-09-18.pdf`
+- https://drive.google.com/file/d/1AQzYblBgnVR29xZqchlYy2hNjvuvdFyy/view
+- SHA-256: `e46b69ed95e095996dc0638470278f8d8d6381a0bbc2b4faeb2699a35f0bde2c`
+
+Este volumen no altera el canon interno de ninguna de las cinco piezas; sólo fija su **arquitectura conjunta de publicación**.
