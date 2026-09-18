@@ -10,8 +10,9 @@
   ];
   const IDX=Object.fromEntries(INDEX_27.map((name,i)=>[name,i+1]));
 
-  /* 24 lenguas oficiales de la UE. Los perfiles son heurísticos:
-     sirven para ponderar el azar; no sustituyen una traducción literaria. */
+  /* 27 lenguas del sistema: 24 oficiales de la UE + catalán, gallego y euskera.
+     El español ya forma parte de las 24 oficiales; por tanto hay 4 lenguas españolas
+     en total. Los perfiles son heurísticos: ponderan el azar, no sustituyen una traducción literaria. */
   const LANGUAGES=[
     ['bg','bg-BG','Búlgaro','slavic',['Bulgaria'],.43,.58],
     ['hr','hr-HR','Croata','slavic',['Croacia'],.45,.62],
@@ -36,7 +37,10 @@
     ['sk','sk-SK','Eslovaco','slavic',['Eslovaquia'],.43,.58],
     ['sl','sl-SI','Esloveno','slavic',['Eslovenia'],.45,.63],
     ['es','es-ES','Español','romance',['España'],.50,.79],
-    ['sv','sv-SE','Sueco','germanic',['Suecia','Finlandia'],.47,.59]
+    ['sv','sv-SE','Sueco','germanic',['Suecia','Finlandia'],.47,.59],
+    ['ca','ca-ES','Catalán','romance',['España'],.49,.74],
+    ['gl','gl-ES','Gallego','romance',['España'],.50,.76],
+    ['eu','eu-ES','Euskera','isolate',['España'],.50,.71]
   ].map(x=>({code:x[0],tag:x[1],name:x[2],family:x[3],countries:x[4],vowelTarget:x[5],rhythm:x[6]}));
 
   const TRACE_SUMMARY={
@@ -77,7 +81,7 @@
     const repetition=a=>a.length?1-new Set(a).size/a.length:0;
     return {vowelRatio:v/Math.max(1,ls.length),alliteration:repetition(initials),assonance:repetition(tails),wordMean:ws.length?ls.length/ws.length:0};
   }
-  const familySemantic={romance:96,germanic:87,slavic:84,baltic:83,hellenic:81,uralic:78,celtic:79,semitic:77};
+  const familySemantic={romance:96,germanic:87,slavic:84,baltic:83,hellenic:81,uralic:78,celtic:79,semitic:77,isolate:74};
   function scoresFor(text,lang,context,usage={}){
     const f=soundFeatures(text);
     const musicality=clamp(100-Math.abs(f.vowelRatio-lang.vowelTarget)*145-Math.abs(f.wordMean/10-lang.rhythm)*25+f.alliteration*16+f.assonance*13);
