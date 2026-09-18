@@ -1,5 +1,6 @@
 (()=>{
 'use strict';
+
 const SCENES=[
 ['MIRAMAR COMUNIDAD','Un mar. Un límite. Una comunidad.'],
 ['OK','Escuchar. Comprobar. Seguir.'],
@@ -33,14 +34,12 @@ const SCENES=[
 ['DIEZ MINUTOS','Volver al mar. Estar.']
 ];
 
-const HORIZONTAL_SCENES={1:'assets/miramar-corporal/scenes/scene-01.webp',2:'assets/miramar-corporal/scenes/scene-02.webp',3:'assets/miramar-corporal/scenes/scene-03.webp',4:'assets/miramar-corporal/scenes/scene-04.webp',5:'assets/miramar-corporal/scenes/scene-05.webp',6:'assets/miramar-corporal/scenes/scene-06.webp',7:'assets/miramar-corporal/scenes/scene-07.webp',8:'assets/miramar-corporal/scenes/scene-08.webp',9:'assets/miramar-corporal/scenes/scene-09.webp',10:'assets/miramar-corporal/scenes/scene-10.webp'};
-
-const KNOWN_DURATION={
-1:154.440,2:172.584,3:169.920,4:105.624,5:193.584,6:169.944,7:142.440,8:68.832,
-9:132.024,10:172.032,11:133.224,12:92.040,13:128.400,14:138.744,15:212.424
-};
-const BLACKOUT_MS=2600;
+const DUR=[80,45,80,60,60,90,75,90,75,75,60,75,75,90,75,90,90,75,90,75,75,90,90,75,75,90,90,90,150,210];
+const START=[]; let sum=0; for(const d of DUR){START.push(sum);sum+=d;}
+const TOTAL=sum; // 2560 = 42:40
+const TITLE_MS=900;
 const FIN_MS=3300;
+const IMAGE_BUILD='20260918-corporal-audio-final-1';
 
 const inter=document.getElementById('intertitle');
 const sceneCard=document.getElementById('sceneCard');
@@ -59,112 +58,133 @@ const audioStatus=document.getElementById('audioStatus');
 const clock=document.getElementById('clock');
 const audio=document.getElementById('corporalAudio');
 
-let mode='opening',scene=0,timer=0,monitor=0,audioKind='none',muted=false;
-
+let mode='opening',scene=0,titleTimer=0,finTimer=0,monitor=0,muted=false,advancing=false;
 const pad=n=>String(n).padStart(2,'0');
-const trackUrl=n=>'audio/corporal/'+pad(n)+'.mp3';
-const fmt=s=>{if(!Number.isFinite(s)||s<0)return'--:--';const m=Math.floor(s/60);const q=Math.floor(s%60);return String(m).padStart(2,'0')+':'+String(q).padStart(2,'0');};
+const trackUrl=n=>'audio/corporal/'+pad(n)+'.mp3?v=20260918-score-final-1';
+const imageUrl=n=>'assets/miramar-corporal/scenes/scene-'+pad(n)+'.webp?v='+IMAGE_BUILD;
+const fmt=s=>{s=Math.max(0,Math.round(Number(s)||0));const m=Math.floor(s/60),q=s%60;return String(m).padStart(2,'0')+':'+String(q).padStart(2,'0');};
 
-function atlasPosition(n){
-  const i=n-1;
-  if(HORIZONTAL_SCENES[n]){
-    poster.style.backgroundImage='url("'+HORIZONTAL_SCENES[n]+'")';
-    poster.style.backgroundSize='cover';
-    poster.style.backgroundPosition='center';
-    poster.style.backgroundRepeat='no-repeat';
-    poster.dataset.surface='horizontal';
-  }else{
-    const col=i%5,row=Math.floor(i/5);
-    const xs=[0,25,50,75,100],ys=[0,20,40,60,80,100];
-    poster.style.backgroundImage='url("assets/miramar-corporal-atlas.jpg")';
-    poster.style.backgroundSize='500% 600%';
-    poster.style.backgroundPosition=xs[col]+'% '+ys[row]+'%';
-    poster.style.backgroundRepeat='no-repeat';
-    poster.dataset.surface='atlas';
-  }
-  poster.setAttribute('aria-label','Escena '+pad(n)+' · '+SCENES[i][0]+' · contacto canónico de 40 fotogramas');
+function clearTimers(){
+  if(titleTimer){clearTimeout(titleTimer);titleTimer=0;}
+  if(finTimer){clearTimeout(finTimer);finTimer=0;}
+  if(monitor){clearInterval(monitor);monitor=0;}
 }
-function clearTimers(){if(timer){clearTimeout(timer);timer=0;}if(monitor){clearInterval(monitor);monitor=0;}}
-function stopAudio(){if(monitor){clearInterval(monitor);monitor=0;}audio.onended=null;audio.onerror=null;audio.pause();audio.removeAttribute('src');audio.load();audioKind='none';}
-function hideAll(){inter.hidden=true;sceneCard.hidden=true;credits.hidden=true;inter.classList.remove('is-visible');sceneCard.classList.remove('is-visible');credits.classList.remove('is-visible');}
-function showInter(k,t,s,n){hideAll();inter.hidden=false;kicker.textContent=k;title.textContent=t;sub.textContent=s||'';note.textContent=n||'';requestAnimationFrame(()=>inter.classList.add('is-visible'));}
+function stopAudio(){
+  if(monitor){clearInterval(monitor);monitor=0;}
+  audio.onended=null;audio.onerror=null;
+  audio.pause();audio.removeAttribute('src');audio.load();
+}
+function hideAll(){
+  [inter,sceneCard,credits].forEach(el=>{el.hidden=true;el.classList.remove('is-visible');});
+}
+function showInter(k,t,s,n){
+  hideAll();inter.hidden=false;kicker.textContent=k;title.textContent=t;sub.textContent=s||'';note.textContent=n||'';
+  requestAnimationFrame(()=>inter.classList.add('is-visible'));
+}
+function showPoster(n){
+  if(mode!=='scene'||scene!==n)return;
+  hideAll();sceneCard.hidden=false;
+  poster.style.backgroundImage='url("'+imageUrl(n)+'")';
+  poster.style.backgroundSize='cover';
+  poster.style.backgroundPosition='center';
+  poster.style.backgroundRepeat='no-repeat';
+  poster.dataset.surface='horizontal';
+  poster.setAttribute('aria-label','Escena '+pad(n)+' · '+SCENES[n-1][0]+' · contacto canónico de 40 fotogramas');
+  requestAnimationFrame(()=>sceneCard.classList.add('is-visible'));
+}
 function setControls(){
-  prev.disabled=mode==='opening'||mode==='announcement'||scene<=1;
-  next.disabled=mode==='opening'||mode==='announcement';
+  prev.disabled=mode!=='scene'||scene<=1;
+  next.disabled=mode!=='scene';
   sound.setAttribute('aria-pressed',String(!muted));
   sound.textContent=muted?'SONIDO · OFF':'SONIDO · ON';
   if(mode==='opening'){play.disabled=false;play.textContent='COMENZAR';}
-  else if(mode==='scene'&&audioKind==='file'){play.disabled=false;play.textContent=audio.paused?'REANUDAR':'PAUSA';}
+  else if(mode==='scene'){play.disabled=false;play.textContent=audio.paused?'REANUDAR':'PAUSA';}
   else if(mode==='credits'){play.disabled=false;play.textContent='REINICIAR';}
-  else{play.disabled=true;play.textContent=audioKind==='pending'?'MÚSICA PENDIENTE':'—';}
+  else{play.disabled=true;play.textContent='—';}
 }
-function announce(n,first){
-  clearTimers();stopAudio();mode='announcement';scene=n;
-  const d=SCENES[n-1];
-  showInter(first?'PRIMERA ESCENA':'PRÓXIMA ESCENA',pad(n)+' · '+d[0],d[1],'Oscuro / transición');
-  sceneStatus.textContent=(first?'PRIMERA ESCENA · ':'PRÓXIMA · ')+pad(n);
-  audioStatus.textContent=n<=15?'música corporal':'música pendiente';
-  clock.textContent='--:--';setControls();
-  timer=setTimeout(()=>showScene(n),BLACKOUT_MS);
+function updateClock(n){
+  const local=Math.min(DUR[n-1],Number(audio.currentTime)||0);
+  const absolute=START[n-1]+local;
+  clock.textContent=fmt(local)+' / '+fmt(DUR[n-1])+' · '+fmt(absolute)+' / '+fmt(TOTAL);
 }
-async function trackExists(n){
-  try{const r=await fetch(trackUrl(n),{method:'HEAD',cache:'no-store'});return r.ok;}catch(_){return false;}
+function beginMonitor(n){
+  if(monitor)clearInterval(monitor);
+  monitor=setInterval(()=>{
+    if(mode!=='scene'||scene!==n)return;
+    updateClock(n);
+    if(!audio.paused && (Number(audio.currentTime)||0)>=DUR[n-1]-0.025) advance();
+  },80);
 }
-async function prepareAudio(n){
-  stopAudio();audio.muted=muted;
-  const exists=await trackExists(n);
-  if(mode!=='scene'||scene!==n)return;
-  if(!exists){
-    audioKind='pending';
-    const d=KNOWN_DURATION[n];
-    audioStatus.textContent='MÚSICA '+pad(n)+' · PENDIENTE · AVANCE MANUAL';
-    clock.textContent=d?'--:-- / '+fmt(d):'--:--';
-    setControls();return;
-  }
-
-  audioKind='file';
+function startTrack(n){
+  audio.muted=muted;
   audio.src=trackUrl(n);
   audio.currentTime=0;
-  audioStatus.textContent='MÚSICA CORPORAL '+pad(n)+' · INCORPORADA';
-  audio.onended=()=>{if(mode==='scene'&&scene===n)timer=setTimeout(()=>advance(),180);};
-  audio.onerror=()=>{audioKind='pending';audioStatus.textContent='MÚSICA '+pad(n)+' · ERROR DE CARGA';setControls();};
-  audio.play().catch(()=>{audioStatus.textContent='MÚSICA CORPORAL '+pad(n)+' · pulsa REANUDAR';setControls();});
-  monitor=setInterval(()=>{
-    const total=Number.isFinite(audio.duration)?audio.duration:KNOWN_DURATION[n];
-    clock.textContent=fmt(audio.currentTime)+' / '+fmt(total);
+  audioStatus.textContent='PARTITURA SONORA · ESCENA '+pad(n)+' · 42:40';
+  audio.onended=()=>{if(mode==='scene'&&scene===n)advance();};
+  audio.onerror=()=>{
+    if(mode!=='scene'||scene!==n)return;
+    audioStatus.textContent='ERROR DE CARGA · '+pad(n)+'.mp3';
     setControls();
-  },120);
+  };
+  audio.play().then(()=>{beginMonitor(n);setControls();}).catch(()=>{
+    audioStatus.textContent='PARTITURA '+pad(n)+' · pulsa REANUDAR';
+    beginMonitor(n);setControls();
+  });
+}
+function showScene(n,manual=false){
+  clearTimers();stopAudio();advancing=false;
+  mode='scene';scene=Math.max(1,Math.min(30,n));
+  const d=SCENES[scene-1],a=START[scene-1],b=a+DUR[scene-1];
+  showInter(scene===1&&!manual?'PRIMERA ESCENA':'ESCENA',pad(scene)+' · '+d[0],d[1],'Tiempo exacto '+fmt(a)+' → '+fmt(b));
+  sceneStatus.textContent='ESCENA '+pad(scene)+' / 30 · '+d[0];
+  clock.textContent='00:00 / '+fmt(DUR[scene-1])+' · '+fmt(a)+' / '+fmt(TOTAL);
+  setControls();
+  startTrack(scene);
+  titleTimer=setTimeout(()=>showPoster(scene),TITLE_MS);
+}
+function advance(){
+  if(mode!=='scene'||advancing)return;
+  advancing=true;
+  const current=scene;
+  clearTimers();stopAudio();
+  if(current<30)showScene(current+1,false);else showFin();
+}
+function showFin(){
+  clearTimers();stopAudio();mode='fin';scene=30;
+  showInter('FIN','LA TERRAZA DEL MIRAMAR','Versión corporal · teatro gestual y de objetos','42:40 · partitura sonora completa');
+  sceneStatus.textContent='FIN';audioStatus.textContent='PARTITURA COMPLETA · 42:40';clock.textContent='42:40 / 42:40';setControls();
+  finTimer=setTimeout(showCredits,FIN_MS);
+}
+function showCredits(){
+  clearTimers();stopAudio();mode='credits';hideAll();credits.hidden=false;
+  requestAnimationFrame(()=>credits.classList.add('is-visible'));
+  sceneStatus.textContent='CRÉDITOS';audioStatus.textContent='Flag';clock.textContent='42:40';setControls();
+}
+function reset(){
+  clearTimers();stopAudio();mode='opening';scene=0;advancing=false;
+  showInter('COMIENZA LA OBRA','LA TERRAZA DEL MIRAMAR','Versión corporal · teatro gestual y de objetos','30 escenas · partitura sonora exacta 42:40');
+  sceneStatus.textContent='OBRA';audioStatus.textContent='30 pistas · onomatopeyas · percusión · respiración · palabra mínima';clock.textContent='00:00 / 42:40';setControls();
+}
+function togglePlay(){
+  if(mode==='opening'||mode==='credits'){showScene(1,false);return;}
+  if(mode!=='scene')return;
+  if(audio.paused)audio.play().catch(()=>{});else audio.pause();
   setControls();
 }
-function showScene(n){
-  clearTimers();mode='scene';scene=n;hideAll();sceneCard.hidden=false;atlasPosition(n);
-  requestAnimationFrame(()=>sceneCard.classList.add('is-visible'));
-  sceneStatus.textContent='ESCENA '+pad(n)+' / 30 · '+SCENES[n-1][0];
-  audioStatus.textContent='COMPROBANDO MÚSICA CORPORAL '+pad(n);
-  clock.textContent='--:--';setControls();prepareAudio(n);
-}
-function advance(){if(mode!=='scene')return;stopAudio();if(scene<30)announce(scene+1,false);else showFin();}
-function showFin(){
-  clearTimers();stopAudio();mode='fin';
-  showInter('FIN','LA TERRAZA DEL MIRAMAR','Oscuro final.','La linde termina. La mirada continúa.');
-  sceneStatus.textContent='FIN';audioStatus.textContent='';clock.textContent='--:--';setControls();
-  timer=setTimeout(showCredits,FIN_MS);
-}
-function showCredits(){clearTimers();stopAudio();mode='credits';hideAll();credits.hidden=false;requestAnimationFrame(()=>credits.classList.add('is-visible'));sceneStatus.textContent='CRÉDITOS';audioStatus.textContent='Flag';clock.textContent='';setControls();}
-function start(){if(mode==='credits'){reset();return;}announce(1,true);}
-function reset(){
-  clearTimers();stopAudio();mode='opening';scene=0;
-  showInter('COMIENZA LA OBRA','LA TERRAZA DEL MIRAMAR','Versión corporal · teatro gestual y de objetos','30 escenas · 40 fotogramas por escena · músicas corporales 01–15');
-  sceneStatus.textContent='OBRA';audioStatus.textContent='15 músicas corporales · 16–30 preparadas';clock.textContent='--:--';setControls();
-}
-function togglePlay(){if(mode==='opening'||mode==='credits'){start();return;}if(mode!=='scene'||audioKind!=='file')return;if(audio.paused)audio.play().catch(()=>{});else audio.pause();setControls();}
-function goPrev(){if(mode!=='scene'||scene<=1)return;clearTimers();stopAudio();showScene(scene-1);}
+function goPrev(){if(mode==='scene'&&scene>1)showScene(scene-1,true);}
+function goNext(){if(mode==='scene')advance();}
 function toggleSound(){muted=!muted;audio.muted=muted;setControls();}
+
 play.addEventListener('click',togglePlay);
-next.addEventListener('click',()=>{if(mode==='scene')advance();else if(mode==='credits')reset();});
+next.addEventListener('click',goNext);
 prev.addEventListener('click',goPrev);
 sound.addEventListener('click',toggleSound);
-audio.addEventListener('play',setControls);audio.addEventListener('pause',setControls);
-document.addEventListener('keydown',ev=>{if(ev.key==='ArrowRight'&&mode==='scene'){ev.preventDefault();advance();}if(ev.key==='ArrowLeft'&&mode==='scene'){ev.preventDefault();goPrev();}if(ev.code==='Space'){ev.preventDefault();togglePlay();}});
+audio.addEventListener('play',setControls);
+audio.addEventListener('pause',setControls);
+document.addEventListener('keydown',ev=>{
+  if(ev.key==='ArrowRight'&&mode==='scene'){ev.preventDefault();goNext();}
+  if(ev.key==='ArrowLeft'&&mode==='scene'){ev.preventDefault();goPrev();}
+  if(ev.code==='Space'){ev.preventDefault();togglePlay();}
+});
 reset();
 })();
