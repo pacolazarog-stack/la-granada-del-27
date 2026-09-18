@@ -121,3 +121,21 @@ La traducción de Paco debe preservar, por este orden:
 6. literalidad documental cuando su rigidez es precisamente el efecto cómico.
 
 La edición digital puede cambiar de lengua sin cambiar de página. El lector vuelve a renderizar la página actual con su versión literaria correspondiente y mantiene el punto de lectura.
+
+
+## 11. Paco Olmo · PRIMAVERA cerrada
+
+Queda completada la versión literaria revisada **EN · FR · IT · DE** de todo el bloque **PRIMAVERA · HUIR** y del separador de entrada a **VERANO · CONTROLAR**.
+
+Cobertura acumulada del lector: **páginas 1–39** en español canónico más cuatro versiones literarias.
+
+El bloque incluye, además de los tramos ya cerrados:
+
+- **8 · PACO · De cómo Francisco se convirtió en Paco sin haberlo solicitado**;
+- **9 · DEAMBULAR · LA BECA**;
+- **10 · DEAMBULAR · EL ANDÉN**;
+- **11 · DEAMBULAR · NADIE PERTENECE A NADIE**;
+- **12 · DEAMBULAR · LA MALETA**;
+- **13 · PACO · Paquillo el Ligero**.
+
+Criterio: los nombres **Paco, Paquillo, Paquito, Curro, Fran, Francis, Pacorro, Pacorra, Paco Repaco, Paco Bultaco y Superpaco** no se normalizan ni se traducen; son materia narrativa y social de la obra.
