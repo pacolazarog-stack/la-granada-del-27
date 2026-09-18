@@ -1,0 +1,47 @@
+name: Validate languages
+
+on:
+  push:
+    paths:
+      - 'language-packs.js'
+      - 'language-system.js'
+      - 'audio-gate.js'
+      - 'voice-reader.js'
+      - 'index.html'
+      - 'granada.html'
+      - 'atlas.html'
+      - 'paco.html'
+      - 'miramar.html'
+      - 'ensayo.html'
+      - 'final.html'
+      - 'autor.html'
+      - 'fli.html'
+      - 'validate-language.mjs'
+      - '.github/workflows/validate-language.yml'
+  pull_request:
+    paths:
+      - 'language-packs.js'
+      - 'language-system.js'
+      - 'audio-gate.js'
+      - 'voice-reader.js'
+      - 'index.html'
+      - 'granada.html'
+      - 'atlas.html'
+      - 'paco.html'
+      - 'miramar.html'
+      - 'ensayo.html'
+      - 'final.html'
+      - 'autor.html'
+      - 'fli.html'
+      - 'validate-language.mjs'
+      - '.github/workflows/validate-language.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node validate-language.mjs
