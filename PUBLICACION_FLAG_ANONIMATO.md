@@ -26,6 +26,6 @@ El master integral vigente reúne todo el corpus en un único PDF A5 con cubiert
 
 - https://drive.google.com/file/d/1AQzYblBgnVR29xZqchlYy2hNjvuvdFyy/view
 - **460 páginas**
-- SHA-256: `e46b69ed95e095996dc0638470278f8d8d6381a0bbc2b4faeb2699a35f0bde2c`
+- SHA-256: `ef7dea6fbe8ad2ffdc0085e3e372a735332066bad5b4833d6aba751aea665526`
 
 La variante anónima integral queda pendiente de materialización específica; las ediciones anónimas individuales continúan vigentes.
