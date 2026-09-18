@@ -1,0 +1,41 @@
+name: Build final Miramar corporal sound score
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/generate_miramar_corporal_audio.py'
+      - '.github/workflows/build-miramar-corporal-audio.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install audio dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg espeak libsndfile1
+          python -m pip install --upgrade pip
+          python -m pip install numpy scipy soundfile
+      - name: Generate 30-scene corporal sound score
+        run: python scripts/generate_miramar_corporal_audio.py
+      - name: Commit replacement audio
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A audio/corporal
+          git diff --cached --quiet && exit 0
+          git commit -m "Replace corporal music with 42m40 onomatopoeia score"
+          git push
