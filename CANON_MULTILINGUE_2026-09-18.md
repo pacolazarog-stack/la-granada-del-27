@@ -340,3 +340,31 @@ Criterio de continuidad: la jubilación introduce el tiempo cuando deja de estar
 El **testamento de las carpetas** lleva la lógica del archivo hasta la muerte, pero preserva un límite decisivo: la fotografía cuyo reverso permanece en blanco no debe completarse con datos probables, porque convertir la incertidumbre en una certeza falsa sería traicionar precisamente lo que el documento conserva.
 
 En **la posteridad de Superpaco**, la tradición oral termina de emanciparse de su protagonista. Paco presencia la fabricación de su propio mito y, por primera vez, no abre expediente para corregirlo. La conclusión queda intacta: **la posteridad puede comenzar antes de que uno tenga la cortesía de morirse**.
+
+
+## 22. Paco Olmo · versión literaria multilingüe completa
+
+Queda completada la versión literaria revisada **EN · FR · IT · DE** de **Las cuatro estaciones de Paco Olmo de Males**.
+
+Cobertura final del lector: **páginas 1–210**.
+
+El cierre multilingüe incluye:
+
+- **61 · DEAMBULAR · LA HOJA**;
+- **62 · PACO · El último documento**;
+- **63 · DEAMBULAR · EL TERCER TONO**;
+- **LA MAR**;
+- **64 · PACO · De cómo Paco Olmo de Males intentó archivar la mar**;
+- **CODA · Que se registre sola**;
+- **RESOLUCIÓN DEL NEGOCIADO FINAL**.
+
+Principio de cierre de Julián: la última conversación no se resuelve antes de producirse. El tercer tono no ofrece reconciliación, moraleja ni respuesta preparada; conserva la apertura real de no saber qué va a decir.
+
+Principio de cierre de Paco: la mar es el límite final del sistema. Puede medirse por fragmentos, pero no acepta una medida que la cierre. El archivo deja de tomar notas cuando comprende que algo puede cambiar delante de él sin que eso signifique que esté mal.
+
+La hoja final permanece en blanco y **no se intenta rellenar**.
+
+La coda conserva la fórmula:
+**«¿Y la mar? —Que se registre sola.»**
+
+La resolución final queda igualmente traducida y mantiene el cierre firme: **sin anexos**.
