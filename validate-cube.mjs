@@ -3,6 +3,7 @@ import vm from 'node:vm';
 
 const assert=(ok,msg)=>{if(!ok)throw new Error(msg);};
 const source=fs.readFileSync('cube-canon.js','utf8');
+const relationSource=fs.readFileSync('relations-canon.js','utf8');
 const store=new Map();
 const sandbox={
   window:null,
@@ -17,10 +18,17 @@ const sandbox={
 };
 sandbox.window=sandbox;sandbox.globalThis=sandbox;
 vm.createContext(sandbox);
+for(const file of ['matrix-core.js','matrix-1.js','matrix-2.js','matrix-3.js'])vm.runInContext(fs.readFileSync(file,'utf8'),sandbox,{filename:file});
 vm.runInContext(source,sandbox,{filename:'cube-canon.js'});
+vm.runInContext(relationSource,sandbox,{filename:'relations-canon.js'});
 const C=sandbox.GRANADA_CUBE_27;
+const R=sandbox.GRANADA_RELATIONS;
 
 assert(C,'GRANADA_CUBE_27 no declarado');
+assert(R,'GRANADA_RELATIONS no declarado');
+assert(R.types.length===27,'deben existir 27 tipos de relación');
+assert(R.writings.length===27,'deben existir 27 escrituras relacionales');
+assert(R.writings.every(x=>x.text&&x.text.length>40),'cada escritura debe contener texto sustantivo');
 assert(C.size===27,'size debe ser 27');
 assert(C.positions===19683,'27³ debe producir 19.683 posiciones');
 assert(C.center===14,'centro debe ser 14');
@@ -44,6 +52,10 @@ assert(C.traces.names.join('|')==='POEMA|AGUA|ARTISTAS|LEGADO|1927↔2027','debe
 assert(C.traces.xyCoincidences===11,'deben conservarse 11 coincidencias XY');
 assert(C.traces.envelopeDensity[13]===24,'k=13 debe registrar 24 nodos');
 assert(C.traces.exactRoutesAvailable.length===1&&C.traces.exactRoutesAvailable[0]==='POEMA','solo POEMA puede declararse ruta exacta mientras no esté el XLSX fuente');
+const centerRel=R.relationsAt(14,14,14);
+assert(centerRel.writing.z===14,'la escritura central debe ser z=14');
+assert(centerRel.total>=15,'cada posición debe estar densamente relacionada');
+for(let x=1;x<=27;x++)for(let y=1;y<=27;y++)for(let z=1;z<=27;z++)assert(R.relationsAt(x,y,z).total>0,`posición sin relaciones: ${x},${y},${z}`);
 
 const atlas=fs.readFileSync('atlas.html','utf8');
 assert(atlas.includes('data-mode="cube"'),'atlas.html debe exponer CUBO');
@@ -51,6 +63,9 @@ assert(atlas.includes('cube-canon.js'),'atlas.html debe cargar cube-canon.js');
 assert(atlas.includes('atlas-cube.js'),'atlas.html debe cargar atlas-cube.js');
 assert(atlas.includes('chance-listen'),'AZAR debe incluir Oír Z');
 assert(atlas.includes('chance-language'),'AZAR debe incluir recompensa lingüística');
+assert(atlas.includes('relations-canon.js'),'Atlas debe cargar la red relacional');
+assert(atlas.includes('cube-relations-card'),'Atlas debe mostrar relaciones activas');
+assert(atlas.includes('cube-writing-card'),'Atlas debe mostrar escritura relacional');
 
 const chance=fs.readFileSync('chance.js','utf8');
 for(const token of ["key:'X'","key:'Y'","key:'CENTRO'","key:'Z'"])assert(chance.includes(token),'AZAR⁴ debe contener '+token);
@@ -61,3 +76,4 @@ console.log('OK · CUBO 27³ · 19.683 posiciones');
 console.log('OK · centro 14·14·14 · 13 envolventes · espejo (y,x,28-z)');
 console.log('OK · 5 trazas · POEMA exacta · 27 lenguas (24 UE + ca/gl/eu)');
 console.log('OK · AZAR⁴ = X + Y + CENTRO + Z');
+console.log('OK · 27 tipos de relación · 19.683 posiciones relacionadas · 27 escrituras iniciales');
