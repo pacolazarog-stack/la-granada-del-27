@@ -139,3 +139,23 @@ El bloque incluye, además de los tramos ya cerrados:
 - **13 · PACO · Paquillo el Ligero**.
 
 Criterio: los nombres **Paco, Paquillo, Paquito, Curro, Fran, Francis, Pacorro, Pacorra, Paco Repaco, Paco Bultaco y Superpaco** no se normalizan ni se traducen; son materia narrativa y social de la obra.
+
+
+## 12. Paco Olmo · VERANO en curso
+
+Se inicia **VERANO · CONTROLAR** con versión literaria revisada **EN · FR · IT · DE**.
+
+Cobertura acumulada del lector: **páginas 1–55**.
+
+Quedan ya traducidos en este bloque:
+
+- **14 · DEAMBULAR · AQUÍ**;
+- **15 · DEAMBULAR · LA CASA**;
+- **16 · PACO · De cómo Paco compró una cosa que medía tres cosas distintas**;
+- **17 · PACO · Del hombre que certificó que la tierra estaba donde estaba**;
+- **18 · DEAMBULAR · LAS PLANTAS**;
+- **19 · PACO · De una escritura que necesitaba otra escritura para ser verdadera**;
+- **20 · DEAMBULAR · MI PARTE**;
+- inicio de **21 · PACO · De cómo una deuda encontró dueño antes que una casa**.
+
+Criterio de verano: aumentar progresivamente la temperatura de control sin convertir a Julián en caricatura; en Paco, conservar la hipérbole administrativa, la oralidad popular y la lógica material de tierra, linde, escritura, Catastro, Ayuntamiento y Registro.
