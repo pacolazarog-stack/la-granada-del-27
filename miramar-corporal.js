@@ -39,7 +39,7 @@ const START=[]; let sum=0; for(const d of DUR){START.push(sum);sum+=d;}
 const TOTAL=sum; // 2560 = 42:40
 const TITLE_MS=900;
 const FIN_MS=3300;
-const IMAGE_BUILD='20260918-corporal-audio-final-1';
+const IMAGE_BUILD='20260918-corporal-images-final-2';
 
 const inter=document.getElementById('intertitle');
 const sceneCard=document.getElementById('sceneCard');
