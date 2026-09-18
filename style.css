@@ -62,3 +62,16 @@
   .cube-controls{grid-template-columns:1fr}.cube-data{grid-template-columns:1fr}
   .chance-line{grid-template-columns:54px 1fr;gap:8px}.chance-line-key{font-size:8px}
 }
+
+
+/* Red relacional total · Atlas/Azar */
+.cube-relations-card,.cube-writing-card{grid-column:span 1}
+.cube-relation-count{margin:12px 0 10px;font-size:10px;line-height:1.5;color:#7c211d;letter-spacing:.06em;text-transform:uppercase}
+.cube-relations{display:flex;flex-wrap:wrap;gap:8px}
+.cube-relation-chip{display:grid;gap:3px;border:1px solid #8d81752b;background:#f6eee5;padding:8px 10px;min-width:120px;max-width:100%}
+.cube-relation-chip strong{font-size:8px;letter-spacing:.12em;color:#7c211d}
+.cube-relation-chip span{font-size:10px;line-height:1.35;color:#5f544a}
+.cube-writing-title{margin-top:12px;font-size:11px;letter-spacing:.14em;color:#7c211d}
+.cube-writing-card blockquote{font-size:20px!important;line-height:1.55!important;margin-top:16px!important}
+.cube-writing-pair{font-size:9px;line-height:1.5;color:#75695f;letter-spacing:.06em;text-transform:uppercase}
+@media(min-width:1080px){.cube-relations-card,.cube-writing-card{grid-column:span 2}}
