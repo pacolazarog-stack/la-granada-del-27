@@ -113,7 +113,7 @@ for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','la
 /* Paco Olmo · bloque literario inicial */
 const pacoSandbox={window:{}};
 vm.createContext(pacoSandbox);
-for(const file of ['paco-pages-en-a.js','paco-pages-fr-a.js','paco-pages-it-a.js','paco-pages-de-a.js','paco-pages-b.js','paco-pages-en-b.js','paco-pages-fr-b.js','paco-pages-it-b.js','paco-pages-de-b.js','paco-pages-c.js','paco-pages-primavera-d.js','paco-pages-primavera-e.js','paco-pages-verano-a.js','paco-pages-verano-b.js','paco-pages-verano-c.js','paco-pages-verano-d.js','paco-pages-verano-e.js','paco-pages-otono-a.js','paco-pages-otono-b.js','paco-pages-otono-c.js','paco-pages-otono-d.js']){
+for(const file of ['paco-pages-en-a.js','paco-pages-fr-a.js','paco-pages-it-a.js','paco-pages-de-a.js','paco-pages-b.js','paco-pages-en-b.js','paco-pages-fr-b.js','paco-pages-it-b.js','paco-pages-de-b.js','paco-pages-c.js','paco-pages-primavera-d.js','paco-pages-primavera-e.js','paco-pages-verano-a.js','paco-pages-verano-b.js','paco-pages-verano-c.js','paco-pages-verano-d.js','paco-pages-verano-e.js','paco-pages-otono-a.js','paco-pages-otono-b.js','paco-pages-otono-c.js','paco-pages-otono-d.js','paco-pages-nombres.js']){
   new Function(fs.readFileSync(file,'utf8'));
   vm.runInContext(fs.readFileSync(file,'utf8'),pacoSandbox,{filename:file});
 }
