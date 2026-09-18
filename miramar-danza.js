@@ -1,5 +1,7 @@
 (()=>{
 'use strict';
+
+if(window.MIRAMAR_DANZA_CONTACT_B64){document.documentElement.style.setProperty('--miramar-danza-contact',`url("data:image/jpeg;base64,${window.MIRAMAR_DANZA_CONTACT_B64}")`);}
 const SCENES=[
 'MIRAMAR COMUNIDAD','OK','EL CUERPO','CLAC','NADIE','NACE EL CONFLICTO',
 'PRIMERA INCURSIÓN TERRESTRE','TERRITORIO','MAYORÍA SIMPLE','VOTEN',
@@ -68,7 +70,7 @@ const COMMUNITY={
 };
 
 const opening=document.getElementById('opening'), sceneCard=document.getElementById('sceneCard'), credits=document.getElementById('credits');
-const sceneImage=document.getElementById('sceneImage'), plantWrap=document.getElementById('plantWrap');
+const sceneHero=document.getElementById('sceneHero'), plantWrap=document.getElementById('plantWrap');
 const sceneNumber=document.getElementById('sceneNumber'), sceneTitle=document.getElementById('sceneTitle'), phaseLabel=document.getElementById('phaseLabel');
 const prev=document.getElementById('prevBtn'), play=document.getElementById('playBtn'), next=document.getElementById('nextBtn'), sound=document.getElementById('soundBtn');
 const sceneStatus=document.getElementById('sceneStatus'), audioStatus=document.getElementById('audioStatus'), clock=document.getElementById('clock'), audio=document.getElementById('danzaAudio');
@@ -136,5 +138,6 @@ function toggleSound(){muted=!muted;audio.muted=muted;controls()}
 play.addEventListener('click',togglePlay);next.addEventListener('click',nextScene);prev.addEventListener('click',prevScene);sound.addEventListener('click',toggleSound);
 audio.addEventListener('play',controls);audio.addEventListener('pause',controls);
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();nextScene()}if(e.key==='ArrowLeft'){e.preventDefault();prevScene()}if(e.code==='Space'){e.preventDefault();togglePlay()}});
+if(window.MIRAMAR_DANZA_CONTACT_B64)sceneHero.style.backgroundImage='url("data:image/jpeg;base64,'+window.MIRAMAR_DANZA_CONTACT_B64+'")';
 reset();
 })();
