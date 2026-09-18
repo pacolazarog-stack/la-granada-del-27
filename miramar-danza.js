@@ -83,7 +83,7 @@ const danceTrack=n=>'audio/danza/'+pad(n)+'.mp3';
 const currentTrack=n=>n<=15?'audio/corporal/'+pad(n)+'.mp3':danceTrack(n);
 
 function showOnly(el){[opening,sceneCard,credits].forEach(x=>{x.hidden=true;x.classList.remove('is-visible')});el.hidden=false;requestAnimationFrame(()=>el.classList.add('is-visible'))}
-function atlasPosition(n){const i=n-1,col=i%5,row=Math.floor(i/5),xs=[0,25,50,75,100],ys=[0,20,40,60,80,100];sceneImage.style.backgroundPosition=xs[col]+'% '+ys[row]+'%'}
+function atlasPosition(n){const i=n-1,col=i%5,row=Math.floor(i/5),xs=[0,25,50,75,100],ys=[0,20,40,60,80,100];sceneHero.style.backgroundPosition=xs[col]+'% '+ys[row]+'%'}
 function stopAudio(){if(monitor){clearInterval(monitor);monitor=0}audio.onended=null;audio.onerror=null;audio.pause();audio.removeAttribute('src');audio.load();audioKind='none'}
 async function exists(url){try{const r=await fetch(url,{method:'HEAD',cache:'no-store'});return r.ok}catch(_){return false}}
 
