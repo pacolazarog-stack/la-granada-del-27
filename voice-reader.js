@@ -4,6 +4,8 @@
   if(!pref||!synth)return;
 
   let token=0,scheduled=0,speaking=false,voiceCache={male:null,female:null};
+  const voiceLang=()=>window.POETICA_LANGUAGE?.current?.()||'es';
+  const voiceTag=()=>window.POETICA_LANGUAGE?.languages?.find?.(x=>x.code===voiceLang())?.tag||(voiceLang()==='es'?'es-ES':voiceLang());
   let lastChanceText='',readerState='',readerPage=0;
   const path=(location.pathname.split('/').pop()||'').toLowerCase();
   const bookId=document.body.dataset.bookId||(
@@ -16,7 +18,8 @@
 
   function scoreVoice(v,gender){
     const name=`${v.name||''} ${v.voiceURI||''}`;let s=0;
-    if(/^es-ES$/i.test(v.lang||''))s+=50;else if(/^es([_-]|$)/i.test(v.lang||''))s+=34;else if(/^es/i.test(v.lang||''))s+=20;
+    const lc=voiceLang().toLowerCase(),tag=voiceTag().toLowerCase(),vl=String(v.lang||'').toLowerCase();
+    if(vl===tag)s+=55;else if(vl.startsWith(lc+'-')||vl.startsWith(lc+'_'))s+=42;else if(vl.startsWith(lc))s+=28;
     if(naturalNames.test(name))s+=45;
     if(gender==='male'&&maleNames.test(name))s+=35;if(gender==='female'&&femaleNames.test(name))s+=35;
     if(gender==='male'&&femaleNames.test(name))s-=24;if(gender==='female'&&maleNames.test(name))s-=24;
@@ -86,6 +89,7 @@
        Usa el mapa extraído directamente del PDF canónico según su composición:
        diálogo/texto pronunciado sí; títulos, personajes, acotaciones, indicaciones
        y la CODA IMPRESA no. Las páginas sin texto pronunciado quedan en silencio. */
+    if(voiceLang()!=='es')return genericClean(target);
     const canonicalPages=window.MIRAMAR_SPOKEN_PAGES;
     const currentPage=Number(readerPage||window.BOOK_READER?.getPage?.()||0);
     if(canonicalPages&&currentPage>0){
@@ -170,7 +174,7 @@
     const next=()=>{
       if(mine!==token||!pref.isVoiceEnabled()){emitSpeaking(false);return;}
       if(i>=queue.length){emitSpeaking(false);return;}
-      const item=queue[i++],u=new SpeechSynthesisUtterance(item.text);u.lang='es-ES';u.rate=role.rate;u.pitch=role.pitch;u.volume=1;
+      const item=queue[i++],u=new SpeechSynthesisUtterance(item.text);u.lang=voiceTag();u.rate=role.rate;u.pitch=role.pitch;u.volume=1;
       const v=voiceCache[role.gender]||voiceCache.female||voiceCache.male;if(v)u.voice=v;
       u.onend=()=>{if(mine!==token)return;const p=/[.!?…]$/.test(item.text)?role.pause:/[:;]$/.test(item.text)?Math.round(role.pause*.7):Math.round(role.pause*.45);scheduled=setTimeout(next,Math.max(p,item.pause||0));};
       u.onerror=()=>{if(mine===token)scheduled=setTimeout(next,80);};
@@ -181,6 +185,7 @@
 
   function schedule(delay=240){clearTimeout(scheduled);if(!pref.isVoiceEnabled())return;scheduled=setTimeout(speakCurrent,delay);}
   document.addEventListener('volume:voicechange',ev=>{if(ev.detail?.enabled){lastChanceText='';schedule(70);}else stop();});
+  document.addEventListener('poetica:languageapplied',()=>{refreshVoices();lastChanceText='';schedule(120);});
   document.addEventListener('book:state',ev=>{readerState=ev.detail?.state||'';readerPage=Number(ev.detail?.page)||0;schedule(150);});
   document.addEventListener('view:mode',()=>{lastChanceText='';schedule(180);});
   document.addEventListener('author:open',()=>schedule(90));document.addEventListener('author:close',stop);
