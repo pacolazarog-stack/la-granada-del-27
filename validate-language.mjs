@@ -129,6 +129,28 @@ const lector=fs.readFileSync('lector.js','utf8');
 assert(lector.includes('WORK_PAGE_TRANSLATIONS'),'lector.js debe priorizar traducciones literarias por página');
 assert(lector.includes('volume:languagechange'),'lector.js debe rerenderizar al cambiar de lengua');
 
+/* Ensayo · versión literaria completa */
+const ensayoSourceSandbox={window:{}};
+vm.createContext(ensayoSourceSandbox);
+vm.runInContext(fs.readFileSync('ensayo-01.js','utf8'),ensayoSourceSandbox,{filename:'ensayo-01.js'});
+const ensayoPageCount=ensayoSourceSandbox.window.WORK_DATA?.pages?.length||0;
+assert(ensayoPageCount>0,'el ensayo debe contener páginas fuente');
+
+const ensayoSandbox={window:{}};
+vm.createContext(ensayoSandbox);
+for(const file of ['ensayo-pages-a.js','ensayo-pages-b.js','ensayo-pages-c.js','ensayo-pages-d.js']){
+  new Function(fs.readFileSync(file,'utf8'));
+  vm.runInContext(fs.readFileSync(file,'utf8'),ensayoSandbox,{filename:file});
+}
+const ensayoTranslations=ensayoSandbox.window.WORK_PAGE_TRANSLATIONS;
+for(const lang of ['en','fr','it','de']){
+  assert(Array.isArray(ensayoTranslations?.[lang]),'falta array Ensayo '+lang);
+  for(let i=0;i<ensayoPageCount;i++) assert(typeof ensayoTranslations[lang][i]==='string'&&ensayoTranslations[lang][i].trim(),'falta Ensayo página '+(i+1)+' en '+lang);
+}
+const ensayoHtml=fs.readFileSync('ensayo.html','utf8');
+for(const file of ['ensayo-pages-a.js','ensayo-pages-b.js','ensayo-pages-c.js','ensayo-pages-d.js'])
+  assert(ensayoHtml.includes(file),'ensayo.html no carga '+file);
+
 const sys=fs.readFileSync('language-system.js','utf8');
 for(const lang of ['es','en','fr','it','de'])assert(sys.includes("code:'"+lang+"'"),'falta idioma '+lang);
 assert(sys.includes("KEY='poeticaLanguage'"),'la lengua debe persistir');
@@ -165,4 +187,4 @@ console.log(`OK · Cosiendo Europa I-II: ${uniqueAguaTierras.length} unidades li
 console.log(`OK · Cosiendo Europa III-IV: ${uniqueManosCosturas.length} unidades literarias × 4 lenguas revisadas`);
 console.log(`OK · Cosiendo Europa V: ${uniqueRegreso.length} unidades literarias × 4 lenguas revisadas`);
 console.log(`OK · Contraportada: ${uniqueBack.length} unidades literarias × 4 lenguas revisadas`);
-console.log('OK · Paco Olmo: páginas 1–210 × EN/FR/IT/DE; versión literaria multilingüe completa');
+console.log('OK · Paco Olmo: páginas 1–210 × EN/FR/IT/DE; versión literaria multilingüe completa');\nconsole.log(`OK · Ensayo: páginas 1–${ensayoPageCount} × EN/FR/IT/DE; versión literaria multilingüe completa`);
