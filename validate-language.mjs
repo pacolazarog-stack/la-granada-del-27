@@ -113,7 +113,7 @@ for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','la
 /* Paco Olmo · bloque literario inicial */
 const pacoSandbox={window:{}};
 vm.createContext(pacoSandbox);
-for(const file of ['paco-pages-en-a.js','paco-pages-fr-a.js','paco-pages-it-a.js','paco-pages-de-a.js','paco-pages-b.js','paco-pages-en-b.js','paco-pages-fr-b.js','paco-pages-it-b.js','paco-pages-de-b.js']){
+for(const file of ['paco-pages-en-a.js','paco-pages-fr-a.js','paco-pages-it-a.js','paco-pages-de-a.js','paco-pages-b.js','paco-pages-en-b.js','paco-pages-fr-b.js','paco-pages-it-b.js','paco-pages-de-b.js','paco-pages-c.js']){
   new Function(fs.readFileSync(file,'utf8'));
   vm.runInContext(fs.readFileSync(file,'utf8'),pacoSandbox,{filename:file});
 }
@@ -123,7 +123,7 @@ for(const lang of ['en','fr','it','de']){
   for(let i=0;i<=23;i++) assert(typeof pacoTranslations[lang][i]==='string'&&pacoTranslations[lang][i].trim(),'falta Paco página '+(i+1)+' en '+lang);
 }
 const pacoHtml=fs.readFileSync('paco.html','utf8');
-for(const file of ['paco-pages-en-a.js','paco-pages-fr-a.js','paco-pages-it-a.js','paco-pages-de-a.js','paco-pages-b.js','paco-pages-en-b.js','paco-pages-fr-b.js','paco-pages-it-b.js','paco-pages-de-b.js'])
+for(const file of ['paco-pages-en-a.js','paco-pages-fr-a.js','paco-pages-it-a.js','paco-pages-de-a.js','paco-pages-b.js','paco-pages-en-b.js','paco-pages-fr-b.js','paco-pages-it-b.js','paco-pages-de-b.js','paco-pages-c.js'])
   assert(pacoHtml.includes(file),'paco.html no carga '+file);
 const lector=fs.readFileSync('lector.js','utf8');
 assert(lector.includes('WORK_PAGE_TRANSLATIONS'),'lector.js debe priorizar traducciones literarias por página');
