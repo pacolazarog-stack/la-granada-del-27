@@ -5,6 +5,7 @@ on:
     paths:
       - 'atlas.html'
       - 'cube-canon.js'
+      - 'relations-canon.js'
       - 'atlas-cube.js'
       - 'chance.js'
       - 'style.css'
