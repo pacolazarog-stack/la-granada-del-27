@@ -17,3 +17,4 @@ body{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
 .blackout .scene-card,.blackout .credits-card{opacity:0!important}
 @media(max-width:760px){.corporal-head{grid-template-columns:auto 1fr;padding:8px 9px}.corporal-motto{display:none}.corporal-brand{text-align:right}.corporal-brand strong{font-size:15px}.corporal-brand small{font-size:9px}.corporal-stage{padding:6px}.card{inset:6px}.scene-poster{width:min(96vw,calc((100vh - 135px)*.75))}.corporal-controls{gap:5px}.pill{padding:8px 10px}.status{width:100%;justify-content:center;margin:0}}
 @media(prefers-reduced-motion:reduce){.card{transition:none}}
+.version-nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.version-nav .pill{white-space:nowrap}@media(max-width:900px){.corporal-head{grid-template-columns:1fr}.version-nav{justify-content:center}.corporal-brand{text-align:center}.corporal-motto{display:none}}
