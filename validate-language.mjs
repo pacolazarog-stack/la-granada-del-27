@@ -151,6 +151,22 @@ const ensayoHtml=fs.readFileSync('ensayo.html','utf8');
 for(const file of ['ensayo-pages-a.js','ensayo-pages-b.js','ensayo-pages-c.js','ensayo-pages-d.js'])
   assert(ensayoHtml.includes(file),'ensayo.html no carga '+file);
 
+/* Miramar · versión literaria en curso */
+const miramarSandbox={window:{}};
+vm.createContext(miramarSandbox);
+for(const file of ['miramar-pages-a.js','miramar-pages-b.js','miramar-pages-c.js']){
+  new Function(fs.readFileSync(file,'utf8'));
+  vm.runInContext(fs.readFileSync(file,'utf8'),miramarSandbox,{filename:file});
+}
+const miramarTranslations=miramarSandbox.window.WORK_PAGE_TRANSLATIONS;
+for(const lang of ['en','fr','it','de']){
+  assert(Array.isArray(miramarTranslations?.[lang]),'falta array Miramar '+lang);
+  for(let i=0;i<60;i++) assert(typeof miramarTranslations[lang][i]==='string','falta Miramar página '+(i+1)+' en '+lang);
+}
+const miramarHtml=fs.readFileSync('miramar.html','utf8');
+for(const file of ['miramar-pages-a.js','miramar-pages-b.js','miramar-pages-c.js'])
+  assert(miramarHtml.includes(file),'miramar.html no carga '+file);
+
 const sys=fs.readFileSync('language-system.js','utf8');
 for(const lang of ['es','en','fr','it','de'])assert(sys.includes("code:'"+lang+"'"),'falta idioma '+lang);
 assert(sys.includes("KEY='poeticaLanguage'"),'la lengua debe persistir');
@@ -189,3 +205,4 @@ console.log(`OK · Cosiendo Europa V: ${uniqueRegreso.length} unidades literaria
 console.log(`OK · Contraportada: ${uniqueBack.length} unidades literarias × 4 lenguas revisadas`);
 console.log('OK · Paco Olmo: páginas 1–210 × EN/FR/IT/DE; versión literaria multilingüe completa');
 console.log(`OK · Ensayo: páginas 1–${ensayoPageCount} × EN/FR/IT/DE; versión literaria multilingüe completa`);
+console.log('OK · Miramar: páginas 1–60 × EN/FR/IT/DE; versión literaria en curso');
