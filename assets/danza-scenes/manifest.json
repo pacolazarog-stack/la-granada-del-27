@@ -1,0 +1,187 @@
+{
+  "title": "La terraza del Miramar · Danza libre",
+  "source": "hoja de contacto canónica de danza",
+  "count": 30,
+  "scenes": [
+    {
+      "scene": 1,
+      "title": "MIRAMAR COMUNIDAD",
+      "slug": "miramar-comunidad",
+      "page": "assets/danza-scenes/01.html"
+    },
+    {
+      "scene": 2,
+      "title": "OK",
+      "slug": "ok",
+      "page": "assets/danza-scenes/02.html"
+    },
+    {
+      "scene": 3,
+      "title": "EL CUERPO",
+      "slug": "el-cuerpo",
+      "page": "assets/danza-scenes/03.html"
+    },
+    {
+      "scene": 4,
+      "title": "CLAC",
+      "slug": "clac",
+      "page": "assets/danza-scenes/04.html"
+    },
+    {
+      "scene": 5,
+      "title": "NADIE",
+      "slug": "nadie",
+      "page": "assets/danza-scenes/05.html"
+    },
+    {
+      "scene": 6,
+      "title": "NACE EL CONFLICTO",
+      "slug": "nace-el-conflicto",
+      "page": "assets/danza-scenes/06.html"
+    },
+    {
+      "scene": 7,
+      "title": "PRIMERA INCURSIÓN TERRESTRE",
+      "slug": "primera-incursion-terrestre",
+      "page": "assets/danza-scenes/07.html"
+    },
+    {
+      "scene": 8,
+      "title": "TERRITORIO",
+      "slug": "territorio",
+      "page": "assets/danza-scenes/08.html"
+    },
+    {
+      "scene": 9,
+      "title": "MAYORÍA SIMPLE",
+      "slug": "mayoria-simple",
+      "page": "assets/danza-scenes/09.html"
+    },
+    {
+      "scene": 10,
+      "title": "VOTEN",
+      "slug": "voten",
+      "page": "assets/danza-scenes/10.html"
+    },
+    {
+      "scene": 11,
+      "title": "MAYORÍA SIMPLE",
+      "slug": "mayoria-simple-2",
+      "page": "assets/danza-scenes/11.html"
+    },
+    {
+      "scene": 12,
+      "title": "NOSOTROS",
+      "slug": "nosotros",
+      "page": "assets/danza-scenes/12.html"
+    },
+    {
+      "scene": 13,
+      "title": "DERECHO",
+      "slug": "derecho",
+      "page": "assets/danza-scenes/13.html"
+    },
+    {
+      "scene": 14,
+      "title": "TOGA · BANDERA · REINA",
+      "slug": "toga-bandera-reina",
+      "page": "assets/danza-scenes/14.html"
+    },
+    {
+      "scene": 15,
+      "title": "MÍRENME",
+      "slug": "mirenme",
+      "page": "assets/danza-scenes/15.html"
+    },
+    {
+      "scene": 16,
+      "title": "ESTADO",
+      "slug": "estado",
+      "page": "assets/danza-scenes/16.html"
+    },
+    {
+      "scene": 17,
+      "title": "VIENTO",
+      "slug": "viento",
+      "page": "assets/danza-scenes/17.html"
+    },
+    {
+      "scene": 18,
+      "title": "EL SOL",
+      "slug": "el-sol",
+      "page": "assets/danza-scenes/18.html"
+    },
+    {
+      "scene": 19,
+      "title": "CONFORME A DERECHO",
+      "slug": "conforme-a-derecho",
+      "page": "assets/danza-scenes/19.html"
+    },
+    {
+      "scene": 20,
+      "title": "QUE CONSTE",
+      "slug": "que-conste",
+      "page": "assets/danza-scenes/20.html"
+    },
+    {
+      "scene": 21,
+      "title": "EL REINO CABE EN UNA CARPETA",
+      "slug": "el-reino-cabe-en-una-carpeta",
+      "page": "assets/danza-scenes/21.html"
+    },
+    {
+      "scene": 22,
+      "title": "MIRAMAR",
+      "slug": "miramar",
+      "page": "assets/danza-scenes/22.html"
+    },
+    {
+      "scene": 23,
+      "title": "INNOVAR",
+      "slug": "innovar",
+      "page": "assets/danza-scenes/23.html"
+    },
+    {
+      "scene": 24,
+      "title": "¿QUIÉN GOBIERNA?",
+      "slug": "quien-gobierna",
+      "page": "assets/danza-scenes/24.html"
+    },
+    {
+      "scene": 25,
+      "title": "RUMOR",
+      "slug": "rumor",
+      "page": "assets/danza-scenes/25.html"
+    },
+    {
+      "scene": 26,
+      "title": "CENTRO DE DATOS",
+      "slug": "centro-de-datos",
+      "page": "assets/danza-scenes/26.html"
+    },
+    {
+      "scene": 27,
+      "title": "MIRA QUIÉN MIRA QUIÉN",
+      "slug": "mira-quien-mira-quien",
+      "page": "assets/danza-scenes/27.html"
+    },
+    {
+      "scene": 28,
+      "title": "CÓMO SEGUIMOS",
+      "slug": "como-seguimos",
+      "page": "assets/danza-scenes/28.html"
+    },
+    {
+      "scene": 29,
+      "title": "DESARMAR A LA REINA",
+      "slug": "desarmar-a-la-reina",
+      "page": "assets/danza-scenes/29.html"
+    },
+    {
+      "scene": 30,
+      "title": "DIEZ MINUTOS",
+      "slug": "diez-minutos",
+      "page": "assets/danza-scenes/30.html"
+    }
+  ]
+}

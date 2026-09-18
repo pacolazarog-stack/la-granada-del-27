@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090b0f">
+<meta name="theme-color" content="#07090c">
 <meta name="author" content="Flag">
-<title>La terraza del Miramar · Versión danza</title>
-<link rel="stylesheet" href="miramar-danza.css?v=20260918-danza4">
+<title>La terraza del Miramar · Danza libre</title>
+<link rel="stylesheet" href="miramar-danza.css?v=20260918-montaje5">
 <link rel="stylesheet" href="miramar-versions.css?v=20260918-nav1">
 </head>
 <body>
@@ -30,19 +30,29 @@
     <div class="opening-kicker">VERSIÓN DANZA</div>
     <h1>LA TERRAZA<br>DEL MIRAMAR</h1>
     <p>30 escenas · imagen de danza · planta coreográfica · música</p>
-    <div class="opening-note">Cada escena usa únicamente su imagen extraída de la hoja de contacto canónica de DANZA. No se reutilizan frames del storyboard CORPORAL.</div>
+    <div class="opening-note">Las treinta escenas proceden exclusivamente de la hoja de contacto canónica de DANZA. La planta muestra P0→P4 y, cuando interviene, la Comunidad C1→C8.</div>
   </section>
 
   <section class="scene card" id="sceneCard" hidden>
     <div class="scene-hero" id="sceneHero" role="img" aria-label=""></div>
+    <div class="scene-vignette" aria-hidden="true"></div>
+
     <div class="scene-meta">
       <div class="scene-chip" id="sceneNumber">01 / 30</div>
       <h2 id="sceneTitle">MIRAMAR COMUNIDAD</h2>
+      <div class="scene-phase-line" id="scenePhaseLine">I · DOMÉSTICA</div>
     </div>
-    <div class="plant-panel">
-      <div class="panel-label">PLANTA COREOGRÁFICA</div>
+
+    <aside class="plant-panel" id="plantPanel" aria-label="Planta coreográfica">
+      <div class="plant-head">
+        <span>PLANTA COREOGRÁFICA</span>
+        <span id="plantCode">P0 → P4</span>
+      </div>
       <div class="plant-wrap" id="plantWrap"></div>
-    </div>
+      <div class="plant-legend"><span><i class="dot dot-start"></i>P0</span><span><i class="dot dot-end"></i>P4</span><span><i class="dot dot-community"></i>Comunidad</span></div>
+    </aside>
+
+    <div class="scene-progress" id="sceneProgress" aria-hidden="true"></div>
   </section>
 
   <section class="credits card" id="credits" hidden>
@@ -52,7 +62,7 @@
     <p><b>Autoría, dramaturgia y concepto:</b> Flag</p>
     <p><b>Estructura:</b> 30 escenas</p>
     <p><b>Música:</b> 01–15 incorporadas · 16–30 preparadas</p>
-    <p><b>Sistema visual:</b> hoja de contacto canónica de danza + planta coreográfica</p>
+    <p><b>Visual:</b> treinta láminas individuales + planta coreográfica por escena</p>
   </section>
 </main>
 
@@ -61,6 +71,8 @@
   <button class="pill primary" id="playBtn" type="button">COMENZAR</button>
   <button class="pill" id="nextBtn" type="button" disabled>→</button>
   <button class="pill" id="soundBtn" type="button" aria-pressed="true">SONIDO · ON</button>
+  <button class="pill" id="plantBtn" type="button" aria-pressed="true">PLANTA · ON</button>
+  <a class="pill" id="sheetBtn" href="assets/danza-scenes/01.html" target="_blank" rel="noopener">LÁMINA</a>
   <div class="status">
     <span id="sceneStatus">OBRA</span>
     <span id="audioStatus">15 músicas incorporadas</span>
@@ -70,10 +82,10 @@
 
 <audio id="danzaAudio" preload="metadata"></audio>
 <script>window.MIRAMAR_DANZA_CONTACT_B64='';</script>
-<script src="assets/miramar-danza-contact/atlas-01.js?v=20260918-contact1"></script>
-<script src="assets/miramar-danza-contact/atlas-02.js?v=20260918-contact1"></script>
-<script src="assets/miramar-danza-contact/atlas-03.js?v=20260918-contact1"></script>
-<script src="assets/miramar-danza-contact/atlas-04.js?v=20260918-contact1"></script>
-<script src="miramar-danza.js?v=20260918-danza4"></script>
+<script src="assets/miramar-danza-contact/atlas-01.js?v=20260918-contact2"></script>
+<script src="assets/miramar-danza-contact/atlas-02.js?v=20260918-contact2"></script>
+<script src="assets/miramar-danza-contact/atlas-03.js?v=20260918-contact2"></script>
+<script src="assets/miramar-danza-contact/atlas-04.js?v=20260918-contact2"></script>
+<script src="miramar-danza.js?v=20260918-montaje5"></script>
 </body>
 </html>
