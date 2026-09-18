@@ -1,13 +1,13 @@
-# Música · versión corporal
+# Partitura sonora · versión corporal
 
-Esta carpeta contiene **exclusivamente** la música de la versión corporal de *La terraza del Miramar*.
+Canon vigente desde 18/09/2026.
 
-No debe enlazarse aquí el máster ni los cortes de la versión musical.
+Las músicas corporales anteriores quedan **sustituidas íntegramente** por esta partitura de 30 archivos sincronizados con la matriz exacta de **42:40**.
 
-## Corpus actual
+- 30 archivos: `01.mp3` … `30.mp3`
+- célula madre: **TUM – TA – AH – TUM**
+- materiales: CLAC · TUM · TAC · BRR · SHH/RAS · PLIP · respiración
+- palabras esenciales: MAR · MIRAMAR · OK · COMUNIDAD · RAM · DIEZ MINUTOS
+- cadena figurada única: «Mira mar. Mar mira.»
 
-Escenas 01–15: archivos corporales independientes `01.mp3` … `15.mp3`.
-
-Escenas 16–30: reservadas para los futuros archivos `16.mp3` … `30.mp3`.
-
-El reproductor `miramar-corporal.js` busca siempre el archivo individual correspondiente a la escena. Cuando se añadan las quince músicas restantes no habrá que modificar el código.
+Cada archivo dura exactamente el tiempo asignado a su escena. El reproductor corporal usa estos 30 archivos y no el máster de la versión musical.

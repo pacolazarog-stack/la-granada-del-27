@@ -1,112 +1,328 @@
 {
-  "version": "corporal",
+  "version": "corporal-sonora-v1",
   "canonical_date": "2026-09-18",
-  "note": "Músicas 01–15 de la versión corporal. Son los archivos originales suministrados para esta versión y no corresponden al máster de la versión musical.",
+  "total_duration_seconds": 2560,
+  "total_duration": "42:40",
+  "note": "Sustituye íntegramente las músicas corporales anteriores. Partitura de onomatopeyas, percusión, respiración y lenguaje mínimo.",
+  "mother_cell": "TUM – TA – AH – TUM",
+  "essential_words": [
+    "MAR",
+    "MIRAMAR",
+    "OK",
+    "COMUNIDAD",
+    "RAM",
+    "DIEZ MINUTOS"
+  ],
+  "figurative_phrase": "Mira mar. Mar mira.",
+  "sound_lexicon": {
+    "CLAC": "pinza / linde / voto",
+    "TUM": "cuerpo / madera / peso",
+    "TAC": "sello / autoridad",
+    "BRR": "teléfono / máquina",
+    "SHH/RAS": "papel / sábana / viento",
+    "PLIP": "agua / mar",
+    "AH": "respiración / esfuerzo"
+  },
   "tracks": [
     {
       "scene": 1,
+      "title": "MIRAMAR COMUNIDAD",
       "file": "01.mp3",
-      "duration_seconds": 154.44,
-      "bytes": 3526959,
-      "sha256": "318c177593a57b30c169208a97276a5c0a7639c9bdce031d3fadebba6fef7336"
+      "in": "00:00",
+      "out": "01:20",
+      "duration_seconds": 80,
+      "bytes": 960828,
+      "sha256": "27a19b4f70ed0aaaef68879a3f347b88a90b85edcd4767e0d659cbe83068f7d5"
     },
     {
       "scene": 2,
+      "title": "OK",
       "file": "02.mp3",
-      "duration_seconds": 172.584,
-      "bytes": 4255535,
-      "sha256": "f04f7662d4525d5ed68d4189b4a44a1cbefde358c4866b51eb11caed85bb339e"
+      "in": "01:20",
+      "out": "02:05",
+      "duration_seconds": 45,
+      "bytes": 540779,
+      "sha256": "6250a79f535663cca38d9b3cea26f9c846d297703a8306b99fda598a6ee04c76"
     },
     {
       "scene": 3,
+      "title": "EL CUERPO",
       "file": "03.mp3",
-      "duration_seconds": 169.92,
-      "bytes": 3930489,
-      "sha256": "eaa003897d8b3c108e7076d4eced4d85976dc66aabcfe49d380477696751556b"
+      "in": "02:05",
+      "out": "03:25",
+      "duration_seconds": 80,
+      "bytes": 960828,
+      "sha256": "480018c3ba87bac7d31a89ed484a4601fa6378c96ff39e06beaf8a2b09167550"
     },
     {
       "scene": 4,
+      "title": "CLAC",
       "file": "04.mp3",
-      "duration_seconds": 105.624,
-      "bytes": 2767252,
-      "sha256": "89e8c98de2abfd2732d6a3019b3938568f80edb290c56f9b93f2c30cc4785e73"
+      "in": "03:25",
+      "out": "04:25",
+      "duration_seconds": 60,
+      "bytes": 720711,
+      "sha256": "0126b74bc59c2693fe5d2c1f715d6f70b984ec2229bc503e1153d5e42e332b4a"
     },
     {
       "scene": 5,
+      "title": "NADIE",
       "file": "05.mp3",
-      "duration_seconds": 193.584,
-      "bytes": 4261039,
-      "sha256": "7ba3d0b8d67dfcdfacdaa0fdb33b8db3d767b86e64bc2ee5008e469c0fdc971c"
+      "in": "04:25",
+      "out": "05:25",
+      "duration_seconds": 60,
+      "bytes": 720711,
+      "sha256": "ab902ffc497c86265aad41d0da26d214ef1eab4af25d0d34b57f45a5b64d2948"
     },
     {
       "scene": 6,
+      "title": "NACE EL CONFLICTO",
       "file": "06.mp3",
-      "duration_seconds": 169.944,
-      "bytes": 3710321,
-      "sha256": "f14e5a72f16cecdd74514d8ab6161e79c3180364b03bb9446f5fca978a58f3c0"
+      "in": "05:25",
+      "out": "06:55",
+      "duration_seconds": 90,
+      "bytes": 1080887,
+      "sha256": "a57e7655096cad42a1bd44c71e0af20f99705edfe7d584d40402af40cd0f053f"
     },
     {
       "scene": 7,
+      "title": "PRIMERA INCURSIÓN TERRESTRE",
       "file": "07.mp3",
-      "duration_seconds": 142.44,
-      "bytes": 3312356,
-      "sha256": "f2aa5e8f6689b7ab45aac3acd85cdca43a7b43f05e165aca06c6da9950187095"
+      "in": "06:55",
+      "out": "08:10",
+      "duration_seconds": 75,
+      "bytes": 900956,
+      "sha256": "c3a52cca6b0ca1aebf580af5af348c30775fab50419cec167608253e8952142f"
     },
     {
       "scene": 8,
+      "title": "TERRITORIO",
       "file": "08.mp3",
-      "duration_seconds": 68.832,
-      "bytes": 1558083,
-      "sha256": "068e0b3a103dbfbed2d0b5c4b0e9236d5d788849343b4df0b9d3ddc149aa524c"
+      "in": "08:10",
+      "out": "09:40",
+      "duration_seconds": 90,
+      "bytes": 1080887,
+      "sha256": "413f649c25ef166252bcd48b2f3dd935233a0c3bd6b0883fdcf1d8d8283ba311"
     },
     {
       "scene": 9,
+      "title": "MAYORÍA SIMPLE",
       "file": "09.mp3",
-      "duration_seconds": 132.024,
-      "bytes": 3250783,
-      "sha256": "491de87df908bf8ee07a339caa43ebcc6582dafb104e790aa7fe0b248dd28232"
+      "in": "09:40",
+      "out": "10:55",
+      "duration_seconds": 75,
+      "bytes": 900956,
+      "sha256": "482db6866edacf1ab56456cc0e59635c052dfd5f8e1b690704421747fdaf38c0"
     },
     {
       "scene": 10,
+      "title": "VOTEN",
       "file": "10.mp3",
-      "duration_seconds": 172.032,
-      "bytes": 4209951,
-      "sha256": "8a8d0d128f9e27bf2f74cbb3a2f44e4df4611fb13f6dce0ebb77f5436c9823e1"
+      "in": "10:55",
+      "out": "12:10",
+      "duration_seconds": 75,
+      "bytes": 900956,
+      "sha256": "ad7d7fbb9315cb5f11fcbf9c46bcd60f9396772567451578ac82296c28b282f5"
     },
     {
       "scene": 11,
+      "title": "MAYORÍA SIMPLE",
       "file": "11.mp3",
-      "duration_seconds": 133.224,
-      "bytes": 3161706,
-      "sha256": "bb8603f786aaef2600a5b747adf39a3c2d19581e0b67232d508cf4525b21a197"
+      "in": "12:10",
+      "out": "13:10",
+      "duration_seconds": 60,
+      "bytes": 720711,
+      "sha256": "ff5d36b5d0721312f0114c33c008b72f42f230bcf1a382e4118c8aefb2cc6e96"
     },
     {
       "scene": 12,
+      "title": "NOSOTROS",
       "file": "12.mp3",
-      "duration_seconds": 92.04,
-      "bytes": 2303888,
-      "sha256": "bed788cb70b423cf32bc8bfdc18420c79b83951741aa0898c97423b5117cfb33"
+      "in": "13:10",
+      "out": "14:25",
+      "duration_seconds": 75,
+      "bytes": 900956,
+      "sha256": "583e42b6e4584d80eef864133485108e47a88668f837a1dc84898180d5fba294"
     },
     {
       "scene": 13,
+      "title": "DERECHO",
       "file": "13.mp3",
-      "duration_seconds": 128.4,
-      "bytes": 2959031,
-      "sha256": "a34dc85adbe00b5310341c91144b6a02387e1e5420a1748e50830244687843f7"
+      "in": "14:25",
+      "out": "15:40",
+      "duration_seconds": 75,
+      "bytes": 900956,
+      "sha256": "c668f0a732bb1b520f4005a9215345f231bd5be416375e9e1b0a92aac12a189b"
     },
     {
       "scene": 14,
+      "title": "TOGA · BANDERA · REINA",
       "file": "14.mp3",
-      "duration_seconds": 138.744,
-      "bytes": 3175067,
-      "sha256": "4d8f76f5680bbfe4d485792a320f6fc5cea98de864895a4868cbbedcd9134bc0"
+      "in": "15:40",
+      "out": "17:10",
+      "duration_seconds": 90,
+      "bytes": 1080887,
+      "sha256": "02b6ed09de732414f3ee4b30728533a8598f0d7eed00212d6c29fd1e12c8b2aa"
     },
     {
       "scene": 15,
+      "title": "MÍRENME",
       "file": "15.mp3",
-      "duration_seconds": 212.424,
-      "bytes": 4782186,
-      "sha256": "d01fe5d2bb9b3cdcb6345058c1ee29f321f1066f1308107672fee7164c8131cb"
+      "in": "17:10",
+      "out": "18:25",
+      "duration_seconds": 75,
+      "bytes": 900956,
+      "sha256": "a96cadd60a96dd501c79591fced916ac415772c1821c69f8c7b0bd97221abb7f"
+    },
+    {
+      "scene": 16,
+      "title": "ESTADO",
+      "file": "16.mp3",
+      "in": "18:25",
+      "out": "19:55",
+      "duration_seconds": 90,
+      "bytes": 1080887,
+      "sha256": "ec3b5636f644f27379518b6af8c3cdf979bcd9e58d7de2bbfa17d4d139a35d30"
+    },
+    {
+      "scene": 17,
+      "title": "VIENTO",
+      "file": "17.mp3",
+      "in": "19:55",
+      "out": "21:25",
+      "duration_seconds": 90,
+      "bytes": 1080887,
+      "sha256": "7fa75302ec9f6ba7f2f596add823f752efc96bc2ab635ead2c99fd7e8464c960"
+    },
+    {
+      "scene": 18,
+      "title": "EL SOL",
+      "file": "18.mp3",
+      "in": "21:25",
+      "out": "22:40",
+      "duration_seconds": 75,
+      "bytes": 900956,
+      "sha256": "86d295db75abe258a262ec9b57516d5891187b92b0becd889b3206311451ac73"
+    },
+    {
+      "scene": 19,
+      "title": "CONFORME A DERECHO",
+      "file": "19.mp3",
+      "in": "22:40",
+      "out": "24:10",
+      "duration_seconds": 90,
+      "bytes": 1080887,
+      "sha256": "9292d37b1b5ac0dd938caa6c960d078bb8e1108d32fa2d3045bda6102ba6912b"
+    },
+    {
+      "scene": 20,
+      "title": "QUE CONSTE",
+      "file": "20.mp3",
+      "in": "24:10",
+      "out": "25:25",
+      "duration_seconds": 75,
+      "bytes": 900956,
+      "sha256": "e908bc07ae2e068d0741305f09485164cca2cec254cd9e05edac8e5dc81f249f"
+    },
+    {
+      "scene": 21,
+      "title": "EL REINO CABE EN UNA CARPETA",
+      "file": "21.mp3",
+      "in": "25:25",
+      "out": "26:40",
+      "duration_seconds": 75,
+      "bytes": 900956,
+      "sha256": "33525d9087ad8408d623da2d9f485df9a870a461b9ef59469e3ababa5f66ef3c"
+    },
+    {
+      "scene": 22,
+      "title": "MIRAMAR",
+      "file": "22.mp3",
+      "in": "26:40",
+      "out": "28:10",
+      "duration_seconds": 90,
+      "bytes": 1080887,
+      "sha256": "bbab1fb47bfa50c8c1a144b7ebc23077f7d6e3124db7215dd2ceb394a5e264d8"
+    },
+    {
+      "scene": 23,
+      "title": "INNOVAR",
+      "file": "23.mp3",
+      "in": "28:10",
+      "out": "29:40",
+      "duration_seconds": 90,
+      "bytes": 1080887,
+      "sha256": "e24c1ae256209175a1440827b773065340fcd9ae633885eef3e380665a8d581e"
+    },
+    {
+      "scene": 24,
+      "title": "¿QUIÉN GOBIERNA?",
+      "file": "24.mp3",
+      "in": "29:40",
+      "out": "30:55",
+      "duration_seconds": 75,
+      "bytes": 900956,
+      "sha256": "16cd945c91d937b7cab691df0bb75f2230b71cc2823190e7d84e38586b0ac714"
+    },
+    {
+      "scene": 25,
+      "title": "RUMOR",
+      "file": "25.mp3",
+      "in": "30:55",
+      "out": "32:10",
+      "duration_seconds": 75,
+      "bytes": 900956,
+      "sha256": "c54f6fea8de61a7d6cfe3d3a70cca5162c14438930712b6f2b3f59d76b266441"
+    },
+    {
+      "scene": 26,
+      "title": "CENTRO DE DATOS",
+      "file": "26.mp3",
+      "in": "32:10",
+      "out": "33:40",
+      "duration_seconds": 90,
+      "bytes": 1080887,
+      "sha256": "9d03c55e77723dd713155b049c01188201bc67d357fabc556db7553d18be65fe"
+    },
+    {
+      "scene": 27,
+      "title": "MIRA QUIÉN MIRA QUIÉN",
+      "file": "27.mp3",
+      "in": "33:40",
+      "out": "35:10",
+      "duration_seconds": 90,
+      "bytes": 1080887,
+      "sha256": "6218bab35cce21e51c8a6f6213bf2dc646d13778fa704aaec551084647d048db"
+    },
+    {
+      "scene": 28,
+      "title": "CÓMO SEGUIMOS",
+      "file": "28.mp3",
+      "in": "35:10",
+      "out": "36:40",
+      "duration_seconds": 90,
+      "bytes": 1080887,
+      "sha256": "ab66ef88cd97715ed629ecd272b9cd1876165c03ba64b5e69cc468e9108128b9"
+    },
+    {
+      "scene": 29,
+      "title": "DESARMAR A LA REINA",
+      "file": "29.mp3",
+      "in": "36:40",
+      "out": "39:10",
+      "duration_seconds": 150,
+      "bytes": 1800926,
+      "sha256": "461ef1269f36e952aba19a9314cd682b14c6e46fd55c407f328a5f4794f01f52"
+    },
+    {
+      "scene": 30,
+      "title": "DIEZ MINUTOS",
+      "file": "30.mp3",
+      "in": "39:10",
+      "out": "42:40",
+      "duration_seconds": 210,
+      "bytes": 2520965,
+      "sha256": "9f70e6719739d22a11e885e939ba7d843ae73f76d47a65a55041d6eae2f3c951"
     }
   ]
 }
