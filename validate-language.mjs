@@ -108,6 +108,27 @@ const granadaHtml=fs.readFileSync('granada.html','utf8');
 for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js','language-granada-2027-a.js','language-granada-2027-b.js','language-granada-2027-c.js','language-cosiendo-europa-a.js','language-cosiendo-europa-b.js','language-cosiendo-europa-c.js','language-cosiendo-europa-d.js','language-cosiendo-europa-e.js'])
   assert(granadaHtml.includes(file),'granada.html no carga '+file);
 
+
+
+/* Paco Olmo · bloque literario inicial */
+const pacoSandbox={window:{}};
+vm.createContext(pacoSandbox);
+for(const file of ['paco-pages-en-a.js','paco-pages-fr-a.js','paco-pages-it-a.js','paco-pages-de-a.js','paco-pages-b.js']){
+  new Function(fs.readFileSync(file,'utf8'));
+  vm.runInContext(fs.readFileSync(file,'utf8'),pacoSandbox,{filename:file});
+}
+const pacoTranslations=pacoSandbox.window.WORK_PAGE_TRANSLATIONS;
+for(const lang of ['en','fr','it','de']){
+  assert(Array.isArray(pacoTranslations?.[lang]),'falta array Paco '+lang);
+  for(let i=0;i<=11;i++) assert(typeof pacoTranslations[lang][i]==='string'&&pacoTranslations[lang][i].trim(),'falta Paco página '+(i+1)+' en '+lang);
+}
+const pacoHtml=fs.readFileSync('paco.html','utf8');
+for(const file of ['paco-pages-en-a.js','paco-pages-fr-a.js','paco-pages-it-a.js','paco-pages-de-a.js','paco-pages-b.js'])
+  assert(pacoHtml.includes(file),'paco.html no carga '+file);
+const lector=fs.readFileSync('lector.js','utf8');
+assert(lector.includes('WORK_PAGE_TRANSLATIONS'),'lector.js debe priorizar traducciones literarias por página');
+assert(lector.includes('volume:languagechange'),'lector.js debe rerenderizar al cambiar de lengua');
+
 const sys=fs.readFileSync('language-system.js','utf8');
 for(const lang of ['es','en','fr','it','de'])assert(sys.includes("code:'"+lang+"'"),'falta idioma '+lang);
 assert(sys.includes("KEY='poeticaLanguage'"),'la lengua debe persistir');
@@ -144,3 +165,4 @@ console.log(`OK · Cosiendo Europa I-II: ${uniqueAguaTierras.length} unidades li
 console.log(`OK · Cosiendo Europa III-IV: ${uniqueManosCosturas.length} unidades literarias × 4 lenguas revisadas`);
 console.log(`OK · Cosiendo Europa V: ${uniqueRegreso.length} unidades literarias × 4 lenguas revisadas`);
 console.log(`OK · Contraportada: ${uniqueBack.length} unidades literarias × 4 lenguas revisadas`);
+console.log('OK · Paco Olmo: páginas 1–12 × EN/FR/IT/DE en versión literaria');
