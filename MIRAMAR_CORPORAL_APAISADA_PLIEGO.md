@@ -13,11 +13,11 @@ Toda la versión corporal se proyecta en **formato apaisado 16:9**, a pantalla c
 
 Cada escena se presenta como **una sola lámina horizontal** que contiene simultáneamente sus **40 fotogramas**, la información sonora/verbal de la escena y su identificación.
 
-La lámina permanece visible durante **toda la duración de la música correspondiente**.
+La **partitura sonora comienza en el IN exacto de cada escena**. La cartela identificativa ocupa los primeros **0,9 s dentro de ese mismo tiempo**; después entra la lámina horizontal, sin detener ni desplazar el audio.
 
-Al terminar la música:
+Al terminar la pista en el OUT exacto:
 
-**ESCENA → OSCURO → ANUNCIO DE LA SIGUIENTE ESCENA → ESCENA SIGUIENTE**
+**ESCENA → CARTELA DE LA SIGUIENTE ESCENA DENTRO DE SU NUEVO TIEMPO → ESCENA SIGUIENTE**
 
 Antes de la escena 01:
 
@@ -146,7 +146,7 @@ Debe figurar:
 - Autoría, dramaturgia y concepto: **Flag**
 - Storyboard canónico: 30 escenas · 40 fotogramas por escena
 - Sistema visual: Uso real · deformación · significado nuevo
-- Música corporal: 01–15 incorporadas · 16–30 preparadas
+- Partitura sonora corporal: 30 pistas incorporadas · matriz exacta 42:40
 
 No debe aparecer ninguna autoría distinta de **Flag**.
 
@@ -197,8 +197,9 @@ Másteres PNG:
 …  
 `audio/corporal/30.mp3`
 
-01–15: corpus corporal actual.  
-16–30: slots reservados.
+01–30: **partitura sonora canónica vigente**. No quedan slots pendientes.  
+Duración total exacta: **42:40 = 2.560 s**.  
+Manifiesto de tiempos y SHA-256: `audio/corporal/manifest.json`.
 
 ---
 
@@ -243,28 +244,26 @@ El oscuro no es un adorno sino parte del dispositivo.
 
 Secuencia técnica recomendada entre escenas:
 
-1. termina el MP3 de la escena;
-2. fundido de la escena a negro: **250–350 ms**;
-3. negro limpio: **300–500 ms**;
-4. aparición de la cartela de próxima escena;
-5. cartela visible: **aprox. 2,2–2,8 s**;
-6. fundido breve a negro;
-7. entrada de la siguiente lámina;
-8. comienza la música correspondiente.
+1. termina el MP3 exactamente en el OUT de la escena;
+2. comienza inmediatamente el MP3 de la escena siguiente en su IN canónico;
+3. durante los primeros **0,9 s** de ese nuevo tiempo aparece la cartela;
+4. la lámina entra a continuación sin reiniciar ni desplazar el audio;
+5. el proceso se repite hasta 30 · DIEZ MINUTOS.
 
-La duración final de la cartela podrá ajustarse por legibilidad, pero debe permanecer homogénea en toda la obra.
+La cartela **no añade duración** a la matriz: forma parte del tiempo exacto de su propia escena.
 
 ---
 
 ## 9. Regla música / imagen
 
-- una música = una escena;
+- una pista = una escena;
 - una escena = una lámina de 40 fotogramas;
-- la lámina aparece antes o simultáneamente al inicio de la música;
+- el audio comienza en el **IN exacto** de la escena;
+- la cartela ocupa los primeros **0,9 s dentro de ese tiempo** y no añade segundos;
+- la lámina aparece después sin detener la pista;
 - no se animan internamente los 40 fotogramas;
-- no se avanza de escena antes del final del archivo musical;
-- al finalizar el audio se inicia automáticamente el oscuro y la transición;
-- si una música 16–30 aún no existe, la escena se mantiene en modo manual y no se sustituye por música de otra versión.
+- el final de la pista coincide con el **OUT exacto** de la escena;
+- las 30 pistas existen y pertenecen exclusivamente a la versión corporal.
 
 **La versión corporal no utiliza música de la versión musical.**
 
@@ -297,14 +296,14 @@ En relaciones distintas, se prioriza la integridad de la composición y de la zo
 1. construir plantilla maestra;
 2. rehacer escenas 01–10 en 1920 × 1080;
 3. rehacer anuncios 01–10;
-4. validar continuidad con músicas corporales 01–10;
+4. continuidad sonora 01–10 validada con la partitura 42:40;
 5. integrar y comprobar en web.
 
 ### BLOQUE B · 11–20
 1. escenas 11–20;
 2. anuncios 11–20;
-3. integración 11–15 con música existente;
-4. preparar 16–20 como slots musicales pendientes;
+3. integración sonora 11–15 completada;
+4. pistas 16–20 incorporadas;
 5. validación web.
 
 ### BLOQUE C · 21–30
@@ -312,7 +311,7 @@ En relaciones distintas, se prioriza la integridad de la composición y de la zo
 2. anuncios 21–30;
 3. FIN;
 4. CRÉDITOS;
-5. preparar slots musicales 21–30;
+5. pistas 21–30 incorporadas;
 6. validación completa 01–30.
 
 ---
@@ -360,6 +359,6 @@ Orden:
 
 ## 14. Definición canónica breve
 
-> La versión corporal de *La terraza del Miramar* es una secuencia audiovisual de treinta láminas escénicas apaisadas a pantalla completa. Cada lámina reúne cuarenta fotogramas de una única acción corporal y permanece visible durante toda su música correspondiente. Cada escena se separa de la siguiente mediante oscuro y cartela tipográfica. El sistema completo utiliza una única gramática horizontal 16:9 para obra, escenas, transiciones, fin y créditos.
+> La versión corporal de *La terraza del Miramar* es una secuencia audiovisual de treinta escenas apaisadas a pantalla completa. Cada escena reúne cuarenta fotogramas de una única acción corporal y una pista sonora propia. Las treinta pistas forman una matriz continua exacta de **42:40**. La cartela de cada escena ocupa los primeros 0,9 s de su propio tiempo y la lámina entra después, sin añadir duración. El sistema completo utiliza una única gramática horizontal 16:9 y una partitura de onomatopeyas, percusión, respiración y palabra mínima.
 
 **Flag · 2026**
