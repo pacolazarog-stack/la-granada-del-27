@@ -33,4 +33,6 @@ Los masters públicos de Granada, Paco, Miramar y Poética del límite, junto co
 - Añadidos marcadores PDF para las cinco partes y la contraportada.
 - Master: `POETICA_DEL_LIMITE_VOLUMEN_INTEGRAL_FLAG_CANON_2026-09-18.pdf`.
 - Drive: https://drive.google.com/file/d/1AQzYblBgnVR29xZqchlYy2hNjvuvdFyy/view
-- SHA-256: `e46b69ed95e095996dc0638470278f8d8d6381a0bbc2b4faeb2699a35f0bde2c`.
+- SHA-256: `ef7dea6fbe8ad2ffdc0085e3e372a735332066bad5b4833d6aba751aea665526`.
+
+- Corregida la **portada tipográfica de la versión papel**: «POÉTICA DEL LÍMITE» y todos los caracteres acentuados se regeneran con tipografía Unicode embebida. El resto de páginas permanece visualmente idéntico.
