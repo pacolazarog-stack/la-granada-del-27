@@ -29,7 +29,7 @@ Secuencia canónica: **X → Y → CENTRO → Z**.
 
 ## 5. Recompensa lingüística
 
-Z recibe una lengua de las 24 oficiales de la UE mediante azar ponderado:
+Z recibe una lengua de un campo de **27 lenguas** mediante azar ponderado: las 24 oficiales de la UE más catalán, gallego y euskera. El español ya pertenece a las 24 oficiales, por lo que el conjunto contiene cuatro lenguas españolas: español, catalán, gallego y euskera.
 
 - musicalidad 50 %
 - semántica 20 %
@@ -53,6 +53,6 @@ Se ha generado un libro técnico complementario: `ATLAS_AZAR_MODELO_CANONICO_27x
 
 Drive: https://docs.google.com/spreadsheets/d/1G7NAtMc0kSeoCFONPRpXoWDLOOCRyPJ3/edit
 
-Hojas: `DASHBOARD`, `INDICE_27`, `RUTA_POEMA_27`, `NAVEGADOR_CUBO`, `ENVOLVENTES_13`, `TRAZAS_5`, `LENGUAS_24`, `AZAR_4`, `CONTROL`.
+Hojas: `DASHBOARD`, `INDICE_27`, `RUTA_POEMA_27`, `NAVEGADOR_CUBO`, `ENVOLVENTES_13`, `TRAZAS_5`, `LENGUAS_27`, `AZAR_4`, `CONTROL`.
 
 Este XLSX materializa la lógica recuperada e implementada hoy; **no sustituye ni finge reconstruir** los XLSX avanzados originales de ayer que no están disponibles actualmente para lectura directa.
