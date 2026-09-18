@@ -20,7 +20,7 @@ for(const lang of ['en','fr','it','de']){
 
 
 /* Primera versión literaria completa de LIBRO I · 1927 */
-for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js','language-granada-2027-a.js','language-granada-2027-b.js','language-granada-2027-c.js']){
+for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js','language-granada-2027-a.js','language-granada-2027-b.js','language-granada-2027-c.js','language-cosiendo-europa-a.js','language-cosiendo-europa-b.js']){
   new Function(fs.readFileSync(file,'utf8'));
   vm.runInContext(fs.readFileSync(file,'utf8'),sandbox,{filename:file});
 }
@@ -55,8 +55,21 @@ for(const line of unique2027){
   for(const lang of ['en','fr','it','de'])assert(literary[line][lang],'falta '+lang+' en Libro I 2027 para: '+line);
 }
 
+
+
+const sourceAguaTierras=fs.readFileSync('texto-canonico/03_LIBRO_II_AGUA_TIERRAS.md','utf8')
+  .replace(/\r/g,'')
+  .split('\n')
+  .map(cleanLine)
+  .filter(Boolean);
+const uniqueAguaTierras=[...new Set(sourceAguaTierras)];
+for(const line of uniqueAguaTierras){
+  assert(literary[line],'falta traducción literaria Cosiendo Europa I-II para: '+line);
+  for(const lang of ['en','fr','it','de'])assert(literary[line][lang],'falta '+lang+' en Cosiendo Europa I-II para: '+line);
+}
+
 const granadaHtml=fs.readFileSync('granada.html','utf8');
-for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js','language-granada-2027-a.js','language-granada-2027-b.js','language-granada-2027-c.js'])
+for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js','language-granada-2027-a.js','language-granada-2027-b.js','language-granada-2027-c.js','language-cosiendo-europa-a.js','language-cosiendo-europa-b.js'])
   assert(granadaHtml.includes(file),'granada.html no carga '+file);
 
 const sys=fs.readFileSync('language-system.js','utf8');
@@ -91,3 +104,4 @@ console.log('OK · cambio de idioma permanente en 9 superficies principales');
 console.log('OK · texto dinámico + voz siguen el idioma seleccionado');
 console.log(`OK · Granada 1927: ${unique1927.length} unidades literarias × 4 lenguas revisadas`);
 console.log(`OK · Granada 2027 + epílogo: ${unique2027.length} unidades literarias × 4 lenguas revisadas`);
+console.log(`OK · Cosiendo Europa I-II: ${uniqueAguaTierras.length} unidades literarias × 4 lenguas revisadas`);
