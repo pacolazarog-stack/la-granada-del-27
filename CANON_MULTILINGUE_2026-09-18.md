@@ -282,3 +282,23 @@ Criterio de invierno: el archivo ya no intenta demostrar únicamente qué ocurri
 En Paco, el inventario deja de ser dominio y empieza a rozar la memoria, la pérdida y la presencia de quienes ya no están. El dedal abre una categoría decisiva: **OBJETOS CUYA ÚNICA FUNCIÓN ES DEMOSTRAR QUE ALGUIEN ESTUVO AQUÍ**.
 
 El paso a la literatura conserva la comicidad del expediente, pero también debe dejar aparecer, antes de la maquinaria, el instante sensorial autónomo: la naranja, la luz, los dedos, la ventana. El riesgo posterior es precisamente que Paco vuelva a convertir esa libertad en sistema.
+
+
+## 19. Paco Olmo · INVIERNO avanza hasta POM-000
+
+Se amplía la versión literaria revisada **EN · FR · IT · DE** de **INVIERNO · NO SABER**.
+
+Cobertura acumulada del lector: **páginas 1–174**.
+
+Quedan ya traducidos en este tramo:
+
+- **51 · DEAMBULAR · LA FOTOGRAFÍA**;
+- **52 · PACO · Del descubrimiento de que también los poemas necesitaban expediente**;
+- **53 · DEAMBULAR · EL CORREO**;
+- **54 · PACO · Del archivo que contenía a Paco Olmo de Males**.
+
+Criterio de continuidad: las pruebas ya no sirven para cerrar la interpretación, sino para deshacer simplificaciones. Una fotografía no demuestra felicidad ni distancia; un correo puede mostrar que Julián ya había comprendido algo y, aun así, siguió actuando del mismo modo. La memoria deja de organizar épocas enteras con «una sola temperatura».
+
+En Paco, la literatura reproduce el impulso archivístico hasta que el propio archivo se vuelve contra su autor. **POM-000** no debe leerse como giro fantástico autónomo ni como truco de género, sino como inversión de la lógica del libro: Paco descubre un archivo que sabe de él en términos documentales y, precisamente por eso, ignora casi todo lo que significa haber estado vivo.
+
+El punto decisivo es que Paco encuentra por primera vez una insuficiencia del archivo y **no quiere subsanarla**.
