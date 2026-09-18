@@ -1,0 +1,19 @@
+:root{--bg:#000;--cyan:#36dbef;--white:#f6f6f3;--muted:#86a9ae;--panel:#050708;--line:#29cfe4}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--white);font-family:"Arial Narrow","Helvetica Neue",Arial,sans-serif;overflow:hidden}
+body{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.corporal-head{min-height:64px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;padding:10px 18px;border-bottom:1px solid var(--line);background:#000}
+.corporal-brand{min-width:0;text-align:center}.corporal-brand strong{display:block;color:var(--cyan);font-size:clamp(16px,2vw,28px);letter-spacing:.08em;line-height:1}.corporal-brand small{display:block;margin-top:5px;color:#fff;font-size:11px;letter-spacing:.08em}
+.corporal-motto{max-width:260px;color:var(--cyan);font-size:10px;letter-spacing:.13em;text-align:right}
+.pill{border:1px solid #57d9e966;background:#061115;color:#eafcff;border-radius:999px;padding:8px 14px;text-decoration:none;font:700 11px/1.1 Arial,sans-serif;letter-spacing:.08em;cursor:pointer}
+.pill:hover{border-color:var(--cyan)}.pill:disabled{opacity:.28;cursor:default}.pill.primary{background:var(--cyan);color:#001014;border-color:var(--cyan)}
+.corporal-stage{min-height:0;position:relative;display:flex;align-items:center;justify-content:center;padding:12px;overflow:hidden;background:radial-gradient(circle at 50% 35%,#061317 0,#000 64%)}
+.card{position:absolute;inset:12px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .42s ease}.card.is-visible{opacity:1}
+.intertitle{flex-direction:column;text-align:center;background:#000;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:7vh 5vw}
+.inter-kicker{font-size:clamp(22px,4.8vw,64px);font-weight:900;color:#fff;letter-spacing:.035em}.intertitle h1{margin:.22em 0 .12em;color:var(--cyan);font-size:clamp(34px,7vw,96px);line-height:.92;max-width:1100px}.intertitle p{margin:.25em 0;color:var(--cyan);font-size:clamp(18px,2.4vw,34px)}.inter-note{position:absolute;bottom:6%;left:5%;right:5%;color:var(--muted);font-size:12px;letter-spacing:.16em}
+.scene-card{background:#000}.scene-poster{width:min(94vw,calc((100vh - 150px) * .75),900px);aspect-ratio:3/4;background-image:url("assets/miramar-corporal-atlas.jpg");background-repeat:no-repeat;background-size:500% 600%;background-color:#000;box-shadow:0 14px 44px #000;border:1px solid #1dd7e866}
+.credits-card{flex-direction:column;background:#000;padding:7vh 7vw;text-align:left}.credits-kicker{font-size:clamp(42px,7vw,92px);font-weight:900;align-self:center;margin-bottom:4vh}.credits-lines{width:min(900px,92vw);font-size:clamp(14px,1.7vw,24px);line-height:1.45}.credits-lines p{margin:.65em 0}.credits-lines b{color:var(--cyan)}.signature{margin-top:4vh;align-self:flex-end;color:#fff;font:italic 20px Georgia,serif}
+.corporal-controls{min-height:58px;display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 12px 10px;border-top:1px solid #36dbef55;background:#000;flex-wrap:wrap}.status{display:flex;gap:10px;align-items:center;color:#a9c7cb;font-size:10px;letter-spacing:.08em;margin-left:8px}.status span+span{border-left:1px solid #36dbef44;padding-left:10px}
+.blackout .scene-card,.blackout .credits-card{opacity:0!important}
+@media(max-width:760px){.corporal-head{grid-template-columns:auto 1fr;padding:8px 9px}.corporal-motto{display:none}.corporal-brand{text-align:right}.corporal-brand strong{font-size:15px}.corporal-brand small{font-size:9px}.corporal-stage{padding:6px}.card{inset:6px}.scene-poster{width:min(96vw,calc((100vh - 135px)*.75))}.corporal-controls{gap:5px}.pill{padding:8px 10px}.status{width:100%;justify-content:center;margin:0}}
+@media(prefers-reduced-motion:reduce){.card{transition:none}}

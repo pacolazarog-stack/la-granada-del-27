@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="author" content="Flag">
+<title>La terraza del Miramar · Versión corporal</title>
+<link rel="stylesheet" href="miramar-corporal.css?v=20260918-corporal1">
+</head>
+<body>
+<header class="corporal-head">
+  <a class="pill" href="miramar.html">← MIRAMAR</a>
+  <div class="corporal-brand">
+    <strong>LA TERRAZA DEL MIRAMAR</strong>
+    <small>Versión corporal · teatro gestual y de objetos</small>
+  </div>
+  <div class="corporal-motto">USO REAL · DEFORMACIÓN · SIGNIFICADO NUEVO</div>
+</header>
+
+<main class="corporal-stage" id="stage" aria-live="polite">
+  <section class="card intertitle is-visible" id="intertitle">
+    <div class="inter-kicker" id="interKicker">COMIENZA LA OBRA</div>
+    <h1 id="interTitle">LA TERRAZA DEL MIRAMAR</h1>
+    <p id="interSub">Versión corporal · teatro gestual y de objetos</p>
+    <div class="inter-note" id="interNote">30 escenas · 40 fotogramas por escena</div>
+  </section>
+
+  <section class="card scene-card" id="sceneCard" hidden>
+    <div class="scene-poster" id="scenePoster" role="img"></div>
+  </section>
+
+  <section class="card credits-card" id="creditsCard" hidden>
+    <div class="credits-kicker">CRÉDITOS</div>
+    <div class="credits-lines">
+      <p><b>Obra:</b> La terraza del Miramar</p>
+      <p><b>Versión:</b> Corporal · teatro gestual y de objetos</p>
+      <p><b>Autoría, dramaturgia y concepto:</b> Flag</p>
+      <p><b>Storyboard canónico:</b> 30 escenas · 40 fotogramas por escena</p>
+      <p><b>Sistema visual:</b> Uso real · deformación · significado nuevo</p>
+      <p><b>Música:</b> escenas 01–15 incorporadas · 16–30 preparadas para incorporación</p>
+    </div>
+    <div class="signature">La terraza del Miramar</div>
+  </section>
+</main>
+
+<footer class="corporal-controls">
+  <button class="pill" id="prevBtn" type="button" disabled>←</button>
+  <button class="pill primary" id="playBtn" type="button">COMENZAR</button>
+  <button class="pill" id="nextBtn" type="button" disabled>→</button>
+  <button class="pill" id="soundBtn" type="button" aria-pressed="true">SONIDO · ON</button>
+  <div class="status">
+    <span id="sceneStatus">OBRA</span>
+    <span id="audioStatus">15/30 músicas incorporadas</span>
+    <span id="clock">--:--</span>
+  </div>
+</footer>
+
+<audio id="corporalAudio" preload="metadata"></audio>
+<script src="miramar-corporal.js?v=20260918-corporal1"></script>
+</body>
+</html>
