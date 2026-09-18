@@ -47,3 +47,16 @@ El 18/09/2026 quedan fijados tres paquetes de distribución en Google Drive:
 - **FLAG + ANONIMATO**: https://drive.google.com/file/d/1e1vB2magHYX2IFDV8NunbjJw6vlGjEyl/view
 
 Los binarios pesados permanecen en Drive. GitHub conserva el canon textual, los hashes, los enlaces, la web y los validadores.
+
+
+## 10 · Arquitectura editorial integral
+
+El conjunto se materializa finalmente como **un solo volumen de 460 páginas**. Cada obra conserva autonomía, pero recibe una portadilla propia dentro de una cubierta y una contraportada comunes.
+
+La secuencia formal es:
+
+> cubierta → índice → portadilla → obra → portadilla → obra → portadilla → obra → portadilla → ensayo → portadilla → crítica → contraportada.
+
+La unidad editorial no borra la diferencia entre géneros. La hace visible mediante umbrales homogéneos.
+
+Master: https://drive.google.com/file/d/1AQzYblBgnVR29xZqchlYy2hNjvuvdFyy/view
