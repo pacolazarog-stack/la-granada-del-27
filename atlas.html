@@ -25,7 +25,7 @@
   <script src="laboratorio/bajo-la-cal-nucleo.js"></script>
   <script src="laboratorio/piedra-matriz.js"></script>
   <script src="laboratorio/mesosticos-piedra-redisenados.js"></script>
-  <script src="stone-mesostic.js"></script>
+  <script src="stone-mesostic.js"></script>\n  <script src="cube-canon.js?v=20260918-cube1"></script>
   <script src="matrix-la-vega.js"></script>
   <script src="laboratorio/granada-1927-libre.js"></script>
   <script src="laboratorio/el-rinconcillo-libre.js"></script>
@@ -76,16 +76,35 @@
     <section id="horizontal" class="view reader"><button class="move prev" id="hrp">‹</button><button class="move next" id="hrn">›</button><article class="sheet"><div class="eyebrow" id="hi"></div><h2 id="ht"></h2><div id="hl"></div></article></section>
     <section id="diagonal" class="view hidden"><div class="rad"><div class="branch" id="dl"><div class="btitle">I · DIAGONAL CENTRAL ↘</div></div><div class="branch" id="dr"><div class="btitle">II · DIAGONAL CENTRAL ↗</div></div></div></section>
     <section id="radial" class="view hidden"><div class="rad"><div class="branch" id="rl"><div class="btitle">I · HACIA LO ENTERRADO</div></div><div class="branch" id="rr"><div class="btitle">II · HACIA LO ABIERTO</div></div></div></section>
-    <section id="chance" class="view hidden"><div class="chance-nav"><button class="btn" id="chance-roll">Golpe de azar</button><span id="chance-seed"></span></div><div class="chance-wrap"><button class="btn chance-arrow" id="chance-prev">‹</button><div class="chance-center"><div class="chance-title">EL GOLPE DE AZAR</div><div class="chance-stage-label" id="chance-stage-label"></div><div class="chance-current" id="chance-current"></div><div class="chance-pos" id="chance-pos"></div></div><button class="btn chance-arrow" id="chance-next">›</button></div></section>
+    <section id="cube" class="view hidden">
+      <div class="cube-shell">
+        <div class="cube-head"><div><div class="cube-kicker">ATLAS · 27 × 27 × 27</div><h2>EL CUBO</h2><p>La matriz construye el mundo. El Atlas intenta conocerlo.</p></div><div class="cube-actions"><button class="btn" id="cube-center">14·14·14</button><button class="btn" id="cube-random">Azar espacial</button></div></div>
+        <div class="cube-controls">
+          <label>X <input id="cube-x" type="range" min="1" max="27" value="14"><strong id="cube-x-value">14</strong></label>
+          <label>Y <input id="cube-y" type="range" min="1" max="27" value="14"><strong id="cube-y-value">14</strong></label>
+          <label>Z <input id="cube-z" type="range" min="1" max="27" value="14"><strong id="cube-z-value">14</strong></label>
+        </div>
+        <div class="cube-layout">
+          <div class="cube-map-card"><div id="cube-map" class="cube-map"></div><div class="cube-map-note">Proyección XY · traza POEMA exacta · centro 14·14·14</div></div>
+          <div class="cube-data">
+            <article><div class="cube-label">COORDENADA</div><div class="cube-big" id="cube-coordinate"></div><div id="cube-envelope"></div><div id="cube-countries"></div><div id="cube-mirror"></div></article>
+            <article><div class="cube-label">PROYECCIÓN XY</div><blockquote id="cube-xy-verse"></blockquote><div id="cube-xy-meta"></div></article>
+            <article><div class="cube-label">PROFUNDIDAD Z · POEMA</div><blockquote id="cube-z-verse"></blockquote><div id="cube-z-meta"></div><div class="cube-trace-hit" id="cube-trace-hit"></div></article>
+            <article><div class="cube-label">CINCO TRAZAS</div><div class="cube-traces">POEMA · AGUA · ARTISTAS · LEGADO · 1927↔2027</div><p>5 × 27 nodos · centro común: España · La Vega · verso 14 · 11 coincidencias XY · envolvente k=13: 24 nodos.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="chance" class="view hidden"><div class="chance-nav"><button class="btn" id="chance-roll">Golpe de azar</button><button class="btn" id="chance-listen">Oír Z</button><span id="chance-seed"></span></div><div class="chance-wrap"><button class="btn chance-arrow" id="chance-prev">‹</button><div class="chance-center"><div class="chance-title">EL GOLPE DE AZAR</div><div class="chance-stage-label" id="chance-stage-label"></div><div class="chance-current" id="chance-current"></div><div class="chance-language" id="chance-language"></div><div class="chance-pos" id="chance-pos"></div></div><button class="btn chance-arrow" id="chance-next">›</button></div></section>
   </main>
   <div class="atlas-note">ATLAS · FUERA DEL CUERPO LITERARIO</div>
 </div>
 <script src="site.js"></script>
-<script src="app.js"></script>
+<script src="app.js"></script>\n<script src="atlas-cube.js?v=20260918-cube1"></script>
 <script src="reading-structure.js"></script>
 <script src="diagonal-reader.js"></script>
 <script src="radial-heart.js?v=20260914d"></script>
-<script src="chance.js?v=20260915-subtle1"></script>
+<script src="chance.js?v=20260918-azar4"></script>
 <script src="vertical-stone.js?v=20260914b"></script>
 <script>if(!location.hash){history.replaceState(null,'','#horizontal');if(typeof mode==='function')mode('horizontal');}</script>
 </body>
