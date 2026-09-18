@@ -3,6 +3,7 @@ name: Validate languages
 on:
   push:
     paths:
+      - 'paco-pages-nombres.js'
       - 'paco-pages-otono-c.js'
       - 'paco-pages-otono-d.js'
       - 'paco-pages-otono-a.js'
