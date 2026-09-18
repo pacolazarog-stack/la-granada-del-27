@@ -187,4 +187,5 @@ console.log(`OK · Cosiendo Europa I-II: ${uniqueAguaTierras.length} unidades li
 console.log(`OK · Cosiendo Europa III-IV: ${uniqueManosCosturas.length} unidades literarias × 4 lenguas revisadas`);
 console.log(`OK · Cosiendo Europa V: ${uniqueRegreso.length} unidades literarias × 4 lenguas revisadas`);
 console.log(`OK · Contraportada: ${uniqueBack.length} unidades literarias × 4 lenguas revisadas`);
-console.log('OK · Paco Olmo: páginas 1–210 × EN/FR/IT/DE; versión literaria multilingüe completa');\nconsole.log(`OK · Ensayo: páginas 1–${ensayoPageCount} × EN/FR/IT/DE; versión literaria multilingüe completa`);
+console.log('OK · Paco Olmo: páginas 1–210 × EN/FR/IT/DE; versión literaria multilingüe completa');
+console.log(`OK · Ensayo: páginas 1–${ensayoPageCount} × EN/FR/IT/DE; versión literaria multilingüe completa`);
