@@ -3,6 +3,9 @@ name: Validate languages
 on:
   push:
     paths:
+      - 'language-cosiendo-europa-a.js'
+      - 'language-cosiendo-europa-b.js'
+      - 'texto-canonico/03_LIBRO_II_AGUA_TIERRAS.md'
       - 'language-granada-2027-a.js'
       - 'language-granada-2027-b.js'
       - 'language-granada-2027-c.js'
