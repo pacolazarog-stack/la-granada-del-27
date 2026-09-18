@@ -17,6 +17,35 @@ for(const lang of ['en','fr','it','de']){
   assert(packs['La poética del archivo']?.[lang],'falta ensayo en '+lang);
 }
 
+
+
+/* Primera versión literaria completa de LIBRO I · 1927 */
+for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js']){
+  new Function(fs.readFileSync(file,'utf8'));
+  vm.runInContext(fs.readFileSync(file,'utf8'),sandbox,{filename:file});
+}
+const literary=sandbox.window.POETICA_LANGUAGE_PACKS;
+const cleanLine=raw=>String(raw||'')
+  .replace(/\s{2,}$/,'')
+  .replace(/^>\s?/,'')
+  .replace(/^\s*#{1,3}\s+/,'')
+  .replace(/\*\*/g,'')
+  .replace(/^\*|\*$/g,'')
+  .trimEnd();
+const source1927=fs.readFileSync('texto-canonico/01_LIBRO_I_1927.md','utf8')
+  .replace(/\r/g,'')
+  .split('\n')
+  .map(cleanLine)
+  .filter(Boolean);
+const unique1927=[...new Set(source1927)];
+for(const line of unique1927){
+  assert(literary[line],'falta traducción literaria para: '+line);
+  for(const lang of ['en','fr','it','de'])assert(literary[line][lang],'falta '+lang+' para: '+line);
+}
+const granadaHtml=fs.readFileSync('granada.html','utf8');
+for(const file of ['language-granada-1927-a.js','language-granada-1927-b.js','language-granada-1927-c.js'])
+  assert(granadaHtml.includes(file),'granada.html no carga '+file);
+
 const sys=fs.readFileSync('language-system.js','utf8');
 for(const lang of ['es','en','fr','it','de'])assert(sys.includes("code:'"+lang+"'"),'falta idioma '+lang);
 assert(sys.includes("KEY='poeticaLanguage'"),'la lengua debe persistir');
@@ -47,3 +76,4 @@ console.log('OK · ES / EN / FR / IT / DE');
 console.log('OK · elección inicial durante preludio obligatorio');
 console.log('OK · cambio de idioma permanente en 9 superficies principales');
 console.log('OK · texto dinámico + voz siguen el idioma seleccionado');
+console.log(`OK · Granada 1927: ${unique1927.length} unidades literarias × 4 lenguas revisadas`);
