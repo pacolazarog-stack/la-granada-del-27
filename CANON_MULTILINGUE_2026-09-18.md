@@ -180,3 +180,20 @@ El cierre de VERANO incluye:
 - **29 · PACO · Del seguro que lo cubría todo salvo lo que le había ocurrido**.
 
 Criterio del cierre: la formalización deja de ser herramienta y se vuelve temperatura vital. En Julián, el lenguaje patrimonial enfría la ruptura; en Paco, el mismo aparato burocrático se convierte en comicidad material y resistencia.
+
+
+## 14. Paco Olmo · OTOÑO en curso
+
+Se inicia y avanza **OTOÑO · EXPLICARSE** con versión literaria revisada **EN · FR · IT · DE**.
+
+Cobertura acumulada del lector: **páginas 1–95**.
+
+Quedan ya traducidos en este bloque:
+
+- **30 · DEAMBULAR · RECONSTRUCCIÓN**;
+- **31 · PACO · De cómo Paco aprendió a contestar un folio con cuarenta**;
+- **32 · DEAMBULAR · LA VERSIÓN**;
+- **33 · DEAMBULAR · INÉS**;
+- inicio de **34 · DEAMBULAR · DOS CASAS**.
+
+Criterio de otoño: desplazar el conflicto desde el archivo exterior hacia la narración de uno mismo. La pregunta ya no es sólo qué ocurrió, sino qué versión se elige, ante quién y para qué. Inés no funciona como correctora moral ni como prueba de evolución de Julián: conserva autonomía, errores propios, humor y resistencia a convertirse en personaje funcional de su relato.
