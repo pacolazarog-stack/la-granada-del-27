@@ -3,6 +3,9 @@ name: Validate languages
 on:
   push:
     paths:
+      - 'miramar-pages-a.js'
+      - 'miramar-pages-b.js'
+      - 'miramar-pages-c.js'
       - 'ensayo-01.js'
       - 'ensayo-pages-a.js'
       - 'ensayo-pages-b.js'
@@ -73,6 +76,9 @@ on:
       - '.github/workflows/validate-language.yml'
   pull_request:
     paths:
+      - 'miramar-pages-a.js'
+      - 'miramar-pages-b.js'
+      - 'miramar-pages-c.js'
       - 'ensayo-01.js'
       - 'ensayo-pages-a.js'
       - 'ensayo-pages-b.js'
