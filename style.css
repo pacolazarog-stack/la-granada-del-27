@@ -12,3 +12,53 @@
 #chance{position:relative;overflow:hidden;padding:0}.chance-nav{position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:4;display:flex;align-items:center;gap:10px;background:#15120fee;border-radius:999px;padding:5px 8px;max-width:90vw}.chance-nav #chance-seed{font-size:10px;letter-spacing:.06em;color:#cbbeb1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:58vw}.chance-wrap{height:100%;display:flex;align-items:center;justify-content:center;gap:24px;padding:70px 18px}.chance-center{width:min(800px,72vw);text-align:center;padding:36px 24px;border-block:1px solid #ffffff22}.chance-title{font-size:14px;letter-spacing:.16em;color:#cbbeb1;margin-bottom:18px}.chance-stage-label{font-size:11px;letter-spacing:.14em;color:#9d8f82;margin-bottom:22px;text-transform:uppercase}.chance-current{font-size:40px;line-height:1.28;max-width:26em;margin:0 auto}.chance-pos{margin-top:22px;font-size:11px;line-height:1.5;color:#8f8174}.chance-arrow{font-size:28px;min-width:48px}.chance-arrow:disabled{opacity:.18;cursor:default}
 
 @media(max-width:780px){#verticalreader,#horizontal{padding:18px 44px}.poem-line{font-size:14px}.poem-verse,.poem-guide{width:min(100%,25em)}.chance-nav{left:18px;right:18px;transform:none;max-width:none;justify-content:space-between}.chance-nav #chance-seed{max-width:52vw}.chance-wrap{gap:10px;padding:82px 10px 24px}.chance-center{width:min(100%,76vw);padding:26px 10px}.chance-current{font-size:26px}.chance-title{font-size:12px}.chance-stage-label,.chance-pos{font-size:9px}.chance-arrow{padding:7px 11px;min-width:40px}}
+
+
+/* ATLAS 27³ + AZAR⁴ · 18/09/2026 */
+#cube{overflow:auto;padding:28px}
+.cube-shell{width:min(1220px,96%);margin:0 auto;padding-bottom:36px}
+.cube-head{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin:4px 0 20px}
+.cube-head h2{margin:5px 0 6px;font-size:clamp(28px,4vw,48px);letter-spacing:.08em}
+.cube-head p{margin:0;color:#a99b8d;max-width:45em;line-height:1.5}
+.cube-kicker,.cube-label{font-size:10px;letter-spacing:.16em;color:#9d8f82;text-transform:uppercase}
+.cube-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cube-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.cube-controls label{display:grid;grid-template-columns:18px 1fr 28px;align-items:center;gap:10px;background:#1d1915;border:1px solid #ffffff12;padding:11px 13px;font-size:11px;letter-spacing:.12em}
+.cube-controls input{width:100%;accent-color:#9f3b32}
+.cube-controls strong{text-align:right;font-variant-numeric:tabular-nums}
+.cube-layout{display:grid;grid-template-columns:minmax(330px,.95fr) minmax(0,1.25fr);gap:18px;align-items:stretch}
+.cube-map-card,.cube-data article{background:#eee5d9;color:#241f1a;box-shadow:0 18px 45px #0006}
+.cube-map-card{padding:20px;display:flex;flex-direction:column;justify-content:center}
+.cube-map{width:100%;aspect-ratio:1;display:grid;place-items:center}
+.cube-map svg{width:100%;height:100%;overflow:visible}
+.cube-map-note{font-size:9px;letter-spacing:.08em;text-align:center;color:#75695f;margin-top:8px}
+.cube-grid-line{stroke:#8d81751d;stroke-width:.55;fill:none}
+.cube-poem-path{fill:none;stroke:#7c211d88;stroke-width:1.35}
+.cube-poem-node{fill:#76695e;opacity:.62}.cube-poem-node.active{fill:#9f3b32;opacity:1}
+.cube-center-node{fill:none;stroke:#9f3b32;stroke-width:1.8}
+.cube-current-node{fill:none;stroke:#15120f;stroke-width:2}
+.cube-data{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.cube-data article{padding:24px;min-height:170px}
+.cube-data blockquote{margin:16px 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:18px;line-height:1.45}
+.cube-big{font-family:Georgia,"Times New Roman",serif;font-size:clamp(26px,3vw,38px);margin:12px 0 9px}
+#cube-envelope,#cube-countries,#cube-mirror,#cube-xy-meta,#cube-z-meta,.cube-trace-hit,.cube-data p{font-size:10px;line-height:1.55;color:#75695f;margin-top:7px}
+.cube-traces{font-family:Georgia,"Times New Roman",serif;font-size:19px;line-height:1.5;margin:15px 0}
+.cube-trace-hit{color:#7c211d;text-transform:uppercase;letter-spacing:.08em}
+
+#chance .chance-current{display:grid;gap:12px;font-size:clamp(19px,2.4vw,31px);line-height:1.3;max-width:31em}
+.chance-line{display:grid;grid-template-columns:70px 1fr;gap:14px;align-items:start;text-align:left;opacity:.62;transition:opacity .18s ease,transform .18s ease;padding:5px 0}
+.chance-line.active{opacity:1;transform:translateX(4px)}
+.chance-line-key{font-family:system-ui,sans-serif;font-size:9px;letter-spacing:.13em;color:#9d8f82;padding-top:.72em}
+.chance-language{max-width:50em;margin:23px auto 0;padding-top:16px;border-top:1px solid #ffffff16}
+.chance-language-head{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;font-size:10px;letter-spacing:.1em;color:#d1c4b7}
+.chance-language-text{font-family:Georgia,"Times New Roman",serif;font-size:clamp(17px,2vw,24px);line-height:1.45;margin:10px auto;color:#f1e8de}
+.chance-language-foot,.chance-language-wait{font-size:9px;line-height:1.45;color:#8f8174;letter-spacing:.05em}
+
+@media(max-width:900px){
+  #cube{padding:18px}.cube-head{display:grid}.cube-actions{justify-content:flex-start}
+  .cube-layout{grid-template-columns:1fr}.cube-data{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .cube-controls{grid-template-columns:1fr}.cube-data{grid-template-columns:1fr}
+  .chance-line{grid-template-columns:54px 1fr;gap:8px}.chance-line-key{font-size:8px}
+}
