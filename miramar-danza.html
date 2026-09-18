@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090b0f">
+<meta name="author" content="Flag">
+<title>La terraza del Miramar · Versión danza</title>
+<link rel="stylesheet" href="miramar-danza.css?v=20260918-danza2">
+</head>
+<body>
+<header class="danza-head">
+  <nav class="danza-nav" aria-label="Versiones de La terraza del Miramar">
+    <a class="pill" href="miramar.html">← MIRAMAR</a>
+    <a class="pill" href="miramar-corporal.html">CORPORAL</a>
+  </nav>
+  <div class="danza-brand">
+    <strong>LA TERRAZA DEL MIRAMAR</strong>
+    <small>Danza libre · una dramaturgia del territorio escrita sobre el cuerpo</small>
+  </div>
+  <div class="danza-phase" id="phaseLabel">I · DOMÉSTICA</div>
+</header>
+
+<main class="danza-stage">
+  <section class="opening card is-visible" id="opening">
+    <div class="opening-kicker">VERSIÓN DANZA</div>
+    <h1>LA TERRAZA<br>DEL MIRAMAR</h1>
+    <p>30 escenas · imagen · planta coreográfica · música</p>
+    <div class="opening-note">Músicas 01–15 incorporadas · 16–30 preparadas para incorporación</div>
+  </section>
+
+  <section class="scene card" id="sceneCard" hidden>
+    <div class="scene-headline">
+      <span id="sceneNumber">01 / 30</span>
+      <strong id="sceneTitle">MIRAMAR COMUNIDAD</strong>
+    </div>
+    <div class="duo">
+      <div class="panel">
+        <div class="panel-label">IMAGEN CANÓNICA</div>
+        <div class="scene-image" id="sceneImage" role="img"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-label">PLANTA COREOGRÁFICA</div>
+        <div class="plant-wrap" id="plantWrap"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="credits card" id="credits" hidden>
+    <div class="credits-kicker">FIN</div>
+    <h2>LA TERRAZA DEL MIRAMAR</h2>
+    <p><b>Versión:</b> Danza libre</p>
+    <p><b>Autoría, dramaturgia y concepto:</b> Flag</p>
+    <p><b>Estructura:</b> 30 escenas</p>
+    <p><b>Música:</b> 01–15 incorporadas · 16–30 preparadas</p>
+    <p><b>Sistema:</b> imagen + planta coreográfica + música por escena</p>
+  </section>
+</main>
+
+<footer class="danza-controls">
+  <button class="pill" id="prevBtn" type="button" disabled>←</button>
+  <button class="pill primary" id="playBtn" type="button">COMENZAR</button>
+  <button class="pill" id="nextBtn" type="button" disabled>→</button>
+  <button class="pill" id="soundBtn" type="button" aria-pressed="true">SONIDO · ON</button>
+  <div class="status">
+    <span id="sceneStatus">OBRA</span>
+    <span id="audioStatus">15 músicas incorporadas</span>
+    <span id="clock">--:--</span>
+  </div>
+</footer>
+
+<audio id="danzaAudio" preload="metadata"></audio>
+<script src="miramar-danza.js?v=20260918-danza2"></script>
+</body>
+</html>
