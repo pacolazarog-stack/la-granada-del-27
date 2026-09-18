@@ -1,0 +1,35 @@
+:root{
+ --bg:#090b0f;--panel:#11151b;--paper:#f0eee8;--white:#f7f5f0;
+ --muted:#98a0a9;--red:#a72824;--line:#323944;--warm:#d7d0c5
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif}
+body{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.danza-head{min-height:68px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;padding:10px 18px;border-bottom:1px solid var(--line);background:#080a0d}
+.danza-nav{display:flex;gap:7px;align-items:center}
+.danza-brand{text-align:center;min-width:0}.danza-brand strong{display:block;font-size:clamp(16px,2vw,28px);letter-spacing:.07em}.danza-brand small{display:block;margin-top:4px;color:var(--muted);font-size:11px;letter-spacing:.06em}
+.danza-phase{min-width:140px;text-align:right;color:#d5d0c8;font-size:11px;letter-spacing:.12em}
+.pill{border:1px solid #5b6572;background:#111820;color:#f4f2ed;border-radius:999px;padding:8px 14px;text-decoration:none;font:700 11px/1.1 Arial,sans-serif;letter-spacing:.08em;cursor:pointer}
+.pill:hover{border-color:#d2d7dc}.pill:disabled{opacity:.28;cursor:default}.pill.primary{background:#f0eee8;color:#11151b;border-color:#f0eee8}
+.danza-stage{position:relative;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:12px;background:radial-gradient(circle at 50% 28%,#17202c 0,#090b0f 60%)}
+.card{position:absolute;inset:12px;opacity:0;transition:opacity .38s ease}.card.is-visible{opacity:1}
+.opening{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.opening-kicker{letter-spacing:.22em;color:#c7c1b8;font-size:13px}.opening h1{font-size:clamp(48px,8vw,112px);line-height:.88;margin:.2em 0;color:white}.opening p{font:italic clamp(17px,2vw,28px) Georgia,serif;color:#d0cbc2}.opening-note{margin-top:2.5em;color:var(--muted);font-size:12px;letter-spacing:.08em}
+.scene{display:flex;flex-direction:column;gap:10px}
+.scene-headline{height:42px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--line);padding:0 8px}.scene-headline span{color:#b9bec4;font-size:12px;letter-spacing:.15em}.scene-headline strong{font-size:clamp(16px,2vw,26px);letter-spacing:.04em}
+.duo{min-height:0;flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.panel{min-height:0;background:#07090c;border:1px solid var(--line);display:grid;grid-template-rows:30px minmax(0,1fr);padding:8px}
+.panel-label{font-size:10px;letter-spacing:.16em;color:#adb3ba;display:flex;align-items:center}
+.scene-image{width:100%;height:100%;background-image:url("assets/miramar-corporal-atlas.jpg");background-repeat:no-repeat;background-size:500% 600%;background-color:#000;box-shadow:0 14px 40px #000}
+.plant-wrap{min-width:0;min-height:0;background:#f0eee8;display:grid;place-items:center;overflow:hidden}
+.plant-wrap svg{width:100%;height:100%;display:block;background:#f0eee8}
+.credits{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:12px}.credits-kicker{font-size:clamp(44px,8vw,108px);font-weight:900}.credits h2{margin:0;color:#ddd8cf;font-size:clamp(28px,4vw,52px)}.credits p{margin:.15em 0;color:#bbb6ae;font-size:clamp(14px,1.6vw,22px)}.credits b{color:white}
+.danza-controls{min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 12px 10px;border-top:1px solid var(--line);background:#080a0d;flex-wrap:wrap}
+.status{display:flex;gap:10px;align-items:center;color:#a7adb4;font-size:10px;letter-spacing:.07em;margin-left:8px}.status span+span{border-left:1px solid var(--line);padding-left:10px}
+@media(max-width:800px){
+ .danza-head{grid-template-columns:auto 1fr;padding:8px}.danza-phase{display:none}.danza-brand{text-align:right}.danza-brand strong{font-size:14px}.danza-brand small{font-size:9px}
+ .danza-nav{flex-direction:column;align-items:flex-start;gap:4px}.danza-nav .pill{padding:6px 9px;font-size:9px}
+ .danza-stage{padding:6px}.card{inset:6px}.duo{grid-template-columns:1fr;grid-template-rows:1fr 1fr;gap:6px}.panel{padding:5px;grid-template-rows:23px minmax(0,1fr)}
+ .scene-headline{height:34px}.danza-controls{gap:5px}.pill{padding:8px 10px}.status{width:100%;justify-content:center;margin:0}
+}
+@media(prefers-reduced-motion:reduce){.card{transition:none}}
