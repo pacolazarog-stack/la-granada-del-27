@@ -302,3 +302,22 @@ Criterio de continuidad: las pruebas ya no sirven para cerrar la interpretación
 En Paco, la literatura reproduce el impulso archivístico hasta que el propio archivo se vuelve contra su autor. **POM-000** no debe leerse como giro fantástico autónomo ni como truco de género, sino como inversión de la lógica del libro: Paco descubre un archivo que sabe de él en términos documentales y, precisamente por eso, ignora casi todo lo que significa haber estado vivo.
 
 El punto decisivo es que Paco encuentra por primera vez una insuficiencia del archivo y **no quiere subsanarla**.
+
+
+## 20. Paco Olmo · INVIERNO avanza hasta NADIE SABE
+
+Se amplía la versión literaria revisada **EN · FR · IT · DE** de **INVIERNO · NO SABER**.
+
+Cobertura acumulada del lector: **páginas 1–183**.
+
+Quedan ya traducidos en este tramo:
+
+- **55 · DEAMBULAR · TENER DERECHO**;
+- **56 · PACO · Del día en que Paco intentó darse de baja**;
+- **57 · DEAMBULAR · NADIE SABE**.
+
+Criterio de continuidad: tener razón y tener derecho no resuelven por sí solos ni la forma ni el daño. Un derecho puede existir y, al mismo tiempo, ejercerse de una forma insoportable o destructiva.
+
+En **NADIE SABE**, algunas fechas se pierden, algunos recuerdos divergen y algunas preguntas ya no tienen destinatario. La incertidumbre no funciona como misterio pendiente de solución, sino como parte de la experiencia.
+
+En Paco, la baja del servicio conserva la comicidad burocrática: la relación contractual reconoce la cuenta bancaria y desconoce al titular, y el expediente amenaza con reproducirse incluso cuando su objeto era terminar otro expediente.
