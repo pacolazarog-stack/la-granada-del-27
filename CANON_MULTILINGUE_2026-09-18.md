@@ -159,3 +159,24 @@ Quedan ya traducidos en este bloque:
 - inicio de **21 · PACO · De cómo una deuda encontró dueño antes que una casa**.
 
 Criterio de verano: aumentar progresivamente la temperatura de control sin convertir a Julián en caricatura; en Paco, conservar la hipérbole administrativa, la oralidad popular y la lógica material de tierra, linde, escritura, Catastro, Ayuntamiento y Registro.
+
+
+## 13. Paco Olmo · VERANO cerrado
+
+Queda completada la versión literaria revisada **EN · FR · IT · DE** de todo el bloque **VERANO · CONTROLAR** y del separador de entrada a **OTOÑO · EXPLICARSE**.
+
+Cobertura acumulada del lector: **páginas 1–75**.
+
+El cierre de VERANO incluye:
+
+- final de **21 · PACO · De cómo una deuda encontró dueño antes que una casa**;
+- **22 · DEAMBULAR · CONSTANCIA**;
+- **23 · PACO · De la carpeta que iba a ser la última**;
+- **24 · DEAMBULAR · EJEMPLOS**;
+- **25 · PACO · De una casa que existía en tres direcciones distintas**;
+- **26 · DEAMBULAR · INVENTARIO**;
+- **27 · PACO · Del recibo que demostró que Paco no había pagado lo que había pagado**;
+- **28 · DEAMBULAR · REQUERIMIENTO**;
+- **29 · PACO · Del seguro que lo cubría todo salvo lo que le había ocurrido**.
+
+Criterio del cierre: la formalización deja de ser herramienta y se vuelve temperatura vital. En Julián, el lenguaje patrimonial enfría la ruptura; en Paco, el mismo aparato burocrático se convierte en comicidad material y resistencia.
