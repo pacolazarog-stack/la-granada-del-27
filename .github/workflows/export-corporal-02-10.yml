@@ -1,0 +1,24 @@
+name: Export corporal scenes 02-10
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/export-corporal-02-10.yml'
+permissions:
+  contents: read
+jobs:
+  export:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pack scenes 02-10
+        run: |
+          set -euo pipefail
+          mkdir export
+          cp assets/miramar-corporal/scenes/scene-{02..10}.webp export/
+          (cd export && sha256sum * > SHA256SUMS.txt)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: corporal-scenes-02-10
+          path: export/
