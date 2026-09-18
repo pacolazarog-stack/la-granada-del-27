@@ -1,6 +1,6 @@
 /* Atlas 27³ · lectura geométrica + traza POEMA exacta */
 (()=>{
-  const C=window.GRANADA_CUBE_27,$=s=>document.querySelector(s);
+  const C=window.GRANADA_CUBE_27,R=window.GRANADA_RELATIONS,$=s=>document.querySelector(s);
   if(!C)return;
   const rows=()=>window.GRANADA_STONE_ROWS||window.GRANADA_ROWS||[];
   const cell=(r,c)=>rows()?.[r-1]?.verses?.[c-1]||'';
@@ -20,6 +20,26 @@
     s+=`<circle class="cube-center-node" cx="${gx(14)}" cy="${gy(14)}" r="5"/><circle class="cube-current-node" cx="${gx(meta.x)}" cy="${gy(meta.y)}" r="5.5"/>`;
     s+='</svg>';return s;
   }
+
+  function relationHTML(rel){
+    if(!rel)return '';
+    const chips=[];
+    const mp=rel.meta.mirror;
+    chips.push(['ESPEJO XYZ',`(${String(mp.x).padStart(2,'0')}, ${String(mp.y).padStart(2,'0')}, ${String(mp.z).padStart(2,'0')})`]);
+    chips.push(['ENVOLVENTE',`k=${rel.meta.k} · lado ${rel.meta.side}`]);
+    chips.push(['TIEMPO',rel.temporal]);
+    chips.push(['PAÍS X',rel.meta.countryX]);
+    chips.push(['PAÍS Y',rel.meta.countryY]);
+    chips.push(['PAÍS Z',rel.poem.country]);
+    if(rel.territorialLanguages.length)chips.push(['LENGUAS TERRITORIALES',rel.territorialLanguages.map(code=>C.languages.find(l=>l.code===code)?.name||code).join(' · ')]);
+    if(rel.soundTop.length)chips.push(['AFINIDAD SONORA',rel.soundTop.map(x=>`${x.name} ${Math.round(x.score)}`).join(' · ')]);
+    if(rel.sharedWords.length)chips.push(['PALABRAS ESPEJO',rel.sharedWords.join(' · ')]);
+    const n=rel.relations.filter(x=>String(x.type).startsWith('VECINO_')).length;
+    chips.push(['VECINDAD',`${n} vecinos ortogonales`]);
+    chips.push(['TRAZA POEMA',rel.meta.onPoemTrace?'coincidencia exacta en esta coordenada':`proyección z en (${rel.poem.x}, ${rel.poem.y})`]);
+    return chips.map(([a,b])=>`<div class="cube-relation-chip"><strong>${esc(a)}</strong><span>${esc(b)}</span></div>`).join('');
+  }
+
   function render(){
     const m=C.cubeMeta(state.x,state.y,state.z),p=C.poemPoint(state.z),mp=m.mirror;
     ['x','y','z'].forEach(k=>{const i=$(`#cube-${k}`),o=$(`#cube-${k}-value`);if(i)i.value=state[k];if(o)o.textContent=String(state[k]).padStart(2,'0');});
@@ -33,6 +53,15 @@
     $('#cube-z-meta').textContent=`POEMA · z=${String(p.z).padStart(2,'0')} · ${p.country} ↔ ${p.mirrorCountry} · proyección (${p.x}, ${p.y})`;
     $('#cube-trace-hit').textContent=m.onPoemTrace?'ESTA COORDENADA CAE EN LA TRAZA POEMA':'LA TRAZA POEMA PASA POR OTRA PROYECCIÓN XY EN ESTA CAPA Z';
     $('#cube-map').innerHTML=svg(m);
+    if(R){
+      const rel=R.relationsAt(m.x,m.y,m.z);
+      const count=$('#cube-relation-count'),host=$('#cube-relations'),wt=$('#cube-writing-title'),wb=$('#cube-writing'),wp=$('#cube-writing-pair');
+      if(count)count.textContent=`${rel.total} relaciones directas calculadas en esta posición · 27 tipos canónicos disponibles`;
+      if(host)host.innerHTML=relationHTML(rel);
+      if(wt)wt.textContent=`${String(rel.writing.z).padStart(2,'0')} · ${rel.writing.title}`;
+      if(wb)wb.textContent=rel.writing.text;
+      if(wp)wp.textContent=`${rel.poem.country} ↔ ${rel.poem.mirrorCountry} · respuesta: ${String(28-rel.writing.z).padStart(2,'0')} · ${rel.mirrorWriting.title}`;
+    }
   }
   function bind(){
     ['x','y','z'].forEach(k=>$('#cube-'+k)?.addEventListener('input',e=>{state[k]=Number(e.target.value);render();}));
