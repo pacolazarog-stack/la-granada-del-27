@@ -180,3 +180,16 @@ El verso Z recibe además una **recompensa azarosa entre 27 lenguas**: las **24 
 Principio rector: **«El azar no traduce el verso: busca en qué lengua puede volver a sonar.»**
 
 Validador: `node validate-cube.mjs`.
+
+
+## Sistema multilingüe · 18/09/2026
+
+La experiencia web completa de **Poética del límite** incorpora un selector persistente de cinco lenguas mínimas: **ES · EN · FR · IT · DE**.
+
+En la primera entrada, la lengua se elige mediante botones visibles **durante el preludio obligatorio**. Elegir idioma no interrumpe ni reinicia la música. El volumen permanece bloqueado hasta que existe una lengua seleccionada. Después, el idioma puede cambiarse en cualquier momento sin perder la posición de lectura ni modificar la reproducción sonora.
+
+La portada general y la interfaz principal disponen de traducciones autorales fijas. El resto del contenido renderizado tiene cobertura de traducción integral bajo demanda mediante la Translator API del navegador, manteniendo el español como texto canónico fuente y permitiendo sustituir progresivamente esa capa por traducciones literarias revisadas.
+
+La lectura en voz sigue la lengua seleccionada. La recompensa lingüística propia de **AZAR** queda fuera de esta traducción global: una lengua azarosa no se retraduce por cambiar el idioma de la interfaz.
+
+Canon: [`CANON_MULTILINGUE_2026-09-18.md`](CANON_MULTILINGUE_2026-09-18.md).
