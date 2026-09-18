@@ -14,6 +14,7 @@
   const isChosen=function(){return Boolean(localStorage.getItem(KEY));};
   const initial=byCode[localStorage.getItem(KEY)]?localStorage.getItem(KEY):'es';
   const originals=new WeakMap(),cache=new Map(),sessions=new Map();
+  const sourceTitle=document.title;
   let active=initial,seq=0,gate=null;
 
   const style=document.createElement('style');
@@ -72,6 +73,7 @@
     root=root||document.body;
     const lang=active,token=++seq;
     document.documentElement.lang=(byCode[lang]&&byCode[lang].tag)||lang;
+    const titleFixed=fixed(sourceTitle,lang);document.title=titleFixed||sourceTitle;
     Array.from(menu.querySelectorAll('button')).forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang);});
     ui.querySelector('.lang-switch-toggle').textContent=(byCode[lang]&&byCode[lang].short)||lang.toUpperCase();
     const nodes=textNodes(root);
