@@ -3,6 +3,12 @@ name: Validate languages
 on:
   push:
     paths:
+      - 'language-cosiendo-europa-c.js'
+      - 'language-cosiendo-europa-d.js'
+      - 'language-cosiendo-europa-e.js'
+      - 'texto-canonico/04_LIBRO_II_MANOS_COSTURAS.md'
+      - 'texto-canonico/05_LIBRO_II_REGRESO.md'
+      - 'texto-canonico/06_CONTRAPORTADA.md'
       - 'language-cosiendo-europa-a.js'
       - 'language-cosiendo-europa-b.js'
       - 'texto-canonico/03_LIBRO_II_AGUA_TIERRAS.md'
