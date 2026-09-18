@@ -46,3 +46,13 @@ Principio: **«El azar no traduce el verso: busca en qué lengua puede volver a 
 ## 6. Regla de integridad
 
 El poemario no queda subordinado al cubo. El cubo pertenece al laboratorio Atlas/Azar. Ningún dato no recuperado del XLSX avanzado debe completarse por invención.
+
+## 7. Modelo XLSX materializado
+
+Se ha generado un libro técnico complementario: `ATLAS_AZAR_MODELO_CANONICO_27x27x27_2026-09-18.xlsx`.
+
+Drive: https://docs.google.com/spreadsheets/d/1G7NAtMc0kSeoCFONPRpXoWDLOOCRyPJ3/edit
+
+Hojas: `DASHBOARD`, `INDICE_27`, `RUTA_POEMA_27`, `NAVEGADOR_CUBO`, `ENVOLVENTES_13`, `TRAZAS_5`, `LENGUAS_24`, `AZAR_4`, `CONTROL`.
+
+Este XLSX materializa la lógica recuperada e implementada hoy; **no sustituye ni finge reconstruir** los XLSX avanzados originales de ayer que no están disponibles actualmente para lectura directa.
