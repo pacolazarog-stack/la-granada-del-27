@@ -159,3 +159,24 @@ El volumen incorpora **cubierta general con tipografía Unicode embebida y acent
 - SHA-256: `ef7dea6fbe8ad2ffdc0085e3e372a735332066bad5b4833d6aba751aea665526`
 
 La secuencia de acceso del PDF queda: cubierta general → índice → I · Granada → II · Paco → III · Miramar → IV · Poética del archivo → V · Poética del límite → contraportada general.
+
+## Atlas 27³ y AZAR⁴ · 18/09/2026
+
+El Atlas formal incorpora una extensión tridimensional del laboratorio: **27 × 27 × 27 = 19.683 posiciones**, con centro geométrico **14·14·14 = España · La Vega · verso 14**, trece envolventes concéntricas y simetría canónica `M(x,y,z) = (y,x,28−z)`.
+
+La capa semántica conserva cinco trazas de 27 nodos: **POEMA · AGUA · ARTISTAS · LEGADO · 1927↔2027**. En el código publicado se materializa de forma exacta la ruta POEMA recuperada del modelo avanzado; las otras cuatro se registran como trazas canónicas, pero no se inventan sus coordenadas mientras el XLSX fuente no esté disponible. Se preservan los agregados verificados: **11 coincidencias XY** y **24 nodos en la envolvente k=13**.
+
+**AZAR⁴** sustituye la antigua concatenación de tres elementos por:
+
+`X → Y → CENTRO → Z`
+
+- X: verso de la posición XY sorteada.
+- Y: verso de su espejo XY.
+- CENTRO: `Late bajo la cal la acequia hundida.`
+- Z: verso proyectado por la profundidad `z` sobre la traza POEMA.
+
+El verso Z recibe además una **recompensa azarosa entre las 24 lenguas oficiales de la UE**. La probabilidad se pondera por **musicalidad 50 % · semántica 20 % · semiótica 15 % · afinidad 10 % · extrañeza productiva 5 %**, con una compensación exploratoria para lenguas menos visitadas. Cuando el navegador dispone de Translator API, la traducción real se usa para refinar la musicalidad; Speech Synthesis permite escuchar la lengua seleccionada. En ausencia de traducción disponible, se conserva el verso español y la selección lingüística funciona como capa sonora.
+
+Principio rector: **«El azar no traduce el verso: busca en qué lengua puede volver a sonar.»**
+
+Validador: `node validate-cube.mjs`.
