@@ -3,6 +3,11 @@ name: Validate languages
 on:
   push:
     paths:
+      - 'ensayo-01.js'
+      - 'ensayo-pages-a.js'
+      - 'ensayo-pages-b.js'
+      - 'ensayo-pages-c.js'
+      - 'ensayo-pages-d.js'
       - 'paco-pages-invierno-e.js'
       - 'paco-pages-invierno-d.js'
       - 'paco-pages-invierno-c.js'
@@ -68,6 +73,11 @@ on:
       - '.github/workflows/validate-language.yml'
   pull_request:
     paths:
+      - 'ensayo-01.js'
+      - 'ensayo-pages-a.js'
+      - 'ensayo-pages-b.js'
+      - 'ensayo-pages-c.js'
+      - 'ensayo-pages-d.js'
       - 'language-granada-1927-a.js'
       - 'language-granada-1927-b.js'
       - 'language-granada-1927-c.js'
