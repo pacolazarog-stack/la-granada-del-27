@@ -1,15 +1,85 @@
-# La Granada del 27 · Un siglo después
+# Libro · Poética del límite
 
-Poemario de Francisco Javier Lázaro Guil.
+Proyecto literario firmado públicamente por **flag**. El repositorio nació para **La Granada del 27 · Un siglo después** y conserva su edición digital y sus validadores; desde el 15 de septiembre de 2026 documenta también el conjunto literario completo y sus masters canónicos.
 
-La obra se articula sobre una matriz de **27 × 27 versos** y admite recorridos **VERTICAL**, **HORIZONTAL**, **DIAGONAL**, **RADIAL** y **AZAR**.
+La firma autoral se mantiene deliberadamente discreta. El panel de [`autor.html`](autor.html) contiene el homenaje canónico a Fli, cuyo cierre es:
 
-El poema **LA VEGA** es punto de partida y de regreso. Su verso 14 —«Late bajo la cal la acequia hundida.»— ocupa la celda **14 × 14** y constituye el centro de simetría del sistema.
+> Flic. Flac.  
+> Flip. Flap.  
+> Fli. Flag.
+>
+> Perdido sin ti.
+>
+> Sin más.
+>
+> Como estas palabras sin ti: igual.
 
-**BAJO LA CAL** actúa como eje transversal. Desde el cruce central nacen los dos sonetos radiales, **HACIA LO ENTERRADO** y **HACIA LO ABIERTO**, motor y corazón de la arquitectura poética.
+Cuando **Fli** y **Flag** aparecen en un mismo texto reciben tratamiento tipográfico equivalente. La edición no formula una equivalencia escrita entre ambos nombres. En la versión digital, pulsar `flag` abre un panel puramente visual y no modifica la música en curso; cerrarlo tampoco altera reproducción, posición, pista ni volumen.
 
-Acrósticos, mesósticos y telésticos atraviesan los poemas con una gramática tipográfica común. Las lecturas mesósticas forman diálogos especulares entre los poemas verticales y horizontales, mientras las dos loas reúnen voces dispersas de la matriz.
+## Corpus
+
+1. **La Granada del 27 · Un siglo después** — poesía, ciudad, memoria y matriz profunda 27 × 27.
+2. **La terraza del Miramar** — tragicomedia multimedia en treinta escenas; canon 1.6.
+3. **La poética del archivo** — ensayo, contraensayo, coda satírica y postdata.
+4. **Poética del límite** — dossier crítico final del conjunto.
+
+El inventario canónico, los enlaces a los masters y las huellas SHA-256 están en [`CORPUS_FINAL.md`](CORPUS_FINAL.md). El paquete privado se documenta en [`FINAL_260915.md`](FINAL_260915.md) y **no forma parte del repositorio público**.
+
+## Experiencia sonora
+
+El volumen multimedia comienza con un preludio. Tras completarlo por primera vez, el lector elige entre **CON SONIDO** y **SIN SONIDO**. Con sonido permanecen activas las músicas de cada obra, sus codas y los contrapuntos de retorno. Sin sonido se desactiva todo el recorrido sonoro y también los bloqueos que dependen de él. Un control global permanece accesible en todas las páginas para cambiar esta preferencia en cualquier momento.
+
+## Tesis crítica común
+
+> **La literatura comienza allí donde el sistema, aun funcionando con máxima precisión, descubre que la realidad contiene todavía algo que no cabe en él.**
+
+- El plano termina y la acequia continúa.
+- El expediente termina y la persona continúa.
+- La linde termina y la mirada continúa.
+- La cuadrícula termina y el poema continúa.
+- La generación termina y la autoría decide.
+
+La categoría superior es la **poética del límite**. El archivo, el plano, la linde, la matriz y la herramienta generativa organizan, defienden, relacionan y descubren; el problema aparece cuando la precisión aspira a convertirse en totalidad.
+
+## La Granada del 27 · Un siglo después
+
+La obra se organiza en dos capas relacionadas pero no equivalentes:
+
+- **LIBRO I · superficie**: 27 poemas visibles con autonomía literaria. **LA VEGA** conserva excepcionalmente 27 endecasílabos y su verso 14 —«Late bajo la cal la acequia hundida.»— coincide con el centro 14 × 14.
+- **CUADERNO DE PIEDRA / matriz profunda**: estructura de 27 × 27 posiciones para lecturas horizontales, diagonales, radiales y ocultas.
+
+Centro común del sistema:
+
+> Late bajo la cal la acequia hundida.
+
+Estribillo palindrómico canónico:
+
+> Granada sucede — sucede Granada.
+
+Master definitivo de 15/09/2026: https://drive.google.com/file/d/1rK5HLEW-Mq99mT38Wp9zBFkVbzFwB3gi/view
 
 Página pública: https://pacolazarog-stack.github.io/la-granada-del-27/
 
-© 2026 Francisco Javier Lázaro Guil. Todos los derechos reservados.
+
+## La terraza del Miramar
+
+**Tragicomedia multimedia**, canon **1.6**. El Acto III · **NACE LA REINA** incorpora como umbral el fragmento **DK 22 B 53** de Heráclito. La cita ilumina el *pólemos* como principio de diferenciación, no como elogio de la violencia. El conflicto produce posiciones y autoridad; los «diez minutos» del desenlace impiden que esa forma se vuelva absoluta.
+
+Master definitivo: https://drive.google.com/file/d/1Nl2RhEdDDOSgYVFQmjeupGCoZ2EVgdpv/view
+
+## Ensayo y dossier crítico
+
+**La poética del archivo** conserva el ensayo, contraensayo, coda y postdata, rematados por una adenda que sitúa el archivo dentro de la **poética del límite**.
+
+**Poética del límite** reúne la crítica de *La Vega*, Paco, Miramar, la matriz 27 × 27, la constelación comparatista y la reflexión sobre inteligencia artificial y dirección autoral.
+
+- Ensayo: https://drive.google.com/file/d/1fBC_i2A2NkMjL0sXcQ1wliVcAADVViUi/view
+- Dossier crítico: https://drive.google.com/file/d/1PZzS4Knzc3a2ssEhheIMBvVjkWDRzO7F/view
+
+## Edición definitiva · 15/09/2026
+
+La maquetación común prioriza A5, jerarquía tipográfica sobria, firma `flag` discreta y mínima interferencia explicativa. Granada conserva su master a sangre; Paco mantiene su cuerpo canónico A5; Miramar, el ensayo y el dossier se han revisado para una presentación editorial coherente.
+
+El paquete privado **`FINAL_FLAG_260915.zip`** contiene los masters PDF, los editables DOCX, `AUTOR.txt`, manifiesto, archivo de lectura y hashes SHA-256. Se conserva **sólo en Google Drive para almacenamiento y descarga controlada**; no se publica ni se sube a GitHub.
+
+© 2026 flag. Todos los derechos reservados.
