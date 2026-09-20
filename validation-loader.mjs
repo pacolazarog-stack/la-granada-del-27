@@ -3,15 +3,20 @@ import vm from 'node:vm';
 
 const projectRoot=new URL('./',import.meta.url);
 
-export function scriptsFromIndexThrough(lastFile){
-  const html=fs.readFileSync(new URL('index.html',projectRoot),'utf8');
+export function scriptsFromHtmlThrough(htmlFile,lastFile){
+  const html=fs.readFileSync(new URL(htmlFile,projectRoot),'utf8');
   const scripts=[...html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi)]
-    .map(([,src])=>src);
+    .map(([,src])=>src.split('?')[0]);
   const matches=scripts.reduce((out,file,index)=>file===lastFile?[...out,index]:out,[]);
   if(matches.length!==1){
-    throw new Error(`ENSAMBLAJE: index.html debe declarar una vez ${lastFile}; encontrado ${matches.length}`);
+    throw new Error(`ENSAMBLAJE: ${htmlFile} debe declarar una vez ${lastFile}; encontrado ${matches.length}`);
   }
   return scripts.slice(0,matches[0]+1);
+}
+
+/* Compatibilidad histórica: el laboratorio formal vive ahora en atlas.html. */
+export function scriptsFromIndexThrough(lastFile){
+  return scriptsFromHtmlThrough('atlas.html',lastFile);
 }
 
 export function loadScripts(files){

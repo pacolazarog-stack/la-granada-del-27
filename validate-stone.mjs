@@ -1,11 +1,11 @@
-import {loadScripts,scriptsFromIndexThrough} from './validation-loader.mjs';
+import {loadScripts,scriptsFromHtmlThrough} from './validation-loader.mjs';
 
 globalThis.window=globalThis;
 
-/* Carga la capa pétrea en el orden público, antes de LA VEGA. */
-const files=scriptsFromIndexThrough('stone-mesostic.js');
+/* La capa pétrea ya no pertenece a index.html: se valida desde el Atlas formal. */
+const files=scriptsFromHtmlThrough('atlas.html','stone-mesostic.js');
 if(files.includes('matrix-la-vega.js')){
-  throw new Error('PIEDRA: index.html aplica LA VEGA antes de congelar la matriz pétrea');
+  throw new Error('PIEDRA: atlas.html aplica LA VEGA antes de congelar la matriz pétrea');
 }
 loadScripts([...files,'laboratorio/validacion-piedra.js']);
 
@@ -24,13 +24,7 @@ const expected={
 };
 
 const voices=globalThis.GRANADA_STONE_MESOSTIC_VOICES;
-const actual={
-  P03:voices[3].v,
-  P05:voices[5].v,
-  H14:voices[14].h,
-  P19:voices[19].v,
-  P27:voices[27].v
-};
+const actual={P03:voices[3].v,P05:voices[5].v,H14:voices[14].h,P19:voices[19].v,P27:voices[27].v};
 
 const assertions=[
   ['estructura pétrea completa',report.structuralStable===true],
@@ -46,22 +40,12 @@ const assertions=[
 
 const failed=assertions.filter(([,ok])=>!ok);
 console.log(JSON.stringify({
+  assembly:'atlas.html',
   structuralStable:report.structuralStable,
   source:globalThis.GRANADA_STONE.source,
   relationToSurface:globalThis.GRANADA_STONE.relationToSurface,
   center:report.matrix.center,
-  horizontals:report.horizontals,
-  diagonals:{total:report.diagonals.total,valid:report.diagonals.valid},
-  radial:{valid:report.radial.valid,center:report.radial.center},
-  loaI:{valid:report.loaI.valid,text:report.loaI.text},
-  loaII:{valid:report.loaII.valid,text:report.loaII.text,relocatedMark:report.loaII.relocatedMark},
-  mesostics:{
-    total:report.mesostics.total,
-    validCount:report.mesostics.validCount,
-    invalidCount:report.mesostics.invalidCount,
-    complete:report.mesostics.complete,
-    redesigned:actual
-  },
+  mesostics:{total:report.mesostics.total,validCount:report.mesostics.validCount,invalidCount:report.mesostics.invalidCount,complete:report.mesostics.complete,redesigned:actual},
   assertions:assertions.map(([name,ok])=>({name,ok}))
 },null,2));
 

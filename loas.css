@@ -1,0 +1,79 @@
+/* LAS DOS LOAS · díptico editorial */
+#page > .eyebrow:first-child + h2 + div[style*="display:grid"]{
+  width:min(100%,660px);
+  margin:clamp(58px,8vh,96px) auto 0!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  gap:clamp(42px,6vw,70px)!important;
+  align-items:start!important;
+  position:relative;
+  padding:10px 0 22px;
+  background:linear-gradient(to right,transparent calc(50% - .5px),#c8bcb0 calc(50% - .5px),#c8bcb0 calc(50% + .5px),transparent calc(50% + .5px));
+}
+
+#page > .eyebrow:first-child + h2{
+  margin-top:9px;
+  margin-bottom:0;
+  font-size:32px;
+  letter-spacing:.015em;
+}
+
+#page > .eyebrow:first-child + h2 + div[style*="display:grid"] > div{
+  min-width:0;
+}
+
+#page > .eyebrow:first-child + h2 + div[style*="display:grid"] > div:first-child{
+  text-align:right;
+}
+
+#page > .eyebrow:first-child + h2 + div[style*="display:grid"] > div:last-child{
+  text-align:left;
+}
+
+#page > .eyebrow:first-child + h2 + div[style*="display:grid"] > div:first-child > .eyebrow{
+  text-align:right;
+}
+
+#page > .eyebrow:first-child + h2 + div[style*="display:grid"] > div:last-child > .eyebrow{
+  text-align:left;
+}
+
+#page > .eyebrow:first-child + h2 + div[style*="display:grid"] .eyebrow{
+  margin-bottom:18px;
+  font-size:10px;
+  letter-spacing:.17em;
+}
+
+#page > .eyebrow:first-child + h2 + div[style*="display:grid"] .text{
+  font-size:17px;
+  line-height:1.62;
+  letter-spacing:.003em;
+  white-space:pre-line;
+}
+
+@media(max-width:780px){
+  #page > .eyebrow:first-child + h2 + div[style*="display:grid"]{
+    width:min(100%,30em);
+    margin:38px auto 0!important;
+    grid-template-columns:1fr!important;
+    gap:34px!important;
+    padding:0;
+    background:none;
+  }
+  #page > .eyebrow:first-child + h2 + div[style*="display:grid"] > div,
+  #page > .eyebrow:first-child + h2 + div[style*="display:grid"] > div:first-child,
+  #page > .eyebrow:first-child + h2 + div[style*="display:grid"] > div:last-child{
+    text-align:left;
+  }
+  #page > .eyebrow:first-child + h2 + div[style*="display:grid"] > div:first-child{
+    padding-bottom:28px;
+    border-bottom:1px solid #c8bcb0;
+  }
+  #page > .eyebrow:first-child + h2 + div[style*="display:grid"] > div:first-child > .eyebrow,
+  #page > .eyebrow:first-child + h2 + div[style*="display:grid"] > div:last-child > .eyebrow{
+    text-align:left;
+  }
+  #page > .eyebrow:first-child + h2 + div[style*="display:grid"] .text{
+    font-size:15px;
+    line-height:1.58;
+  }
+}

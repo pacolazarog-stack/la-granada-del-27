@@ -1,6 +1,11 @@
 #radial{overflow:auto;padding:22px}
 .radial-heart{position:relative;width:min(1180px,96%);margin:0 auto;background:var(--paper);color:var(--ink);box-shadow:0 20px 50px #0008;overflow:hidden;padding:28px 34px 36px;isolation:isolate}
-.radial-heart-head{text-align:center;position:relative;z-index:3;margin-bottom:16px}
+/*
+  Importante: este bloque es un <header> semántico interno. Se neutralizan
+  explícitamente las reglas del header global de la aplicación para que no
+  adopte la cuadrícula, fondo y borde de la barra de navegación principal.
+*/
+#radial .radial-heart-head{display:block;grid-template-columns:none;align-items:initial;gap:0;padding:0;background:transparent;border:0;color:inherit;text-align:center;position:relative;z-index:3;margin:0 0 16px;min-width:0;width:100%}
 .radial-heart-kicker{font-size:9px;letter-spacing:.18em;color:#8f8174;margin-bottom:7px}
 .radial-heart-head h2{font-size:27px;margin:0 0 7px;font-weight:400}
 .radial-heart-head p{margin:0 auto;max-width:58em;font-size:10px;line-height:1.55;color:#786d63;letter-spacing:.03em}
@@ -47,4 +52,12 @@
   .radial-sonnet{padding:22px 20px 16px}
   .radial-axis-text{font-size:18px}
   .radial-cycle{font-size:7px;gap:5px}
+}
+
+@media(max-width:600px){
+  #radial .radial-heart-head{margin-bottom:13px}
+  .radial-heart-kicker{font-size:8px;line-height:1.4;letter-spacing:.14em}
+  .radial-heart-head h2{font-size:21px;line-height:1.12;margin-bottom:9px}
+  .radial-heart-head p{max-width:32em;font-size:10px;line-height:1.52}
+  .radial-cycle{width:100%;padding-inline:4px}
 }
