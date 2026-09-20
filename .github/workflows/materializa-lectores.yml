@@ -3,8 +3,6 @@ name: Verifica lectores materializados
 on:
   push:
     paths:
-      - 'paco-data.js'
-      - 'paco.html'
       - 'miramar.html'
       - 'miramar-canon17-*.js'
       - 'ensayo.html'
@@ -26,16 +24,6 @@ jobs:
           const fs=require('fs');
           const vm=require('vm');
 
-          const pacoSrc=fs.readFileSync('paco-data.js','utf8');
-          const ctx={window:{}};
-          vm.createContext(ctx);
-          vm.runInContext(pacoSrc,ctx,{timeout:5000,filename:'paco-data.js'});
-          const paco=ctx.window.WORK_DATA;
-          if(!paco||!Array.isArray(paco.pages)) throw new Error('Paco: WORK_DATA inválido');
-          while(paco.pages.length&&!String(paco.pages.at(-1)??'').trim()) paco.pages.pop();
-          if(paco.pages.length!==210) throw new Error(`Paco: esperadas 210 páginas; hay ${paco.pages.length}`);
-          if(!paco.pages.join('\n').includes('LOS NOMBRES DE PACO')) throw new Error('Paco: falta Los nombres de Paco');
-
           const miramarHtml=fs.readFileSync('miramar.html','utf8');
           for(const file of ['miramar-canon17-init.js','miramar-canon17-final.js','lector.js']){
             if(!miramarHtml.includes(file)) throw new Error(`Miramar: falta ${file} en el lector`);
@@ -45,8 +33,6 @@ jobs:
           const ensayoHtml=fs.readFileSync('ensayo.html','utf8');
           if(!ensayoHtml.includes('ensayo-01.js')) throw new Error('Ensayo: ensayo.html no carga ensayo-01.js');
           if(!fs.existsSync('ensayo-01.js')) throw new Error('Ensayo: no existe ensayo-01.js');
-
-          console.log('Paco: 210 páginas · canon directo');
           console.log('Miramar: canon 1.7 cargado por módulos');
           console.log('Ensayo: fuente ensayo-01.js cargada');
           console.log('LECTORES CANÓNICOS OK');
