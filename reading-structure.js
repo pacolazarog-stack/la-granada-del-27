@@ -57,7 +57,7 @@
 
   function structuralRole(n,side){
     if(n!==14)return '';
-    if(side==='P')return `<div class="structure-role structure-role-origin"><span>PUNTO DE PARTIDA Y DE REGRESO</span><strong>LA VEGA · su verso 14 fija el centro de simetría 14 × 14</strong></div>`;
+    if(side==='P')return `<div class="structure-role structure-role-origin"><span>PUNTO DE PARTIDA Y DE REGRESO</span><strong>LA VEGA · su verso central fija el centro de simetría 14 × 14</strong></div>`;
     return `<div class="structure-role structure-role-axis"><span>EJE TRANSVERSAL</span><strong>BAJO LA CAL · en 14 × 14 se bifurca y genera los dos sonetos</strong></div>`;
   }
 
@@ -124,7 +124,7 @@
     if(x.k==='v'&&x.n===14){
       page.classList.add('origin-book-page');
       const h2=page.querySelector('h2');
-      if(h2){const k=document.createElement('div');k.className='book-origin-kicker';k.textContent='PUNTO DE PARTIDA Y DE REGRESO · VERSO 14 = CENTRO DE SIMETRÍA';h2.before(k)}
+      if(h2){const k=document.createElement('div');k.className='book-origin-kicker';k.textContent='PUNTO DE PARTIDA Y DE REGRESO · VERSO CENTRAL = CENTRO DE SIMETRÍA';h2.before(k)}
       return {heart:false};
     }
     if(x.e==='H14 · HORIZONTAL'){

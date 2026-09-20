@@ -28,14 +28,12 @@ window.GRANADA_LAB_ALHAMBRA_SA = {
     'sin la conversación del grupo de detrás.',
     '',
     'Pista cuatro.',
-    'Pista cinco.',
     'Avancen.',
     '',
     'Un niño se quita un auricular.',
     '',
     'Entonces entran de golpe',
     'las suelas sobre la piedra,',
-    'una cremallera,',
     'alguien que pregunta dónde está el baño,',
     'el roce de una mochila contra el muro',
     'y el agua cayendo en el patio.',
@@ -48,8 +46,8 @@ window.GRANADA_LAB_ALHAMBRA_SA = {
     'El agua no.'
   ],
   respiration: 'secuencia pautada por acceso, consignas y pistas; irrupción central de sonido no administrado al quitar el auricular',
-  corporeality: ['pantalla','torno','auriculares','suelas','piedra','cremallera','mochila','muro','agua'],
-  soundField: ['bip','voz de audioguía','consignas','pasos','cremallera','pregunta','agua'],
+  corporeality: ['pantalla','torno','auriculares','suelas','piedra','mochila','muro','agua'],
+  soundField: ['bip','voz de audioguía','consignas','pasos','pregunta','agua'],
   mirrorPotential: {
     with: 'LA CIUDAD CALLÓ',
     axis: 'regular lo audible: reducir la voz por miedo ↔ dosificarla por gestión',
@@ -61,5 +59,5 @@ window.GRANADA_LAB_ALHAMBRA_SA = {
       'sonidos mínimos de una casa ↔ sonidos laterales que el dispositivo elimina'
     ]
   },
-  status: 'laboratorio; poema autónomo, no sustituye todavía P16 en el libro público'
+  status: 'poema de superficie'
 };

@@ -1,0 +1,66 @@
+name: Install Miramar dance scene images
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/install-danza-scenes.yml'
+permissions:
+  contents: write
+
+jobs:
+  install:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Download 30 approved dance scenes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/danza-scenes/images
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/ef2ef9eb-2c12-4398-a25e-fe98253453d5.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOGFmMWU2OTk5ZDY4YTM2NiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTgxMzAxN30.zG7FtIg3vO_EYkn8xz8PcPvLf7eHha7aZSZX-qF8nyw' -o 'assets/danza-scenes/images/01_MIRAMAR_COMUNIDAD.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/5e8d38da-f5a5-4e2f-bedf-2de94e249fe9.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiM2NjZTQ3MzFhMGE4ODhlZiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg4OTIwMX0.1yaxL9bBrq0l8GRtkF4eH6EYYXAb7o20gu6_EbWCR9Q' -o 'assets/danza-scenes/images/02_OK.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/209fe8e9-427a-448d-8517-fea29666def3.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiODM5OTg5ZGE4ODcwNzNmOCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg3NDM5NH0.ph3ZRYkIvKgkZk9OjW0hojleehMiJ4fJHkHWLy0KE4k' -o 'assets/danza-scenes/images/03_EL_CUERPO.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/b1fea44d-fdfa-450e-a171-e18f43534463.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZmM3YzdkMjQwMjIwZjQ2NiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg2MDEzMn0.j1wN5OvYPBwCcO35LHclK4B-JWmPTXHQbv5Yc5vLAiI' -o 'assets/danza-scenes/images/04_CLAC.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/00c7417c-c50b-4960-a9bd-3c4d0e2d4074.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZTQ0YTE0ZTE1NTA4OTAwMiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTgxMDY1N30.NrvBKRw0t2zSSJWkKv9y_A30kYCSc9oN2bHIJj-vMzg' -o 'assets/danza-scenes/images/05_NADIE.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/22f334df-f7ad-4de9-aeae-aba41f189eea.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNGYxZmQ3Y2QyZjdjMzY2YSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTgxMzMyNX0.OagUZtrOvTBBa7Z87V8iYudSj-wJVPaMvZghLPenvNA' -o 'assets/danza-scenes/images/06_NACE_EL_CONFLICTO.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/fd174b46-4a94-46ea-807c-7d9080fa6da0.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYzA0OGNiZWM3NTllOGY1MSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg1NTQ2OH0.MWknYhRohi-swW36r8It7i2emWIGH381sww985S1NBI' -o 'assets/danza-scenes/images/07_PRIMERA_INCURSION_TERRESTRE.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/0bbeceb2-2f53-42b3-9daa-5fd7fb71cf08.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZGM1OTdhNTEzYTM0ZDA4NyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTgzMDczN30.40hoEgysvohy2bP2C8vzckk_B0m_T8USsER3Q_uTHtM' -o 'assets/danza-scenes/images/08_TERRITORIO.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/8e0ae761-61a3-406f-aa30-7bb40aec8156.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNzhiYzk1NTgxY2NhMmUzZSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTgzOTMyMH0.ZMOy-Q7sOwtMLj4v-XLQEzzapNOmsvdZKlHYeC5AkIQ' -o 'assets/danza-scenes/images/09_MAYORIA_SIMPLE.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/6c909a87-e7a4-49e7-bc9e-43a10bead808.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZjQxMzZhMzU0YTI4YTQyNCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg0NzQ3N30.ECReh6v_801zoYwvhugbAhMlYWn-zsl-6sTAxyaI3MU' -o 'assets/danza-scenes/images/10_VOTEN.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/ece70773-7c84-4949-8b06-132571691e52.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTY4YjUyOWIyZmNkYmQ4ZCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg0NDI1MX0.EJs-yPNy68M9xOnX4OhHv3iWOhlZuqNj9117NWbDKYA' -o 'assets/danza-scenes/images/11_MAYORIA_SIMPLE.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/f138a797-000d-4e6d-9b15-2ab98e4cd065.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNzhkMGQzODZlZDJhNzVmZCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg2OTk1OH0.sqDEC_GRC_wyY-3IJs1Nvh7gxLGwJOZHSfMkiCSYOeY' -o 'assets/danza-scenes/images/12_NOSOTROS.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/957bb7ec-34a1-4979-b47d-672cbf8107fe.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiODM0MzQ1ZGU3YTFiMmZjMSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTgzNjg5NH0.IoD2VSk859qq46pTkfsOjb6BFqCkXV08WjDa_ErBl2Y' -o 'assets/danza-scenes/images/13_DERECHO.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/d57ef871-7b02-4729-add2-aff1d80efc81.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZjY1ZTg5NjQwZGY0YjE0YiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg3NzA5Mn0.Lrh1bBQFPrErSX0NfTHtlQ0RefkeIUkfNCMqu6SbdIA' -o 'assets/danza-scenes/images/14_TOGA_BANDERA_REINA.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/24f06c7d-4da6-46fc-9b5c-e1a922a74d96.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZmEyMjIyNjJmNzY4ZmY0NiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg2OTAyNn0.RmFfsgm4rT5ysoXDKv5r4_O-tOGt8IBrOnAUMnHu62I' -o 'assets/danza-scenes/images/15_MIRENME.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/8dea5bd0-5053-4fee-8f57-a55375a5ef4b.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNzE5N2UxYzBmNzIyNmZkZCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTgzMDMzNn0.hYThklbbRgqz72Vc8TXaZHX_o_CLCtEBhPDz3fs2Bn4' -o 'assets/danza-scenes/images/16_ESTADO.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/dbc42027-b9d0-4989-b432-ee48871a34e8.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMDM1Mjk0NTU3OWFhMjlhMSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg3Nzk3M30.zmfHB2oRhiWGwJW57CbWARDx4hBfndlE17LtB2WYuDI' -o 'assets/danza-scenes/images/17_VIENTO.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/177ea6b2-f39b-4ae3-a8d7-9d9a058ad497.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNmM5YTVhNTEzZWYxOTgzZiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTgyNzc5M30.pjp45pKaKr3ngL8P107ku-buVaK4g0r2u9EBPTDWdCw' -o 'assets/danza-scenes/images/18_EL_SOL.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/86a99124-a21d-49a2-bc84-5cfe8ad7d677.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNDdmYTVhMTM3NTc1Y2VlZiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTgzODk5NX0.X6h6dlArRTpFNuVnp3I9Aj72kRA1xTuM6fBClhwIaPQ' -o 'assets/danza-scenes/images/19_CONFORME_A_DERECHO.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/17a678f2-5fd9-4d3a-9e64-221bd3fa9e96.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiN2I2YTlhZWQ3NTMxZGQwZiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg3MDQ0NX0.9cwybDABivSSONxHjShkKHkf3Lg8UnbyPQzRP0DdY5A' -o 'assets/danza-scenes/images/20_QUE_CONSTE.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/fcecfb3c-47a4-45f9-94ce-f7543b8e8b25.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYTVhZmVkMWMwYmZjYjlmYiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg4NTM0MH0.6C-A20dQcKd3pHVfqy4S_EFDv6GNDYdudBvRfG7NfoA' -o 'assets/danza-scenes/images/21_EL_REINO_CABE_EN_UNA_CARPETA.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/6a0454b5-574f-4056-8969-b5e11ca1be08.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiODZiZmQ3ZTQzZmIxYzViZiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTgzOTU4OH0.WXVRZanpGoDUUY2MH1wYyyDR_3mlIel18kHM3qE07z4' -o 'assets/danza-scenes/images/22_MIRAMAR.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/785a124e-b04c-4cca-850a-cd1814dfe118.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMGYxNGFkZDU0Mjk5OWJkZCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTgxMDI2MX0.uS6vTs0OJxVupQFl3Ta-HJb2ZtgQ6EfK7332Mza8rj8' -o 'assets/danza-scenes/images/23_INNOVAR.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/6ed3432c-6133-489d-9659-cd20d880dfec.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMTBkMDY4NmU1MDBlNjlhYSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg2MDA3OH0.xgnlFodU2dP52pJYo0bvIVXvUCJGLZC-rZYbopwkN0Q' -o 'assets/danza-scenes/images/24_QUIEN_GOBIERNA.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/be8325e0-8360-4c4e-90f5-9fa615444743.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMjRhOWM3MDBjZDNjNWQxOCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg4NzEwNH0.YewB2_L7A-TABFjzg6A7YSnROMLmfrNGWb18iPdGNVs' -o 'assets/danza-scenes/images/25_RUMOR.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/2dca0905-5133-4360-9c08-eee3c2250766.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYzhjOWU3OWI2MjVlYTczZiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg4ODAyN30.i3RjnSD6CccA68Mhdz8jFnFDvzh2UrM9Aakyo1gurtU' -o 'assets/danza-scenes/images/26_CENTRO_DE_DATOS.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/68a2df83-1223-4777-bbf9-038ccc8474a9.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZWE4NzU5NDNmNmNlOTcyNyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg1ODc1NX0._VgyszdbJj4gRkqlSeZelDT7DsqkN-SwNOHX7bO7AFs' -o 'assets/danza-scenes/images/27_MIRA_QUIEN_MIRA_QUIEN.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/68c3bd6c-8d01-4500-a676-2988299fc88f.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZTFkODA0Yjc1NjMwMzY3YSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTgyMDk4M30.d2Zsi8IswmaocxoWiKPCyhXVjnSE2OA5R9i5eNNmcKs' -o 'assets/danza-scenes/images/28_COMO_SEGUIMOS.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/7ef8b044-9d87-432f-806a-196d859a75a3.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNjJjYjVlZTFmZWY3ZDE4NCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTg2MDA2NX0.SRqoi7OPpYOjYwygJa_RSwK77B0ac3FW_uFbXepxVFE' -o 'assets/danza-scenes/images/29_DESARMAR_A_LA_REINA.jpg'
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/a44e9d73-e81c-494e-80b4-43d59cf72af0.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYzM2OWNmNjhhMGQ1ZTNiYSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTgxOTQ5Nn0.BLbWqFzzUwjxGvUOvftKy1UiPRYkqUiTXT90Ix1TN2k' -o 'assets/danza-scenes/images/30_DIEZ_MINUTOS.jpg'
+          test "$(find assets/danza-scenes/images -maxdepth 1 -type f -name '*.jpg' | wc -l)" -ge 30
+      - name: Commit images
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/danza-scenes/images
+          if git diff --cached --quiet; then
+            echo "No image changes to commit"
+            exit 0
+          fi
+          git commit -m "Add 30 high-resolution Miramar dance scene images"
+          git push

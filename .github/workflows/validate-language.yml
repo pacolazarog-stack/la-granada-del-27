@@ -1,0 +1,87 @@
+name: Validate languages
+
+on:
+  push:
+    paths:
+      - 'miramar-pages-d.js'
+      - 'miramar-pages-e.js'
+      - 'miramar-pages-a.js'
+      - 'miramar-pages-b.js'
+      - 'miramar-pages-c.js'
+      - 'ensayo-01.js'
+      - 'ensayo-pages-a.js'
+      - 'ensayo-pages-b.js'
+      - 'ensayo-pages-c.js'
+      - 'ensayo-pages-d.js'
+      - 'lector.js'
+      - 'language-cosiendo-europa-c.js'
+      - 'language-cosiendo-europa-d.js'
+      - 'language-cosiendo-europa-e.js'
+      - 'texto-canonico/04_LIBRO_II_MANOS_COSTURAS.md'
+      - 'texto-canonico/05_LIBRO_II_REGRESO.md'
+      - 'texto-canonico/06_CONTRAPORTADA.md'
+      - 'language-cosiendo-europa-a.js'
+      - 'language-cosiendo-europa-b.js'
+      - 'texto-canonico/03_LIBRO_II_AGUA_TIERRAS.md'
+      - 'language-granada-2027-a.js'
+      - 'language-granada-2027-b.js'
+      - 'language-granada-2027-c.js'
+      - 'texto-canonico/02_LIBRO_I_2027.md'
+      - 'language-granada-1927-a.js'
+      - 'language-granada-1927-b.js'
+      - 'language-granada-1927-c.js'
+      - 'texto-canonico/01_LIBRO_I_1927.md'
+      - 'language-packs.js'
+      - 'language-system.js'
+      - 'audio-gate.js'
+      - 'voice-reader.js'
+      - 'index.html'
+      - 'granada.html'
+      - 'atlas.html'
+      - 'miramar.html'
+      - 'ensayo.html'
+      - 'final.html'
+      - 'autor.html'
+      - 'fli.html'
+      - 'validate-language.mjs'
+      - '.github/workflows/validate-language.yml'
+  pull_request:
+    paths:
+      - 'miramar-pages-d.js'
+      - 'miramar-pages-e.js'
+      - 'miramar-pages-a.js'
+      - 'miramar-pages-b.js'
+      - 'miramar-pages-c.js'
+      - 'ensayo-01.js'
+      - 'ensayo-pages-a.js'
+      - 'ensayo-pages-b.js'
+      - 'ensayo-pages-c.js'
+      - 'ensayo-pages-d.js'
+      - 'language-granada-1927-a.js'
+      - 'language-granada-1927-b.js'
+      - 'language-granada-1927-c.js'
+      - 'texto-canonico/01_LIBRO_I_1927.md'
+      - 'language-packs.js'
+      - 'language-system.js'
+      - 'audio-gate.js'
+      - 'voice-reader.js'
+      - 'index.html'
+      - 'granada.html'
+      - 'atlas.html'
+      - 'miramar.html'
+      - 'ensayo.html'
+      - 'final.html'
+      - 'autor.html'
+      - 'fli.html'
+      - 'validate-language.mjs'
+      - '.github/workflows/validate-language.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node validate-language.mjs

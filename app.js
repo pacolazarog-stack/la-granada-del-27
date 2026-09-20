@@ -123,9 +123,13 @@
     poem.verses.forEach((z,i)=>{
       const verseNo=i+1;
       let text=z===''?'&nbsp;':esc(z);
-      if(pNo===14&&verseNo===14)text=`<span class="loa-center-origin" title="Centro 14 × 14">${text}</span>`;
+      const centerProjection=pNo===14
+        &&Array.isArray(poem.centerProjectionIndices)
+        &&poem.centerProjectionIndices.includes(verseNo)
+        &&z===poem.centralVerse;
+      if(centerProjection)text=`<span class="loa-center-origin" title="Proyección visible del centro 14 × 14 × 14">${text}</span>`;
       const d=document.createElement('div');
-      d.className='poem-line vline'+(pNo===14&&verseNo===14?' poem-center':'')+(z===''?' poem-space':'');
+      d.className='poem-line vline'+(centerProjection?' poem-center':'')+(z===''?' poem-space':'');
       d.innerHTML=`<span class="poem-verse">${text}</span>`;
       host.appendChild(d);
     });
@@ -161,9 +165,19 @@
     const x=items[bi];if(!x)return;
     const els=[...document.querySelectorAll('#page .line')];
 
-    /* Los poemas de superficie no reciben A/M/T. Solo se señala el gozne 14×14. */
+    /* Los poemas de superficie no reciben A/M/T.
+       En P14 no se identifica el centro profundo con el verso visible 14:
+       únicamente se señalan, cuando el texto está publicado, las dos
+       proyecciones literales del verso axial en los bordes 1 y 44. */
     if(x.k==='v'){
-      if(x.n===14&&els[13])els[13].innerHTML=`<span class="loa-center-origin" title="Centro 14 × 14">${esc(x.l[13])}</span>`;
+      if(x.n===14&&Array.isArray(x.l)){
+        x.l.forEach((line,i)=>{
+          const edge=i===0||i===x.l.length-1;
+          if(edge&&line==='Late bajo la cal la acequia hundida.'&&els[i]){
+            els[i].innerHTML=`<span class="loa-center-origin" title="Proyección visible del centro 14 × 14 × 14">${esc(line)}</span>`;
+          }
+        });
+      }
       return;
     }
 

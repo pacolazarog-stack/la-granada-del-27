@@ -1,0 +1,42 @@
+# Actualización integral · 18/09/2026
+
+
+## Autoría
+- Firma pública preferente: **flag**.
+- Alternativa pública equivalente: **anonimato**.
+- Identidad civil: reservada al plano legal/privado.
+- Regla: «Recuperar el nombre para poder renunciar a ponerlo.»
+
+## Masters y paquetes
+Los masters públicos de Granada, Miramar y Poética del límite, junto con los paquetes FLAG, ANÓNIMO y combinado, están documentados en `PUBLICACION_FLAG_ANONIMATO.md` y `SHA256_FINAL.txt`.
+
+## Web y validación
+
+
+
+
+
+
+## Volumen integral
+- Generado un único PDF A5 de **460 páginas**.
+- Integradas cinco portadillas internas homogéneas.
+- Añadida una única contraportada general.
+- Actualizado el índice interno a páginas **3 / 95 / 307 / 406 / 450**.
+- Añadidos marcadores PDF para las cinco partes y la contraportada.
+- Master: `POETICA_DEL_LIMITE_VOLUMEN_INTEGRAL_FLAG_CANON_2026-09-18.pdf`.
+- Drive: https://drive.google.com/file/d/1AQzYblBgnVR29xZqchlYy2hNjvuvdFyy/view
+- SHA-256: `ef7dea6fbe8ad2ffdc0085e3e372a735332066bad5b4833d6aba751aea665526`.
+
+- Corregida la **portada tipográfica de la versión papel**: «POÉTICA DEL LÍMITE» y todos los caracteres acentuados se regeneran con tipografía Unicode embebida. El resto de páginas permanece visualmente idéntico.
+
+## Atlas / Azar 27³
+
+- Nuevo modo `CUBO` en `atlas.html`.
+- Motor `cube-canon.js`: 27³ = 19.683 posiciones, centro 14·14·14, 13 envolventes, espejo M(x,y,z)=(y,x,28−z), índice UE-27 y ruta POEMA exacta.
+- `atlas-cube.js`: navegación X/Y/Z, centro, azar espacial, proyección XY y lectura de profundidad Z.
+- `chance.js`: AZAR⁴ = X → Y → CENTRO → Z.
+- Z recibe recompensa azarosa entre las 24 lenguas oficiales de la UE: musicalidad 50 %, semántica 20 %, semiótica 15 %, afinidad 10 %, extrañeza 5 %, más compensación exploratoria.
+- Traducción progresiva mediante Translator API cuando esté disponible y lectura sonora mediante Speech Synthesis.
+- No se inventan las coordenadas no recuperadas de AGUA, ARTISTAS, LEGADO y 1927↔2027.
+- Nuevo validador `validate-cube.mjs` y workflow `Validate Atlas cube`.
+- Modelo técnico XLSX: `ATLAS_AZAR_MODELO_CANONICO_27x27x27_2026-09-18.xlsx`.

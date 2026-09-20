@@ -1,9 +1,9 @@
-name: Validate public assembly
+name: Validate Atlas assembly
 
 on:
   push:
     paths:
-      - 'index.html'
+      - 'atlas.html'
       - 'surface-poems.js'
       - 'stone-mesostic.js'
       - 'matrix-*.js'
@@ -32,8 +32,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
-      - name: Validate data assembly
+          node-version: '24'
+      - name: Validate Atlas data assembly
         run: node validate-surface.mjs
       - name: Check reader syntax
         run: |

@@ -7,11 +7,33 @@
     if(!value||!Array.isArray(value.verses)) throw new Error(`SUPERFICIE: falta ${id}`);
     return value;
   };
+
+  const activeVega=window.GRANADA_LA_VEGA_ACTIVE||null;
   const laVega={
     title:'LA VEGA',
-    verses:(window.GRANADA_LA_VEGA_ACTIVE?.verses||window.GRANADA_ROWS?.map(r=>r.verses?.[13])).slice(),
-    retainedConstraints:['27 versos','27 endecasílabos','verso 14 = centro 14×14']
+    kind:activeVega?.kind||'cyclic-triptych',
+    verses:activeVega?.published&&Array.isArray(activeVega.verses)&&activeVega.verses.length
+      ? [...activeVega.verses]
+      : ['[Texto retirado temporalmente de la edición pública.]'],
+    canonicalVerseCount:activeVega?.visibleVerseCount||activeVega?.verseCount||44,
+    visibleVerseCount:activeVega?.visibleVerseCount||activeVega?.verseCount||44,
+    bodyVerseCount:activeVega?.bodyVerseCount||42,
+    sectionVerseCounts:[...(activeVega?.sectionVerseCounts||[14,14,14])],
+    centerProjectionIndices:[...(activeVega?.centerProjectionIndices||[1,44])],
+    centralVerse:activeVega?.centralVerse||'Late bajo la cal la acequia hundida.',
+    threshold:activeVega?.threshold||'Late bajo la cal la acequia hundida.',
+    closure:activeVega?.closure||'Late bajo la cal la acequia hundida.',
+    presentation:{...(activeVega?.presentation||{})},
+    withheldFromPublicEdition:activeVega?.withheldFromPublicEdition!==false,
+    retainedConstraints:[
+      '44 versos visibles = 1 + 14 + 14 + 14 + 1',
+      'cuerpo estrófico = tríptico 14 + 14 + 14',
+      'umbral y cierre = dos proyecciones visibles del mismo verso central',
+      'anclaje matricial = 14×14',
+      'anclaje cúbico = 14×14×14'
+    ]
   };
+
   const poems=[
     need('P01',window.GRANADA_LAB_GRANADA_1927),
     need('P02',window.GRANADA_LAB_EL_RINCONCILLO),
@@ -46,6 +68,17 @@
     title:p.title,
     verses:[...p.verses],
     source:p,
+    kind:p.kind||'poem',
+    canonicalVerseCount:p.canonicalVerseCount||p.verses.length,
+    visibleVerseCount:p.visibleVerseCount||p.canonicalVerseCount||p.verses.length,
+    bodyVerseCount:p.bodyVerseCount||null,
+    sectionVerseCounts:p.sectionVerseCounts?[...p.sectionVerseCounts]:null,
+    centerProjectionIndices:p.centerProjectionIndices?[...p.centerProjectionIndices]:null,
+    centralVerse:p.centralVerse||null,
+    threshold:p.threshold||null,
+    closure:p.closure||null,
+    presentation:p.presentation?{...p.presentation}:null,
+    withheldFromPublicEdition:!!p.withheldFromPublicEdition,
     mirror:i===13?null:28-(i+1)
   }));
 
@@ -56,19 +89,39 @@
     }
   });
 
-  const center=poems[13]?.verses?.[13];
+  const center=laVega.centralVerse;
   if(center!=='Late bajo la cal la acequia hundida.'){
-    throw new Error(`SUPERFICIE: el centro 14×14 cambió: «${center||'—'}»`);
+    throw new Error(`SUPERFICIE: el verso central cambió: «${center||'—'}»`);
   }
 
-  window.GRANADA_SURFACE_POEMS=Object.freeze(poems.map(p=>Object.freeze({...p,verses:Object.freeze([...p.verses])})));
+  window.GRANADA_SURFACE_POEMS=Object.freeze(poems.map(p=>Object.freeze({
+    ...p,
+    verses:Object.freeze([...p.verses]),
+    sectionVerseCounts:p.sectionVerseCounts?Object.freeze([...p.sectionVerseCounts]):null,
+    centerProjectionIndices:p.centerProjectionIndices?Object.freeze([...p.centerProjectionIndices]):null,
+    presentation:p.presentation?Object.freeze({...p.presentation}):null
+  })));
   window.GRANADA_SURFACE={
     count:27,
     centerPoem:14,
-    centerVerse:14,
+    centerVerse:center,
     center,
+    centerMatrix:[14,14],
+    centerCube:[14,14,14],
     mirrorPairs:13,
     layers:{book:'surface',vertical:'surface',mirrors:'surface',horizontal:'stone',diagonal:'stone',radial:'core',hidden:'stone'},
-    palindromicJoints:[9,18,27]
+    palindromicJoints:[9,18,27],
+    laVega:{
+      form:'cyclic-triptych',
+      visibleStructure:[1,14,14,14,1],
+      sectionVerseCounts:[14,14,14],
+      canonicalVerseCount:44,
+      visibleVerseCount:44,
+      bodyVerseCount:42,
+      centerProjectionIndices:[1,44],
+      withheldFromPublicEdition:laVega.withheldFromPublicEdition,
+      centralVerse:center,
+      rule:'el poema visible tiene 44 versos; umbral y cierre proyectan un único centro profundo y no se comprimen en 27 celdas'
+    }
   };
 })();

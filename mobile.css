@@ -1,0 +1,286 @@
+/*
+  Optimización móvil · Android / pantallas estrechas
+  No altera contenido ni recorridos: solo adapta viewport, navegación y lectura táctil.
+*/
+
+html{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  overscroll-behavior:none;
+}
+body{
+  min-height:100vh;
+  min-height:100dvh;
+  overscroll-behavior:none;
+  -webkit-tap-highlight-color:transparent;
+}
+#app{
+  height:100vh;
+  height:100dvh;
+  min-height:0;
+}
+button{
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.mode,.btn,.move,.diag-control button{
+  min-height:44px;
+  min-width:44px;
+}
+
+@media (max-width:780px){
+  /* Cabecera: dos pisos, desplazamiento horizontal suave y zonas táctiles reales. */
+  header{
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:"b t" "n n";
+    gap:7px 10px;
+    padding:
+      max(8px,env(safe-area-inset-top))
+      max(10px,env(safe-area-inset-right))
+      7px
+      max(10px,env(safe-area-inset-left));
+  }
+  .brand{grid-area:b;min-width:0}
+  .brand strong{font-size:12px;letter-spacing:.065em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brand small{font-size:10px}
+  header>div:last-child{grid-area:t;justify-self:end}
+  #full{padding:7px 11px}
+  nav{
+    grid-area:n;
+    display:flex;
+    gap:6px;
+    width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding:1px 0 2px;
+    scroll-snap-type:x proximity;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-inline:contain;
+  }
+  nav::-webkit-scrollbar{display:none}
+  .mode{
+    flex:0 0 auto;
+    scroll-snap-align:start;
+    padding:8px 12px;
+    font-size:11px;
+    line-height:1;
+  }
+
+  main,.view{min-height:0}
+
+  /* LIBRO: página real a anchura de pantalla, sin zoom obligado. */
+  #bookview{min-height:0}
+  .stage{
+    min-height:0;
+    padding:8px 8px 5px;
+    align-items:stretch;
+  }
+  .page{
+    width:100%;
+    max-width:none;
+    height:100%;
+    padding:22px 18px 28px;
+    border-radius:0;
+    box-shadow:0 10px 28px #0007;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+  }
+  .eyebrow{font-size:9px;letter-spacing:.14em}
+  h2{font-size:clamp(23px,7vw,29px);line-height:1.08;margin:7px 0 19px;text-wrap:balance}
+  .line,.text{font-size:clamp(14px,4vw,16px);line-height:1.48}
+  .lines{gap:3px}
+
+  /* En móvil un verso nunca debe quedar recortado fuera de pantalla. */
+  .fit-poem .poem-verse,
+  .fit-poem.lines>.line{
+    max-width:100%;
+    white-space:normal;
+    overflow-wrap:normal;
+    word-break:normal;
+  }
+
+  /* Navegación inferior del libro: compacta y compatible con la barra de Android. */
+  .nav{
+    flex:0 0 auto;
+    gap:7px;
+    padding:5px max(8px,env(safe-area-inset-right)) max(7px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));
+  }
+  .nav .btn{padding:7px 10px;font-size:11px;white-space:nowrap}
+  .progress{min-width:0;flex:1;font-size:10px;line-height:1.2}
+
+  /* Lecturas vertical/horizontal: una sola columna, flechas fuera del texto. */
+  #verticalreader,#horizontal{
+    padding:8px 8px calc(70px + env(safe-area-inset-bottom));
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+  }
+  .sheet{
+    width:100%;
+    max-width:none;
+    padding:22px 17px 28px;
+    box-shadow:0 10px 28px #0006;
+  }
+  .poem-line,.vline{font-size:clamp(13px,3.65vw,15px);line-height:1.46}
+  .poem-verse,.poem-guide{width:100%;max-width:100%}
+  .move{
+    position:fixed;
+    top:auto;
+    bottom:max(10px,env(safe-area-inset-bottom));
+    z-index:12;
+    width:48px;
+    height:48px;
+    padding:0;
+    transform:none;
+    display:grid;
+    place-items:center;
+    border:1px solid #ffffff38;
+    border-radius:50%;
+    background:#15120ff2;
+    color:#f4ede5;
+    font-size:30px;
+    box-shadow:0 8px 24px #0007;
+  }
+  .move.prev{left:max(10px,env(safe-area-inset-left))}
+  .move.next{right:max(10px,env(safe-area-inset-right))}
+
+  /* HORIZONTAL conserva su identidad justificada, pero admite salto de línea si es imprescindible. */
+  #horizontal .fit-poem .poem-verse{
+    white-space:normal;
+    text-align:justify;
+    text-align-last:justify;
+    text-justify:inter-word;
+    font-size:clamp(11px,3.15vw,13px);
+    line-height:1.42;
+  }
+  #horizontal .structure-register{font-size:9px}
+
+  /* DIAGONAL: controles táctiles y ramas apiladas. */
+  #diagonal{
+    padding:8px 8px calc(20px + env(safe-area-inset-bottom))!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .diag-reader{width:100%}
+  .diag-toolbar{
+    top:0;
+    gap:6px;
+    padding:4px 0 9px;
+    justify-content:flex-start;
+  }
+  .diag-control{
+    width:100%;
+    min-height:46px;
+    border-radius:14px;
+    padding:3px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .diag-control::-webkit-scrollbar{display:none}
+  .diag-control-label{min-width:56px;font-size:8px;padding-left:7px}
+  .diag-control button,.diag-double{
+    min-height:38px;
+    padding:8px 10px;
+    font-size:9px;
+  }
+  .diag-sheet{padding:20px 14px 26px}
+  .diag-sheet h2{font-size:20px;line-height:1.15;text-wrap:balance}
+  .diag-sheet-note{font-size:10px}
+  .diag-line{font-size:clamp(12.5px,3.55vw,14px);grid-template-columns:21px minmax(0,1fr);gap:7px;line-height:1.42}
+  .diag-junction{padding:13px 10px}
+  .diag-junction-verse{font-size:15px}
+  .diag-branches{grid-template-columns:1fr}
+  .diag-branch{padding:15px 12px 19px}
+  .diag-branch+.diag-branch{border-top:1px solid #d8cec4}
+
+  /* RADIAL: los dos sonetos dejan de competir por anchura. */
+  #radial{
+    padding:8px 8px calc(20px + env(safe-area-inset-bottom));
+    -webkit-overflow-scrolling:touch;
+  }
+  .radial-heart{width:100%;padding:20px 12px 25px;box-shadow:0 10px 28px #0007}
+  .radial-heart-head h2{font-size:23px;line-height:1.12}
+  .radial-heart-head p{font-size:10px}
+  .radial-cycle{width:100%;justify-content:center;line-height:1.5;padding:7px 5px}
+  .radial-axis-verse{padding:15px 10px 16px;margin-bottom:18px}
+  .radial-axis-text{font-size:17px}
+  .radial-sonnet-pair{grid-template-columns:1fr}
+  .radial-sonnet{padding:19px 10px 16px}
+  .radial-sonnet+.radial-sonnet{border-left:0;border-top:1px solid #d5cbc1}
+  .radial-sonnet-line{grid-template-columns:20px minmax(0,1fr);gap:7px;font-size:clamp(12px,3.45vw,14px);line-height:1.5}
+  .radial-sonnet-text{
+    width:auto;
+    max-width:100%;
+    white-space:normal;
+    text-align:left;
+    text-align-last:auto;
+  }
+  .radial-vega-band span{font-size:clamp(34px,11vw,48px);letter-spacing:.13em}
+
+  /* AZAR: lectura central sin recortes y controles alcanzables con el pulgar. */
+  #chance{
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+  }
+  .chance-nav{
+    position:sticky;
+    top:0;
+    left:auto;
+    right:auto;
+    transform:none;
+    width:100%;
+    max-width:none;
+    border-radius:0;
+    padding:6px max(8px,env(safe-area-inset-right)) 6px max(8px,env(safe-area-inset-left));
+    background:#15120ff5;
+  }
+  .chance-nav #chance-seed{max-width:58vw;font-size:9px}
+  .chance-wrap{
+    min-height:calc(100% - 56px);
+    height:auto;
+    gap:6px;
+    padding:18px 6px calc(24px + env(safe-area-inset-bottom));
+  }
+  .chance-center{width:min(100%,calc(100vw - 104px));padding:26px 7px}
+  .chance-current{font-size:clamp(24px,7vw,34px);line-height:1.28}
+  .chance-title{font-size:11px}
+  .chance-stage-label,.chance-pos{font-size:9px;line-height:1.45}
+  .chance-arrow{width:44px;min-width:44px;padding:0;font-size:27px}
+
+  /* Cubierta y contracubierta: textos escalables para 320–430 px. */
+  .book-cover{padding:22px 18px calc(24px + env(safe-area-inset-bottom))}
+  .cover-title{font-size:clamp(36px,12vw,48px);line-height:.94}
+  .cover-subtitle{font-size:clamp(12px,3.8vw,15px);letter-spacing:.13em}
+  .cover-motto{font-size:clamp(13px,3.7vw,15px);max-width:19em}
+  .cover-author{font-size:clamp(14px,4vw,17px)}
+  .book-back{padding:28px 20px calc(30px + env(safe-area-inset-bottom))}
+  .back-copy h2{font-size:clamp(26px,8vw,32px)}
+  .back-copy p{font-size:clamp(12px,3.5vw,14px);line-height:1.5}
+}
+
+@media (max-width:420px){
+  .brand small{display:none}
+  .page{padding-left:15px;padding-right:15px}
+  .nav .btn{font-size:10px;padding-inline:8px}
+  .progress{font-size:9px}
+  .structure-legend{white-space:normal;flex-wrap:wrap;line-height:1.4}
+  .structure-row{flex-wrap:wrap;line-height:1.4}
+  .chance-nav #chance-seed{max-width:50vw}
+}
+
+/* Android en horizontal: prioriza altura útil y evita que la cabecera devore la pantalla. */
+@media (max-height:520px) and (orientation:landscape){
+  header{padding-top:5px;padding-bottom:5px;gap:4px}
+  .brand small{display:none}
+  .brand strong{font-size:11px}
+  .mode{min-height:38px;padding:6px 10px;font-size:10px}
+  #full{min-height:38px;height:38px}
+  .stage{padding-top:5px}
+  .page{padding-top:16px;padding-bottom:18px}
+  .nav{padding-top:3px;padding-bottom:max(3px,env(safe-area-inset-bottom))}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
