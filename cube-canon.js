@@ -43,13 +43,30 @@
     ['eu','eu-ES','Euskera','isolate',['España'],.50,.71]
   ].map(x=>({code:x[0],tag:x[1],name:x[2],family:x[3],countries:x[4],vowelTarget:x[5],rhythm:x[6]}));
 
+  /* Estado de recuperación: solo POEMA tiene ruta completa materializada.
+     Las demás trazas conservan población/estructura o anclajes parciales,
+     pero sus coordenadas faltantes no se completan por inferencia. */
   const TRACE_SUMMARY={
     names:['POEMA','AGUA','ARTISTAS','LEGADO','1927↔2027'],
     nodesPerTrace:27,
     sharedCenter:{x:14,y:14,z:14,label:'España · La Vega · verso central'},
     xyCoincidences:11,
     envelopeDensity:{8:18,9:18,11:18,13:24},
-    exactRoutesAvailable:['POEMA']
+    exactRoutesAvailable:['POEMA'],
+    unresolvedExactRoutes:['AGUA','ARTISTAS','LEGADO','1927↔2027'],
+    recoveryStatus:{
+      POEMA:'exacta',
+      AGUA:'población temática recuperada · geometría pendiente',
+      ARTISTAS:'población temática recuperada · geometría pendiente',
+      LEGADO:'anclajes exactos parciales · geometría pendiente',
+      '1927↔2027':'estructura temporal recuperada · geometría pendiente'
+    },
+    knownExactAnchors:{
+      LEGADO:[
+        {x:3,y:21,z:13,countryX:'Francia',countryY:'Lituania'},
+        {x:21,y:3,z:15,countryX:'Lituania',countryY:'Francia'}
+      ]
+    }
   };
 
   const clamp=(n,a=0,b=100)=>Math.max(a,Math.min(b,n));
