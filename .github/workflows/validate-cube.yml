@@ -10,15 +10,18 @@ on:
       - 'chance.js'
       - 'style.css'
       - 'validate-cube.mjs'
+      - 'exports/cubo-27-engine/**'
       - '.github/workflows/validate-cube.yml'
   pull_request:
     paths:
       - 'atlas.html'
       - 'cube-canon.js'
+      - 'relations-canon.js'
       - 'atlas-cube.js'
       - 'chance.js'
       - 'style.css'
       - 'validate-cube.mjs'
+      - 'exports/cubo-27-engine/**'
       - '.github/workflows/validate-cube.yml'
 
 jobs:
@@ -33,3 +36,4 @@ jobs:
       - run: node --check atlas-cube.js
       - run: node --check chance.js
       - run: node validate-cube.mjs
+      - run: node exports/cubo-27-engine/validate-engine.mjs
