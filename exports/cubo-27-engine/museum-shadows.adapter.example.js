@@ -6,6 +6,7 @@ import {createTraceEngine} from './trace-engine.js';
 import {createRelationsEngine} from './relations-engine.js';
 import {createAtlasEngine} from './atlas-engine.js';
 import {createChanceEngine} from './chance-engine.js';
+import {createGeometryAdapter} from './geometry-adapter.js';
 
 export function createMuseumShadowsMachine({
   inventory,
@@ -14,6 +15,8 @@ export function createMuseumShadowsMachine({
   relationProviders=[],
   projectZ=null,
   rng,
+  spacing=1,
+  invertY=false,
   roomZero={
     id:'ROOM_ZERO',
     title:'LA HABITACIÓN NÚMERO CERO',
@@ -49,6 +52,7 @@ export function createMuseumShadowsMachine({
 
   const atlas=createAtlasEngine({cube,traces,relations});
   const chance=createChanceEngine({cube,traces,relations,projectZ,rng});
+  const geometry=createGeometryAdapter({cube,spacing,invertY});
 
   const horizon=Object.freeze({
     ...roomZero,
@@ -58,7 +62,7 @@ export function createMuseumShadowsMachine({
   });
 
   return Object.freeze({
-    cube,traces,relations,atlas,chance,
+    cube,traces,relations,atlas,chance,geometry,
     horizon,
     inspectHorizon:()=>horizon
   });
@@ -85,4 +89,5 @@ const machine=createMuseumShadowsMachine({
 
 machine.atlas.goCenter();
 const apparition=machine.chance.roll();
+const worldPoint=machine.geometry.toWorld(apparition.point);
 */
