@@ -103,6 +103,12 @@ assert(centerRel.total>=15,'cada posición debe estar densamente relacionada');
 
 const atlas=fs.readFileSync('atlas.html','utf8');
 assert(atlas.includes('data-mode="cube"'),'atlas.html debe exponer CUBO');
+assert(atlas.includes('data-mode="cube"')&&atlas.includes('mode-primary active'),'CUBO debe ser la puerta principal activa del Atlas');
+assert(atlas.includes("history.replaceState(null,'','#cube')"),'CUBO debe ser la vista inicial cuando no hay hash');
+assert(atlas.includes('PIEDRA 27²')&&atlas.includes('CUBO 27³')&&atlas.includes('ATLAS / AZAR'),'la interfaz debe declarar la arquitectura PIEDRA → CUBO → ATLAS/AZAR');
+assert(atlas.includes('729 celdas textuales')&&atlas.includes('19.683 posiciones relacionales'),'la interfaz debe distinguir piedra textual y despliegue relacional');
+assert(atlas.includes('conocer / atravesar'),'Atlas y Azar deben presentarse como dos operaciones sobre la misma arquitectura');
+assert(atlas.includes('atlas-architecture.css'),'atlas.html debe cargar la jerarquía visual de arquitectura');
 assert(atlas.includes('cube-canon.js'),'atlas.html debe cargar cube-canon.js');
 assert(atlas.includes('atlas-cube.js'),'atlas.html debe cargar atlas-cube.js');
 assert(atlas.includes('chance-listen'),'AZAR debe incluir Oír Z');
@@ -110,17 +116,22 @@ assert(atlas.includes('chance-language'),'AZAR debe incluir recompensa lingüís
 assert(atlas.includes('relations-canon.js'),'Atlas debe cargar la red relacional');
 assert(atlas.includes('cube-relations-card'),'Atlas debe mostrar relaciones activas');
 assert(atlas.includes('cube-writing-card'),'Atlas debe mostrar escritura relacional');
+assert(atlas.includes('TRAZAS · CAPA SECUNDARIA'),'las trazas no deben competir con el cubo como arquitectura principal');
 
 const chance=fs.readFileSync('chance.js','utf8');
 for(const token of ["key:'X'","key:'Y'","key:'CENTRO'","key:'Z'"])assert(chance.includes(token),'AZAR⁴ debe contener '+token);
 assert(chance.includes('chooseLanguageReward'),'AZAR debe usar recompensa lingüística ponderada');
 assert(chance.includes('musicalidad 50 %'),'la musicalidad debe ser el factor principal');
+assert(chance.includes('ATRAVESAR EL CUBO'),'AZAR debe explicitar que atraviesa la arquitectura 27³');
+assert(chance.includes('mirrorPoint(hit)'),'AZAR debe mostrar el espejo tridimensional de la posición elegida');
+assert(chance.includes('k=${m.k}'),'AZAR debe mostrar la envolvente de la posición elegida');
 
 console.log('OK · PIEDRA 27² · 729 celdas · centro axial canónico');
-console.log('OK · CUBO 27³ · 19.683 posiciones');
+console.log('OK · CUBO 27³ · 19.683 posiciones · arquitectura común de Atlas/Azar');
+console.log('OK · CUBO es la entrada principal · Atlas conoce · Azar atraviesa');
 console.log('OK · centro 14·14·14 · 13 envolventes · espejo (y,x,28-z)');
 console.log('OK · espejo involutivo · 27 puntos fijos en x=y, z=14');
-console.log('OK · 5 trazas · POEMA exacta y especular · 27 lenguas (24 UE + ca/gl/eu)');
+console.log('OK · 5 trazas · POEMA exacta y especular · otras 4 como capa secundaria recuperada');
 console.log('OK · recuperación: 4 rutas abiertas · LEGADO conserva solo 2 anclajes exactos');
-console.log('OK · AZAR⁴ = X + Y + CENTRO + Z');
+console.log('OK · AZAR⁴ = X + Y + CENTRO + Z · coordenada, k y espejo XYZ visibles');
 console.log('OK · 27 tipos de relación · 19.683 posiciones relacionadas · 27 escrituras iniciales');
