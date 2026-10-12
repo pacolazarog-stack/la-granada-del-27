@@ -56,6 +56,23 @@ assert(C.traces.names.join('|')==='POEMA|AGUA|ARTISTAS|LEGADO|1927↔2027','debe
 assert(C.traces.xyCoincidences===11,'deben conservarse 11 coincidencias XY');
 assert(C.traces.envelopeDensity[13]===24,'k=13 debe registrar 24 nodos');
 assert(C.traces.exactRoutesAvailable.length===1&&C.traces.exactRoutesAvailable[0]==='POEMA','solo POEMA puede declararse ruta exacta mientras no esté el XLSX fuente');
+assert(C.traces.unresolvedExactRoutes.join('|')==='AGUA|ARTISTAS|LEGADO|1927↔2027','las cuatro rutas no recuperadas deben permanecer explícitamente abiertas');
+assert(C.traces.recoveryStatus.POEMA==='exacta','POEMA debe conservar estatuto de ruta exacta');
+assert(String(C.traces.recoveryStatus.AGUA).includes('geometría pendiente'),'AGUA no debe presentarse como ruta reconstruida');
+assert(String(C.traces.recoveryStatus.ARTISTAS).includes('geometría pendiente'),'ARTISTAS no debe presentarse como ruta reconstruida');
+assert(String(C.traces.recoveryStatus.LEGADO).includes('geometría pendiente'),'LEGADO no debe presentarse como ruta completa');
+assert(String(C.traces.recoveryStatus['1927↔2027']).includes('geometría pendiente'),'1927↔2027 no debe presentarse como ruta reconstruida');
+const legadoAnchors=C.traces.knownExactAnchors?.LEGADO||[];
+assert(legadoAnchors.length===2,'LEGADO debe conservar exactamente los dos anclajes históricos recuperados, sin añadir coordenadas inferidas');
+assert(legadoAnchors[0].x===3&&legadoAnchors[0].y===21&&legadoAnchors[0].z===13,'primer anclaje LEGADO debe ser 3·21·13');
+assert(legadoAnchors[1].x===21&&legadoAnchors[1].y===3&&legadoAnchors[1].z===15,'segundo anclaje LEGADO debe ser 21·3·15');
+const legadoMirror=C.mirrorPoint(legadoAnchors[0]);
+assert(legadoMirror.x===legadoAnchors[1].x&&legadoMirror.y===legadoAnchors[1].y&&legadoMirror.z===legadoAnchors[1].z,'los dos anclajes LEGADO deben formar pareja bajo el espejo canónico vigente');
+for(const a of legadoAnchors){
+  const p=C.poemPoint(a.z);
+  assert(p.x===a.x&&p.y===a.y,'cada anclaje LEGADO recuperado debe coincidir con POEMA');
+  assert(C.countryAtIndex(a.x)===a.countryX&&C.countryAtIndex(a.y)===a.countryY,'los países declarados en los anclajes LEGADO deben coincidir con INDICE_27');
+}
 
 /* Invariantes geométricos del cubo. El centro único no debe confundirse con
    el conjunto de puntos fijos del espejo M: x=y y z=14 produce 27 puntos. */
@@ -104,5 +121,6 @@ console.log('OK · CUBO 27³ · 19.683 posiciones');
 console.log('OK · centro 14·14·14 · 13 envolventes · espejo (y,x,28-z)');
 console.log('OK · espejo involutivo · 27 puntos fijos en x=y, z=14');
 console.log('OK · 5 trazas · POEMA exacta y especular · 27 lenguas (24 UE + ca/gl/eu)');
+console.log('OK · recuperación: 4 rutas abiertas · LEGADO conserva solo 2 anclajes exactos');
 console.log('OK · AZAR⁴ = X + Y + CENTRO + Z');
 console.log('OK · 27 tipos de relación · 19.683 posiciones relacionadas · 27 escrituras iniciales');
