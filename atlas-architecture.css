@@ -1,6 +1,7 @@
 /* Atlas / Azar · Cubo 27³ como arquitectura común · 13/10/2026 */
 
-header .brand small{display:block;margin-top:2px;letter-spacing:.08em}
+header .brand small{display:block;margin-top:2px;letter-spacing:.08em;font-size:0}
+header .brand small::after{content:'Cubo 27³ · arquitectura común';font-size:11px}
 nav{align-items:center}
 .mode-primary{border-color:#d9c5ae88;background:#2b241e;box-shadow:inset 0 0 0 1px #ffffff0a}
 .mode-primary.active{background:#efe6db;color:#211d19;border-color:#efe6db}
