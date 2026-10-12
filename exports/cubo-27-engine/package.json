@@ -1,0 +1,10 @@
+{
+  "name": "cubo-27-engine",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Motor tridimensional 27x27x27 reutilizable extraído de La Granada del 27",
+  "scripts": {
+    "test": "node validate-engine.mjs"
+  }
+}
