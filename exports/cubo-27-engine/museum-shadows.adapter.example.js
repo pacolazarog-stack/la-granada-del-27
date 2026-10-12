@@ -1,5 +1,4 @@
-/* EL INVENTARIO DE LAS SOMBRAS · adaptador inicial del motor 27³
-   Este archivo NO fija todavía la semántica definitiva de los ejes. */
+/* EL INVENTARIO DE LAS SOMBRAS · adaptador canónico del motor 27³ */
 
 import {createCubeEngine} from './cube-engine.js';
 import {createTraceEngine} from './trace-engine.js';
@@ -7,6 +6,7 @@ import {createRelationsEngine} from './relations-engine.js';
 import {createAtlasEngine} from './atlas-engine.js';
 import {createChanceEngine} from './chance-engine.js';
 import {createGeometryAdapter} from './geometry-adapter.js';
+import {createMuseumOntology} from './museum-ontology.js';
 
 export function createMuseumShadowsMachine({
   inventory,
@@ -17,14 +17,11 @@ export function createMuseumShadowsMachine({
   rng,
   spacing=1,
   invertY=false,
-  roomZero={
-    id:'ROOM_ZERO',
-    title:'LA HABITACIÓN NÚMERO CERO',
-    kind:'horizon',
-    insideCube:false
-  }
+  roomZero=null
 }={}){
   if(!inventory)throw new TypeError('inventory es obligatorio');
+
+  const ontology=createMuseumOntology({size:27});
 
   const substrate={
     get(x,y){
@@ -37,7 +34,14 @@ export function createMuseumShadowsMachine({
   const cube=createCubeEngine({
     size:27,
     substrate,
-    metadataProvider
+    metadataProvider(meta){
+      const semantics=ontology.pointSemantics(meta);
+      const custom=typeof metadataProvider==='function'?metadataProvider(meta):null;
+      return Object.freeze({
+        semantics,
+        ...(custom&&typeof custom==='object'?custom:{})
+      });
+    }
   });
 
   const traces=createTraceEngine({cube});
@@ -46,24 +50,45 @@ export function createMuseumShadowsMachine({
   }
 
   const relations=createRelationsEngine({cube,traces});
+  relations.register('MUSEUM_SEMANTICS',({point,meta})=>({
+    axes:meta.semantics??ontology.pointSemantics(point),
+    mirror:ontology.mirrorMeaning(point,meta.mirror)
+  }));
   for(const def of relationProviders){
     relations.register(def.name,def.provider);
   }
 
   const atlas=createAtlasEngine({cube,traces,relations});
-  const chance=createChanceEngine({cube,traces,relations,projectZ,rng});
+  const chance=createChanceEngine({
+    cube,
+    traces,
+    relations,
+    projectZ:projectZ||ontology.projectZ,
+    rng
+  });
   const geometry=createGeometryAdapter({cube,spacing,invertY});
 
   const horizon=Object.freeze({
-    ...roomZero,
+    ...ontology.roomZero,
+    ...(roomZero&&typeof roomZero==='object'?roomZero:{}),
     insideCube:false,
-    coordinate:null,
-    note:'Umbral externo al cubo 27³: no es z=0, z=28 ni una capa cronológica.'
+    coordinate:null
   });
 
+  function inspect(point){
+    const p=cube.assertPoint(point);
+    return Object.freeze({
+      point:p,
+      meta:cube.meta(p),
+      semantics:ontology.pointSemantics(p),
+      relations:relations.relationsAt(p)
+    });
+  }
+
   return Object.freeze({
-    cube,traces,relations,atlas,chance,geometry,
+    cube,traces,relations,atlas,chance,geometry,ontology,
     horizon,
+    inspect,
     inspectHorizon:()=>horizon
   });
 }
@@ -80,14 +105,16 @@ const machine=createMuseumShadowsMachine({
       absence:item?.absence??null,
       room:item?.room??null
     };
-  },
-  projectZ(z,{point}){
-    // La obra decidirá qué significa Z. Este ejemplo no impone cronología.
-    return {point,value:{depth:z,origin:point}};
   }
 });
 
 machine.atlas.goCenter();
 const apparition=machine.chance.roll();
 const worldPoint=machine.geometry.toWorld(apparition.point);
+const state=machine.inspect(apparition.point);
+
+// X = MATERIALIDAD
+// Y = INSCRIPCIÓN
+// Z = PROFUNDIDAD DE SOMBRA
+// ROOM_ZERO permanece fuera del cubo.
 */
