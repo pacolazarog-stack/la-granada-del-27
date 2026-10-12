@@ -23,9 +23,13 @@ vm.runInContext(source,sandbox,{filename:'cube-canon.js'});
 vm.runInContext(relationSource,sandbox,{filename:'relations-canon.js'});
 const C=sandbox.GRANADA_CUBE_27;
 const R=sandbox.GRANADA_RELATIONS;
+const rows=sandbox.GRANADA_ROWS;
 
 assert(C,'GRANADA_CUBE_27 no declarado');
 assert(R,'GRANADA_RELATIONS no declarado');
+assert(Array.isArray(rows)&&rows.length===27,'la piedra debe contener 27 filas');
+assert(rows.every(r=>Array.isArray(r.verses)&&r.verses.length===27),'cada fila de la piedra debe contener 27 celdas');
+assert(rows[13].verses[13]==='Late bajo la cal la acequia hundida.','14·14 debe conservar el verso axial canónico');
 assert(R.types.length===27,'deben existir 27 tipos de relación');
 assert(R.writings.length===27,'deben existir 27 escrituras relacionales');
 assert(R.writings.every(x=>x.text&&x.text.length>40),'cada escritura debe contener texto sustantivo');
@@ -52,10 +56,33 @@ assert(C.traces.names.join('|')==='POEMA|AGUA|ARTISTAS|LEGADO|1927↔2027','debe
 assert(C.traces.xyCoincidences===11,'deben conservarse 11 coincidencias XY');
 assert(C.traces.envelopeDensity[13]===24,'k=13 debe registrar 24 nodos');
 assert(C.traces.exactRoutesAvailable.length===1&&C.traces.exactRoutesAvailable[0]==='POEMA','solo POEMA puede declararse ruta exacta mientras no esté el XLSX fuente');
+
+/* Invariantes geométricos del cubo. El centro único no debe confundirse con
+   el conjunto de puntos fijos del espejo M: x=y y z=14 produce 27 puntos. */
+const expectedShells=[1,26,98,218,386,602,866,1178,1538,1946,2402,2906,3458,4058];
+const shellCounts=Array(14).fill(0);
+let fixedMirror=0;
+for(let x=1;x<=27;x++)for(let y=1;y<=27;y++)for(let z=1;z<=27;z++){
+  const k=C.envelope(x,y,z);
+  shellCounts[k]++;
+  const mirror=C.mirrorPoint({x,y,z});
+  const back=C.mirrorPoint(mirror);
+  assert(back.x===x&&back.y===y&&back.z===z,`el espejo debe ser involutivo en ${x},${y},${z}`);
+  if(mirror.x===x&&mirror.y===y&&mirror.z===z)fixedMirror++;
+  assert(R.relationsAt(x,y,z).total>0,`posición sin relaciones: ${x},${y},${z}`);
+}
+assert(shellCounts.every((n,k)=>n===expectedShells[k]),'las 13 envolventes y el centro deben particionar exactamente las 19.683 posiciones');
+assert(shellCounts.reduce((a,b)=>a+b,0)===19683,'las envolventes deben sumar 19.683 posiciones');
+assert(fixedMirror===27,'M debe tener 27 puntos fijos: x=y en la capa z=14');
+
+for(let z=1;z<=27;z++){
+  const p=C.poemPoint(z),q=C.poemPoint(28-z),pm=C.mirrorPoint(p);
+  assert(pm.x===q.x&&pm.y===q.y&&pm.z===q.z,`la traza POEMA debe ser especular entre z=${z} y z=${28-z}`);
+}
+
 const centerRel=R.relationsAt(14,14,14);
 assert(centerRel.writing.z===14,'la escritura central debe ser z=14');
 assert(centerRel.total>=15,'cada posición debe estar densamente relacionada');
-for(let x=1;x<=27;x++)for(let y=1;y<=27;y++)for(let z=1;z<=27;z++)assert(R.relationsAt(x,y,z).total>0,`posición sin relaciones: ${x},${y},${z}`);
 
 const atlas=fs.readFileSync('atlas.html','utf8');
 assert(atlas.includes('data-mode="cube"'),'atlas.html debe exponer CUBO');
@@ -72,8 +99,10 @@ for(const token of ["key:'X'","key:'Y'","key:'CENTRO'","key:'Z'"])assert(chance.
 assert(chance.includes('chooseLanguageReward'),'AZAR debe usar recompensa lingüística ponderada');
 assert(chance.includes('musicalidad 50 %'),'la musicalidad debe ser el factor principal');
 
+console.log('OK · PIEDRA 27² · 729 celdas · centro axial canónico');
 console.log('OK · CUBO 27³ · 19.683 posiciones');
 console.log('OK · centro 14·14·14 · 13 envolventes · espejo (y,x,28-z)');
-console.log('OK · 5 trazas · POEMA exacta · 27 lenguas (24 UE + ca/gl/eu)');
+console.log('OK · espejo involutivo · 27 puntos fijos en x=y, z=14');
+console.log('OK · 5 trazas · POEMA exacta y especular · 27 lenguas (24 UE + ca/gl/eu)');
 console.log('OK · AZAR⁴ = X + Y + CENTRO + Z');
 console.log('OK · 27 tipos de relación · 19.683 posiciones relacionadas · 27 escrituras iniciales');
