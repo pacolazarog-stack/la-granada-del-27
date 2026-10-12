@@ -3,6 +3,7 @@ import {createTraceEngine} from './trace-engine.js';
 import {createRelationsEngine} from './relations-engine.js';
 import {createAtlasEngine} from './atlas-engine.js';
 import {createChanceEngine} from './chance-engine.js';
+import {createGeometryAdapter} from './geometry-adapter.js';
 import {createMuseumShadowsMachine} from './museum-shadows.adapter.example.js';
 
 const assert=(ok,msg)=>{if(!ok)throw new Error(msg);};
@@ -60,6 +61,17 @@ assert(hit.point.x===1&&hit.point.y===1&&hit.point.z===1,'Azar determinista');
 assert(hit.sequence.map(x=>x.key).join('>')==='X>Y>CENTER>Z','secuencia de cuatro tiempos');
 assert(hit.sequence[2].point.x===14&&hit.sequence[2].point.y===14&&hit.sequence[2].point.z===14,'CENTRO en secuencia');
 
+const geometry=createGeometryAdapter({cube,spacing:2});
+const centerWorld=geometry.toWorld({x:14,y:14,z:14});
+assert(centerWorld.x===0&&centerWorld.y===0&&centerWorld.z===0,'centro world');
+const corner=geometry.toNormalized({x:27,y:27,z:27});
+assert(corner.x===1&&corner.y===1&&corner.z===1,'normalización 3D');
+assert(geometry.layer(14).length===729,'cada capa Z debe contener 729 posiciones XY');
+assert(geometry.envelope(13).length===4058,'adaptador 3D debe materializar la envolvente exterior');
+assert(geometry.traceVertices(traces,'TEST').length===27,'traza renderizable');
+const segment=geometry.mirrorSegment({x:3,y:21,z:13});
+assert(segment.to.point.x===21&&segment.to.point.y===3&&segment.to.point.z===15,'segmento espejo 3D');
+
 const museum=createMuseumShadowsMachine({inventory:substrate,rng:deterministic});
 assert(museum.cube.positions===19683,'museo reutiliza cubo íntegro');
 assert(museum.horizon.insideCube===false,'Habitación Número Cero debe quedar fuera del cubo');
@@ -69,4 +81,5 @@ console.log('OK · motor neutro 27³');
 console.log('OK · 729 celdas → 19.683 posiciones');
 console.log('OK · 13 envolventes · espejo involutivo · 27 puntos fijos');
 console.log('OK · trazas · relaciones · Atlas · Azar');
+console.log('OK · geometría renderizable 3D · capas · envolventes · trazas · espejo');
 console.log('OK · adaptador museo · Habitación Número Cero fuera del cubo');
