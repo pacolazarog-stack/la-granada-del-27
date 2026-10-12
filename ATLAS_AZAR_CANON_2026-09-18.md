@@ -3,7 +3,7 @@
 ## 1. Fuente geométrica
 
 - Cubo canónico: 27 × 27 × 27 = 19.683 posiciones.
-- Centro: (14,14,14) = España · La Vega · verso 14.
+- Centro: (14,14,14) = España · LA VEGA · verso central único: «Late bajo la cal la acequia hundida.» La posición 14 es el anclaje del sistema; no identifica ese centro con el verso 14 del tríptico autoral vigente.
 - Envolventes: k = 0…13; lados 1,3,…,27.
 - Espejo: M(x,y,z) = (y,x,28−z).
 - Índice espacial: 27 países de la UE en el orden canónico de `cube-canon.js`.
@@ -24,7 +24,7 @@ Secuencia canónica: **X → Y → CENTRO → Z**.
 
 - X = verso en (x,y).
 - Y = verso en (y,x).
-- CENTRO = verso 14·14: «Late bajo la cal la acequia hundida.»
+- CENTRO = celda axial 14·14: «Late bajo la cal la acequia hundida.»
 - Z = verso de la proyección XY correspondiente al paso z de la ruta POEMA.
 
 ## 5. Recompensa lingüística
