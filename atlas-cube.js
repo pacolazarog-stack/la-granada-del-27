@@ -1,4 +1,4 @@
-/* Atlas 27³ · lectura geométrica + traza POEMA exacta */
+/* Atlas 27³ · arquitectura común + lectura geométrica + traza POEMA exacta */
 (()=>{
   const C=window.GRANADA_CUBE_27,R=window.GRANADA_RELATIONS,$=s=>document.querySelector(s);
   if(!C)return;
@@ -13,11 +13,11 @@
     const n=27,g=9,p=12,w=p*2+n*g,h=w;
     const pts=Array.from({length:27},(_,i)=>C.poemPoint(i+1));
     const gx=x=>p+(x-1)*g+g/2,gy=y=>p+(27-y)*g+g/2;
-    let s=`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Proyección XY del cubo 27 por 27 por 27">`;
+    let s=`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Proyección XY de la posición seleccionada en el cubo 27 por 27 por 27">`;
     for(let i=0;i<=27;i++){const q=p+i*g;s+=`<path d="M${p} ${q}H${p+27*g} M${q} ${p}V${p+27*g}" class="cube-grid-line"/>`;}
     s+=`<polyline class="cube-poem-path" points="${pts.map(q=>`${gx(q.x)},${gy(q.y)}`).join(' ')}"/>`;
     pts.forEach(q=>{s+=`<circle class="cube-poem-node${q.z===meta.z?' active':''}" cx="${gx(q.x)}" cy="${gy(q.y)}" r="${q.z===14?3.5:2.2}"><title>POEMA · z ${q.z} · ${q.country} ↔ ${q.mirrorCountry}</title></circle>`;});
-    s+=`<circle class="cube-center-node" cx="${gx(14)}" cy="${gy(14)}" r="5"/><circle class="cube-current-node" cx="${gx(meta.x)}" cy="${gy(meta.y)}" r="5.5"/>`;
+    s+=`<circle class="cube-center-node" cx="${gx(14)}" cy="${gy(14)}" r="5"><title>Centro absoluto · 14·14·14</title></circle><circle class="cube-current-node" cx="${gx(meta.x)}" cy="${gy(meta.y)}" r="5.5"><title>Posición actual · ${meta.x}·${meta.y}·${meta.z}</title></circle>`;
     s+='</svg>';return s;
   }
 
@@ -25,6 +25,7 @@
     if(!rel)return '';
     const chips=[];
     const mp=rel.meta.mirror;
+    chips.push(['ARQUITECTURA',`27³ · posición ${rel.meta.x}·${rel.meta.y}·${rel.meta.z}`]);
     chips.push(['ESPEJO XYZ',`(${String(mp.x).padStart(2,'0')}, ${String(mp.y).padStart(2,'0')}, ${String(mp.z).padStart(2,'0')})`]);
     chips.push(['ENVOLVENTE',`k=${rel.meta.k} · lado ${rel.meta.side}`]);
     chips.push(['TIEMPO',rel.temporal]);
@@ -40,18 +41,28 @@
     return chips.map(([a,b])=>`<div class="cube-relation-chip"><strong>${esc(a)}</strong><span>${esc(b)}</span></div>`).join('');
   }
 
+  function traceStatus(){
+    const s=C.traces?.recoveryStatus||{};
+    return ['POEMA','AGUA','ARTISTAS','LEGADO','1927↔2027']
+      .map(name=>`${name}: ${s[name]||'estado no declarado'}`)
+      .join(' · ');
+  }
+
   function render(){
     const m=C.cubeMeta(state.x,state.y,state.z),p=C.poemPoint(state.z),mp=m.mirror;
     ['x','y','z'].forEach(k=>{const i=$(`#cube-${k}`),o=$(`#cube-${k}-value`);if(i)i.value=state[k];if(o)o.textContent=String(state[k]).padStart(2,'0');});
     $('#cube-coordinate').textContent=`(${String(m.x).padStart(2,'0')}, ${String(m.y).padStart(2,'0')}, ${String(m.z).padStart(2,'0')})`;
-    $('#cube-envelope').textContent=m.k===0?'CENTRO · 14·14·14':`ENVOLVENTE k=${m.k} · lado ${m.side}`;
-    $('#cube-countries').textContent=`X · ${m.countryX}   /   Y · ${m.countryY}`;
-    $('#cube-mirror').textContent=`M(x,y,z) = (${String(mp.x).padStart(2,'0')}, ${String(mp.y).padStart(2,'0')}, ${String(mp.z).padStart(2,'0')})`;
+    $('#cube-envelope').textContent=m.k===0?'CENTRO ABSOLUTO · k=0 · 14·14·14':`ENVOLVENTE k=${m.k} · lado ${m.side}`;
+    $('#cube-countries').textContent=`X · ${m.countryX}   /   Y · ${m.countryY}   /   Z · ${p.country}`;
+    $('#cube-mirror').textContent=`ESPEJO M(x,y,z) = (${String(mp.x).padStart(2,'0')}, ${String(mp.y).padStart(2,'0')}, ${String(mp.z).padStart(2,'0')})`;
     $('#cube-xy-verse').textContent=cell(m.x,m.y);
-    $('#cube-xy-meta').textContent=`H${String(m.x).padStart(2,'0')} · ${hTitle(m.x)} × P${String(m.y).padStart(2,'0')} · ${title(m.y)}`;
+    $('#cube-xy-meta').textContent=`H${String(m.x).padStart(2,'0')} · ${hTitle(m.x)} × P${String(m.y).padStart(2,'0')} · ${title(m.y)} · la misma celda XY existe en las 27 profundidades Z`;
     $('#cube-z-verse').textContent=cell(p.x,p.y);
     $('#cube-z-meta').textContent=`POEMA · z=${String(p.z).padStart(2,'0')} · ${p.country} ↔ ${p.mirrorCountry} · proyección (${p.x}, ${p.y})`;
-    $('#cube-trace-hit').textContent=m.onPoemTrace?'ESTA COORDENADA CAE EN LA TRAZA POEMA':'LA TRAZA POEMA PASA POR OTRA PROYECCIÓN XY EN ESTA CAPA Z';
+    $('#cube-trace-hit').textContent=m.onPoemTrace?'ESTA POSICIÓN COINCIDE CON LA TRAZA POEMA':'EN ESTA CAPA Z, POEMA ATRAVIESA OTRA CELDA XY';
+    const arch=$('#cube-architecture-status');
+    if(arch)arch.textContent=`729 celdas textuales → 19.683 posiciones relacionales · 13 envolventes · 27 puntos fijos del espejo en x=y, z=14 · posición actual: k=${m.k}`;
+    const ts=$('#cube-trace-status');if(ts)ts.textContent=traceStatus();
     $('#cube-map').innerHTML=svg(m);
     if(R){
       const rel=R.relationsAt(m.x,m.y,m.z);
