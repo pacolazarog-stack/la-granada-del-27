@@ -1,5 +1,26 @@
 /* EL INVENTARIO DE LAS SOMBRAS · ontología canónica del museo 27³ */
 
+export const MUSEUM_NOMENCLATURE=Object.freeze({
+  archive:Object.freeze({
+    id:'DEEP_ARCHIVE',
+    title:'EL ARCHIVO PROFUNDO',
+    role:'place',
+    meaning:'Lugar profundo del museo en el que se conservan, confrontan y reactivan las huellas.'
+  }),
+  machine:Object.freeze({
+    id:'TRACE_MACHINE',
+    title:'LA MÁQUINA DE LAS HUELLAS',
+    role:'machine',
+    meaning:'Sistema que despliega 729 huellas en 19.683 estados relacionales.'
+  }),
+  resonator:Object.freeze({
+    id:'RESONATOR',
+    title:'EL RESONADOR',
+    role:'core',
+    meaning:'Núcleo que detecta, despierta y amplifica resonancias entre huellas.'
+  })
+});
+
 export const MUSEUM_RELATION_TYPES=Object.freeze([
   'ECO',
   'CONTRADICCION',
@@ -63,6 +84,7 @@ export function createMuseumOntology({size=27}={}){
       if(!Number.isInteger(value)||value<1||value>size)throw new RangeError(`${name} fuera de rango`);
     }
     const envelope=Math.max(Math.abs(x-center),Math.abs(y-center),Math.abs(z-center));
+    const resonance=1-(envelope/maxEnvelope);
     return Object.freeze({
       point:Object.freeze({x,y,z}),
       materiality:Object.freeze({level:x,normalized:level(x),axis:MUSEUM_AXES.x}),
@@ -71,7 +93,12 @@ export function createMuseumOntology({size=27}={}){
       isCenter:x===center&&y===center&&z===center,
       centerMeaning:'Punto de máxima ambigüedad: materia, inscripción y olvido en equilibrio.',
       envelope,
-      resonance:1-(envelope/maxEnvelope),
+      resonance,
+      resonator:Object.freeze({
+        id:MUSEUM_NOMENCLATURE.resonator.id,
+        title:MUSEUM_NOMENCLATURE.resonator.title,
+        intensity:resonance
+      }),
       certaintyDistance:envelope
     });
   }
@@ -114,6 +141,7 @@ export function createMuseumOntology({size=27}={}){
     size,
     center,
     maxEnvelope,
+    nomenclature:MUSEUM_NOMENCLATURE,
     axes:MUSEUM_AXES,
     relationTypes:MUSEUM_RELATION_TYPES,
     roomZero,
