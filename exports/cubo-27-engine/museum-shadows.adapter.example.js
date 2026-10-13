@@ -22,6 +22,11 @@ export function createMuseumShadowsMachine({
   if(!inventory)throw new TypeError('inventory es obligatorio');
 
   const ontology=createMuseumOntology({size:27});
+  const architecture=Object.freeze({
+    place:ontology.nomenclature.archive,
+    machine:ontology.nomenclature.machine,
+    core:ontology.nomenclature.resonator
+  });
 
   const substrate={
     get(x,y){
@@ -52,7 +57,11 @@ export function createMuseumShadowsMachine({
   const relations=createRelationsEngine({cube,traces});
   relations.register('MUSEUM_SEMANTICS',({point,meta})=>({
     axes:meta.semantics??ontology.pointSemantics(point),
-    mirror:ontology.mirrorMeaning(point,meta.mirror)
+    mirror:ontology.mirrorMeaning(point,meta.mirror),
+    resonator:{
+      ...ontology.nomenclature.resonator,
+      intensity:(meta.semantics??ontology.pointSemantics(point)).resonance
+    }
   }));
   for(const def of relationProviders){
     relations.register(def.name,def.provider);
@@ -77,16 +86,25 @@ export function createMuseumShadowsMachine({
 
   function inspect(point){
     const p=cube.assertPoint(point);
+    const semantics=ontology.pointSemantics(p);
     return Object.freeze({
       point:p,
       meta:cube.meta(p),
-      semantics:ontology.pointSemantics(p),
+      semantics,
+      resonator:Object.freeze({
+        ...ontology.nomenclature.resonator,
+        intensity:semantics.resonance
+      }),
       relations:relations.relationsAt(p)
     });
   }
 
   return Object.freeze({
     cube,traces,relations,atlas,chance,geometry,ontology,
+    architecture,
+    archive:architecture.place,
+    traceMachine:architecture.machine,
+    resonator:architecture.core,
     horizon,
     inspect,
     inspectHorizon:()=>horizon
@@ -96,7 +114,7 @@ export function createMuseumShadowsMachine({
 /*
 Ejemplo de uso:
 
-const machine=createMuseumShadowsMachine({
+const museum=createMuseumShadowsMachine({
   inventory,
   metadataProvider(meta){
     const item=meta.cell;
@@ -107,6 +125,11 @@ const machine=createMuseumShadowsMachine({
     };
   }
 });
+
+// EL ARCHIVO PROFUNDO → LA MÁQUINA DE LAS HUELLAS → EL RESONADOR
+console.log(museum.archive.title);
+console.log(museum.traceMachine.title);
+console.log(museum.resonator.title);
 
 machine.atlas.goCenter();
 const apparition=machine.chance.roll();
