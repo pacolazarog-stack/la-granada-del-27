@@ -12,6 +12,42 @@ Una huella entra en el cubo solo mientras conserve alguna forma de representaci�
 
 ---
 
+## Nomenclatura canónica
+
+La arquitectura narrativa del museo queda organizada en tres niveles:
+
+### EL ARCHIVO PROFUNDO
+
+Es **el lugar**.
+
+No designa el cubo geométrico ni una colección concreta de piezas, sino el ámbito profundo del museo en el que se conserva, confronta y reactiva aquello de lo que todavía queda huella.
+
+### LA MÁQUINA DE LAS HUELLAS
+
+Es **la máquina** contenida en EL ARCHIVO PROFUNDO.
+
+Organiza las 729 huellas y permite que se desplieguen en 19.683 estados relacionales mediante materialidad, inscripción, profundidad de sombra, envolventes, espejo, vecinos, trazas, azar y relaciones.
+
+Su principio canónico es:
+
+> El museo no contiene 19.683 cosas. Contiene 729 huellas capaces de ocupar 19.683 estados de verdad.
+
+### EL RESONADOR
+
+Es **el núcleo de LA MÁQUINA DE LAS HUELLAS**.
+
+No es una cuarta coordenada ni una pieza añadida al cubo. Es el mecanismo conceptual que detecta, despierta y amplifica resonancias entre huellas: ecos, contradicciones, sustituciones, contagios, ausencias, reapariciones y demás relaciones activables.
+
+Su intensidad encuentra su máxima expresión en el centro y se modula a través de las trece envolventes.
+
+La jerarquía queda fijada como:
+
+**EL ARCHIVO PROFUNDO → LA MÁQUINA DE LAS HUELLAS → EL RESONADOR**
+
+LA HABITACIÓN NÚMERO CERO permanece fuera del cubo y no se convierte en una pieza interna de esta jerarquía geométrica.
+
+---
+
 ## Eje X · MATERIALIDAD
 
 De `1` a `27`.
@@ -70,6 +106,8 @@ El museo puede demostrar que algo existió, pero no exactamente qué fue.
 
 Por eso el recorrido probabilístico `X → Y → CENTRO → Z` pasa por una cámara de incertidumbre antes de proyectar la profundidad.
 
+En términos de LA MÁQUINA DE LAS HUELLAS, el centro es también el punto de **máxima resonancia del RESONADOR**.
+
 ---
 
 ## Las 13 envolventes
@@ -82,6 +120,8 @@ Son **grados de resonancia respecto del centro**.
 - hacia el exterior: mayor estabilidad aparente de identidad.
 
 La distancia estructural al centro funciona como **distancia de una certeza**.
+
+El RESONADOR utiliza esa distancia para modular la intensidad con la que una huella puede despertar relaciones.
 
 ---
 
@@ -122,7 +162,7 @@ Una huella puede alterar la interpretación de las que tiene alrededor: una fech
 - `DUPLICADO` — dos identificadores pretenden describir lo mismo.
 - `SOMBRA` — no hay relación demostrable, pero existe una coincidencia demasiado precisa para ignorarla.
 
-Las relaciones pueden despertar según Z, el recorrido previo y el estado del visitante.
+Las relaciones pueden despertar según Z, el recorrido previo y el estado del visitante. Su activación constituye la función narrativa principal del RESONADOR.
 
 ---
 
