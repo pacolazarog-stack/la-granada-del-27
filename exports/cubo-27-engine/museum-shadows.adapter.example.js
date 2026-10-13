@@ -131,10 +131,10 @@ console.log(museum.archive.title);
 console.log(museum.traceMachine.title);
 console.log(museum.resonator.title);
 
-machine.atlas.goCenter();
-const apparition=machine.chance.roll();
-const worldPoint=machine.geometry.toWorld(apparition.point);
-const state=machine.inspect(apparition.point);
+museum.atlas.goCenter();
+const apparition=museum.chance.roll();
+const worldPoint=museum.geometry.toWorld(apparition.point);
+const state=museum.inspect(apparition.point);
 
 // X = MATERIALIDAD
 // Y = INSCRIPCIÓN
