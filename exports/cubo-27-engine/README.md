@@ -46,7 +46,8 @@ Esos elementos son **adaptadores de contenido**, no arquitectura.
 - `geometry-adapter.js` — conversión a geometría tridimensional real/normalizada.
 - `museum-ontology.js` — ontología canónica de **El inventario de las sombras**.
 - `museum-shadows.adapter.example.js` — adaptador canónico del museo.
-- `MUSEUM_ONTOLOGY.md` — definición narrativa completa de ejes, centro, envolventes, espejo, relaciones, nomenclatura y Habitación Número Cero.
+- `MUSEUM_ONTOLOGY.md` — definición narrativa completa de ejes, centro, envolventes, espejo, relaciones, nomenclatura, homología emergente y Habitación Número Cero.
+- `DEL_ARCHIVO_PROFUNDO.md` — documento fundacional encontrado; puede funcionar dentro de la ficción, en dossier, memoria técnica o documentación sin explicar la equivalencia entre niveles.
 - `validate-engine.mjs` — invariantes del motor y de la ontología del museo.
 - `MIGRATION.md` — correspondencia entre el sistema original y el motor neutro.
 
@@ -103,6 +104,22 @@ La denominación canónica queda fijada en tres niveles:
 - **EL RESONADOR** es el núcleo de la máquina: detecta, despierta y amplifica relaciones entre huellas. No añade una coordenada nueva al cubo.
 
 La nomenclatura está disponible en código mediante `MUSEUM_NOMENCLATURE` y mediante `museum.architecture`, `museum.archive`, `museum.traceMachine` y `museum.resonator`.
+
+### Homología emergente, no alegoría
+
+La obra se diseña para funcionar simultáneamente como **universo narrativo**, **arquitectura conceptual** y **arquitectura técnica real**.
+
+No se establece oficialmente una equivalencia del tipo «esto representa el código». Los tres niveles comparten una misma secuencia funcional:
+
+**mostrar → contener → ordenar → procesar → aparecer**
+
+En la ficción esa secuencia adopta esta forma:
+
+**EL MUSEO muestra → EL ARCHIVO PROFUNDO contiene → LA MÁQUINA DE LAS HUELLAS ordena → EL RESONADOR procesa → EL POEMA aparece.**
+
+La arquitectura digital debe cumplir la misma ley sin convertirla en una explicación para el lector. La correspondencia es una propiedad emergente del sistema.
+
+El poema, por tanto, no es una celda almacenada: es un **acontecimiento de salida**, una forma temporal de sentido producida por una determinada coincidencia de huellas, profundidades, relaciones y resonancias.
 
 ### 729 huellas, no 19.683 objetos
 
@@ -176,7 +193,7 @@ Permanece fuera del cubo como horizonte externo y no se convierte en un componen
 
 > No guarda lo que se ha perdido. Guarda aquello de lo que ya no queda siquiera la posibilidad de decir que se perdió.
 
-La definición completa está en `MUSEUM_ONTOLOGY.md` y su proyección ejecutable en `museum-ontology.js`.
+La definición completa está en `MUSEUM_ONTOLOGY.md`, el documento encontrado en `DEL_ARCHIVO_PROFUNDO.md` y su proyección ejecutable en `museum-ontology.js`.
 
 ---
 
@@ -221,5 +238,7 @@ El espejo tiene 27 puntos fijos: `x=y` y `z=14`.
 > El motor define el espacio. La obra decide qué significa ocuparlo.
 
 En **El inventario de las sombras**, esa semántica ya queda fijada: **materialidad × inscripción × profundidad de sombra**.
+
+La coincidencia entre ficción, memoria y software no se explica: **se deja ocurrir**.
 
 Este paquete es la base técnica de la futura máquina tridimensional del museo, no una traslación temática de Granada.
