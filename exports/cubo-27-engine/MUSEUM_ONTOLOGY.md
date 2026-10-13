@@ -48,6 +48,40 @@ LA HABITACIÓN NÚMERO CERO permanece fuera del cubo y no se convierte en una pi
 
 ---
 
+## Principio de homología emergente
+
+La obra funciona simultáneamente en tres niveles:
+
+1. **universo narrativo**;
+2. **arquitectura conceptual**;
+3. **arquitectura técnica real**.
+
+Estos niveles **no deben explicarse como una alegoría entre sí**. Ningún elemento de la ficción «representa» oficialmente una pieza de software. La coincidencia debe ser estructural y descubrible, no declarativa.
+
+La misma cadena de operaciones rige los tres niveles:
+
+**mostrar → contener → ordenar → procesar → aparecer**
+
+En el universo del museo:
+
+**EL MUSEO muestra.**  
+**EL ARCHIVO PROFUNDO contiene.**  
+**LA MÁQUINA DE LAS HUELLAS ordena.**  
+**EL RESONADOR procesa.**  
+**EL POEMA aparece.**
+
+La arquitectura técnica debe realizar esas mismas operaciones sin convertir esta correspondencia en una explicación visible para el lector.
+
+Regla canónica de diseño:
+
+> La equivalencia entre museo, memoria y sistema digital debe ser una propiedad emergente de su funcionamiento común, no una clave interpretativa entregada de antemano.
+
+Por tanto, el poema no se considera una pieza almacenada en una celda. Es un **acontecimiento de salida**: una forma temporal que aparece cuando huellas, profundidad, relaciones y resonancias coinciden durante un estado determinado del sistema.
+
+El lector puede descubrir una cuarta homología sin que la obra la formule: también recibe huellas, establece relaciones y produce provisionalmente sentido.
+
+---
+
 ## Eje X · MATERIALIDAD
 
 De `1` a `27`.
