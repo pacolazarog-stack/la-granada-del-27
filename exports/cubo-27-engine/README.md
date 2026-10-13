@@ -46,7 +46,7 @@ Esos elementos son **adaptadores de contenido**, no arquitectura.
 - `geometry-adapter.js` — conversión a geometría tridimensional real/normalizada.
 - `museum-ontology.js` — ontología canónica de **El inventario de las sombras**.
 - `museum-shadows.adapter.example.js` — adaptador canónico del museo.
-- `MUSEUM_ONTOLOGY.md` — definición narrativa completa de ejes, centro, envolventes, espejo, relaciones y Habitación Número Cero.
+- `MUSEUM_ONTOLOGY.md` — definición narrativa completa de ejes, centro, envolventes, espejo, relaciones, nomenclatura y Habitación Número Cero.
 - `validate-engine.mjs` — invariantes del motor y de la ontología del museo.
 - `MIGRATION.md` — correspondencia entre el sistema original y el motor neutro.
 
@@ -92,6 +92,18 @@ Cada posición `(x,y,z)` puede adquirir además metadatos de sala, objeto, ausen
 
 La máquina del museo queda fijada como **arquitectura de memoria, inscripción y ausencia**.
 
+### Nomenclatura jerárquica
+
+La denominación canónica queda fijada en tres niveles:
+
+**EL ARCHIVO PROFUNDO → LA MÁQUINA DE LAS HUELLAS → EL RESONADOR**
+
+- **EL ARCHIVO PROFUNDO** es el lugar: el ámbito profundo del museo en el que se conservan, confrontan y reactivan las huellas.
+- **LA MÁQUINA DE LAS HUELLAS** es la máquina contenida en ese lugar: organiza las 729 huellas y las despliega en 19.683 estados relacionales.
+- **EL RESONADOR** es el núcleo de la máquina: detecta, despierta y amplifica relaciones entre huellas. No añade una coordenada nueva al cubo.
+
+La nomenclatura está disponible en código mediante `MUSEUM_NOMENCLATURE` y mediante `museum.architecture`, `museum.archive`, `museum.traceMachine` y `museum.resonator`.
+
 ### 729 huellas, no 19.683 objetos
 
 Las 729 celdas X×Y son **huellas museográficas elementales**: objetos, fotografías, fichas, frases, ausencias, personas recordadas, fechas, vitrinas vacías, correcciones o cualquier indicio que aún permita afirmar que algo estuvo allí.
@@ -127,15 +139,17 @@ Las bandas operativas son `PRESENTE`, `ATENUADO`, `DOCUMENTAL`, `INDIRECTO`, `RE
 
 No existe `Z28`.
 
-### CENTRO = máxima ambigüedad
+### CENTRO = máxima ambigüedad y máxima resonancia
 
 `(14,14,14)` no es el objeto principal ni la verdad final. Es el punto donde materia, inscripción y olvido quedan en equilibrio.
 
 El recorrido `X → Y → CENTRO → Z` pasa por una cámara de incertidumbre antes de proyectar la profundidad.
 
+En la nomenclatura del museo, este es también el punto de intensidad máxima del **RESONADOR**.
+
 ### Envolventes = distancia de una certeza
 
-Las trece envolventes son grados de resonancia respecto del centro, no trece salas físicas.
+Las trece envolventes son grados de resonancia respecto del centro, no trece salas físicas. El RESONADOR utiliza esa distancia para modular la intensidad relacional.
 
 ### Espejo = lectura inversa de la misma evidencia
 
@@ -152,13 +166,13 @@ Los vecinos permiten que una fecha corregida, una identificación errónea, una 
 
 `ECO`, `CONTRADICCION`, `SUSTITUCION`, `PROCEDENCIA`, `TESTIMONIO`, `BORRADO`, `ERROR`, `ESPEJO`, `CONTAGIO`, `AUSENCIA`, `REAPARICION`, `DUPLICADO`, `SOMBRA`.
 
-La activación concreta de estas relaciones sigue siendo enchufable y puede depender de Z, del recorrido y del estado previo del visitante.
+La activación concreta de estas relaciones sigue siendo enchufable y puede depender de Z, del recorrido y del estado previo del visitante. Su activación constituye la función narrativa central del RESONADOR.
 
 ### Restricción canónica: LA HABITACIÓN NÚMERO CERO
 
 **LA HABITACIÓN NÚMERO CERO no es `z=0`, `z=28`, una vigésimo octava capa ni el último paso de una cronología.**
 
-Permanece fuera del cubo como horizonte externo.
+Permanece fuera del cubo como horizonte externo y no se convierte en un componente interno del RESONADOR.
 
 > No guarda lo que se ha perdido. Guarda aquello de lo que ya no queda siquiera la posibilidad de decir que se perdió.
 
@@ -173,12 +187,16 @@ import { createMuseumShadowsMachine } from './museum-shadows.adapter.example.js'
 
 const museum = createMuseumShadowsMachine({ inventory });
 
+console.log(museum.archive.title);      // EL ARCHIVO PROFUNDO
+console.log(museum.traceMachine.title); // LA MÁQUINA DE LAS HUELLAS
+console.log(museum.resonator.title);    // EL RESONADOR
+
 const center = museum.inspect({x:14,y:14,z:14});
 const apparition = museum.chance.roll();
 const roomZero = museum.inspectHorizon();
 ```
 
-El adaptador expone simultáneamente `cube`, `atlas`, `chance`, `traces`, `relations`, `geometry`, `ontology` y el horizonte externo `ROOM_ZERO`.
+El adaptador expone simultáneamente `cube`, `atlas`, `chance`, `traces`, `relations`, `geometry`, `ontology`, la arquitectura nominal del museo y el horizonte externo `ROOM_ZERO`.
 
 ---
 
